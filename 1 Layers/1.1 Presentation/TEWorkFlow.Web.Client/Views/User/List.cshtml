@@ -19,13 +19,6 @@
 
             var id = rowData.Id;
             var p = "";
-            //            if (rowData.IsValid) {
-            //                p = " <img title=\"@Global.Deactivate \" alt=\"@Global.Deactivate \" src=\"../../Images/deactivate.gif\" onclick=\"ActiveUser('" + id + "')\" />";
-
-            //            }
-            //            else {
-            //                p = " <img title=\"@Global.Activate \" alt=\"@Global.Activate \" src=\"../../Images/activate.gif\" onclick=\"ActiveUser('" + id + "')\" />";
-            //            }
             var sp = "<a href=\"#\" onclick=\"DeleteUser('" + id + "')\">Delete</a>";
             var a = "  <img title=\"@Global.Eidt \" alt=\"@Global.Eidt \" src=\"../../scripts/jquery-easyui/themes/icons/user_edit.png\" onclick=\"UpdateUser('" + id + "')\" />"
             var d = " <img title=\"@Global.ChangePassword \" alt=\"@Global.ChangePassword \" src=\"../../scripts/jquery-easyui/themes/icons/key.png\" onclick=\"changepassword('" + id + "')\" />"
@@ -42,7 +35,8 @@
             return false;
         }
         function UpdateUser(id) {
-            window.location = '/User/Edit/' + id;
+            //window.location = '/User/Edit/' + id;
+            openParentTab("用户编辑", "/User/Edit/" + id, "icon-useredit", false);
             return false;
         }
         function DeleteUser(id) {
@@ -138,11 +132,12 @@
                  $('#txtRePass').val("");
 
              })
-        }
+         }
+        
     </script>
 }
 <table id="tt" class="easyui-datagrid"  
-        data-options="title: '用户管理',fit:true,iconCls: 'icon-save',rownumbers: true,singleSelect:true,toolbar:'#tb',url: '/User/GetUserList/',pagination: true">  
+        data-options="title: '用户管理',fit:true,iconCls: 'icon-user',rownumbers: true,singleSelect:true,toolbar:'#tb',url: '/User/GetUserList/',pagination: true">  
     <thead>  
         <tr>  
             <th data-options="field: 'Id', width: 60">@Global.Id</th>  

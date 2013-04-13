@@ -14,6 +14,7 @@
                     eval('data=' + data);
                     if (data.Success) {
                         $.messager.alert('@Global.InfoTitle', data.Message, 'info', toBack);
+                        closeTab();
                     } else {
                         $.messager.alert('@Global.ErrorTitle', data.Message, 'error', toBack);
                     }
@@ -145,7 +146,7 @@
                 </td>
                 <td align="left">
                     <a href="#" onclick="saveUser()" class="easyui-linkbutton" id="btn-save" icon="icon-save">
-                        @Global.Save</a> <a href="#" onclick="toBack()" class="easyui-linkbutton" id="btn-cancel"
+                        @Global.Save</a> <a href="#" onclick="closeTab()" class="easyui-linkbutton" id="btn-cancel"
                             icon="icon-undo">@Global.Back</a>
                 </td>
             </tr>

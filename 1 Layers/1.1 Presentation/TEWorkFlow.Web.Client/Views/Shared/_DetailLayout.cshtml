@@ -8,6 +8,24 @@
     <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-easyui/themes/icon.css" />
     <script type="text/javascript" src="~/Scripts/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        function downloadFile(url) {
+            $('body').append($('<iframe style="width:0px; height:0px; display:none;" src="' + url + '" ></iframe>'));
+        }
+        function openParentTab(title, href, icon, isCloseSelected) {
+            var index = window.parent.getSelectedIndex();
+            window.parent.openTab(title, href, icon);
+            if (isCloseSelected != false) {
+                window.parent.closeTab(index);
+            }
+        }
+        function closeTab() {
+            window.parent.closeSelectedTab();
+        }
+        function log(s) {
+            window.console && console.log(s)
+        }
+    </script>
     @RenderSection("scripts", required: true)
 </head>
 <body>

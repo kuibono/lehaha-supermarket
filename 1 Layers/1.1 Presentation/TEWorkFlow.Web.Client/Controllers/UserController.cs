@@ -46,7 +46,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return View(user);
         }
-
+        
         public ActionResult GetUserList()
         {
             DataGridPage dPage = new DataGridPage();
@@ -62,7 +62,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Email = o.Email,
                     Group = String.Join(",", o.GroupList.Select(g => g.GroupName).ToArray())
                 }).ToList();
-            return Json(new { total = dPage.RecordCount, rows = list });
+            return Json(new { total = dPage.RecordCount, rows = list },JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetGroupList(int? id)
