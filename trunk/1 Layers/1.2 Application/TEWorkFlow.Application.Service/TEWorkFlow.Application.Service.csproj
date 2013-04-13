@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BCD9140-E20D-4814-8ED0-F22DC0347F5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TEWorkFlow.Application.Service</RootNamespace>
+    <AssemblyName>TEWorkFlow.Application.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\..\..\lib\Spring.NET\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\..\..\lib\Spring.NET\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppService.cs" />
+    <Compile Include="IAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkFlow\CaseService.cs" />
+    <Compile Include="WorkFlow\CheckPointService.cs" />
+    <Compile Include="WorkFlow\ICheckPointService.cs" />
+    <Compile Include="WorkFlow\ICaseService.cs" />
+    <Compile Include="WorkFlow\IInvoicePointService.cs" />
+    <Compile Include="WorkFlow\IInvoiceService.cs" />
+    <Compile Include="WorkFlow\InvoicePointService.cs" />
+    <Compile Include="WorkFlow\InvoiceService.cs" />
+    <Compile Include="WorkFlow\IWorkFlowService.cs" />
+    <Compile Include="WorkFlow\IWorkStepService.cs" />
+    <Compile Include="WorkFlow\WorkFlowService.cs" />
+    <Compile Include="WorkFlow\WorkStepService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\1.3 Domain\TEWorkFlow.Domain\TEWorkFlow.Domain.csproj">
+      <Project>{EE525669-C178-469E-BFB0-38E18900A1D3}</Project>
+      <Name>TEWorkFlow.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\1.3 Domain\TEWorkFlow.Dto\TEWorkFlow.Dto.csproj">
+      <Project>{5B1E28FD-70C3-4511-A801-F3ADFBEAF8E3}</Project>
+      <Name>TEWorkFlow.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\NSH.Authorization.csproj">
+      <Project>{A9D6CB1B-707E-4F82-A6F3-96A978E01BA2}</Project>
+      <Name>NSH.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Core\NSH.Core.csproj">
+      <Project>{DDD1A0BF-884A-4F37-8186-04B30DBAEC94}</Project>
+      <Name>NSH.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\NSH.Repository.csproj">
+      <Project>{0E74AF39-D8D6-4E78-8137-5F875F36A82B}</Project>
+      <Name>NSH.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Service.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

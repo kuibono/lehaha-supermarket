@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.WorkFlow">
+  <class name="Case" table="T_Case" lazy="true" >
+    <id name="Id" type="int" column="CaseId" >
+      <generator class="native" />
+    </id>
+    <property name="Name" type="string" length="200"/>
+
+    <bag name="Invoices" inverse="true" cascade="all-delete-orphan">
+      <key column="CaseId"/>
+      <one-to-many class="Invoice"/>
+    </bag>    
+  </class>
+</hibernate-mapping>

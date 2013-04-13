@@ -1,0 +1,202 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        function query() {
+            var queryParams = $('#tt').datagrid('options').queryParams;
+
+            queryParams.LoginName = $('#LoginName').val();
+            queryParams.UserName = $('#UserName').val();
+            $('#tt').datagrid('options').queryParams = queryParams;
+            //alert($('#tt').datagrid('options').queryParams.UserID);
+            $("#tt").datagrid('reload');
+        }
+        function actionFormatter(value, rowData, rowIndex) {
+
+            var id = rowData.Id;
+            var p = "";
+            //            if (rowData.IsValid) {
+            //                p = " <img title=\"@Global.Deactivate \" alt=\"@Global.Deactivate \" src=\"../../Images/deactivate.gif\" onclick=\"ActiveUser('" + id + "')\" />";
+
+            //            }
+            //            else {
+            //                p = " <img title=\"@Global.Activate \" alt=\"@Global.Activate \" src=\"../../Images/activate.gif\" onclick=\"ActiveUser('" + id + "')\" />";
+            //            }
+            var sp = "<a href=\"#\" onclick=\"DeleteUser('" + id + "')\">Delete</a>";
+            var a = "  <img title=\"@Global.Eidt \" alt=\"@Global.Eidt \" src=\"../../scripts/jquery-easyui/themes/icons/user_edit.png\" onclick=\"UpdateUser('" + id + "')\" />"
+            var d = " <img title=\"@Global.ChangePassword \" alt=\"@Global.ChangePassword \" src=\"../../scripts/jquery-easyui/themes/icons/key.png\" onclick=\"changepassword('" + id + "')\" />"
+            return p + '&nbsp;' + a + '&nbsp;' + d;
+
+        }
+        function changepassword(id) {
+            $('#hidChangePassId').val(id);
+            $('#w').window('open');
+
+        }
+        function addUser() {
+            window.location = '/User/Edit';
+            return false;
+        }
+        function UpdateUser(id) {
+            window.location = '/User/Edit/' + id;
+            return false;
+        }
+        function DeleteUser(id) {
+            $.messager.confirm('info', 'Are you confirm delete it?', function (r) {
+                if (r) {
+                    //alert(user_form);
+                    $('#form').form('submit', {
+                        url: '/User/DeleteUser/' + id,
+                        success: function (data) {
+                            eval('data=' + data);
+                            if (data.Success) {
+                                // _user_form.form('clear');
+                                $.messager.alert('Info', data.Message, 'info');
+                            } else {
+                                $.messager.alert('Error', data.Message, 'error');
+                            }
+                            $("#tt").datagrid('reload');
+                        },
+                        onSubmit: function () {
+                            //if (_user_form.valid())
+                            return true;
+                            // else
+                            //    return false;
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function ActiveUser(id) {
+
+            $('#form').form('submit', {
+                url: '/User/ActiveUser/' + id,
+                success: function (data) {
+                    eval('data=' + data);
+                    if (data.Success) {
+                        // _user_form.form('clear');
+                        $.messager.alert('Info', data.Message, 'info');
+                    } else {
+                        $.messager.alert('Error', data.Message, 'error');
+                    }
+                    $("#tt").datagrid('reload');
+                },
+                onSubmit: function () {
+                    //if (_user_form.valid())
+                    return true;
+                    // else
+                    //    return false;
+                }
+            });
+        }
+        //关闭登录窗口
+        function closePwd() {
+            $('#w').window('close');
+        }
+        //修改密码
+        function savePwd() {
+
+            var $hidChangePassId = $('#hidChangePassId');
+            var $newpass = $('#txtNewPass');
+            var $rePass = $('#txtRePass');
+
+            if ($newpass.val() == '') {
+                $.messager.alert('@Global.InfoTitle', "@Global.InputPassword", 'warning');
+                return false;
+            }
+            if ($rePass.val() == '') {
+                $.messager.alert('@Global.InfoTitle', "@Global.ReinputPassword", 'warning');
+                return false;
+            }
+
+            if ($newpass.val() != $rePass.val()) {
+                $.messager.alert('@Global.InfoTitle', "@Global.PasswordDifferent", 'warning');
+                return false;
+            }
+            $.post('/User/EditPassword',
+            {newpass:$newpass.val(),id:$hidChangePassId.val()},
+             function (data) {
+                 eval('data=' + data);
+                 closePwd();
+                 if (data.Success) {
+
+                     $.messager.alert('@Global.InfoTitle', data.Message, 'info');
+
+                 } else {
+                     $.messager.alert('@Global.ErrorTitle', data.Message, 'error');
+
+                 }
+
+                 $('#hidChangePassId').val("");
+                 $('#txtNewPass').val("");
+                 $('#txtRePass').val("");
+
+             })
+        }
+    </script>
+}
+<table id="tt" class="easyui-datagrid"  
+        data-options="title: '用户管理',fit:true,iconCls: 'icon-save',rownumbers: true,singleSelect:true,toolbar:'#tb',url: '/User/GetUserList/',pagination: true">  
+    <thead>  
+        <tr>  
+            <th data-options="field: 'Id', width: 60">@Global.Id</th>  
+            <th data-options="field: 'LoginName',width:180">@Global.LoginName</th>
+            <th data-options="field: 'UserName',width:180">@Global.Username</th>
+            <th data-options="field:'Email',width:100">@Global.Email</th>  
+            <th data-options="field: 'Group',width:100">@Global.Group</th>  
+            <th data-options="field: 'opt',width:200,formatter:actionFormatter">@Global.Action</th>
+        </tr>  
+    </thead>  
+</table>
+<div id="tb" style="padding: 5px; height: auto">
+    <div style="margin-bottom: 5px">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addUser();">@Global.Add</a>
+    </div>
+    <div>
+        @Global.LoginName:
+        <input id="LoginName" style="width: 80px" />
+        @Global.Username:
+        <input id="UserName" style="width: 80px" />
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="query();">@Global.Search</a>
+    </div>
+</div>
+@section Windows {
+    <div id="w" class="easyui-window" data-options="title:'@Global.ChangePassword',iconCls:'icon-save',
+collapsible:false,minimizable:false,maximizable:false,closed:true"
+    style="width: 320px; height: 200px; padding: 5px;">
+        <div class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center',border:false" style="padding: 10px; background: #fff;
+                border: 1px solid #ccc;">
+                <table cellpadding="3">
+                    <tr>
+                        <td>
+                            @Global.NewPassword：
+                        </td>
+                        <td>
+                            <input id="hidChangePassId" type="hidden" />
+                            <input id="txtNewPass" type="password" class="txt01" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Global.ConfirmPassword：
+                        </td>
+                        <td>
+                            <input id="txtRePass" type="password" class="txt01" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div data-options="region:'south',border:false" style="text-align: right; padding: 5px 0;">
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="javascript:savePwd();">@Global.Ok</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:closePwd();">@Global.Cancel</a>
+            </div>
+        </div>
+    </div>
+}

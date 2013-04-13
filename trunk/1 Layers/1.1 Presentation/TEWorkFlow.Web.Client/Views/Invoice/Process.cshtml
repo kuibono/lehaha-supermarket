@@ -1,0 +1,227 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "Databse Processing";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript" src="../../Scripts/swfUpload/swfupload.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/fileprogress.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/handlers.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/swfupload.queue.js"></script>
+    <script type="text/javascript">
+    function loading(msg){
+        if(msg==undefined)
+        {
+         msg = "正在加载数据，请稍候..."; 
+        } 
+        var panel = $(document.body);  
+        $("<div class=\"datagrid-mask\"></div>").css({ display: "block", width: panel.width(), height: panel.height() }).appendTo(panel);  
+        $("<div class=\"datagrid-mask-msg\"></div>").html(msg).appendTo(panel).css({ display: "block", left: (panel.width() - $("div.datagrid-mask-msg", panel).outerWidth()) / 2, top: (panel.height() - $("div.datagrid-mask-msg", panel).outerHeight()) / 2 });  
+    }
+    function unload(){
+        var panel = $(document.body); 
+        panel.find("div.datagrid-mask-msg").remove();  
+        panel.find("div.datagrid-mask").remove();  
+    }
+      
+
+        $(function () {
+            $(".datagrid-view").css("height", document.body.clientHeight - 30);
+            $("#btn_sub").click(function () {
+                $("#form_file").submit();
+                alert("submit")
+                return false;
+            })
+        })
+
+        function actionFormatter(value, rowData, rowIndex) {
+
+            var id = rowData.id;
+
+            var a = "  <img title=\"@Global.Eidt \" alt=\"@Global.Eidt \" src=\"../../Images/edit.gif\" onclick=\"location.href='/Invoice/Edit/" + id + "'\" />"
+            return a;
+
+        }
+        function getStatus(value, rowData, rowIndex) {
+            return rowData.step; ;
+
+        }
+
+
+        var swfu;
+        $(function () {
+            var settings = {
+                flash_url: "@Url.Content("~/Scripts/swfupload/swfupload.swf")",
+                upload_url: "@Url.Content("~/Invoice/ImportInvoice")",
+                post_params: { "uid": "@Session[AuthorizeSettings.SessionUserID]" },
+                file_size_limit: "100 MB",
+                file_types: "*.xls;*.xlsx",
+                file_types_description: "Excel表格",
+                file_upload_limit: 1,
+                file_queue_limit: 0,
+                custom_settings: {
+                    progressTarget: "fsUploadProgress",
+                    cancelButtonId: "btnCancel"
+                },
+                debug: false,
+
+                // Button settings
+                button_image_url: "@Url.Content("~/Images/gray_bg.png")",
+                button_width: "70",
+                button_height: "18",
+                button_placeholder_id: "xxx",
+                button_text: '<span class="theFont">Import Data</span>',
+                button_text_style: ".theFont { font-size: 12;font-family:Arial; background: #EFEFEF; }",
+                button_text_left_padding: 0,
+                button_text_top_padding: 0,
+
+                // The event handler functions are defined in handlers.js
+                file_queued_handler: fileQueued,
+                file_queue_error_handler: fileQueueError,
+                file_dialog_complete_handler: fileDialogComplete,
+                upload_start_handler: function(){
+                   loading("uploading...");
+                },
+                upload_progress_handler: uploadProgress,
+                upload_error_handler: function(){unload();},
+                upload_success_handler: function (fileObj,server_data) { var r = eval('(' + server_data + ')'); alert(r.Message); location.href = "/Invoice/Process/?rd=" + Math.random(); },
+                upload_complete_handler: uploadComplete,
+                queue_complete_handler: queueComplete	// Queue plugin event
+            };
+
+            swfu = new SWFUpload(settings);
+
+        })
+        function removeItem() {
+            var rows=$('#tt').datagrid('getSelections');
+            if(rows.length==0)
+            {
+                $.messager.show({  
+                    title:'Message',  
+                    msg:'No item selected',  
+                    showType:'slide'  
+                });  
+            return false;
+            }
+            var id="";
+            for(var i=0;i<rows.length;i++)
+            {
+                id+=rows[i].id+",";
+            }
+            var reg=/,$/gi;
+            id=id.replace(reg,"");
+
+            var row = $('#tt').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', 'Are you sure you want to remove this Invoice?', function (r) {
+                    if (r) {
+                        $.post('@Url.Action("Delete")', { ids: id }, function (result) {
+                            if (result.Success) {
+                                $('#tt').datagrid('reload');
+                            } else {
+                                $.messager.alert('Error', result.Message, 'error');
+                            }
+                        }, "json");
+                    }
+                })
+            }
+        }
+
+        var editIndex = undefined;
+        function beginEdit(rowIndex, rowData) {
+            if (editIndex != rowIndex) {
+                if (endEditing()) {
+                    $('#tt').datagrid('selectRow', rowIndex)
+                            .datagrid('beginEdit', rowIndex);
+                    editIndex = rowIndex;
+                }
+                else {
+                    $('#tt').datagrid('selectRow', editIndex);
+                }
+            }
+            $('#tt').datagrid('endEdit', rowIndex);
+            $('#tt').datagrid('beginEdit', rowIndex);
+        }
+        function endEditing(callback) {
+            if(editIndex == undefined)
+            {
+                return true;
+            }
+            var editors = $('#tt').datagrid('getEditors', editIndex);
+            var values = new Array({ "name": "id", "value": $('#tt').datagrid('getSelected', editIndex).id });
+            $(editors).each(function(i){
+                values[i+1]={"name":$(this).prop("field"),"value":$(this.target).val()}
+                //values[i]=$(this.target).val();
+            });
+            $.post("@Url.Action("EditInvoice")",values,function(r){
+                if(r.Success==true){
+                //
+                }
+            },"json")
+            $('#tt').datagrid('endEdit', editIndex);
+            $('#tt').datagrid('unselectRow', editIndex);
+            editIndex = undefined;
+            return true;
+        }
+
+        function accept()
+        {
+            endEditing();
+            $.messager.show({  
+                title:'Congratulations',  
+                msg:'All Items Saved!',  
+                showType:'slide'  
+            });  
+        }
+    </script>
+}
+<table id="tt" class="easyui-datagrid" url="@Url.Content("~/Invoice/Query")" title="Load Data" iconcls="icon-save"
+    rownumbers="true" pagination="true" data-options="toolbar:'#tb',onDblClickRow:beginEdit,pageSize:20">
+    <thead>
+        <tr>
+            <th data-options="field:'ck',checkbox:true">
+            </th>
+            <th field="step" width="100" formatter="getStatus" align="center">
+                Step
+            </th>
+            @*            <th field="id" align="center">
+                Item ID
+            </th>*@
+            @foreach (var col in ViewBag.Cols)
+            {
+                <th field="@col" align="center" data-options="editor:{type:'text'}">
+                    @col
+                </th>
+            }
+            @foreach (var col in ViewBag.Cols2)
+            {
+                <th field="@col" align="center" data-options="editor:{type:'text'}">
+                    @col
+                </th>
+            }
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="/invoice/GetExcelResult" target="_blank" id="btn_export" class="easyui-linkbutton"
+        data-options="iconCls:'icon-export',plain:true" style="float: left;">Export Template</a>
+    <a id="btn_import" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-import',plain:true"
+        style="float: left;"><span id="xxx">Import Data</span></a> <a href="/invoice/GetQueryExcel"
+            target="_blank" class="easyui-linkbutton" data-options="iconCls:'icon-export',plain:true">
+            Export Data</a> <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"
+                onclick="removeItem();">@Global.Delete</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All</a>
+</div>
+<br />
+@section Windows{
+    <div id="w" class="easyui-window" title="Basic Window" style="width: 500px; height: 200px;
+        padding: 10px;" data-options="closed:true,collapsible:false,minimizable:false,maximizable:false,iconCls:'icon-save'">
+        <div class="fieldset flash" id="fsUploadProgress">
+            <span class="legend">传输队列</span>
+        </div>
+        <div>
+            <span id="spanButtonPlaceHolder"></span>
+        </div>
+    </div>
+}

@@ -1,0 +1,118 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@using TEWorkFlow.Web.Client.Models;
+@{
+    ViewBag.Title = "ReportList";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+
+        function setqueryParams() {
+            var queryParams = $('#tt').datagrid('options').queryParams;
+
+            queryParams.stepid = $("#Step").combobox("getValue");
+            queryParams.userid = $("#User").combobox("getValue");
+            queryParams.field = $('#field').combobox("getValue");
+            queryParams.fieldType = $('#field>option[value=' + queryParams.field + ']').attr('typename')
+            queryParams.keyword = $('#keyword').val();
+            queryParams.dateStart = $('#dateStart').datebox("getValue");
+            queryParams.dateEnd = $('#dateEnd').datebox("getValue");
+            return queryParams;
+        }
+        function query() {
+            var queryParams = setqueryParams();
+
+            //alert($('#field').combobox("getValue"));
+            $('#tt').datagrid('options').queryParams = queryParams;
+            $("#tt").datagrid('reload');
+        }
+
+        function exportFile() {
+            var queryParams = setqueryParams();
+            //alert($.param(queryParams));
+            //return;
+
+            downloadFile('@Url.Content("~/Invoice/ReportListExport/")'
+            + '?' + $.param(queryParams));
+        }
+        function stepFormatter(value, rowData, rowIndex) {
+            return rowData.step;
+        }
+    </script>
+}
+<table id="tt" class="easyui-datagrid" data-options="url:'/Invoice/ReportQuery',
+        title:'Invoice Query',
+        fit:true,
+        iconcls:'icon-save',
+        rownumbers:true,
+        pagination:true,
+        toolbar:'#tb'">
+    <thead>
+        <tr>
+            <th field="step" width="100" formatter="stepFormatter" align="center">
+                Step
+            </th>
+            @foreach (var col in ViewBag.Cols)
+            {
+                <th field="@col" align="center">
+                    @col
+                </th>
+            }
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <div style="margin-bottom: 5px">
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-export',plain:true" onclick="exportFile();">Export Data</a>
+    </div>
+    <div style="padding-left: 5px;">
+        Step:&nbsp;
+        <select id="Step" name="Step" class="easyui-combobox" style="width: 100px;"
+            data-options="url:'/CheckPoint/GetSteps/?addEmpty=true',
+            editable:false,
+            valueField:'Id',
+            textField:'Name'
+            ">
+        </select> 
+        &nbsp;User:&nbsp;
+        <select id="User" name="User" class="easyui-combobox" style="width: 100px;"
+            data-options="url:'/CheckPoint/GetUsers/?addEmpty=true',
+            editable:false,
+            valueField:'Id',
+            textField:'UserName'
+            ">
+        </select>
+        &nbsp;Item:&nbsp;
+        <select class="easyui-combobox" id="field" name="field" data-options="
+        editable:false,
+        onChange:function(newValue, oldValue)
+        {
+            if($('#field>option[value=' + newValue + ']').attr('typename') == 'Date')
+            {
+                $('#keyword').hide();
+                $('#keysplit').show();
+                $('#dateStart').datebox('clear');
+                $('#dateEnd').datebox('clear');
+                $('#keyword').val('');
+            }
+            else
+            {
+                $('#keysplit').hide();
+                $('#keyword').show();
+                $('#dateStart').datebox('clear');
+                $('#dateEnd').datebox('clear');
+            }
+        }" 
+        style="width:120px;">
+            @foreach (JsonNameValue fld in ViewBag.Fields)
+            {
+                <option value="@fld.Value" typename="@fld.TypeName">@fld.Text</option>
+            }
+        </select>
+        <input id="keyword" style="width: 80px" />
+        <span id="keysplit" style="display:none;"><input class="easyui-datebox" id="dateStart" /> - 
+        <input class="easyui-datebox" id="dateEnd" /></span>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="query();">@Global.Search</a>
+    </div>
+</div>

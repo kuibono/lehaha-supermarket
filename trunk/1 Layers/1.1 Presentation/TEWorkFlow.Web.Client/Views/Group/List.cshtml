@@ -1,0 +1,127 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        function addGroup() {
+            var row = $('#dg').treegrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', 'New Group');
+                $('#fm').form('clear');
+                $('#fm input[name=parentid]').val(row.id);
+            }
+        }
+        function editGroup() {
+            var row = $('#dg').treegrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', 'Edit Group');
+                $('#fm').form('load', row);
+                //url = 'update_user.php?id=' + row.id;
+            }
+        }
+        function removeGroup() {
+            var row = $('#dg').treegrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', 'Are you sure you want to remove this group?', function (r) {
+                    if (r) {
+                        $.post('@Url.Action("Delete")', { id: row.id }, function (result) {
+                            if (result.Success) {
+                                $('#dg').treegrid('reload');
+                            } else {
+                                $.messager.alert('Error', result.Message, 'error');
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+        function saveGroup() {
+            $('#fm').form('submit', {
+                url: '@Url.Action("Edit")',
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.Success) {
+                        $('#dlg').dialog('close');
+                        $('#dg').treegrid('reload');
+                    } else {
+                        $.messager.alert('Error', result.Message, 'error');
+                    }
+                }
+            });
+        }
+        function htmlEscape(str) {
+            return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+        }
+        function textFormatter(value)
+        {
+            return htmlEscape(value);
+        }
+    </script>
+}
+<table id="dg" class="easyui-treegrid"
+    data-options="title:'Group',
+                url: '@Url.Action("GetGroupList")',  
+                rownumbers: true,  
+                idField: 'id',  
+                treeField: 'text',
+                fit:true,
+                toolbar:'#tb'
+            ">
+    <thead>
+        <tr>
+            <th data-options="field:'text'" width="120">
+                Name
+            </th>
+            <th data-options="field:'count'">
+                User Count
+            </th>
+            <th data-options="field:'remark'">
+                Remark
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding: 5px; height: auto">
+    <div style="margin-bottom: 5px">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="addGroup();">@Global.Add</a> <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"
+                onclick="editGroup();">@Global.Eidt</a> 
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"
+                    onclick="removeGroup();">@Global.Delete</a>
+    </div>
+</div>
+@section Windows{
+    <div id="dlg" class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
+        closed="true" buttons="#dlg-buttons">
+        <form id="fm" method="post">
+        <input type="hidden" name="id" />
+        <input type="hidden" name="parentid" />
+        <div class="fitem">
+            <label>
+                Name:</label>
+            <input name="text" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>
+                Remark:</label>
+            <input name="remark">
+        </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveGroup()">@Global.Save</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">
+            @Global.Cancel</a>
+    </div>
+}

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object type="TEWorkFlow.Web.Client.Controllers.AccountController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="UserService" ref="UserService" />
+  </object>
+  
+  <object type="TEWorkFlow.Web.Client.Controllers.UserController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="UserService" ref="UserService" />
+    <property name="GroupService" ref="GroupService" />
+    <property name="ModuleService" ref="ModuleService" />
+    <property name="RoleService" ref="RoleService" />
+  </object>
+
+  <object type="TEWorkFlow.Web.Client.Controllers.GroupController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="GroupService" ref="GroupService" />
+  </object>
+
+  <object type="TEWorkFlow.Web.Client.Controllers.RoleController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="RoleService" ref="RoleService" />
+  </object>
+  
+  <object type="TEWorkFlow.Web.Client.Controllers.HomeController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="UserService" ref="UserService" />
+    <property name="ModuleService" ref="ModuleService" />
+  </object>
+  
+  <object type="TEWorkFlow.Web.Client.Controllers.CaseController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="CaseService" ref="CaseService" />
+  </object>
+  
+  <object type="TEWorkFlow.Web.Client.Controllers.InvoiceController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="InvoiceService" ref="InvoiceService" />
+    <property name="InvoicePointService" ref="InvoicePointService" />
+    <property name="CheckPointService" ref="CheckPointService" />
+    <property name="WorkStepService" ref="WorkStepService" />
+    <property name="UserService" ref="UserService" />
+  </object>
+  
+  <object type="TEWorkFlow.Web.Client.Controllers.CheckPointController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="UserService" ref="UserService" />
+    <property name="CheckPointService" ref="CheckPointService" />
+    <property name="WorkStepService" ref="WorkStepService" />
+  </object>
+
+  <object type="TEWorkFlow.Web.Client.Controllers.WorkStepController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="WorkStepService" ref="WorkStepService" />
+    <property name="WorkFlowService" ref="WorkFlowService" />
+    <property name="UserService" ref="UserService" />
+  </object>
+  
+</objects>

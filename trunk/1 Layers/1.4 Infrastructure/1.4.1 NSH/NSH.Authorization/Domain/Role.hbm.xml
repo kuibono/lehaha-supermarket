@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NSH.Authorization" namespace="NSH.Authorization.Domain">
+  <class name="Role" table="T_Role" lazy="true" >
+    <id name="Id" type="int" column="RoleId" >
+      <generator class="native" />
+    </id>
+    <property name="RoleName" type="string" length="80" />
+    <property name="Level" type="int" />    
+    <property name="Remark" type="string" length="200" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+﻿@using TEWorkFlow.Domain.WorkFlow;
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_DetailLayout.cshtml";
+}
+@section scripts{
+    <style type="text/css">
+        label
+        {
+            width: 120px;
+            display: block;
+        }
+        html{ font-size:12px;}
+    </style>
+}
+<div style="background: #fafafa; padding: 10px; width: 300px; ">
+    <form id="ff" method="post" novalidate>
+    @foreach (CheckPoint chk in ViewBag.Chks)
+    {
+        <div>
+            <label for="@chk.Id">
+                @chk.ItemName:</label>
+            <input class="easyui-validatebox" type="text" name="@chk.Id" required="true" style="width:200px"></input>
+        </div>
+    }
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+    </form>
+</div>

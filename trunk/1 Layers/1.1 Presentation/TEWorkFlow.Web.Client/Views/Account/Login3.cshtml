@@ -1,0 +1,52 @@
+﻿@using System.Web.Optimization
+@using TEWorkFlow.Web.Client.Models
+@model TEWorkFlow.Web.Client.Models.LoginModel
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Log in</title>
+    <style type="text/css">
+    body{margin:0px; padding:0px; background:url(@Url.Content("~/Images/Login2/login_bg.png")) repeat-x; font-size:12px; }
+    #top_space {height:220px;}
+    .login_form { width:670px; height:60px; background:url(@Url.Content("~/Images/Login2/login.png")) no-repeat; margin:0px auto; padding-top:227px;}
+    .login_form form {margin:0px; padding:0px; /*background-color:#FF0000;*/}
+    .login_form form div {float:left;}
+    .login_form form input.text { margin-left:110px; margin-top:0px; width:115px; border:0px; background:none;}
+    .login_form form input.password { margin-left:132px; width:113px; border:0px; background:none;}
+    .login_form form input.submit { margin:0px 0px 0px 50px; padding:0px; border:0px;}
+    #validation { width:670px; margin:0px auto; color:#FF0000;}
+    </style>
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        try {
+            if (top.location !== self.location) {
+                top.location = self.location;
+            }
+        }
+        catch (e) { }
+        $(function () {
+            setLoginFormPos();
+            $(window).resize(function () { setLoginFormPos(); });
+        });
+        function setLoginFormPos() {
+            $("#top_space").height(($(window).height() - $(".login_form").outerHeight(true)) / 2);
+        }
+    </script>
+</head>
+<body id="b">
+    <div id="top_space">
+    </div>
+    <div class="login_form">
+        @using (Html.BeginForm())
+        { 
+            <div>@Html.TextBoxFor(m => m.UserName, new { maxlength = 20, @class = "text" })
+                @Html.PasswordFor(m => m.Password, new { maxlength = 20, @class = "password" })</div>
+            <div>
+                <input type="image" name="submit" src="@Url.Content("~/Images/Login2/login_btn.png")" class="submit" />
+            </div>
+        }
+    </div>
+    <div id="validation">@Html.ValidationSummary(true, "")</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NSH.Authorization" namespace="NSH.Authorization.Domain">
+  <class name="Group" table="T_Group" lazy="true" >
+    <id name="Id" type="int" column="GroupId" >
+      <generator class="native" />
+    </id>
+
+    <property name="GroupName" type="string" unique="true" length="20"/>
+    <property name="IsSystem" type="bool"/>
+    <property name="IsRoot" type="bool"/>
+    <property name="Level" column="GroupLevel" type="int"/>
+
+    <many-to-one name="Parent" class="Group" column="ParentId" not-null="false" />
+
+    <bag name="Children" inverse="true" lazy="false" cascade="all-delete-orphan">
+      <key column="ParentId"/>
+      <one-to-many class="Group"/>
+    </bag>
+
+    <bag name="UserList" table="T_RelationUserGroup" lazy="false">
+      <key column="GroupId"/>
+      <many-to-many class="User" column="UserId"/>
+    </bag>
+    
+    <property name="Remark" type="string" length="100"/>
+    
+  </class>
+</hibernate-mapping>
