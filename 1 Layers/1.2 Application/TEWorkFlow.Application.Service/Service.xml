@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects default-lazy-init="true" xmlns="http://www.springframework.net">
+
+  <!--Repository-->
+  <object id="CaseRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.Case>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="InvoiceRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.Invoice>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="CheckPointRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.CheckPoint>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="InvoicePointRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.InvoicePoint>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="WorkStepRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.WorkStep>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="WorkFlowRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.WorkFlow>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!--Service-->
+  <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="CaseService" type="TEWorkFlow.Application.Service.WorkFlow.CaseService, TEWorkFlow.Application.Service">
+    <property name="CaseRepository" ref="CaseRepository"/>
+  </object>
+  
+  <object id="InvoiceService" type="TEWorkFlow.Application.Service.WorkFlow.InvoiceService, TEWorkFlow.Application.Service">
+    <property name="InvoiceRepository" ref="InvoiceRepository"/>
+    <property name="InvoicePointRepository" ref="InvoicePointRepository"/>
+    <property name="WorkStepRepository" ref="WorkStepRepository"/>
+    <property name="CheckPointRepository" ref="CheckPointRepository"/>
+  </object>
+  
+  <object id="CheckPointService" type="TEWorkFlow.Application.Service.WorkFlow.CheckPointService, TEWorkFlow.Application.Service">
+    <property name="CheckPointRepository" ref="CheckPointRepository"/>
+  </object>
+
+  <object id="InvoicePointService" type="TEWorkFlow.Application.Service.WorkFlow.InvoicePointService, TEWorkFlow.Application.Service">
+    <property name="InvoicePointRepository" ref="InvoicePointRepository"/>
+  </object>
+  
+  <object id="WorkStepService" type="TEWorkFlow.Application.Service.WorkFlow.WorkStepService, TEWorkFlow.Application.Service">
+    <property name="WorkStepRepository" ref="WorkStepRepository"/>
+  </object>
+
+  <object id="WorkFlowService" type="TEWorkFlow.Application.Service.WorkFlow.WorkFlowService, TEWorkFlow.Application.Service">
+    <property name="WorkFlowRepository" ref="WorkFlowRepository"/>
+  </object>
+  
+</objects>

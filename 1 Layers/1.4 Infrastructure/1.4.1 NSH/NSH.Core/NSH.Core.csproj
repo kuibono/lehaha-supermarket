@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DDD1A0BF-884A-4F37-8186-04B30DBAEC94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSH.Core</RootNamespace>
+    <AssemblyName>NSH.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Spring.Core">
+      <HintPath>..\..\..\..\lib\Spring.NET\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\..\..\..\lib\Spring.NET\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate31">
+      <HintPath>..\..\..\..\lib\Spring.NET\Spring.Data.NHibernate31.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataPage\IDataOrder.cs" />
+    <Compile Include="DataPage\IDataPage.cs" />
+    <Compile Include="DataPage\PageQueryableExtensions.cs" />
+    <Compile Include="Domain\BrokenRule.cs" />
+    <Compile Include="Domain\DelegatedComparer.cs" />
+    <Compile Include="Domain\DynamicLibrary.cs" />
+    <Compile Include="Domain\EntityBase.cs" />
+    <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Domain\IRepository.cs" />
+    <Compile Include="Domain\IsSelectedEntity.cs" />
+    <Compile Include="Domain\ITreeEntity.cs" />
+    <Compile Include="Domain\OperationCount.cs" />
+    <Compile Include="Domain\OperationEntity.cs" />
+    <Compile Include="Domain\OperationType.cs" />
+    <Compile Include="Domain\Orderable.cs" />
+    <Compile Include="Domain\OrderedArrayComparer.cs" />
+    <Compile Include="Domain\Specifications\AndNotSpecification.cs" />
+    <Compile Include="Domain\Specifications\AndSpecification.cs" />
+    <Compile Include="Domain\Specifications\AnySpecification.cs" />
+    <Compile Include="Domain\Specifications\CompositeSpecification.cs" />
+    <Compile Include="Domain\Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Domain\Specifications\ICompositeSpecification.cs" />
+    <Compile Include="Domain\Specifications\ISpecification.cs" />
+    <Compile Include="Domain\Specifications\ISpecificationParser.cs" />
+    <Compile Include="Domain\Specifications\NoneSpecification.cs" />
+    <Compile Include="Domain\Specifications\NotSpecification.cs" />
+    <Compile Include="Domain\Specifications\OrSpecification.cs" />
+    <Compile Include="Domain\Specifications\Specification.cs" />
+    <Compile Include="Extentions\StringExtentions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IServiceLocator.cs" />
+    <Compile Include="Service\LocalServiceLocator.cs" />
+    <Compile Include="Service\ServiceLocatorRegister.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.WorkFlow">
+  <class name="WorkStep" table="T_WorkStep" lazy="true" >
+    <id name="Id" type="int" column="WorkStepId" >
+      <generator class="native" />
+    </id>
+    <property name="Name" type="string" length="200"/>
+    <bag name="CheckPoints" inverse="true" cascade="all-delete-orphan">
+      <key column="WorkStepId"/>
+      <one-to-many class="CheckPoint"/>
+    </bag>
+    <bag name="Users" lazy="false">
+      <key column="WorkStepId" not-null="false"/>
+      <one-to-many class="NSH.Authorization.Domain.User"/>
+    </bag>
+    <many-to-one name="WorkFlow" class="WorkFlow" column="WorkFlowId" not-null="false" />
+  </class>
+</hibernate-mapping>

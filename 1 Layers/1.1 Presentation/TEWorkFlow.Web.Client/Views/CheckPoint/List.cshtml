@@ -1,0 +1,271 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        var editIndex = undefined;
+        function endEditing(callback) {
+            if (editIndex == undefined) { return true }
+            if ($('#dg').datagrid('validateRow', editIndex)) {
+                var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'itemname' });
+                var typeEd = $('#dg').datagrid('getEditor', { index: editIndex, field: 'TypeID' });
+
+                var text = $(ed.target).val();
+
+                var cob = $('#dg').datagrid('getEditor', { index: editIndex, field: 'userid' });
+                //var iskey = $($('#dg').datagrid('getEditor', { index: editIndex, field: 'iskey' }).target).prop("checked");
+                //var statusid = $($('#dg').datagrid('getEditor', { index: editIndex, field: 'status' }).target).combobox('getValue'); ;
+
+                var typeid = $(typeEd.target).combobox('getValue');
+                var id = $('#dg').datagrid('getData').rows[editIndex].id;
+
+                $('#dg').datagrid('getRows')[editIndex]['Type'] = $(typeEd.target).combobox('getText');
+
+                $.post("/CheckPoint/SaveCheckPoint/", {
+                    id: id,
+                    itemName: text,
+                    typeid:typeid
+                }, function () {
+                    //callback();
+                });
+
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function actionFormatter(value, rowData, rowIndex) {
+
+            var id = rowData.id;
+            var sp = '';
+                log(rowData.id + " " + rowData.iskey);
+                sp += '<a href="javascript:void(0);" onclick="DeletePoint(\'' + id + '\')"><img src="../../Images/delete_16x16.gif" border="0" /></a>';
+            return sp;
+
+        }
+
+        function DeletePoint(id) {
+            $.messager.confirm('@Global.Confirm', 'Confirm delete?', function (r) {
+                if (r) {
+                    $.getJSON("/CheckPoint/Delete/" + id, function (r) {
+                        if (r.Success == true) {
+                            $.messager.alert('@Global.Information', r.Message);
+                            $("#dg").datagrid("reload");
+                        }
+                        else {
+                            $.messager.alert('@Global.Information', r.Message);
+                        }
+                    });
+                }
+                else {
+                }
+            });          
+        }
+        function onClickRow(index) {
+            if (editIndex != index) {
+                if (endEditing()) {
+                    $('#dg').datagrid('selectRow', index)
+                            .datagrid('beginEdit', index);
+                    editIndex = index;
+                } else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+                
+            }
+        }
+
+        function accept() {
+            if (endEditing(function () { alert("Saved!"); })) {
+                $('#dg').datagrid('acceptChanges');
+
+            }
+        }
+        function backWorkStep() {
+            openParentTab("WorkSteps", '@Url.Content("~//WorkStep/List/")', 'icon-step');
+        }
+
+        function getStatus(value, rowData, rowIndex) {
+            if (rowData.ischecked == true) {
+                return "<span style='color:green'>@Global.Finished</span>"
+            }
+            else {
+                return "<span style='color:red'>@Global.NotFinish</span>"
+            }
+        }
+
+        function saveCheckPoint() {
+            if ($("#form").form("validate") == false) {
+                $.messager.alert('@Global.Information', 'Validate fail, please check the form!');
+                return false;
+            }
+
+            var itemName = $("#Name").val();
+            var step = $("#Step").combobox("getValue");
+            var orderindex = $("#orderIndex").numberspinner("getValue");
+            var iskey = $("#iskey").prop("checked");
+            var typeid = $('#CheckPointType').combobox('getValue');
+            $.post("/CheckPoint/AddCheckPoint", {
+                "name": name,
+                "stepid": step,
+                "orderindex": orderindex,
+                "iskey": iskey,
+                "typeid":typeid
+            }, function (r) {
+                if (r.Success == true) {
+                    $.messager.alert('@Global.Information', r.Message);
+                    $("#w").window("close");
+                    $("#dg").datagrid("reload");
+                }
+            }, "json");
+        }
+
+        $(function () {
+            $("#btnAdd").click(function () {
+                $('#form').form('clear');
+                //$('#stepTr').show();
+                $('#Step').combobox('setValue','@ViewBag.WorkStepId');
+                $('#iskey').val(false);
+                $("#w").window("open");
+            });
+        })
+        
+    </script>
+}
+<table id="dg" class="easyui-datagrid" title="Item Management" style="height:auto"  
+            data-options="  
+                iconCls: 'icon-edit',  
+                singleSelect: true,  
+                toolbar: '#tb',  
+                url: '/CheckPoint/GetCheckPointList/?workstepId=@ViewBag.WorkStepId',
+                onClickRow: onClickRow,
+                rownumbers:true,
+                pagination:true
+            ">
+    <thead>
+        <tr>
+            <th data-options="field:'itemname',width:150,align:'center',editor:'text'">
+                ItemName
+            </th>            
+            <th data-options="field:'status',width:160,align:'center',  
+                        formatter:function(value,row){  
+                            return row.statusText;  
+                        }">
+                Belong to Step
+            </th>
+            <th data-options="field:'TypeID',width:150,align:'center',  
+                        editor:{  
+                            type:'combobox',  
+                            options:{  
+                                valueField:'Id',  
+                                textField:'Name',  
+                                url:'@Url.Action("GetCheckPointTypes")',  
+                                required:true  
+                            }
+                        },
+                        formatter:function(value,row){  
+                            return row.Type;  
+                        }">
+                Type
+            </th>
+            <th data-options="field:'mg',width:100,formatter:actionFormatter,align:'center'">
+                Action
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All</a> 
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" id="btnAdd">Add New</a>      
+</div>
+
+@section Windows{
+<div id="w" class="easyui-window" title="Add New CheckPoint"  style="width:400px;padding:5px;"
+data-options="closed:true,collapsible:false,minimizable:false,maximizable:false,iconCls:'icon-save'">  
+<form id="form" method="post">
+        <input type="hidden" id="Id" name="Id" value="" />
+        <table style="text-align: center; width: 100%; height: 150px">
+            <tr>
+                <td align="right" width="20%">
+                    Name:
+                </td>
+                <td align="right" width="5%">
+                    &nbsp;
+                </td>
+                <td align="left" width="75%">
+                    <input type="text" class="easyui-validatebox" required="true" maxlength="30" validtype="length[1,30]"
+                        style="width: 200px" id="Name" name="Name" value="" />
+                </td>
+            </tr>
+            <tr id="stepTr" style="display:none;">
+                <td align="right">
+                    Step:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <select id="Step" name="Step" class="easyui-combobox" style="width: 200px;"
+                        data-options="url:'/CheckPoint/GetSteps/',editable:false,required:true,valueField:'Id',textField:'Name',disable:true">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Type:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <select id="CheckPointType" name="CheckPointType" class="easyui-combobox" style="width: 200px;"
+                        data-options="url:'@Url.Action("GetCheckPointTypes")',editable:false,required:true,valueField:'Id',textField:'Name'">
+                    </select>
+                </td>
+            </tr>
+            <tr style="display:none">
+                <td align="right">
+                   Order Index:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <input type="text" class="easyui-numberspinner" required="true" maxlength="30" min="0"
+                        style="width: 50px" id="orderIndex" name="orderIndex" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                   IsKey:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <input type="checkbox" id="iskey" name="iskey" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <a href="#" class="easyui-linkbutton" id="btn-save" icon="icon-save" onclick="saveCheckPoint()">
+                        Save</a>
+                    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#w').dialog('close')">
+            @Global.Cancel</a>
+                </td>
+            </tr>
+        </table>
+        </form>
+
+</div>
+}

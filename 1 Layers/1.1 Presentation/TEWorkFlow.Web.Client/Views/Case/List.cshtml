@@ -1,0 +1,107 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        function addCase() {
+            $('#dlg').dialog('open').dialog('setTitle', 'New Case');
+            $('#fm').form('clear');
+        }
+        function editCase() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', 'Edit Case');
+                $('#fm').form('load', row);
+            }
+        }
+        function removeCase() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', 'Are you sure you want to remove this case?', function (r) {
+                    if (r) {
+                        $.post('@Url.Action("Delete")', { id: row.Id }, function (result) {
+                            if (result.Success) {
+                                $('#dg').datagrid('reload');
+                            } else {
+                                $.messager.alert('Error', result.Message, 'error');
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+        function saveCase() {
+            $('#fm').form('submit', {
+                url: '@Url.Action("Edit")',
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.Success) {
+                        $('#dlg').dialog('close');
+                        $('#dg').datagrid('reload');
+                    } else {
+                        $.messager.alert('Error', result.Message, 'error');
+                    }
+                }
+            });
+        }
+        function invoice() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                window.location = '/Invoice/List/' + row.Id;
+            }
+        }
+    </script>
+}
+<table id="dg" class="easyui-datagrid"
+    data-options="title:'Case',
+                iconCls: 'icon-save',  
+                rownumbers: true,
+                fit:true,
+                singleSelect:true,
+                toolbar:'#tb',
+                url: '@Url.Action("GetCaseList")'
+            ">
+    <thead>
+        <tr>
+            <th data-options="field:'Name'" width="120">
+                Name
+            </th>
+            <th data-options="field:'InvoiceCount'">
+                Invoice Count
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="padding: 5px; height: auto">
+    <div style="margin-bottom: 5px">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="addCase();">@Global.Add</a> <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"
+                onclick="editCase();">@Global.Eidt</a> <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"
+                    onclick="removeCase();">@Global.Delete</a> <a href="#" class="easyui-linkbutton"
+                        data-options="iconCls:'icon-invoice',plain:true" onclick="invoice();">@Global.Invoice</a>
+    </div>
+</div>
+@section Windows{
+    <div id="dlg" class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
+        closed="true" buttons="#dlg-buttons">
+        <form id="fm" method="post">
+        <input type="hidden" name="Id" />
+        <div class="fitem">
+            <label>
+                Name:</label>
+            <input name="Name" class="easyui-validatebox" required="true">
+        </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveCase()">@Global.Save</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">
+            @Global.Cancel</a>
+    </div>
+}

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NSH.Authorization" namespace="NSH.Authorization.Domain">
+  <class name="Module" table="T_Module" lazy="true" >
+    <id name="Id" type="int" column="ModuleId" >
+      <generator class="native" />
+    </id>
+    <property name="ModuleName" type="string" length="80" />
+    <property name="Remark" type="string" length="50" />
+    <!--<property name="ParentId" type="int" />-->
+    <property name="Path" type="string" length="200" />
+    <property name="Icon" type="string" length="50" />
+    <property name="DisplayOrder" type="int" />
+    <property name="IsMDI" type="bool" />    
+    <property name="IsEnable" type="bool" />
+
+    <many-to-one name="Parent" class="Module" column="ParentId" not-null="false" />
+
+    <bag name="Children" inverse="true" lazy="false" cascade="all-delete-orphan">
+      <key column="ParentId"/>
+      <one-to-many class="Module"/>
+    </bag>
+
+    <bag name="UserList" table="T_RelationUserModule" lazy="true">
+      <key column="ModuleId"/>
+      <many-to-many class="User" column="UserId"/>
+    </bag>
+  </class>
+</hibernate-mapping>

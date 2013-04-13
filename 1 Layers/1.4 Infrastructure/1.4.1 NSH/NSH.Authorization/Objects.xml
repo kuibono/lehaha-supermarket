@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects default-lazy-init="true" xmlns="http://www.springframework.net">
+
+  <object id="UserRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.User>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="GroupRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.Group>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="ModuleRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.Module>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="RoleRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.Role>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
+  <object id="UserService" type="NSH.Authorization.Service.UserService, NSH.Authorization">
+    <property name="UserRepository" ref="UserRepository"/>
+  </object>
+
+  <object id="GroupService" type="NSH.Authorization.Service.GroupService, NSH.Authorization">
+    <property name="GroupRepository" ref="GroupRepository"/>
+  </object>
+
+  <object id="ModuleService" type="NSH.Authorization.Service.ModuleService, NSH.Authorization">
+    <property name="ModuleRepository" ref="ModuleRepository"/>
+  </object>
+
+  <object id="RoleService" type="NSH.Authorization.Service.RoleService, NSH.Authorization">
+    <property name="RoleRepository" ref="RoleRepository"/>
+  </object>
+  
+</objects>

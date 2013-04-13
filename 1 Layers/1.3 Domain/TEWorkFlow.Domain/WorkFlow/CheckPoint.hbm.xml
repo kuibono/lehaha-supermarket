@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.WorkFlow">
+  <class name="CheckPoint" table="T_CheckPoint" lazy="true" >
+    <id name="Id" type="int" column="CheckPointId" >
+      <generator class="native" />
+    </id>
+    <property name="ItemName" type="string" length="200"/>
+    <many-to-one name="CheckUser" class="NSH.Authorization.Domain.User" column="UserId" not-null="false" />
+    <many-to-one name="Step" class="WorkStep" column="WorkStepId" not-null="false" lazy="false" />
+    <property name="IsKey" type="bool" />
+    <property name="OrderIndex" type="int" />
+
+    <property name="CheckPointType" type="CheckPointType"/>
+    
+    <bag name="InvoicePoints" inverse="true" cascade="all-delete-orphan">
+      <key column="CheckPointId"/>
+      <one-to-many class="InvoicePoint"/>
+    </bag>
+  </class>
+</hibernate-mapping>

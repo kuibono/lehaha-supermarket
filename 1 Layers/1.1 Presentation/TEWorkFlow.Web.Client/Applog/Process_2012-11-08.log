@@ -1,0 +1,1474 @@
+2012-11-08 15:22:01,959 [1] DEBUG Spring.Data.Common.DbProviderFactory - Loading additional DbProviders from assembly://NSH.Repository/NSH.Repository/SQLite1081.xml
+
+2012-11-08 15:22:02,116 [1] INFO  Spring.Data.Common.DbProviderFactory - 47 DbProviders Available. [SqlServer-1.1,SqlServer-2.0,SqlServer-4.0,SqlServerCe-3.1,SqlServerCe-3.5.1,OleDb-1.1,OleDb-2.0,OleDb-4.0,OracleClient-2.0,OracleODP-2.0,OracleODP-11-2.0,MySql,MySql-1.0.9,MySql-5.0,MySql-5.0.8.1,MySql-5.1,MySql-5.1.4,MySql-5.2.3,MySql-6.1.3,MySql-6.2.2,Npgsql-1.0,Npgsql-2.0-beta1,Npgsql-2.0,DB2-9.0.0-1.1,DB2-9.0.0-2.0,DB2-9.1.0-1.1,DB2-9.1.0.2,iDB2-10.0.0.0,SQLite-1.0.43,SQLite-1.0.44,SQLite-1.0.47,SQLite-1.0.56,SQLite-1.0.65,SQLite-1.0.66,SQLite-1.0.72,Firebird-2.1,SybaseAse-12,SybaseAse-15,SybaseAse-AdoNet2,IfxOdbc,IfxSQLI-3.0.0.2,IfxDRDA-9.0.0.2,Odbc-1.1,Odbc-2.0,Odbc-4.0,Cache-2.0.0.1,SQLite-1.0.81]
+
+2012-11-08 15:22:04,647 [1] INFO  Spring.Data.NHibernate.LocalSessionFactoryObject - Setting proxy factory to Spring provided one as user did not specify any
+
+2012-11-08 15:22:04,991 [1] INFO  Spring.Data.NHibernate.LocalSessionFactoryObject - Building new Hibernate SessionFactory
+
+2012-11-08 15:22:06,037 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:06,037 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:06,537 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:06,537 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:06,537 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:06,647 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:06,647 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:06,881 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:06,881 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:06,881 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:07,053 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,053 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:07,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,053 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,100 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:07,100 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:07,178 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:07,178 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,178 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:07,178 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:07,178 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,178 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:07,178 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,194 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:07,178 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:07,553 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,553 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:07,819 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:07,819 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:07,819 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:11,209 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:11,209 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:11,928 [9] INFO  NSH.Authorization.Service.UserService - Entering CheckLoginUser;4c09bb65-106c-45a9-8075-28a720da1061;entity=NSH.Authorization.Domain.User
+
+2012-11-08 15:22:11,928 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:11,928 [9] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:11,944 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:11,944 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:11,959 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.CheckLoginUser]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:11,959 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:12,787 [9] DEBUG NHibernate.SQL - select top 1 user0_.UserId as UserId0_, user0_.LoginName as LoginName0_, user0_.Password as Password0_, user0_.UserName as UserName0_, user0_.UserState as UserState0_, user0_.UserReMark as UserReMark0_, user0_.Telephone as Telephone0_, user0_.Email as Email0_, user0_.EmailPassword as EmailPas9_0_, user0_.EnableEdit as EnableEdit0_, user0_.RoleId as RoleId0_ from T_User user0_ where user0_.LoginName=@p0 and user0_.Password=@p1;@p0 = 'sysadmin' [Type: String (20)], @p1 = 'C4CA4238A0B923820DCC509A6F75849B' [Type: String (50)]
+
+2012-11-08 15:22:12,866 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:12,881 [9] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:12,881 [9] INFO  NSH.Authorization.Service.UserService - Exiting CheckLoginUser;4c09bb65-106c-45a9-8075-28a720da1061;953.1128 ms
+
+2012-11-08 15:22:12,881 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:12,881 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:12,881 [9] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:12,881 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:12,928 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:12,928 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:12,959 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:12,959 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:12,975 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,162 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,162 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,162 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,162 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,162 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,162 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,178 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,178 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,178 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,178 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,178 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,178 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,178 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,178 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,178 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,178 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,194 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,209 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,225 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,350 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,350 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,350 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,350 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,350 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,365 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,522 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,522 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,522 [10] INFO  NSH.Authorization.Service.UserService - Entering GetById;d1ac2f30-87db-4981-8103-925cc2f067f0;id=1
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:13,537 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:13,584 [10] WARN  NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl - firstResult/maxResults specified with collection fetch; applying in memory!
+
+2012-11-08 15:22:13,584 [10] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_0_, module2_.ModuleId as ModuleId5_1_, group4_.GroupId as GroupId4_2_, user0_.LoginName as LoginName0_0_, user0_.Password as Password0_0_, user0_.UserName as UserName0_0_, user0_.UserState as UserState0_0_, user0_.UserReMark as UserReMark0_0_, user0_.Telephone as Telephone0_0_, user0_.Email as Email0_0_, user0_.EmailPassword as EmailPas9_0_0_, user0_.EnableEdit as EnableEdit0_0_, user0_.RoleId as RoleId0_0_, module2_.ModuleName as ModuleName5_1_, module2_.Remark as Remark5_1_, module2_.Path as Path5_1_, module2_.Icon as Icon5_1_, module2_.DisplayOrder as DisplayO6_5_1_, module2_.IsMDI as IsMDI5_1_, module2_.ParentId as ParentId5_1_, modulelist1_.UserId as UserId0__, modulelist1_.ModuleId as ModuleId0__, group4_.GroupName as GroupName4_2_, group4_.IsSystem as IsSystem4_2_, group4_.IsRoot as IsRoot4_2_, group4_.GroupLevel as GroupLevel4_2_, group4_.ParentId as ParentId4_2_, group4_.Remark as Remark4_2_, grouplist3_.UserId as UserId1__, grouplist3_.GroupId as GroupId1__ from T_User user0_ left outer join T_RelationUserModule modulelist1_ on user0_.UserId=modulelist1_.UserId left outer join T_Module module2_ on modulelist1_.ModuleId=module2_.ModuleId left outer join T_RelationUserGroup grouplist3_ on user0_.UserId=grouplist3_.UserId left outer join T_Group group4_ on grouplist3_.GroupId=group4_.GroupId where user0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,662 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,662 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,678 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,694 [10] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,694 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,694 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:13,709 [10] INFO  NSH.Authorization.Service.UserService - Exiting GetById;d1ac2f30-87db-4981-8103-925cc2f067f0;187.4976 ms
+
+2012-11-08 15:22:13,709 [10] INFO  NSH.Authorization.Service.ModuleService - Entering GetById;644e0080-a462-42ef-b1db-5d6365abc3fd;id=6
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.ModuleService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:13,709 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:13,725 [10] DEBUG NHibernate.SQL - SELECT module0_.ModuleId as ModuleId5_0_, module0_.ModuleName as ModuleName5_0_, module0_.Remark as Remark5_0_, module0_.Path as Path5_0_, module0_.Icon as Icon5_0_, module0_.DisplayOrder as DisplayO6_5_0_, module0_.IsMDI as IsMDI5_0_, module0_.ParentId as ParentId5_0_ FROM T_Module module0_ WHERE module0_.ModuleId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,725 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,740 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,740 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 13 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,740 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:13,740 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:13,756 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:13,756 [10] INFO  NSH.Authorization.Service.ModuleService - Exiting GetById;644e0080-a462-42ef-b1db-5d6365abc3fd;46.8744 ms
+
+2012-11-08 15:22:13,772 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,772 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,772 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:13,787 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,975 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,975 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,975 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,975 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,975 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,990 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,990 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:13,990 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,990 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,990 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:13,990 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,990 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:13,990 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:13,990 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,006 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,006 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,006 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,006 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,006 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,006 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,084 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,084 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,100 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,100 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,100 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,100 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,100 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,100 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,100 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,100 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,115 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,115 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,100 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,115 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,115 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,115 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,115 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,115 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,115 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,131 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,194 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,194 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,194 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,194 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,194 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,194 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,194 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,194 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,209 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,209 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,209 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,209 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,209 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,209 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,209 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,209 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,225 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,225 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,225 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,225 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,287 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,287 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,287 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,303 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,303 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,303 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,303 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,303 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,303 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,303 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,303 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,303 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,319 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,319 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,319 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,319 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,319 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,319 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,319 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,319 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:14,553 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,569 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:14,569 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:14,569 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:14,569 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:15,928 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,944 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:15,975 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,975 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:15,975 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,975 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:15,975 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:15,975 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,975 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:15,975 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.CheckPointService - Entering GetAll;9d518ad9-a492-490b-9a5d-888e7e18c9ed
+
+2012-11-08 15:22:15,975 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,975 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:15,990 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:15,990 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:15,990 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:15,990 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,990 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:15,990 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:15,990 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:15,990 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:15,990 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:15,990 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:15,990 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,006 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,006 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [TEWorkFlow.Application.Service.WorkFlow.CheckPointService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:16,006 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:16,006 [12] DEBUG NHibernate.SQL - select checkpoint0_.CheckPointId as CheckPoi1_8_, checkpoint0_.ItemName as ItemName8_, checkpoint0_.UserId as UserId8_, checkpoint0_.WorkStepId as WorkStepId8_, checkpoint0_.IsKey as IsKey8_, checkpoint0_.OrderIndex as OrderIndex8_ from T_CheckPoint checkpoint0_
+
+2012-11-08 15:22:16,053 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:16,053 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:16,053 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.CheckPointService - Exiting GetAll;9d518ad9-a492-490b-9a5d-888e7e18c9ed;78.124 ms
+
+2012-11-08 15:22:16,209 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,225 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,225 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:16,225 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,428 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,428 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,428 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,428 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,428 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,428 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,428 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,428 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,428 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,428 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,428 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,444 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,444 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,444 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,444 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,444 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,444 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,444 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,444 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,444 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,506 [6] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,506 [6] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:22:16,615 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,615 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,615 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,615 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,615 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,615 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,631 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,631 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,631 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,631 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,631 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,631 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,631 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,647 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,647 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,647 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,647 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,647 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,662 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,647 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,725 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,725 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,740 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,740 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,740 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,740 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,740 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,740 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,756 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,756 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,756 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,756 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,756 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,756 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,756 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,756 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,772 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,756 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,772 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,772 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,834 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,834 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,850 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,850 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,850 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,850 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,850 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,850 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,850 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,865 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,865 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,865 [1] INFO  NSH.Authorization.Service.UserService - Entering GetById;f44044c2-7025-4f76-b7bd-fa6c5b062a68;id=1
+
+2012-11-08 15:22:16,865 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,865 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,865 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,865 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:16,865 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,865 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,865 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,865 [1] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:16,865 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:16,881 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:16,881 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:16,881 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:16,881 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,881 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:16,881 [1] WARN  NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl - firstResult/maxResults specified with collection fetch; applying in memory!
+
+2012-11-08 15:22:16,881 [1] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_0_, module2_.ModuleId as ModuleId5_1_, group4_.GroupId as GroupId4_2_, user0_.LoginName as LoginName0_0_, user0_.Password as Password0_0_, user0_.UserName as UserName0_0_, user0_.UserState as UserState0_0_, user0_.UserReMark as UserReMark0_0_, user0_.Telephone as Telephone0_0_, user0_.Email as Email0_0_, user0_.EmailPassword as EmailPas9_0_0_, user0_.EnableEdit as EnableEdit0_0_, user0_.RoleId as RoleId0_0_, module2_.ModuleName as ModuleName5_1_, module2_.Remark as Remark5_1_, module2_.Path as Path5_1_, module2_.Icon as Icon5_1_, module2_.DisplayOrder as DisplayO6_5_1_, module2_.IsMDI as IsMDI5_1_, module2_.ParentId as ParentId5_1_, modulelist1_.UserId as UserId0__, modulelist1_.ModuleId as ModuleId0__, group4_.GroupName as GroupName4_2_, group4_.IsSystem as IsSystem4_2_, group4_.IsRoot as IsRoot4_2_, group4_.GroupLevel as GroupLevel4_2_, group4_.ParentId as ParentId4_2_, group4_.Remark as Remark4_2_, grouplist3_.UserId as UserId1__, grouplist3_.GroupId as GroupId1__ from T_User user0_ left outer join T_RelationUserModule modulelist1_ on user0_.UserId=modulelist1_.UserId left outer join T_Module module2_ on modulelist1_.ModuleId=module2_.ModuleId left outer join T_RelationUserGroup grouplist3_ on user0_.UserId=grouplist3_.UserId left outer join T_Group group4_ on grouplist3_.GroupId=group4_.GroupId where user0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,897 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,897 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,897 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,897 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,912 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,912 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,912 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,912 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,912 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:16,912 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:16,912 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:16,912 [1] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,928 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,928 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:16,928 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:16,944 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:16,944 [1] INFO  NSH.Authorization.Service.UserService - Exiting GetById;f44044c2-7025-4f76-b7bd-fa6c5b062a68;78.124 ms
+
+2012-11-08 15:22:16,944 [1] INFO  TEWorkFlow.Application.Service.WorkFlow.InvoiceService - Entering GetAll;a2514b63-21e9-488a-8a4d-87bec2e08d46
+
+2012-11-08 15:22:16,944 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:16,944 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:16,944 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [TEWorkFlow.Application.Service.WorkFlow.InvoiceService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:16,944 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:16,944 [1] DEBUG NHibernate.SQL - select invoice0_.InvoiceId as InvoiceId7_, invoice0_.Title as Title7_, invoice0_.WorkStepId as WorkStepId7_ from T_Invoice invoice0_
+
+2012-11-08 15:22:16,959 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:16,959 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:16,959 [1] INFO  TEWorkFlow.Application.Service.WorkFlow.InvoiceService - Exiting GetAll;a2514b63-21e9-488a-8a4d-87bec2e08d46;15.6248 ms
+
+2012-11-08 15:22:17,037 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,037 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:17,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:17,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,053 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:17,053 [1] DEBUG NHibernate.SQL - SELECT workstep0_.WorkStepId as WorkStepId6_0_, workstep0_.Name as Name6_0_, workstep0_.WorkFlowId as WorkFlowId6_0_ FROM T_WorkStep workstep0_ WHERE workstep0_.WorkStepId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,069 [1] DEBUG NHibernate.SQL - SELECT points0_.InvoiceId as InvoiceId1_, points0_.InvoicePointId as InvoiceP1_1_, points0_.InvoicePointId as InvoiceP1_10_0_, points0_.CheckPointId as CheckPoi2_10_0_, points0_.InvoiceId as InvoiceId10_0_, points0_.Text as Text10_0_, points0_.IsChecked as IsChecked10_0_, points0_.Remark as Remark10_0_ FROM T_InvoicePoint points0_ WHERE points0_.InvoiceId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,084 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,100 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,100 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,100 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,115 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,115 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,115 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,115 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 8 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,115 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,131 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,131 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,131 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,131 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 13 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,131 [1] DEBUG NHibernate.SQL - SELECT checkpoint0_.CheckPointId as CheckPoi1_8_0_, checkpoint0_.ItemName as ItemName8_0_, checkpoint0_.UserId as UserId8_0_, checkpoint0_.WorkStepId as WorkStepId8_0_, checkpoint0_.IsKey as IsKey8_0_, checkpoint0_.OrderIndex as OrderIndex8_0_ FROM T_CheckPoint checkpoint0_ WHERE checkpoint0_.CheckPointId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,147 [1] DEBUG NHibernate.SQL - SELECT points0_.InvoiceId as InvoiceId1_, points0_.InvoicePointId as InvoiceP1_1_, points0_.InvoicePointId as InvoiceP1_10_0_, points0_.CheckPointId as CheckPoi2_10_0_, points0_.InvoiceId as InvoiceId10_0_, points0_.Text as Text10_0_, points0_.IsChecked as IsChecked10_0_, points0_.Remark as Remark10_0_ FROM T_InvoicePoint points0_ WHERE points0_.InvoiceId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:17,350 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:17,350 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,350 [1] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:17,350 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:17,412 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,412 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:17,412 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:17,412 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,412 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:17,694 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,694 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:17,694 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:17,694 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:17,694 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:18,553 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:18,553 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:18,553 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:18,553 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:18,553 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:25,475 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:25,475 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:25,490 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:25,490 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:29,818 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:29,818 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:29,818 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:29,990 [7] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:29,990 [7] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:22:30,037 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,037 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,053 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:30,053 [11] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,053 [11] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:30,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,053 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,053 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,053 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:30,053 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,053 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:30,053 [1] INFO  NSH.Authorization.Service.UserService - Entering GetUserList;8bb716d5-7e83-4dc2-9cce-2b990cb4f6a5;loginName=; userName=; dataPage=TEWorkFlow.Web.Client.Models.DataGridPage; dataOrder=TEWorkFlow.Web.Client.Models.DataGridPage
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetUserList]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:30,068 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:30,084 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,084 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,131 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,131 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,147 [1] DEBUG NHibernate.SQL - select cast(count(*) as INT) as col_0_0_ from T_User user0_
+
+2012-11-08 15:22:30,162 [1] DEBUG NHibernate.SQL - select top 10 user0_.UserId as UserId0_, user0_.LoginName as LoginName0_, user0_.Password as Password0_, user0_.UserName as UserName0_, user0_.UserState as UserState0_, user0_.UserReMark as UserReMark0_, user0_.Telephone as Telephone0_, user0_.Email as Email0_, user0_.EmailPassword as EmailPas9_0_, user0_.EnableEdit as EnableEdit0_, user0_.RoleId as RoleId0_ from T_User user0_ order by user0_.UserId asc
+
+2012-11-08 15:22:30,178 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:30,178 [1] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:30,178 [1] INFO  NSH.Authorization.Service.UserService - Exiting GetUserList;8bb716d5-7e83-4dc2-9cce-2b990cb4f6a5;124.9984 ms
+
+2012-11-08 15:22:30,178 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,193 [1] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,193 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,193 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,193 [1] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,209 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,225 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,225 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,225 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 8 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,225 [1] DEBUG NHibernate.SQL - SELECT grouplist0_.UserId as UserId1_, grouplist0_.GroupId as GroupId1_, group1_.GroupId as GroupId4_0_, group1_.GroupName as GroupName4_0_, group1_.IsSystem as IsSystem4_0_, group1_.IsRoot as IsRoot4_0_, group1_.GroupLevel as GroupLevel4_0_, group1_.ParentId as ParentId4_0_, group1_.Remark as Remark4_0_ FROM T_RelationUserGroup grouplist0_ left outer join T_Group group1_ on grouplist0_.GroupId=group1_.GroupId WHERE grouplist0_.UserId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:30,225 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:30,225 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,240 [1] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:30,240 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:30,287 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,287 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:30,287 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:30,287 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:30,287 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:31,287 [6] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,287 [6] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:22:31,350 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:31,365 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkFlowService - Entering GetAll;a7ea4177-10f2-4072-805b-fbdd616b39b5
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [TEWorkFlow.Application.Service.WorkFlow.WorkFlowService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:31,365 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:31,381 [12] DEBUG NHibernate.SQL - select workflow0_.WorkFlowId as WorkFlowId11_, workflow0_.Name as Name11_, workflow0_.IsDefault as IsDefault11_ from T_WorkFlow workflow0_
+
+2012-11-08 15:22:31,381 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:31,381 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:31,381 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkFlowService - Exiting GetAll;a7ea4177-10f2-4072-805b-fbdd616b39b5;15.6248 ms
+
+2012-11-08 15:22:31,381 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,397 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,397 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:31,397 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:31,522 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,522 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:31,537 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkStepService - Entering GetAll;a406985f-1b92-4b78-8c19-269c395847b4
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [TEWorkFlow.Application.Service.WorkFlow.WorkStepService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:31,537 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,537 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,537 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:31,537 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:31,537 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:31,553 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,553 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,553 [12] DEBUG NHibernate.SQL - select workstep0_.WorkStepId as WorkStepId6_, workstep0_.Name as Name6_, workstep0_.WorkFlowId as WorkFlowId6_ from T_WorkStep workstep0_
+
+2012-11-08 15:22:31,553 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,553 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:31,553 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,553 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:31,553 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:31,553 [12] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:31,553 [12] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkStepService - Exiting GetAll;a406985f-1b92-4b78-8c19-269c395847b4;15.6248 ms
+
+2012-11-08 15:22:31,568 [12] DEBUG NHibernate.SQL - SELECT workflow0_.WorkFlowId as WorkFlowId11_0_, workflow0_.Name as Name11_0_, workflow0_.IsDefault as IsDefault11_0_ FROM T_WorkFlow workflow0_ WHERE workflow0_.WorkFlowId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,568 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,568 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,568 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,584 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,584 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,584 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,584 [12] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:31,584 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,584 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:31,600 [12] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:31,600 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:31,631 [8] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:31,647 [8] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:22:33,006 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:33,006 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:33,021 [10] INFO  NSH.Authorization.Service.UserService - Entering GetUserList;f636c172-c7fa-44e9-9969-506384be5971
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetUserList]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:33,021 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:33,021 [10] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_, user0_.LoginName as LoginName0_, user0_.Password as Password0_, user0_.UserName as UserName0_, user0_.UserState as UserState0_, user0_.UserReMark as UserReMark0_, user0_.Telephone as Telephone0_, user0_.Email as Email0_, user0_.EmailPassword as EmailPas9_0_, user0_.EnableEdit as EnableEdit0_, user0_.RoleId as RoleId0_ from T_User user0_
+
+2012-11-08 15:22:33,037 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:33,037 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:33,037 [10] INFO  NSH.Authorization.Service.UserService - Exiting GetUserList;f636c172-c7fa-44e9-9969-506384be5971;15.6248 ms
+
+2012-11-08 15:22:33,037 [10] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkStepService - Entering GetAll;fe3a24f1-e9e6-40a9-845a-660da6b77bb3
+
+2012-11-08 15:22:33,037 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:33,037 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:33,037 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [TEWorkFlow.Application.Service.WorkFlow.WorkStepService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:33,053 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:33,053 [10] DEBUG NHibernate.SQL - select workstep0_.WorkStepId as WorkStepId6_, workstep0_.Name as Name6_, workstep0_.WorkFlowId as WorkFlowId6_ from T_WorkStep workstep0_
+
+2012-11-08 15:22:33,053 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:33,053 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:33,053 [10] INFO  TEWorkFlow.Application.Service.WorkFlow.WorkStepService - Exiting GetAll;fe3a24f1-e9e6-40a9-845a-660da6b77bb3;15.6248 ms
+
+2012-11-08 15:22:33,053 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,068 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,068 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,068 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,068 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,068 [10] DEBUG NHibernate.SQL - SELECT users0_.WorkStepId as WorkStepId1_, users0_.UserId as UserId1_, users0_.UserId as UserId0_0_, users0_.LoginName as LoginName0_0_, users0_.Password as Password0_0_, users0_.UserName as UserName0_0_, users0_.UserState as UserState0_0_, users0_.UserReMark as UserReMark0_0_, users0_.Telephone as Telephone0_0_, users0_.Email as Email0_0_, users0_.EmailPassword as EmailPas9_0_0_, users0_.EnableEdit as EnableEdit0_0_, users0_.RoleId as RoleId0_0_ FROM T_User users0_ WHERE users0_.WorkStepId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:33,084 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:33,084 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:33,084 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:33,084 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:52,131 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:52,131 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:52,146 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:52,146 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:52,146 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:55,365 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,365 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,381 [10] INFO  NSH.Authorization.Service.UserService - Entering GetById;3754d476-c4ee-4029-a376-a6f3500bf853;id=1
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:55,381 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:55,396 [10] WARN  NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl - firstResult/maxResults specified with collection fetch; applying in memory!
+
+2012-11-08 15:22:55,396 [10] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_0_, module2_.ModuleId as ModuleId5_1_, group4_.GroupId as GroupId4_2_, user0_.LoginName as LoginName0_0_, user0_.Password as Password0_0_, user0_.UserName as UserName0_0_, user0_.UserState as UserState0_0_, user0_.UserReMark as UserReMark0_0_, user0_.Telephone as Telephone0_0_, user0_.Email as Email0_0_, user0_.EmailPassword as EmailPas9_0_0_, user0_.EnableEdit as EnableEdit0_0_, user0_.RoleId as RoleId0_0_, module2_.ModuleName as ModuleName5_1_, module2_.Remark as Remark5_1_, module2_.Path as Path5_1_, module2_.Icon as Icon5_1_, module2_.DisplayOrder as DisplayO6_5_1_, module2_.IsMDI as IsMDI5_1_, module2_.ParentId as ParentId5_1_, modulelist1_.UserId as UserId0__, modulelist1_.ModuleId as ModuleId0__, group4_.GroupName as GroupName4_2_, group4_.IsSystem as IsSystem4_2_, group4_.IsRoot as IsRoot4_2_, group4_.GroupLevel as GroupLevel4_2_, group4_.ParentId as ParentId4_2_, group4_.Remark as Remark4_2_, grouplist3_.UserId as UserId1__, grouplist3_.GroupId as GroupId1__ from T_User user0_ left outer join T_RelationUserModule modulelist1_ on user0_.UserId=modulelist1_.UserId left outer join T_Module module2_ on modulelist1_.ModuleId=module2_.ModuleId left outer join T_RelationUserGroup grouplist3_ on user0_.UserId=grouplist3_.UserId left outer join T_Group group4_ on grouplist3_.GroupId=group4_.GroupId where user0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,396 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,412 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,427 [10] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,427 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,427 [10] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:55,427 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:55,427 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:55,427 [10] INFO  NSH.Authorization.Service.UserService - Exiting GetById;3754d476-c4ee-4029-a376-a6f3500bf853;46.8744 ms
+
+2012-11-08 15:22:55,459 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:55,474 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,474 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:55,474 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,615 [10] INFO  NSH.Authorization.Service.RoleService - Entering GetAll;69e7b460-5891-491b-88e6-fbd1fa0b3200
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - session instance requested - opening new session
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Opening Hibernate Session
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Found thread-bound Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:55,615 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.RoleService.GetAll]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:55,631 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:55,631 [10] DEBUG NHibernate.SQL - select role0_.RoleId as RoleId3_, role0_.RoleName as RoleName3_, role0_.Level as Level3_, role0_.Remark as Remark3_ from T_Role role0_
+
+2012-11-08 15:22:55,631 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,631 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,662 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,662 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,662 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:55,677 [10] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Not closing pre-bound Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:55,677 [10] INFO  NSH.Authorization.Service.RoleService - Exiting GetAll;69e7b460-5891-491b-88e6-fbd1fa0b3200;62.4992 ms
+
+2012-11-08 15:22:55,677 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:55,677 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,693 [10] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:55,693 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:55,693 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,693 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,693 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:55,693 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,693 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:55,724 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,740 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:22:55,740 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:55,740 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:22:55,740 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:22:56,131 [5] INFO  NSH.Authorization.Service.GroupService - Entering GetById;a6ea9be2-8b26-4e49-852a-5ec298886b00;id=1
+
+2012-11-08 15:22:56,131 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:56,131 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.GroupService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:56,131 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Opened new Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:56,146 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:56,146 [5] DEBUG NHibernate.SQL - select top 1 group0_.GroupId as GroupId4_, group0_.GroupName as GroupName4_, group0_.IsSystem as IsSystem4_, group0_.IsRoot as IsRoot4_, group0_.GroupLevel as GroupLevel4_, group0_.ParentId as ParentId4_, group0_.Remark as Remark4_ from T_Group group0_ where group0_.GroupId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,146 [5] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,146 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,162 [5] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,162 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,162 [5] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,162 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 3 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,162 [5] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,177 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,177 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:56,177 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Closing Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:56,177 [5] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:56,177 [5] INFO  NSH.Authorization.Service.GroupService - Exiting GetById;a6ea9be2-8b26-4e49-852a-5ec298886b00;46.8744 ms
+
+2012-11-08 15:22:56,177 [5] INFO  NSH.Authorization.Service.UserService - Entering GetById;abbd786f-47c7-413f-8f1c-f9f04e7d8e0a;id=1
+
+2012-11-08 15:22:56,177 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:56,177 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:56,193 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Opened new Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:56,193 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:56,193 [5] WARN  NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl - firstResult/maxResults specified with collection fetch; applying in memory!
+
+2012-11-08 15:22:56,193 [5] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_0_, module2_.ModuleId as ModuleId5_1_, group4_.GroupId as GroupId4_2_, user0_.LoginName as LoginName0_0_, user0_.Password as Password0_0_, user0_.UserName as UserName0_0_, user0_.UserState as UserState0_0_, user0_.UserReMark as UserReMark0_0_, user0_.Telephone as Telephone0_0_, user0_.Email as Email0_0_, user0_.EmailPassword as EmailPas9_0_0_, user0_.EnableEdit as EnableEdit0_0_, user0_.RoleId as RoleId0_0_, module2_.ModuleName as ModuleName5_1_, module2_.Remark as Remark5_1_, module2_.Path as Path5_1_, module2_.Icon as Icon5_1_, module2_.DisplayOrder as DisplayO6_5_1_, module2_.IsMDI as IsMDI5_1_, module2_.ParentId as ParentId5_1_, modulelist1_.UserId as UserId0__, modulelist1_.ModuleId as ModuleId0__, group4_.GroupName as GroupName4_2_, group4_.IsSystem as IsSystem4_2_, group4_.IsRoot as IsRoot4_2_, group4_.GroupLevel as GroupLevel4_2_, group4_.ParentId as ParentId4_2_, group4_.Remark as Remark4_2_, grouplist3_.UserId as UserId1__, grouplist3_.GroupId as GroupId1__ from T_User user0_ left outer join T_RelationUserModule modulelist1_ on user0_.UserId=modulelist1_.UserId left outer join T_Module module2_ on modulelist1_.ModuleId=module2_.ModuleId left outer join T_RelationUserGroup grouplist3_ on user0_.UserId=grouplist3_.UserId left outer join T_Group group4_ on grouplist3_.GroupId=group4_.GroupId where user0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,209 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,224 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,224 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,224 [5] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,240 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,240 [5] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,240 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:56,240 [5] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Closing Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:56,240 [5] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:56,240 [5] INFO  NSH.Authorization.Service.UserService - Exiting GetById;abbd786f-47c7-413f-8f1c-f9f04e7d8e0a;62.4992 ms
+
+2012-11-08 15:22:56,240 [5] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:56,256 [5] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:22:56,662 [7] INFO  NSH.Authorization.Service.ModuleService - Entering GetById;1abc1423-5ce0-4aa0-95e6-02fbbb9167b2;id=6
+
+2012-11-08 15:22:56,662 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:56,662 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.ModuleService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:56,662 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Opened new Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:56,662 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:56,677 [7] DEBUG NHibernate.SQL - SELECT module0_.ModuleId as ModuleId5_0_, module0_.ModuleName as ModuleName5_0_, module0_.Remark as Remark5_0_, module0_.Path as Path5_0_, module0_.Icon as Icon5_0_, module0_.DisplayOrder as DisplayO6_5_0_, module0_.IsMDI as IsMDI5_0_, module0_.ParentId as ParentId5_0_ FROM T_Module module0_ WHERE module0_.ModuleId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,677 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 6 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,677 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,677 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,677 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,693 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,693 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,693 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,693 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 13 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,724 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Closing Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:56,740 [7] INFO  NSH.Authorization.Service.ModuleService - Exiting GetById;1abc1423-5ce0-4aa0-95e6-02fbbb9167b2;78.124 ms
+
+2012-11-08 15:22:56,740 [7] INFO  NSH.Authorization.Service.UserService - Entering GetById;e671454d-4706-4516-b547-cad033a8d869;id=1
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Using transaction object [Spring.Data.NHibernate.HibernateTransactionManager+HibernateTransactionObject]
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Creating new transaction with name [NSH.Authorization.Service.UserService.GetById]:PROPAGATION_Required,ISOLATION_ReadCommitted,readOnly
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Opened new Session [NHibernate.Impl.SessionImpl] for Hibernate transaction
+
+2012-11-08 15:22:56,740 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Exposing Hibernate transaction as ADO transaction [System.Data.SqlClient.SqlConnection]
+
+2012-11-08 15:22:56,740 [7] WARN  NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl - firstResult/maxResults specified with collection fetch; applying in memory!
+
+2012-11-08 15:22:56,740 [7] DEBUG NHibernate.SQL - select user0_.UserId as UserId0_0_, module2_.ModuleId as ModuleId5_1_, group4_.GroupId as GroupId4_2_, user0_.LoginName as LoginName0_0_, user0_.Password as Password0_0_, user0_.UserName as UserName0_0_, user0_.UserState as UserState0_0_, user0_.UserReMark as UserReMark0_0_, user0_.Telephone as Telephone0_0_, user0_.Email as Email0_0_, user0_.EmailPassword as EmailPas9_0_0_, user0_.EnableEdit as EnableEdit0_0_, user0_.RoleId as RoleId0_0_, module2_.ModuleName as ModuleName5_1_, module2_.Remark as Remark5_1_, module2_.Path as Path5_1_, module2_.Icon as Icon5_1_, module2_.DisplayOrder as DisplayO6_5_1_, module2_.IsMDI as IsMDI5_1_, module2_.ParentId as ParentId5_1_, modulelist1_.UserId as UserId0__, modulelist1_.ModuleId as ModuleId0__, group4_.GroupName as GroupName4_2_, group4_.IsSystem as IsSystem4_2_, group4_.IsRoot as IsRoot4_2_, group4_.GroupLevel as GroupLevel4_2_, group4_.ParentId as ParentId4_2_, group4_.Remark as Remark4_2_, grouplist3_.UserId as UserId1__, grouplist3_.GroupId as GroupId1__ from T_User user0_ left outer join T_RelationUserModule modulelist1_ on user0_.UserId=modulelist1_.UserId left outer join T_Module module2_ on modulelist1_.ModuleId=module2_.ModuleId left outer join T_RelationUserGroup grouplist3_ on user0_.UserId=grouplist3_.UserId left outer join T_Group group4_ on grouplist3_.GroupId=group4_.GroupId where user0_.UserId=@p0;@p0 = 1 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,756 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 15 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,756 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 5 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,756 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 12 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,771 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 11 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,771 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 7 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,771 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 4 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,771 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 14 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,771 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 10 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,787 [7] DEBUG NHibernate.SQL - SELECT userlist0_.GroupId as GroupId1_, userlist0_.UserId as UserId1_, user1_.UserId as UserId0_0_, user1_.LoginName as LoginName0_0_, user1_.Password as Password0_0_, user1_.UserName as UserName0_0_, user1_.UserState as UserState0_0_, user1_.UserReMark as UserReMark0_0_, user1_.Telephone as Telephone0_0_, user1_.Email as Email0_0_, user1_.EmailPassword as EmailPas9_0_0_, user1_.EnableEdit as EnableEdit0_0_, user1_.RoleId as RoleId0_0_ FROM T_RelationUserGroup userlist0_ left outer join T_User user1_ on userlist0_.UserId=user1_.UserId WHERE userlist0_.GroupId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,787 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.GroupId as GroupId1_, children0_.GroupId as GroupId4_0_, children0_.GroupName as GroupName4_0_, children0_.IsSystem as IsSystem4_0_, children0_.IsRoot as IsRoot4_0_, children0_.GroupLevel as GroupLevel4_0_, children0_.ParentId as ParentId4_0_, children0_.Remark as Remark4_0_ FROM T_Group children0_ WHERE children0_.ParentId=@p0;@p0 = 2 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,787 [7] DEBUG NHibernate.SQL - SELECT children0_.ParentId as ParentId1_, children0_.ModuleId as ModuleId1_, children0_.ModuleId as ModuleId5_0_, children0_.ModuleName as ModuleName5_0_, children0_.Remark as Remark5_0_, children0_.Path as Path5_0_, children0_.Icon as Icon5_0_, children0_.DisplayOrder as DisplayO6_5_0_, children0_.IsMDI as IsMDI5_0_, children0_.ParentId as ParentId5_0_ FROM T_Module children0_ WHERE children0_.ParentId=@p0;@p0 = 9 [Type: Int32 (0)]
+
+2012-11-08 15:22:56,787 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Committing Hibernate transaction on Session [NHibernate.Impl.SessionImpl]
+
+2012-11-08 15:22:56,802 [7] DEBUG Spring.Data.NHibernate.HibernateTransactionManager - Closing Hibernate Session [NHibernate.Impl.SessionImpl] after transaction
+
+2012-11-08 15:22:56,802 [7] DEBUG Spring.Data.NHibernate.SessionFactoryUtils - Closing Hibernate Session
+
+2012-11-08 15:22:56,802 [7] INFO  NSH.Authorization.Service.UserService - Exiting GetById;e671454d-4706-4516-b547-cad033a8d869;62.4992 ms
+
+2012-11-08 15:22:56,802 [7] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:22:56,802 [7] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - SessionScope is already closed - doing nothing
+
+2012-11-08 15:23:11,693 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,693 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,693 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,693 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,693 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:23:11,693 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,708 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,693 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,708 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,708 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,708 [9] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,708 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,708 [9] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:23:11,708 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,708 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,708 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,724 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:23:11,724 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,724 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,724 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:23:11,740 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,740 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,740 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,740 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 15:23:11,740 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,740 [1] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,740 [1] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 15:23:11,740 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 15:23:11,755 [12] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 15:23:11,755 [12] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+
+2012-11-08 16:07:45,199 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Opening single Hibernate Session in SessionScope
+
+2012-11-08 16:07:45,199 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Created LazySessionHolder
+
+2012-11-08 16:07:45,199 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Trying to close SessionScope
+
+2012-11-08 16:07:45,215 [10] DEBUG Spring.Data.NHibernate.Support.OpenSessionInViewModule - Closing single Hibernate Session in SessionScope
+
+2012-11-08 16:07:45,215 [10] DEBUG Spring.Data.NHibernate.Support.SessionScope+LazySessionHolder - Closed LazySessionHolder
+

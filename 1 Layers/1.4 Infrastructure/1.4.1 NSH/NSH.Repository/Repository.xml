@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects default-lazy-init="true" xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+
+  <!-- Referenced by main application context configuration file -->
+
+  <!-- Property placeholder configurer for database settings -->
+  <object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+    <property name="ConfigSections" value="databaseSettings"/>
+  </object>
+
+  <!-- Database Configuration -->
+  <db:additionalProviders resource="assembly://NSH.Repository/NSH.Repository/SQLite1081.xml"/>
+  <db:provider id="DbProvider"
+                   provider="${db.provider}"
+                   connectionString="${db.connectionString}"/>
+
+  <!-- NHibernate Configuration -->
+  <object id="NHibernateSessionFactory" type="NSH.Repository.CustomLocalSessionFactoryObject, NSH.Repository">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="MappingAssemblies">
+      <list>
+        <value>NSH.Authorization</value>
+        <value>${db.mappingassemblies}</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="hibernate.connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
+        <entry key="dialect" value="${db.dialect}"/>
+        <entry key="connection.driver_class" value="${db.driver_class}"/>
+        <entry key="use_proxy_validator" value="false" />
+        <entry key="default_schema" value="${db.default_schema}"/>
+        <entry key="show_sql" value="false" />
+        <entry key="hbm2ddl.auto" value="${db.hbm2ddl.auto}"/>
+        <entry key="command_timeout" value="60"/>
+        <!-- Query cache -->
+        <entry key="cache.use_query_cache" value="true"/>
+        <!-- Second level cache -->
+        <entry key="cache.use_second_level_cache" value="true"/>
+        <entry key="cache.provider_class" value="NHibernate.Cache.HashtableCacheProvider, NHibernate"/>
+      </dictionary>
+    </property>
+
+    <!-- provides integation with Spring's declarative transaction management features -->
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
+
+  </object>
+
+  <!-- Exception translation object post processor -->
+  <object type="Spring.Dao.Attributes.PersistenceExceptionTranslationPostProcessor, Spring.Data"/>
+
+  <object id="HibernateTemplate" type="Spring.Data.NHibernate.Generic.HibernateTemplate">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+    <property name="TemplateFlushMode" value="Auto" />
+    <property name="CacheQueries" value="true" />
+  </object> 
+</objects>

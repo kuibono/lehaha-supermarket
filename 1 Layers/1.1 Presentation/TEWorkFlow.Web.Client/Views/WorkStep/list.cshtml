@@ -1,0 +1,142 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+
+        function actionFormatter(value, rowData, rowIndex) {
+            var btnEdit = "<a href='javascript:void(0);edit(" + rowData.Id + ")'><img src='../../Images/note_edit.png' border=0 /></a>";
+            var btnEditFields = '<a href="javascript:void(0);editFields(' + rowData.Id + ')"><img src="../../Images/calculator_edit.png" border="0" /></a>';
+            return btnEdit + '&nbsp;' + btnEditFields;
+        }
+
+        function edit(rowData) {
+
+            var row = $("#tt").datagrid('getSelected');
+            $("#Id").val(row.Id);
+            $("#Name").val(row.Name);
+            $("#Flow").combobox("setValue", row.workflowid);
+            
+
+            $("#users").combobox("reload", "/WorkStep/GetUsers/" + row.Id );
+            $("#users").combobox("setValues", row.uids);
+            $("#w").window('open');
+        }
+
+        function editFields(workstepId) {
+            openParentTab("Item Management", '@Url.Content("~/CheckPoint/List/")?workstepId=' + workstepId, "icon-checkpoint", false);
+        }
+
+        function Add() {
+            $("#Id").val("");
+            $("#Name").val("");
+            $("#Flow").combobox("setValue", ""); 
+            $("#w").window('open');
+        }
+
+        function saveData() {
+            //do save ation
+            var id = $("#Id").val();
+            var name = $("#Name").val();
+            var flow = $("#Flow").combobox("getValue");
+            var Users = $("#users").combobox("getValues");
+            $.post("/workStep/SaveStep/",{
+                "id":id,
+                "name": name,
+                "flow": flow,
+                "users": Users
+            },function(r){
+                alert(r.Text)
+                $("#tt").datagrid('reload');
+                $('#w').window('close'); 
+            },"json");
+            
+            return false;
+        }
+    </script>
+}
+<table id="tt" class="easyui-datagrid" url="/WorkStep/Query" title="Work Step Management"
+    iconcls="icon-save" data-options="toolbar: '#tb',singleSelect:true" rownumbers="true" pagination="true">
+    <thead>
+        <tr>
+            <th field="Name" width="200" align="center">
+                Name
+            </th>
+            <th field="workflowname" width="150" align="center">
+                WorkFlow
+            </th>
+            <th field="userNames" width="150" align="center">
+                Users
+            </th>
+            <th field="opt" formatter="actionFormatter" width="150" align="center">
+                Action
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+        onclick="Add()">Add New</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+            data-options="iconCls:'icon-save',plain:true" onclick="accept()">Save All</a>
+</div>
+@section Windows {
+    <div id="w" class="easyui-window" title="Step Edit" data-options="iconCls:'icon-save',closed:true,minimizable:false"
+        style="width: 500px; padding: 10px;">
+        <form id="form" method="post" action="~/User/SaveUser/">
+        <input type="hidden" id="Id" name="Id" value="" />
+        <table style="background: #fafafa; text-align: center; width: 100%; height: 160px">
+            <tr>
+                <td align="right" width="20%">
+                    Name:
+                </td>
+                <td align="right" width="5%">
+                    &nbsp;
+                </td>
+                <td align="left" width="75%">
+                    <input type="text" class="easyui-validatebox" required="true" maxlength="30" validtype="length[1,30]"
+                        style="width: 200px" id="Name" name="Name" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    WorkFlow:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <select id="Flow" name="Flow" class="easyui-combobox" style="width: 200px;"
+                        data-options="url:'/WorkStep/GetWorkFlow/',editable:false,required:true,valueField:'Id',textField:'Name'">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    Users:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <input id="users" name="users" class="easyui-combobox" style="width: 200px;"
+                        data-options="editable:false,required:true,valueField:'id',textField:'Name',multiple:true" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <a href="#" onclick="return saveData()" class="easyui-linkbutton" id="btn-save" icon="icon-save">
+                        Save</a> 
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+}

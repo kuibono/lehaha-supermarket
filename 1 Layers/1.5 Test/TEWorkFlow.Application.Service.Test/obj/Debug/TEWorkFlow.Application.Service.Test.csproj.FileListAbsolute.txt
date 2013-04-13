@@ -1,0 +1,14 @@
+E:\Project\P2012032ID_TEWorkflowProject\trunk\2.Development\2.4Code\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.dll
+E:\Project\P2012032ID_TEWorkflowProject\trunk\2.Development\2.4Code\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.pdb
+E:\Project\P2012032ID_TEWorkflowProject\trunk\2.Development\2.4Code\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\P2012032ID_TEWorkflowProject\trunk\2.Development\2.4Code\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.dll
+E:\Project\P2012032ID_TEWorkflowProject\trunk\2.Development\2.4Code\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.pdb
+C:\Users\800051919\Desktop\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.dll
+C:\Users\800051919\Desktop\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.pdb
+C:\Users\800051919\Desktop\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\800051919\Desktop\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.dll
+C:\Users\800051919\Desktop\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.pdb
+D:\项目\SuperMarket\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.dll
+D:\项目\SuperMarket\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.pdb
+D:\项目\SuperMarket\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.dll
+D:\项目\SuperMarket\TEWorkFlow\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.pdb

@@ -1,0 +1,141 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript" src="../../Scripts/swfUpload/swfupload.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/fileprogress.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/handlers.js"></script>
+    <script type="text/javascript" src="../../Scripts/swfUpload/swfupload.queue.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".datagrid-view").css("height", document.body.clientHeight - 30);
+            $("#btn_sub").click(function () {
+                $("#form_file").submit();
+                alert("submit")
+                return false;
+            })
+
+
+//            $("#btn_export").click(function () {
+//                $("#w").window("open");
+//            });
+        })
+
+        function actionFormatter(value, rowData, rowIndex) {
+
+            var id = rowData.id;
+
+            var a = "  <img title=\"@Global.Eidt \" alt=\"@Global.Eidt \" src=\"../../Images/edit.gif\" onclick=\"location.href='/Invoice/Edit/" + id + "'\" />"
+            return a;
+
+        }
+        function getStatus(value, rowData, rowIndex) {
+            return rowData.step;
+        }
+
+        var auth = "@(Request.Cookies[FormsAuthentication.FormsCookieName]==null?string.Empty:Request.Cookies[FormsAuthentication.FormsCookieName].Value)";
+
+        var ASPSESSID = "@(Session.SessionID )";
+
+        var swfu;
+        var fu2;
+        $(function () {
+            var settings = {
+                flash_url: "/Scripts/swfupload/swfupload.swf",
+                upload_url: "/Invoice/ImportInvoiceResult?ASPSESSID=" + ASPSESSID + "&auth=" + auth,
+                post_params: { "uid": "@Session[AuthorizeSettings.SessionUserID]" },
+                file_size_limit: "100 MB",
+                file_types: "*.xls;*.xlsx",
+                file_types_description: "Excel表格",
+                file_upload_limit: 1,
+                file_queue_limit: 0,
+                custom_settings: {
+                    progressTarget: "fsUploadProgress",
+                    cancelButtonId: "btnCancel"
+                },
+                debug: false,
+
+                // Button settings
+                button_image_url: "/Images/gray_bg.png",
+                button_width: "120",
+                button_height: "18",
+                button_placeholder_id: "xxx",
+                button_text: '<span class="theFont">Import Check Data</span>',
+                button_text_style: ".theFont { font-size: 12;font-family:Arial; background: #EFEFEF; }",
+                button_text_left_padding: 0,
+                button_text_top_padding: 0,
+
+                // The event handler functions are defined in handlers.js
+                file_queued_handler: fileQueued,
+                file_queue_error_handler: fileQueueError,
+                file_dialog_complete_handler: fileDialogComplete,
+                upload_start_handler: uploadStart,
+                upload_progress_handler: uploadProgress,
+                upload_error_handler: uploadError,
+                upload_success_handler: function () { alert("Upload Success!"); location.href = "/Invoice/List/?rd=" + Math.random(); },
+                upload_complete_handler: uploadComplete,
+                queue_complete_handler: queueComplete	// Queue plugin event
+            };
+
+            swfu = new SWFUpload(settings);
+
+
+
+
+            settings.button_placeholder_id = "iv";
+            settings.button_text = '<span class="theFont">Import Invoice</span>';
+            settings.button_width = "100";
+            settings.post_params = {"action":"iv"};
+            settings.upload_url = "/Invoice/ImportCompleteInvoices?ASPSESSID=" + ASPSESSID + "&auth=" + auth;
+            fu2 = new SWFUpload(settings);
+
+        })
+    </script>
+}
+<table id="tt" class="easyui-datagrid" url="/Invoice/Query" title="Load Data" iconcls="icon-save" rownumbers="true" pagination="true" data-options="toolbar:'#tb'">
+    <thead>
+        <tr>
+            <th data-options="field:'ck',checkbox:true"></th>  
+            <th field="step" width="100" formatter="getStatus" align="center">
+                step
+            </th>
+@*            <th field="id" align="center">
+                Item ID
+            </th>*@
+            @foreach (var col in ViewBag.Cols)
+            {
+            <th field="@col" width="200" align="center">
+                @col
+            </th>
+            }
+            <th field="opt" width="40" formatter="actionFormatter" align="center">
+                Check
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="/invoice/GetExcelResult" target="_blank" id="btn_export" class="easyui-linkbutton" data-options="iconCls:'icon-export',plain:true" style="float:left;">Export Data</a> 
+    <a id="btn_import" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-import',plain:true" style="float:left;"><span id="xxx">Import Check Data</span></a>
+    <a href="/invoice/GetInvoiceTemplate" target="_blank" id="btn_dltemp" class="easyui-linkbutton" data-options="iconCls:'icon-export',plain:true" style="float:left;">Download Invoice Template</a> 
+    <a id="btn_import_invoice" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-import',plain:true"><span id="iv">Import Voice</span></a>
+    </div>
+<br />
+@section Windows{
+
+
+<div id="w" class="easyui-window" title="Basic Window"  style="width:500px;height:200px;padding:10px;"
+data-options="closed:true,collapsible:false,minimizable:false,maximizable:false,iconCls:'icon-save'">  
+<div class="fieldset flash" id="fsUploadProgress">
+                        <span class="legend">传输队列</span>
+                    </div>
+    <div>
+        <span id="spanButtonPlaceHolder"></span>
+    </div>
+</div>  
+}
+

@@ -1,0 +1,155 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@model NSH.Authorization.Domain.User
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_DetailLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        function saveUser() {
+            $('#form').form('submit', {
+                url: '/User/SaveUser',
+                success: function (data) {
+                    eval('data=' + data);
+                    if (data.Success) {
+                        $.messager.alert('@Global.InfoTitle', data.Message, 'info', toBack);
+                    } else {
+                        $.messager.alert('@Global.ErrorTitle', data.Message, 'error', toBack);
+                    }
+                },
+                onSubmit: function () {
+                    return $('#form').form('validate');
+                }
+            });
+        }
+        function toBack() {
+            window.location = '/User/List';
+        }
+
+        $(function () {
+
+        });
+  
+    </script>
+}
+<form id="form" method="post" action="~/User/SaveUser/">
+<input type="hidden" id="Id" name="Id" value="@Model.Id" />
+<div class="panel">
+    <div class="panel-header">
+        @Global.Information</div>
+    <div class="panel-body">
+        <table style="background: #fafafa; text-align: center; width: 100%; height: 160px">
+            <tr>
+                <td align="right" width="20%">
+                    @Global.LoginName:
+                </td>
+                <td align="right" width="5%">
+                    &nbsp;
+                </td>
+                <td align="left" width="75%">
+                    @if (Model.Id > 0)
+                    {
+                        <input type="text" class="easyui-validatebox" readonly="true" maxlength="30" validtype="length[1,30]"
+                        style="width: 200px" id="LoginName" name="LoginName" value="@Model.LoginName" />
+                    }
+                    else
+                    {
+                        <input type="text" class="easyui-validatebox" required="true" maxlength="30" validtype="length[1,30]"
+                        style="width: 200px" id="LoginName" name="LoginName" />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td align="right" width="20%">
+                    @Global.Username:
+                </td>
+                <td align="right" width="5%">
+                    &nbsp;
+                </td>
+                <td align="left" width="75%">
+                    <input type="text" class="easyui-validatebox" required="true" maxlength="30" validtype="length[1,30]"
+                        style="width: 200px" id="UserName" name="UserName" value="@Model.UserName" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    @Global.Group:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <select id="Group" name="Group" class="easyui-combotree" style="width:200px;"
+                     data-options="url:'/User/GetGroupList/@Model.Id',editable:false,required:true" multiple>
+                    </select>
+                    @*<ul id="treeGroup" class="easyui-tree" data-options="url:'/User/GetGroupList/@Model.Id',animate:true,checkbox:true">
+                    </ul>*@
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    @Global.Module:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <select id="Module" name="Module" class="easyui-combotree" style="width:200px;"
+                     data-options="url:'/User/GetModuleList/@Model.Id',editable:false,required:true" multiple>
+                    </select>
+                    @*<ul id="treeGroup" class="easyui-tree" data-options="url:'/User/GetGroupList/@Model.Id',animate:true,checkbox:true">
+                    </ul>*@
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    @Global.Role:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    @{
+                        string roleId;
+                        if (Model.Role != null)
+                        {
+                            roleId = Model.Role.Id.ToString();
+                        }
+                        else
+                        {
+                            roleId = "";
+                        }
+                    }
+                    <input id="Role" name="Role" class="easyui-combobox" style="width: 60px"
+                    data-options="valueField:'Id',textField:'RoleName',editable:false,required:true,url:'/User/GetRoleList/'"
+                    value="@roleId" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    @Global.Email:
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <input type="text" required="true" invalidMessage="@Global.InvaildEamil " missingMessage="@Global.NotEmpty " class="easyui-validatebox"  validType="email" style="width: 200px" id="email" name="Email" value="@Model.Email" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                </td>
+                <td align="right">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <a href="#" onclick="saveUser()" class="easyui-linkbutton" id="btn-save" icon="icon-save">
+                        @Global.Save</a> <a href="#" onclick="toBack()" class="easyui-linkbutton" id="btn-cancel"
+                            icon="icon-undo">@Global.Back</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</form>

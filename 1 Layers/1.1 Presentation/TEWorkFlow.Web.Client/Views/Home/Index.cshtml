@@ -1,0 +1,180 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@Global.ProjectName</title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/default.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-easyui/themes/icon.css">
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        try
+        {
+            if (top.location !== self.location) {
+	            top.location=self.location;
+            }
+        }
+        catch(e){}
+
+        $(function () {
+            $('window_hider').after($('window_hider').html());
+            $('window_hider').remove();
+        });
+        function openTab(title, href, icon) {
+            if ($('#tt').tabs('exists', title)) {
+                $('#tt').tabs('select', title);
+            } else {
+                //alert(href);
+                $('#tt').tabs('add', {
+                    title: title,
+                    border:false,
+                    content: createFrame(href),
+                    icon: icon,
+                    closable: true
+                });               
+            }
+        }
+        function closeTab(index) {
+            $('#tt').tabs('close', index);
+        }
+        function closeSelectedTab() {
+            var index = getSelectedIndex();
+            closeTab(index);
+        }
+        function getSelectedIndex() {
+            var tab = $('#tt').tabs('getSelected');
+            var index = $('#tt').tabs('getTabIndex', tab);
+            return index;
+        }
+        function createFrame(url) {
+            var s = '<iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="no"  src="'
+            + url + '" style="width:100%;height:99%; padding:0px; margin:0px; border:0px;"></iframe>';
+            
+            return s;
+        }
+
+        $(function () {
+            var commandLocation = "@Url.Content("~/Home/ModuleList/")?rd=" + Math.random();
+            $.ajax({ url: commandLocation, dataType: "json", async: false, data: "categoryID=" + 1,
+                success: function (json) {
+                    initMenu(json.modules);
+                }
+            });
+        });
+        function initMenu(modules) {
+            $("#nav").accordion({ animate: false });
+            $.each(modules, function (i, n) {
+                var menulist = '';
+                if (n.modules) {
+                    menulist += '<ul>';
+                    $.each(n.modules,
+                function (j, o) {
+                    menulist += '<li><div><a ref="' + o.id
+                + '" href="#" rel="' + o.path + '" ><span class="icon '
+                + o.icon + '" >&nbsp;</span><span class="nav">'
+                + o.name + '</span></a></div></li> ';
+                })
+                    menulist += '</ul>';
+                }
+                $('#nav').accordion('add', { title: n.name, content: menulist, iconCls: 'icon ' + n.icon });
+            });
+            $('.easyui-accordion li a').click(
+            function () {
+                var tabTitle = $(this).children('.nav').text();
+                var url = $(this).attr("rel") + "?rd=" + Math.random();
+                var menuid = $(this).attr("ref");
+                var icon = $(this).find("span:first-child").attr("class");
+                openTab(tabTitle, url, icon);
+                $('.easyui-accordion li div').removeClass("selected");
+                $(this).parent().addClass("selected");
+            })
+             .hover(
+             function () {
+                 $(this).parent().addClass("hover");
+             }, function () { $(this).parent().removeClass("hover"); });
+            var panels = $('#nav').accordion('panels');
+            var t = panels[0].panel('options').title; $('#nav').accordion('select', t);
+
+        }
+        function getIcon(menuid) {
+            var icon = 'icon '; $.each(_menus.menus, function (i, n) { $.each(n.menus, function (j, o) { if (o.menuid == menuid) { icon += o.icon; } }) })
+            return icon;
+        }
+
+        function modifyPassword() {
+            $('#dlg').window('open').dialog('setTitle', 'Modify Password'); ;
+            $('#fm').form('clear');
+        }
+
+        function savePassword() {
+            $('#fm').form('submit', {
+                url: '@Url.Action("ModifyPassword", "User")',
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.Success) {
+                        $('#dlg').dialog('close');
+                        $.messager.alert('Info', result.Message, 'info');
+                    } else {
+                        $.messager.alert('Error', result.Message, 'error');
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    <div data-options="region:'north',split:false,border:false" style="overflow: hidden;
+        height: 30px; background: url(Images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
+        line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
+        <span style="float: right; padding-right: 20px;" class="head">welcome <a href="javascript:void(0)"
+            class="usertooltips">
+            @Session[AuthorizeSettings.SessionUserName]</a> <a href="#" class="editpass" onclick="modifyPassword()">
+                password</a> <a href="@Url.Content("~/Home/Logout")" class="loginOut">LogOff</a> </span>
+        <span style="padding-left: 10px; font-size: 16px;">
+            <img src="images/blocks.gif" width="20" height="20" align="absmiddle" />
+            T&E WorkFlow </span>
+    </div>
+    <div data-options="region:'south',split:false" style="height: 30px; background: #D2E0F2;">
+        <div class="footer">
+            T&E WorkFlow| Version:OUAT 1.0.1110.1</div>
+    </div>
+    <div data-options="region:'west',split:true" title="@Global.NavigationMenu" style="width:180px;overflow:hidden;">
+        <div id="nav" class="easyui-accordion" data-options="fit:true,border:false">
+        </div>
+    </div>
+    <div data-options="region:'center'" style="background: #eee; overflow-y: hidden">
+        <div id="tt" class="easyui-tabs" data-options="fit:true,border:false" style=" overflow:hidden;">
+        </div>
+    </div>
+    
+    <div id="window_hider" style="display: none">
+        <!--password-->
+        <div id="dlg" class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
+            closed="true" buttons="#dlg-buttons">
+            <form id="fm" method="post">
+            <div class="fitem">
+                <label>
+                    New Password:</label>
+                <input name="newPassword" class="easyui-validatebox" required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    Confirm:</label>
+                <input name="confirmNewPassword" class="easyui-validatebox" required="true">
+            </div>
+            </form>
+        </div>
+        <div id="dlg-buttons">
+            <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savePassword()">@Global.Ok</a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">
+                @Global.Cancel</a>
+        </div>
+    </div>
+</body>
+</html>

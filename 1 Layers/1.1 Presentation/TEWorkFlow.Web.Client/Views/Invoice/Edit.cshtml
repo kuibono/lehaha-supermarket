@@ -1,0 +1,107 @@
+﻿@using TEWorkFlow.Web.Client.Common
+@using TEWorkFlow.Web.Client.Resources
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section Scripts {
+    <script type="text/javascript">
+        var editIndex = undefined;
+        function endEditing(callback) {
+            if (editIndex == undefined) { return true }
+            if ($('#dg').datagrid('validateRow', editIndex)) {
+                var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'remark' });
+                var rm = $(ed.target).val();
+
+                var chk = $('#dg').datagrid('getEditor', { index: editIndex, field: 'ischecked' });
+                var ischk = $(chk.target).prop("checked");
+
+                var id = $('#dg').datagrid('getData').rows[editIndex].id;
+
+                //var url = "/Invoice/SaveInvoiceCheck/" + id + "/" + ischk == true ? "1" : "0" + "/" + rm;
+                //$.get(url);
+                $.post("/Invoice/SaveInvoiceCheck/", {
+                    Id: id,
+                    IsChecked: ischk,
+                    Remark: rm
+                }, function () {
+                    callback();
+                });
+
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function onClickRow(index) {
+            if (editIndex != index) {
+                if (endEditing()) {
+                    $('#dg').datagrid('selectRow', index)
+                            .datagrid('beginEdit', index);
+                    editIndex = index;
+                } else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+                var chk = $('#dg').datagrid('getEditor', { index: editIndex, field: 'ischecked' });
+                var is_chk = $('#dg').datagrid('getData').rows[editIndex].ischecked;
+                $(chk.target).prop("checked", is_chk);
+            }
+        }
+
+        function accept() {
+            if (endEditing(function () { location.href = "/Invoice/List"; })) {
+                $('#dg').datagrid('acceptChanges');
+
+            }
+        }
+
+        function getStatus(value, rowData, rowIndex) {
+            if (rowData.ischecked == true) {
+                return "<span style='color:green'>true</span>"
+            }
+            else {
+                return "<span style='color:red'>false</span>"
+            }
+        }
+
+        function reject() {
+            //location.href = "/Invoice/List";
+            history.go(-1);
+        }
+    </script>
+}
+<table id="dg" class="easyui-datagrid" title="Invoice Points Check" style="height:auto"  
+            data-options="  
+                iconCls: 'icon-edit',  
+                singleSelect: true,  
+                toolbar: '#tb',  
+                url: '/Invoice/GetInvoicePoints/@Model',
+                onClickRow: onClickRow  
+            ">
+    <thead>
+        <tr>
+            <th data-options="field:'id',width:30">
+                id
+            </th>
+            <th data-options="field:'itemName',width:80">
+                ItemName
+            </th>
+            <th data-options="field:'text',width:200,align:'left'">
+                Text
+            </th>
+            <th formatter="getStatus" data-options="field:'ischecked',width:60,align:'right',editor:{type:'checkbox',options:{on:'true',off:'false'}},align:'center'">
+                Checked
+            </th>
+            <th data-options="field:'remark',width:250,editor:{type:'text'}">
+                Remark
+            </th>
+        </tr>
+    </thead>
+</table>
+<div id="tb" style="height: auto">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true"
+        onclick="accept()">Save All</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+            data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Back to List</a>
+</div>

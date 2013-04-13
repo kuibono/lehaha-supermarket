@@ -1,0 +1,669 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0020)https://twitter.com/ -->
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Twitter</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
+    <link type="text/css" rel="Stylesheet" href="Twitter_files/reset.css" />
+    <style type="text/css">
+
+        
+        
+        .front-page.front-random-image-city-balcony
+        {
+            background-color: #0067C8;
+        }
+        html, body, #doc, #page-outer
+        {
+            height: 100%;
+        }
+        .front-page .front-container
+        {
+            display: block;
+        }
+        .front-container-full-signup .front-welcome-text
+        {
+            padding: 0;
+            bottom: 50%;
+        }
+        .front-container-full-signup .front-welcome
+        {
+            background: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        .front-random-image-city-balcony .front-welcome
+        {
+            background-image: url(../img/front_page/city-balcony.jpg);
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+        .front-container
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+            min-height: 545px;
+            max-height: 750px;
+            display: block;
+        }
+        .front-bg
+        {
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            left: -50%;
+            background: black;
+        }
+        .front-random-image-cricket .front-bg .front-image, .front-random-image-city-balcony .front-bg .front-image, .front-random-image-jp-mountain .front-bg .front-image
+        {
+            display: block;
+        }
+        .front-bg img
+        {
+            display: none;
+            margin: auto;
+            min-width: 50%;
+            min-height: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .front-card
+        {
+            top: 50%;
+            height: 328px;
+            width: 838px;
+            margin: -154px 0 0 -418px;
+            position: absolute;
+            left: 50%;
+        }
+        .front-welcome
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 520px;
+            height: 328px;
+            background: black url(../img/front_page/cricket.jpg) no-repeat left top;
+            border: 0;
+            -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .2),0 0 125px rgba(255, 255, 255, .35);
+            -moz-box-shadow: 0 1px 0 rgba(0,0,0,.2),0 0 125px rgba(255,255,255,.35);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .2),0 0 125px rgba(255, 255, 255, .35);
+            background-image: url(../img/front_page/city-balcony.jpg);
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+        }
+        .front-welcome-text
+        {
+            padding: 0;
+            bottom: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 470px;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 22px;
+            color: #EEE;
+            text-align: left;
+            text-shadow: black 0 1px 2px;
+        }
+        .front-welcome-text h1
+        {
+            margin-bottom: 3px;
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+        .front-welcome, .front-signin, .front-signup
+        {
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+        .front-signin .username .text-input
+        {
+            width: 266px;
+        }
+        .front-signup h2 strong, .front-signin h2 strong
+        {
+            font-weight: 500;
+            color: #333;
+        }
+        .front-signin, .front-signup
+        {
+            background: white;
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,white),color-stop(100%,#DDD));
+            background: -webkit-linear-gradient(top,white 0,#DDD 100%);
+            background: -moz-linear-gradient(top,white 0,#DDD 100%);
+            background: -ms-linear-gradient(top,white 0,#DDD 100%);
+            background: -o-linear-gradient(top,white 0,#DDD 100%);
+            background: linear-gradient(top,white 0,#DDD 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);
+            border-left: solid 1px #EEE;
+            border-right: solid 1px #EEE;
+            border-bottom: solid 1px #CCC;
+            -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+            -moz-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+        }
+        .front-signin .username
+        {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 276px;
+            color: #333;
+        }
+        .front-signin .remember-forgot
+        {
+            position: absolute;
+            top: 82px;
+            left: 12px;
+            margin: 0;
+            width: 276px;
+        }
+        .front-card .text-input
+        {
+            border: 1px solid #CCC;
+            -webkit-box-shadow: inset 0 1px 0 #EEE, white 0 1px 0;
+            -moz-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+            box-shadow: inset 0 1px 0 #EEE, white 0 1px 0;
+            height: 20px;
+        }
+        .front-signin
+        {
+            position: absolute;
+            top: 0;
+            left: 536px;
+            width: 300px;
+            height: 108px;
+        }
+        .front-signup
+        {
+            position: absolute;
+            top: 121px;
+            left: 536px;
+            width: 300px;
+            height: 206px;
+        }
+        .front-container .footer
+        {
+            color: rgba(255, 255, 255, .25);
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+        }
+        .front-signin .remember input[type="checkbox"]
+        {
+            margin: 0;
+            height: 13px;
+            vertical-align: text-top;
+            min-height: autourl(0);
+        }
+        .front-container-full-signup .footer ul
+        {
+            width: 838px;
+            text-align: left;
+            margin: 0 auto;
+        }
+        .front-container .footer ul
+        {
+            display: inline-block;
+        }
+        .front-container-full-signup .footer ul li
+        {
+            margin: 0 6px 0 0;
+        }
+        .front-container .footer li
+        {
+            display: inline;
+            margin: 0 3px;
+        }
+        .front-container .footer a:hover
+        {
+            color: white;
+            text-decoration: none;
+        }
+        .front-container .footer a
+        {
+            color: rgba(255, 255, 255, .5);
+        }
+        .front-container .footer a:hover
+        {
+            color: white;
+            text-decoration: none;
+        }
+        .signin .remember
+        {
+            margin-left: 12px;
+            text-align: left;
+            color: #333;
+            line-height: 30px;
+        }
+        .front-signup h2, .front-signin h2
+        {
+            position: relative;
+            display: block;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 300;
+            color: #777;
+            border-bottom: 1px solid #E2E2E2;
+            -webkit-box-shadow: 0 1px 0 white;
+            -moz-box-shadow: 0 1px 0 #fff;
+            box-shadow: 0 1px 0 white;
+            -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            -moz-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+        }
+        .front-signup .placeholding-input
+        {
+            display: block;
+            width: 276px;
+            height: 30px;
+            margin: 6px auto;
+        }
+        .placeholding-input
+        {
+            position: relative;
+            overflow: visible;
+        }
+        .front-signup .text-input
+        {
+            width: 266px;
+        }
+        .front-card .text-input
+        {
+            height: 20px;
+        }
+        .front-card .text-input
+        {
+            border: 1px solid #CCC;
+            -webkit-box-shadow: inset 0 1px 0 #EEE, white 0 1px 0;
+            -moz-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+            box-shadow: inset 0 1px 0 #EEE, white 0 1px 0;
+        }
+        .placeholding-input .placeholder
+        {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            bottom: 1px;
+            left: 2px;
+            z-index: 1;
+            height: 20px;
+            padding: 4px;
+            font-size: 13px;
+            line-height: 20px;
+            color: #999;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+            white-space: nowrap;
+            cursor: text;
+            -webkit-transition: opacity .1s,font-size .1s;
+            -moz-transition: opacity .1s,font-size .1s;
+            -o-transition: opacity .1s,font-size .1s;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .front-signin .remember-forgot
+        {
+            position: absolute;
+            top: 82px;
+            left: 12px;
+            margin: 0;
+            width: 276px;
+        }
+        .front-signin .remember, .front-signin .forgot, .front-signin .separator
+        {
+            display: inline;
+            margin: 0;
+            font-size: 11px;
+            line-height: 13px;
+            color: #999;
+            -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            -moz-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+        }
+        .front-signin .separator
+        {
+            margin: 0 1px 0 2px;
+            font-weight: bold;
+            color: #999;
+        }
+        .front-signin .remember, .front-signin .forgot, .front-signin .separator
+        {
+            display: inline;
+            margin: 0;
+            font-size: 11px;
+            line-height: 13px;
+            color: #999;
+            -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            -moz-text-shadow: 0 1px 0 rgba(255,255,255,.6);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+        }
+        .front-signin .password-signin
+        {
+            position: absolute;
+            top: 48px;
+            left: 12px;
+            width: 276px;
+        }
+        .flex-table-primary
+        {
+            width: 99%;
+            padding-right: 5px;
+        }
+        .flex-table-primary, .flex-table-secondary
+        {
+            vertical-align: top;
+        }
+        .flex-table-secondary
+        {
+            width: 1%;
+            max-width: 1%;
+        }
+        .front-signin .password
+        {
+            width: 100%;
+        }
+        .front-signin .placeholding-input
+        {
+            height: 30px;
+        }
+        .signin .password, .signin .username
+        {
+            width: 150px;
+            font-size: 13px;
+        }
+        .flex-table-primary .flex-table-form
+        {
+            float: left;
+            width: 100%;
+        }
+        .front-signin .submit
+        {
+            height: 30px;
+            -webkit-box-shadow: 0 1px 0 white;
+            -moz-box-shadow: 0 1px 0 #fff;
+            box-shadow: 0 1px 0 white;
+        }
+        .primary-btn, .following.first-hover .follow-btn:hover, .following .follow-btn, .following .follow-button.cancel-hover-style:hover, .following .follow-button
+        {
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+            background-color: #019AD2;
+            background-repeat: repeat-x;
+            background-image: -khtml-gradient(linear,left top,left bottom,from(#33BCEF),to(#019AD2));
+            background-image: -moz-linear-gradient(#33BCEF,#019AD2);
+            background-image: -ms-linear-gradient(#33BCEF,#019AD2);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#33BCEF),color-stop(100%,#019AD2));
+            background-image: -webkit-linear-gradient(#33BCEF,#019AD2);
+            background-image: -o-linear-gradient(#33BCEF,#019AD2);
+            background-image: linear-gradient(#33BCEF,#019AD2);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bcef',endColorstr='#019ad2',GradientType=0);
+            border-color: #057ED0;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+            -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+        }
+        .btn
+        {
+            background-color: #DDD;
+            background-repeat: repeat-x;
+            background-image: -khtml-gradient(linear,left top,left bottom,from(white),to(#DDD));
+            background-image: -moz-linear-gradient(white,#DDD);
+            background-image: -ms-linear-gradient(white,#DDD);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,white),color-stop(100%,#DDD));
+            background-image: -webkit-linear-gradient(white,#DDD);
+            background-image: -o-linear-gradient(white,#DDD);
+            background-image: linear-gradient(white,#DDD);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd');
+        }
+        .btn
+        {
+            position: relative;
+            display: inline-block;
+            overflow: visible;
+            padding: 5px 10px;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #333;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+            background-color: #CCC;
+            background-repeat: no-repeat;
+            border: 1px solid #CCC;
+            cursor: pointer;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            border-radius: 0 url(0);
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+            -moz-box-shadow: 0 1px 0 rgba(255,255,255,.5);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+        }
+        .primary-btn, .following.first-hover .follow-btn:hover, .following .follow-btn, .following .follow-button.cancel-hover-style:hover, .following .follow-button
+        {
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+            background-color: #019AD2;
+            background-repeat: repeat-x;
+            background-image: -khtml-gradient(linear,left top,left bottom,from(#33BCEF),to(#019AD2));
+            background-image: -moz-linear-gradient(#33BCEF,#019AD2);
+            background-image: -ms-linear-gradient(#33BCEF,#019AD2);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#33BCEF),color-stop(100%,#019AD2));
+            background-image: -webkit-linear-gradient(#33BCEF,#019AD2);
+            background-image: -o-linear-gradient(#33BCEF,#019AD2);
+            background-image: linear-gradient(#33BCEF,#019AD2);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bcef',endColorstr='#019ad2',GradientType=0);
+            border-color: #057ED0;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+            -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+        }
+        .primary-btn:hover, .primary-btn:focus
+        {
+            color: white;
+            background-color: #0271BF;
+            background-repeat: repeat-x;
+            background-image: -khtml-gradient(linear,left top,left bottom,from(#2DADDC),to(#0271BF));
+            background-image: -moz-linear-gradient(#2DADDC,#0271BF);
+            background-image: -ms-linear-gradient(#2DADDC,#0271BF);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#2DADDC),color-stop(100%,#0271BF));
+            background-image: -webkit-linear-gradient(#2DADDC,#0271BF);
+            background-image: -o-linear-gradient(#2DADDC,#0271BF);
+            background-image: linear-gradient(#2DADDC,#0271BF);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2daddc',endColorstr='#0271bf',GradientType=0);
+            border-color: #096EB3;
+        }
+        .flex-table-btn
+        {
+            float: right;
+            width: auto;
+            white-space: nowrap;
+        }
+        .signup-btn
+        {
+            background-color: #FD9A0F;
+            background-repeat: repeat-x;
+            background-image: -moz-linear-gradient(top,#FEE94F 0,#FD9A0F 100%);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FEE94F),color-stop(100%,#FD9A0F));
+            background-image: -webkit-linear-gradient(top,#FEE94F 0,#FD9A0F 100%);
+            background-image: -ms-linear-gradient(top,#FEE94F 0,#FD9A0F 100%);
+            background-image: -o-linear-gradient(top,#FEE94F 0,#FD9A0F 100%);
+            background-image: linear-gradient(top,#FEE94F 0,#FD9A0F 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fee94f',endColorstr='#fd9a0f',GradientType=0);
+            border-color: #FA2;
+        }
+        
+        .front-signup .btn
+        {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            height: 30px;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin: 0;
+            -webkit-box-shadow: 0 1px 0 white;
+            -moz-box-shadow: 0 1px 0 #fff;
+            box-shadow: 0 1px 0 white;
+        }
+        .signup-btn:hover, .signup-btn:focus
+        {
+            color: #333;
+            background-color: #FD9512;
+            background-repeat: repeat-x;
+            background-image: -moz-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FEDC4D),color-stop(100%,#FD9512));
+            background-image: -webkit-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -ms-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -o-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fedc4d',endColorstr='#fd9512',GradientType=0);
+            border-color: #EC8B11;
+        }
+        .signup-btn:hover, .signup-btn:focus
+        {
+            color: #333;
+            background-color: #FD9512;
+            background-repeat: repeat-x;
+            background-image: -moz-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#FEDC4D),color-stop(100%,#FD9512));
+            background-image: -webkit-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -ms-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: -o-linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            background-image: linear-gradient(top,#FEDC4D 0,#FD9512 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fedc4d',endColorstr='#fd9512',GradientType=0);
+            border-color: #EC8B11;
+        }
+    </style>
+</head>
+<body class="t1 logged-out ms-windows asian zh-cn front-random-image-city-balcony front-page"
+    dir="ltr">
+    <div id="doc" class="">
+        <div id="page-outer">
+            <div id="page-container" class=" wrapper-front white">
+                <div class="front-container front-container-full-signup" id="front-container">
+                    <div class="front-bg">
+                        <img class="front-image" src="./Twitter_files/city-balcony@2x.jpg" />
+                    </div>
+                    <div class="front-card">
+                        <div class="front-welcome">
+                            <div class="front-welcome-text">
+                                <h1>
+                                    欢迎来到 Twitter。</h1>
+                                <p>
+                                    与你关心的人们一起,探寻变化的大千世界。</p>
+                            </div>
+                        </div>
+                        <div class="front-signin js-front-signin">
+                            <form action="https://twitter.com/sessions" class="signin" method="post">
+                            <div class="placeholding-input username">
+                                <input type="text" id="signin-email" class="text-input email-input" name="session[username_or_email]"
+                                    title="用户名或电子邮件地址" autocomplete="on" tabindex="1">
+                                <label for="signin-email" class="placeholder">
+                                    用户名或电子邮件地址</label>
+                            </div>
+                            <table class="flex-table password-signin">
+                                <tbody>
+                                    <tr>
+                                        <td class="flex-table-primary">
+                                            <div class="placeholding-input password flex-table-form">
+                                                <input type="password" id="signin-password" class="text-input flex-table-input" name="session[password]"
+                                                    title="密码" tabindex="2">
+                                                <label for="signin-password" class="placeholder">
+                                                    密码</label>
+                                            </div>
+                                        </td>
+                                        <td class="flex-table-secondary">
+                                            <button type="submit" class="submit btn primary-btn flex-table-btn js-submit" tabindex="4">
+                                                登录
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="remember-forgot">
+                                <label class="remember">
+                                    <input type="checkbox" value="1" name="remember_me" tabindex="3">
+                                    <span>记住我</span>
+                                </label>
+                                <span class="separator">·</span> <a class="forgot" href="https://twitter.com/account/resend_password">
+                                    忘记密码?</a>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="front-signup js-front-signup">
+                            <h2>
+                                <strong>新来 Twitter?</strong> 注册</h2>
+                            <form action="https://twitter.com/signup" class="signup" method="post">
+                            <div class="placeholding-input">
+                                <input type="text" id="signup-user-name" class="text-input" autocomplete="off" name="user[name]"
+                                    maxlength="20">
+                                <label for="signup-user-name" class="placeholder">
+                                    全名</label>
+                            </div>
+                            <div class="placeholding-input">
+                                <input type="text" id="signup-user-email" class="text-input email-input" autocomplete="off"
+                                    name="user[email]">
+                                <label for="signup-user-email" class="placeholder">
+                                    电子邮件地址</label>
+                            </div>
+                            <div class="placeholding-input">
+                                <input type="password" id="signup-user-password" class="text-input" name="user[user_password]">
+                                <label for="signup-user-password" class="placeholder">
+                                    密码</label>
+                            </div>
+                            <button type="submit" class="btn signup-btn">
+                                注册 Twitter
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer inline-list">
+                        <ul>
+                            <li><a href="https://twitter.com/about">关于</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://support.twitter.com/">帮助</a><span class="dot divider"> ·</span></li>
+                            <li><a href="http://blog.twitter.com/">博客</a><span class="dot divider"> ·</span></li>
+                            <li><a href="http://status.twitter.com/">状态</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://twitter.com/jobs">工作机会</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://twitter.com/tos">条款</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://twitter.com/privacy">隐私</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://business.twitter.com/zh-cn/advertise/start">广告商</a><span class="dot divider">
+                                ·</span></li>
+                            <li><a href="https://business.twitter.com/index_zh-cn.html">企业</a><span class="dot divider">
+                                ·</span></li>
+                            <li><a href="http://media.twitter.com/">媒体</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://dev.twitter.com/">开发者</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://twitter.com/about/resources">资源</a><span class="dot divider"> ·</span></li>
+                            <li><a href="https://twitter.com/i/directory/profiles">目录</a><span class="dot divider">
+                                ·</span></li>
+                            <li><span class="copyright">© 2012 Twitter</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
