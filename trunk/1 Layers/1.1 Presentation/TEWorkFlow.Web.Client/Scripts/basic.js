@@ -51,22 +51,7 @@
         $(this).show();
     });
 
-    //ul.listmenu li
-//    $("ul.listmenu li").each(function () {
-//        $(this).width($(this).parent().width() / 2 - 5);
-//        $(this).show();
-//    });
 
-//    $(window).bind("resize", function () {
-//        $(".textbox").each(function () {
-//            $(this).width($(this).parent().width() - 20);
-//            $(this).show();
-//        });
-//        $("ul.listmenu li").each(function () {
-//            $(this).width($(this).parent().width() / 2 - 5);
-//            $(this).show();
-//        });
-//    })
 })
 function loading(msg) {
     if (msg) {
