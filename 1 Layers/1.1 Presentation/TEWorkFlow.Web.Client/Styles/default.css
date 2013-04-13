@@ -16,7 +16,7 @@ a:hover{ color:Red; text-decoration:underline;}
 
 .head a{color:White;text-decoration:underline;}
 
-.easyui-accordion ul{list-style-type:none;margin:0px; padding:10px;}
+.easyui-accordion ul{list-style-type:none;margin:0px; padding:0px;}
 .easyui-accordion ul li{ padding:0px;}
 .easyui-accordion ul li a{line-height:24px;}
 .easyui-accordion ul li div{margin:2px 0px;padding-left:10px;padding-top:2px;}
