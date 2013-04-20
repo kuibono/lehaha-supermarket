@@ -174,6 +174,10 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual System.DateTime OperatorDate { get; set; }
 
+
+
+        public virtual string ClassName { get; set; }
+        public virtual string AreaName { get; set; }
         protected override void Validate()
         {
         }

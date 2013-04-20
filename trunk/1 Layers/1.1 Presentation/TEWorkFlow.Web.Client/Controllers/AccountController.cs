@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TEWorkFlow.Application.Service.Category;
+using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Domain.Sys;
 using TEWorkFlow.Web.Client.Models;
 //using NSH.Authorization.Service;
@@ -21,6 +23,18 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ISysLoginPowerService SysLoginPowerService { get; set; }
         public ISysmodulecontentService SysmodulecontentService { get; set; }
+        public IBsPaClassService BsPaClassService { get; set; }
+        public IBsPaAreaService BsPaAreaService { get; set; }
+
+        public ActionResult IniAll()
+        {
+            IniUser();
+            IniUserS();
+            InISysPaClassAndArea();
+            InISysModule();
+            return Json("成功", JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult IniUser()
         {
             SysLoginPower u = new SysLoginPower();
@@ -41,12 +55,12 @@ namespace TEWorkFlow.Web.Client.Controllers
             for (int i = 0; i < 50; i++)
             {
                 SysLoginPower u = new SysLoginPower();
-                u.Emname = "管理员"+i;
+                u.Emname = "管理员" + i;
                 u.Id = i.ToString();
                 u.Ifcash = "false";
                 u.Maxdiscount = 0;
-                u.UserType = i%2;
-                u.Username = "user"+i;
+                u.UserType = i % 2;
+                u.Username = "user" + i;
                 u.Userpw = "1";
                 u.Userstate = "0";
                 SysLoginPowerService.Create(u);
@@ -55,6 +69,20 @@ namespace TEWorkFlow.Web.Client.Controllers
             return null;
         }
 
+        public ActionResult InISysPaClassAndArea()
+        {
+            BsPaAreaService.Create(new BsPaArea() { Id = "1", AreaName = "中山" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "2", AreaName = "西岗" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "3", AreaName = "沙河口" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "4", AreaName = "甘井子" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "5", AreaName = "开发区" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "6", AreaName = "金州" });
+            BsPaAreaService.Create(new BsPaArea() { Id = "7", AreaName = "旅顺" });
+
+            BsPaClassService.Create(new BsPaClass() { Id = "1", ClassName = "直营店" });
+            BsPaClassService.Create(new BsPaClass() { Id = "2", ClassName = "加盟店" });
+            return null;
+        }
 
         public ActionResult InISysModule()
         {

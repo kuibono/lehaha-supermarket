@@ -63,6 +63,8 @@
   </object>
   <object id="BsBranchArchivesService" type="TEWorkFlow.Application.Service.Archives.BsBranchArchivesService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="BsBranchArchivesRepository"/>
+    <property name="BsPaClassRepository" ref="BsPaClassRepository"/>
+    <property name="BsPaAreaRepository" ref="BsPaAreaRepository"/>
   </object>
   <object id="BsPaClassService" type="TEWorkFlow.Application.Service.Category.BsPaClassService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="BsPaClassRepository"/>
