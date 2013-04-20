@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pagination 分页表格</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+</head>
+<body>
+    <div style="width: 100%">
+        <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 100%;">
+                        <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
+                        <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                        <span class="separator"></span>
+                    </td>
+                    <td style="white-space: nowrap;">
+                        <input id="Username" class="mini-textbox" emptytext="请输入账号" style="width: 150px;"
+                            onenter="onKeyEnter" />
+                        <input id="Emname" class="mini-textbox" emptytext="请输入姓名" style="width: 150px;" onenter="onKeyEnter" />
+                        <a class="mini-button" onclick="search()">查询</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mini-fit">
+        <div id="datagrid1" class="mini-datagrid" url="/Test/LoginPowerList" style="width: 100%;
+            height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
+            multiselect="true">
+            <div property="columns">
+                <div type="indexcolumn" width="30">
+                </div>
+                <div type="checkcolumn" width="30">
+                </div>
+                <div field="Emname" headeralign="center" align="center" allowsort="true">
+                    姓名</div>
+                <div field="Username" headeralign="center" align="center" allowsort="true">
+                    账号</div>
+                <div field="UserTypeName" headeralign="center" align="center" allowsort="true">
+                    用户类型</div>
+                <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+                    cellstyle="padding:0;">
+                    管理</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        mini.parse();
+
+
+        var grid = mini.get("datagrid1");
+
+
+        grid.load();
+
+
+
+        //对"createtime"字段，进行降级排序
+        grid.sortBy("Id", "desc");
+
+        function search() {
+            grid.load({
+                "Emname": mini.get("#Emname").value,
+                "Username": mini.get("#Username").value
+            });
+        }
+        $("#key").bind("keydown", function (e) {
+            if (e.keyCode == 13) {
+                search();
+            }
+        });
+
+        function editRow(id) {
+            mini.open({
+                url: "/Test/Edit/" + id,
+                title: "用户管理",
+                iconCls:"icon-user",
+                width: 560, 
+                height: 150,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
+
+        function onActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                    + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            return s;
+        }
+
+        function deleteItem(id) {
+            $.ajax({
+                url: "/Test/Delete",
+                data: { ids: id },
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function remove() {
+            var rows = grid.getSelecteds();
+            if (rows.length > 0) {
+                if (confirm("确定删除选中记录？")) {
+                    var ids = [];
+                    for (var i = 0, l = rows.length; i < l; i++) {
+                        var r = rows[i];
+                        ids.push(r.Id);
+                    }
+                    var id = ids.join(',');
+                    grid.loading("操作中，请稍后......");
+                    deleteItem(id);
+                }
+            } else {
+                alert("请选中一条记录");
+            }
+        }
+    </script>
+</body>
+</html>

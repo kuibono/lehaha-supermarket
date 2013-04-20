@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "供货商档案";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section toolbar{
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
+                <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                <span class="separator"></span>
+            </td>
+            <td style="white-space: nowrap;">
+                <input id="SupName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
+                <a class="mini-button" onclick="search()">查询</a>
+            </td>
+        </tr>
+    </table>
+}
+@section script
+{
+    <script type="text/javascript">
+        function search() {
+            grid.load({
+                "SupName": mini.get("#SupName").value
+            });
+        }
+        function editRow(id) {
+            mini.open({
+                url: "/Archives/SupplierEdit/" + id,
+                title: "供应商管理",
+                iconCls: "icon-user",
+                allowResize: false,
+                width: 500,
+                height: 520,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
+        function deleteItem(id) {
+            $.ajax({
+                url: "/Archives/SupplierDelete",
+                data: { ids: id },
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+}
+<div id="datagrid1" class="mini-datagrid" url="/Archives/SearchSupplierArchiveList"
+    style="width: 100%; height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]"
+    pagesize="20" multiselect="true">
+    <div property="columns">
+        <div type="indexcolumn" width="30">
+        </div>
+        <div type="checkcolumn" width="30">
+        </div>
+        <div field="SupName" headeralign="center" align="center" width="60">名称</div>
+        <div field="PyCode" headeralign="center" align="center" width="60">拼音码</div>
+        <div field="SupTypeName" headeralign="center" align="center" width="60">供货商类型</div>
+        <div field="Functionary" headeralign="center" align="center" width="60">负责人</div>
+        <div field="FunctionaryPhone" headeralign="center" align="center" width="60">负责人电话</div>
+        <div field="Linkman" headeralign="center" align="center" width="60">联系人</div>
+        <div field="ContactPhone" headeralign="center" align="center" width="60">联系人电话</div>
+        <div field="OfficePhone" headeralign="center" align="center" width="60">办公电话</div>
+        <div field="FaxPhone" headeralign="center" align="center" width="60">传真</div>
+        <div field="eMail" headeralign="center" align="center" width="60">邮箱</div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            管理</div>
+    </div>
+</div>

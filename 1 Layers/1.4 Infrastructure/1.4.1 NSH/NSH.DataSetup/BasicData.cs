@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NSH.Authorization.Domain;
+//using NSH.Authorization.Domain;
+using TEWorkFlow.Domain.Sys;
 
 namespace NSH.DataSetup
 {
@@ -10,20 +11,19 @@ namespace NSH.DataSetup
     {
         public void InitialUser()
         {
-            
+            SysLoginPower u=new SysLoginPower();
+            u.Emname = "管理员";
+            u.Id = "default";
+            u.Ifcash = "false";
+            u.Maxdiscount = 0;
+            u.UserType = 0;
+            u.Username = "sysadmin";
+            u.Userpw = "1";
+            u.Userstate = "0";
         }
         public void InitialModule()
         {
-            Module m=new Module();
-            m.ModuleName = "root";
-            m.DisplayOrder = -1;
-            m.IsMDI = false;
-            m.IsEnable = true;
-            m.Parent = null;
-            m.Path = null;
-
-
-
+            
         }
 
         public void InitialRole()

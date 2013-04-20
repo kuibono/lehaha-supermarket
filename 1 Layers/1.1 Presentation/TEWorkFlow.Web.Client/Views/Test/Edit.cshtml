@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+@model TEWorkFlow.Domain.Sys.SysLoginPower
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pagination 分页表格</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" method="post">
+    <input name="Id" class="mini-hidden" value="@Model.Id" />
+    <div style="padding-left: 11px; padding-bottom: 5px;">
+        <table style="table-layout: fixed;">
+            <tr>
+                <td style="width: 60px;">
+                    账号：
+                </td>
+                <td style="width: 160px;">
+                    <input name="Username" value="@Model.Username" class="mini-textbox" required="true" emptytext="请输入帐号" />
+                </td>
+                <td style="width: 60px;">
+                    姓名：
+                </td>
+                <td style="width: 160px;">
+                    <input name="Emname" value="@Model.Emname" class="mini-textbox" required="true" emptytext="请输入姓名" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    密码：
+                </td>
+                <td>
+                    <input name="Userpw" class="mini-password" required="false" emptytext="请输入密码" />
+                </td>
+                <td>
+                    类型:
+                </td>
+                <td>
+                    <select id="UserType" name="UserType" class="mini-radiobuttonlist">
+                        <option value="0">总店</option>
+                        <option value="1">分店</option>
+                        <option value="2">供应商</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align: center; padding: 10px;">
+        <a class="mini-button" onclick="onOk" style="width: 60px; margin-right: 20px;">确定</a>
+        <a class="mini-button" onclick="onCancel" style="width: 60px;">取消</a>
+    </div>
+    </form>
+    <script type="text/javascript">
+        mini.parse();
+
+        var form = new mini.Form("form1");
+
+        mini.get("#UserType").setValue(@Model.UserType);
+        function SaveData() {
+            var o = form.getData();
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Test/Save",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+
+
+        function GetData() {
+            var o = form.getData();
+            return o;
+        }
+        function CloseWindow(action) {
+            if (action == "close" && form.isChanged()) {
+                if (confirm("数据被修改了，是否先保存？")) {
+                    return false;
+                }
+            }
+            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+            else window.close();
+        }
+        function onOk(e) {
+            SaveData();
+        }
+        function onCancel(e) {
+            CloseWindow("cancel");
+        }
+
+    </script>
+</body>
+</html>

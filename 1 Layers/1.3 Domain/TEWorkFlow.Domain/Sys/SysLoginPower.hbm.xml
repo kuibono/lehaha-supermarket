@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Sys">
+  <class name="SysLoginPower" table="sys_login_power" lazy="true" >
+    <id name="Id" type="string" column="em_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="Emname" column="em_name" type="string" />
+    <property name="Username" column="user_name" type="string" />
+    <property name="Userpw" column="user_pw" type="string" />
+    <property name="Ifcash" column="if_cash" type="string" />
+    <property name="Cashfunction" column="cash_function" type="string" />
+    <property name="Userstate" column="user_state" type="string" />
+    <property name="Maxdiscount" column="max_discount" type="decimal" />
+    <property name="UserType" column="user_type" type="int" />
+  </class>
+</hibernate-mapping>
+

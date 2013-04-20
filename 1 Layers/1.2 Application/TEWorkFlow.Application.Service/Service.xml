@@ -2,55 +2,72 @@
 <objects default-lazy-init="true" xmlns="http://www.springframework.net">
 
   <!--Repository-->
-  <object id="CaseRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.Case>, NSH.Repository">
+  <object id="SysLoginPowerRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysLoginPower>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="InvoiceRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.Invoice>, NSH.Repository">
+  <object id="SysmodulecontentRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.Sysmodulecontent>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="CheckPointRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.CheckPoint>, NSH.Repository">
+  <object id="EmemployeearchiveRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.Ememployeearchive>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="InvoicePointRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.InvoicePoint>, NSH.Repository">
+  
+  <object id="EmPaPoliticsRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.EmPaPolitics>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="WorkStepRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.WorkStep>, NSH.Repository">
+  <object id="NationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.Nation>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="WorkFlowRepository" type="NSH.Repository.Repository&lt;TEWorkFlow.Domain.WorkFlow.WorkFlow>, NSH.Repository">
+  <object id="FbSupplierArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.FbSupplierArchives>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-
+  <object id="FbPaSupTypeRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaSupType>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="BsBranchArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.BsBranchArchives>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="BsPaClassRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.BsPaClass>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="BsPaAreaRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.BsPaArea>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
-  <object id="CaseService" type="TEWorkFlow.Application.Service.WorkFlow.CaseService, TEWorkFlow.Application.Service">
-    <property name="CaseRepository" ref="CaseRepository"/>
+  <object id="SysLoginPowerService" type="TEWorkFlow.Application.Service.Sys.SysLoginPowerService, TEWorkFlow.Application.Service">
+    <property name="SysLoginPowerRepository" ref="SysLoginPowerRepository"/>
   </object>
-  
-  <object id="InvoiceService" type="TEWorkFlow.Application.Service.WorkFlow.InvoiceService, TEWorkFlow.Application.Service">
-    <property name="InvoiceRepository" ref="InvoiceRepository"/>
-    <property name="InvoicePointRepository" ref="InvoicePointRepository"/>
-    <property name="WorkStepRepository" ref="WorkStepRepository"/>
-    <property name="CheckPointRepository" ref="CheckPointRepository"/>
+  <object id="SysmodulecontentService" type="TEWorkFlow.Application.Service.Sys.SysmodulecontentService, TEWorkFlow.Application.Service">
+    <property name="SysmodulecontentRepository" ref="SysmodulecontentRepository"/>
   </object>
-  
-  <object id="CheckPointService" type="TEWorkFlow.Application.Service.WorkFlow.CheckPointService, TEWorkFlow.Application.Service">
-    <property name="CheckPointRepository" ref="CheckPointRepository"/>
+  <object id="EmemployeearchiveService" type="TEWorkFlow.Application.Service.Archives.EmemployeearchiveService, TEWorkFlow.Application.Service">
+    <property name="EmemployeearchiveRepository" ref="EmemployeearchiveRepository"/>
+    <property name="EmPaPoliticsRepository" ref="EmPaPoliticsRepository"/>
   </object>
-
-  <object id="InvoicePointService" type="TEWorkFlow.Application.Service.WorkFlow.InvoicePointService, TEWorkFlow.Application.Service">
-    <property name="InvoicePointRepository" ref="InvoicePointRepository"/>
+  <object id="EmPaPoliticsService" type="TEWorkFlow.Application.Service.Category.EmPaPoliticsService, TEWorkFlow.Application.Service">
+    <property name="EmPaPoliticsRepository" ref="EmPaPoliticsRepository"/>
   </object>
-  
-  <object id="WorkStepService" type="TEWorkFlow.Application.Service.WorkFlow.WorkStepService, TEWorkFlow.Application.Service">
-    <property name="WorkStepRepository" ref="WorkStepRepository"/>
+  <object id="NationService" type="TEWorkFlow.Application.Service.Category.NationService, TEWorkFlow.Application.Service">
+    <property name="NationRepository" ref="NationRepository"/>
   </object>
-
-  <object id="WorkFlowService" type="TEWorkFlow.Application.Service.WorkFlow.WorkFlowService, TEWorkFlow.Application.Service">
-    <property name="WorkFlowRepository" ref="WorkFlowRepository"/>
+  <object id="FbSupplierArchivesService" type="TEWorkFlow.Application.Service.Archives.FbSupplierArchivesService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbSupplierArchivesRepository"/>
+    <property name="PaSupTypeRepository" ref="FbPaSupTypeRepository"/>
   </object>
-  
+  <object id="FbPaSupTypeService" type="TEWorkFlow.Application.Service.Category.FbPaSupTypeService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaSupTypeRepository"/>
+  </object>
+  <object id="BsBranchArchivesService" type="TEWorkFlow.Application.Service.Archives.BsBranchArchivesService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="BsBranchArchivesRepository"/>
+  </object>
+  <object id="BsPaClassService" type="TEWorkFlow.Application.Service.Category.BsPaClassService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="BsPaClassRepository"/>
+  </object>
+  <object id="BsPaAreaService" type="TEWorkFlow.Application.Service.Category.BsPaAreaService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="BsPaAreaRepository"/>
+  </object>
 </objects>

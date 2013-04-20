@@ -1,0 +1,271 @@
+﻿@{
+    ViewBag.Title = "供应商编辑";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Archives.FbSupplierArchives
+@section script
+{
+    <script type="text/javascript">
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Archives/SaveSupplierArchive",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+}
+
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="width:60px;">
+            名称:
+        </td>
+        <td colspan="2">
+            <input name="SupName" value="@Model.SupName" class="mini-textbox" required="true" width="192"/>
+        </td>
+        <td style="width:150px;">
+            
+        </td>
+	</tr>
+	<tr>
+		<td>
+            拼音码:
+        </td>
+        <td>
+            <input name="PyCode" value="@Model.PyCode" class="mini-textbox" required="true"/>
+        </td>
+		<td>
+            类型:
+        </td>
+        <td>
+            <input name="SupTypeCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaSupTypes" value="@Model.SupTypeCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+	</tr>
+	<tr>
+		<td>
+            负责人:
+        </td>
+        <td>
+            <input name="Functionary" value="@Model.Functionary" class="mini-textbox" />
+        </td>
+		<td>
+            负责人电话:
+        </td>
+        <td>
+            <input name="FunctionaryPhone" value="@Model.FunctionaryPhone" class="mini-textbox"/>
+        </td>
+	</tr>
+	<tr>
+		<td>
+            联系人:
+        </td>
+        <td>
+            <input name="Linkman" value="@Model.Linkman" class="mini-textbox" />
+        </td>
+		<td>
+            联系人电话:
+        </td>
+        <td>
+            <input name="ContactPhone" value="@Model.ContactPhone" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            联系地址:
+        </td>
+        <td>
+            <input name="ContactAddress" value="@Model.ContactAddress" class="mini-textbox" />
+        </td>
+		<td>
+            办公电话:
+        </td>
+        <td>
+            <input name="OfficePhone" value="@Model.OfficePhone" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            传真:
+        </td>
+        <td>
+            <input name="FaxPhone" value="@Model.FaxPhone" class="mini-textbox" />
+        </td>
+		<td>
+            邮箱:
+        </td>
+        <td>
+            <input name="eMail" value="@Model.eMail" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            邮政编码:
+        </td>
+        <td>
+            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox" />
+        </td>
+		<td>
+            开户行:
+        </td>
+        <td>
+            <input name="OpenAccount" value="@Model.OpenAccount" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            帐号:
+        </td>
+        <td>
+            <input name="BankAccount" value="@Model.BankAccount" class="mini-textbox" />
+        </td>
+		<td>
+            税号:
+        </td>
+        <td>
+            <input name="TaxNumber" value="@Model.TaxNumber" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            经营方式:
+        </td>
+        <td>
+            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" />
+        </td>
+		<td>
+            进货凭证:
+        </td>
+        <td>
+            <input name="StockVoucher" value="@Model.StockVoucher" class="mini-textbox"  />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            进项税率:
+        </td>
+        <td>
+            <input name="InputTax" value="@Model.InputTax" class="mini-spinner" decimalPlaces="2" required="true"/>
+        </td>
+		<td>
+            结算方式:
+        </td>
+        <td>
+            <input name="BalanceMode" value="@Model.BalanceMode" class="mini-textbox"  />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            付款方式:
+        </td>
+        <td>
+            <input name="PayMode" value="@Model.PayMode" class="mini-textbox" />
+        </td>
+		<td>
+            结算帐期:
+        </td>
+        <td>
+            <input name="BalancePeriod" value="@Model.BalancePeriod" class="mini-textbox"  />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            结算日:
+        </td>
+        <td>
+            <input name="BalanceDay" value="@Model.BalanceDay" class="mini-spinner" required="true"/>
+        </td>
+		<td>
+            供货方式:
+        </td>
+        <td>
+            <input name="OfferMode" value="@Model.OfferMode" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            送货天数:
+        </td>
+        <td>
+            <input name="DeliveryDays" value="@Model.DeliveryDays" class="mini-spinner" required="true"/>
+        </td>
+		<td>
+            扣率:
+        </td>
+        <td>
+            <input name="PoolRate" value="@Model.PoolRate" class="mini-spinner" decimalPlaces="2" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td>
+            保底金额:
+        </td>
+        <td>
+            <input name="FloorsMoney" value="@Model.FloorsMoney" class="mini-spinner" decimalPlaces="2" required="true"/>
+        </td>
+		<td>
+            超额扣率:
+        </td>
+        <td>
+            <input name="ExcessRate" value="@Model.ExcessRate" class="mini-spinner" decimalPlaces="2" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td>
+            创建时间:
+        </td>
+        <td>
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" required="true"/>
+        </td>
+		<td>
+            操作员:
+        </td>
+        <td>
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+	</tr>
+	<tr>
+		<td>
+            审核人:
+        </td>
+        <td>
+            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+		<td>
+            是否审核:
+        </td>
+        <td align="left" style="padding-left: 28px;">
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核"></div>
+        </td>
+	</tr>
+	<tr>
+		<td>
+            审核时间:
+        </td>
+        <td>
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker" required="true"/>
+        </td>
+		<td>
+            操作时间:
+        </td>
+        <td>
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" required="true"/>
+        </td>
+</tr>
+</table>

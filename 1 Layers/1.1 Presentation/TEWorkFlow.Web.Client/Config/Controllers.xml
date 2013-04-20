@@ -2,51 +2,23 @@
 <objects xmlns="http://www.springframework.net">
 
   <object type="TEWorkFlow.Web.Client.Controllers.AccountController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="UserService" ref="UserService" />
+    <property name="SysLoginPowerService" ref="SysLoginPowerService" />
+    <property name="SysmodulecontentService" ref="SysmodulecontentService" />
   </object>
-  
-  <object type="TEWorkFlow.Web.Client.Controllers.UserController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="UserService" ref="UserService" />
-    <property name="GroupService" ref="GroupService" />
-    <property name="ModuleService" ref="ModuleService" />
-    <property name="RoleService" ref="RoleService" />
+  <object type="TEWorkFlow.Web.Client.Controllers.TestController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="SysLoginPowerService" ref="SysLoginPowerService" />
   </object>
-
-  <object type="TEWorkFlow.Web.Client.Controllers.GroupController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="GroupService" ref="GroupService" />
+  <object type="TEWorkFlow.Web.Client.Controllers.ArchivesController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
+    <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
+    <property name="BsBranchArchivesService" ref="BsBranchArchivesService" />
   </object>
-
-  <object type="TEWorkFlow.Web.Client.Controllers.RoleController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="RoleService" ref="RoleService" />
+  <object type="TEWorkFlow.Web.Client.Controllers.CategoryController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="EmPaPoliticsService" ref="EmPaPoliticsService" />
+    <property name="NationService" ref="NationService" />
+    <property name="FbPaSupTypeService" ref="FbPaSupTypeService" />
+    <property name="SysLoginPowerService" ref="SysLoginPowerService" />
+    <property name="BsPaClassService" ref="BsPaClassService" />
+    <property name="BsPaAreaService" ref="BsPaAreaService" />
   </object>
-  
-  <object type="TEWorkFlow.Web.Client.Controllers.HomeController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="UserService" ref="UserService" />
-    <property name="ModuleService" ref="ModuleService" />
-  </object>
-  
-  <object type="TEWorkFlow.Web.Client.Controllers.CaseController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="CaseService" ref="CaseService" />
-  </object>
-  
-  <object type="TEWorkFlow.Web.Client.Controllers.InvoiceController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="InvoiceService" ref="InvoiceService" />
-    <property name="InvoicePointService" ref="InvoicePointService" />
-    <property name="CheckPointService" ref="CheckPointService" />
-    <property name="WorkStepService" ref="WorkStepService" />
-    <property name="UserService" ref="UserService" />
-  </object>
-  
-  <object type="TEWorkFlow.Web.Client.Controllers.CheckPointController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="UserService" ref="UserService" />
-    <property name="CheckPointService" ref="CheckPointService" />
-    <property name="WorkStepService" ref="WorkStepService" />
-  </object>
-
-  <object type="TEWorkFlow.Web.Client.Controllers.WorkStepController, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="WorkStepService" ref="WorkStepService" />
-    <property name="WorkFlowService" ref="WorkFlowService" />
-    <property name="UserService" ref="UserService" />
-  </object>
-  
 </objects>

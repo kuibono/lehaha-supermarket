@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="BsBranchArchives" table="bs_branch_archives" lazy="true" >
+    <id name="Id" type="string" column="b_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="bName" column="b_name" type="string" />
+    <property name="PyCode" column="py_code" type="string" />
+    <property name="bType" column="b_type" type="string" />
+    <property name="bState" column="b_state" type="string" />
+    <property name="AreaCode" column="area_code" type="string" />
+    <property name="ClassCode" column="class_code" type="string" />
+    <property name="Functionary" column="functionary" type="string" />
+    <property name="FunctionaryPhone" column="functionary_phone" type="string" />
+    <property name="ContactAddress" column="contact_address" type="string" />
+    <property name="OfficePhone" column="office_phone" type="string" />
+    <property name="FaxPhone" column="fax_phone" type="string" />
+    <property name="eMail" column="e_mail" type="string" />
+    <property name="Postalcode" column="postalcode" type="string" />
+    <property name="OpenAccount" column="open_account" type="string" />
+    <property name="BankAccount" column="bank_account" type="string" />
+    <property name="TaxNumber" column="tax_number" type="string" />
+    <property name="OpCode" column="op_code" type="string" />
+    <property name="StockVoucher" column="stock_voucher" type="string" />
+    <property name="InputTax" column="input_tax" type="decimal" />
+    <property name="BalanceMode" column="balance_mode" type="string" />
+    <property name="PayMode" column="pay_mode" type="string" />
+    <property name="BalancePeriod" column="balance_period" type="string" />
+    <property name="BalanceDay" column="balance_day" type="decimal" />
+    <property name="DeliveryDays" column="delivery_days" type="decimal" />
+    <property name="SupplyPriceType" column="supply_price_type" type="string" />
+    <property name="GrossRate" column="gross_rate" type="decimal" />
+    <property name="WhCode" column="wh_code" type="string" />
+    <property name="CreateDate" column="create_date" type="System.DateTime" />
+    <property name="Operator" column="operator" type="string" />
+    <property name="Assessor" column="assessor" type="string" />
+    <property name="IfExamine" column="if_examine" type="string" />
+    <property name="ExamineDate" column="examine_date" type="System.DateTime" />
+    <property name="OperatorDate" column="operator_date" type="System.DateTime" />
+  </class>
+</hibernate-mapping>
