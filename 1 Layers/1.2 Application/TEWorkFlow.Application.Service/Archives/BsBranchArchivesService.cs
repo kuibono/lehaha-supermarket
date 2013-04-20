@@ -6,6 +6,7 @@ using NSH.Core.Domain;
 using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Domain.Archives;
+using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Dto;
 
 namespace TEWorkFlow.Application.Service.Archives
@@ -14,6 +15,8 @@ namespace TEWorkFlow.Application.Service.Archives
     {
 
         public IRepositoryGUID<BsBranchArchives> EntityRepository { get; set; }
+        public IRepositoryGUID<BsPaClass> BsPaClassRepository { get; set; }
+        public IRepositoryGUID<BsPaArea> BsPaAreaRepository { get; set; }
 
         [Transaction]
         public string Create(BsBranchArchives entity)
@@ -57,6 +60,30 @@ namespace TEWorkFlow.Application.Service.Archives
             }
         }
 
+        private void FillClassName(IList<BsBranchArchives> entities)
+        {
+            var classes = BsPaClassRepository.GetList();
+            foreach (BsBranchArchives each in entities)
+            {
+                var q = classes.Where(p => p.Id == each.ClassCode);
+                if(q.Count()>0)
+                {
+                    each.ClassName = q.First().ClassName;
+                }
+            }
+        }
+        private void FillAreaName(IList<BsBranchArchives> entities)
+        {
+            var areas = BsPaAreaRepository.GetList();
+            foreach (BsBranchArchives each in entities)
+            {
+                var q = areas.Where(p => p.Id == each.AreaCode);
+                if (q.Count() > 0)
+                {
+                    each.AreaName = q.First().AreaName;
+                }
+            }
+        }
 
         [Transaction]
         public SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c)
@@ -194,6 +221,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
+            FillClassName(result);
+            FillAreaName(result);
             return result.ToSearchResult(count);
         }
 
