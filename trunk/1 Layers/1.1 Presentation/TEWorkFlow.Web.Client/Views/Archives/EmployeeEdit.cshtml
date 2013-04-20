@@ -1,0 +1,231 @@
+﻿@{
+    ViewBag.Title = "人员档案管理";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Archives.Ememployeearchive
+@section script
+{
+    <script type="text/javascript">
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Archives/SaveEmployeeArchive",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 60px;">
+            人员姓名:
+        </td>
+        <td style="width: 140px;">
+            <input name="Emname" value="@Model.Emname" class="mini-textbox" required="true"/>
+        </td>
+        <td style="width: 60px;">
+            曾用名:
+        </td>
+        <td style="width: 140px;">
+            <input name="Nameused" value="@Model.Nameused" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            出生日期:
+        </td>
+        <td>
+            <input name="Birthday" value="@Model.Birthday" class="mini-datepicker"/>
+        </td>
+        <td>
+            性别:
+        </td>
+        <td>
+            <div name="Sex" class="mini-radiobuttonlist" repeatLayout="table" textField="text" valueField="id" value="@Model.Sex" url="/category/sex" ></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            政治面貌:
+        </td>
+        <td>
+            @*<input name="Politicscode" value="@Model.Politicscode" class="mini-textbox"/>*@
+            <input name="Politicscode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/Politics" value="@Model.Politicscode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+        <td>
+            民族:
+        </td>
+        <td>
+            @*<input name="Nationcode" value="@Model.Nationcode" class="mini-textbox"/>*@
+            <input name="Nationcode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/Nations" value="@Model.Nationcode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+    </tr>
+    <tr>
+        <td>
+            学历:
+        </td>
+        <td>
+            <input name="Educationcode" value="@Model.Educationcode" class="mini-textbox"/>
+        </td>
+        <td>
+            职称:
+        </td>
+        <td>
+            <input name="Professionaltitlecode" value="@Model.Professionaltitlecode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            婚否:
+        </td>
+        <td>
+            <div name="Ifmarried" class="mini-radiobuttonlist" repeatLayout="table" textField="text" valueField="id" value="@Model.Ifmarried" url="/Category/Marriage" ></div>
+        </td>
+        <td>
+            籍贯:
+        </td>
+        <td>
+             <input name="Nativeplace" value="@Model.Nativeplace" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            身份证号:
+        </td>
+        <td>
+            <input name="Idcard" value="@Model.Idcard" class="mini-textbox"/>
+        </td>
+        <td>
+            就职日期:
+        </td>
+        <td>
+            <input name="Accededay" value="@Model.Accededay" class="mini-datepicker"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            家庭电话:
+        </td>
+        <td>
+             <input name="Familyphone" value="@Model.Familyphone" class="mini-textbox"/>
+        </td>
+        <td>
+            手机:
+        </td>
+        <td>
+             <input name="Handset" value="@Model.Handset" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            E-mail:
+        </td>
+        <td>
+            <input name="Email" value="@Model.Email" class="mini-textbox"/>
+        </td>
+        <td>
+            家庭住址:
+        </td>
+        <td>
+            <input name="Familyaddress" value="@Model.Familyaddress" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            邮政编码:
+        </td>
+        <td>
+            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox"/>
+        </td>
+        <td>
+            毕业院校:
+        </td>
+        <td>
+            <input name="Graduateacademy" value="@Model.Graduateacademy" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            毕业时间:
+        </td>
+        <td>
+            <input name="Graduateday" value="@Model.Graduateday" class="mini-datepicker"/>
+        </td>
+        <td>
+            部门:
+        </td>
+        <td>
+            <input name="Dcode" value="@Model.Dcode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            分店:
+        </td>
+        <td>
+            <input name="Bcode" value="@Model.Bcode" class="mini-textbox"/>
+        </td>
+        <td>
+            职务:
+        </td>
+        <td>
+            <input name="Dutycode" value="@Model.Dutycode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            银行帐号:
+        </td>
+        <td>
+            <input name="Bankaccount" value="@Model.Bankaccount" class="mini-textbox"/>
+        </td>
+        <td>
+            养老保 <br/>险帐号:
+        </td>
+        <td>
+            <input name="Pensionaccount" value="@Model.Pensionaccount" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            状态:
+        </td>
+        <td>
+            <input name="Emstate" value="@Model.Emstate" class="mini-textbox"/>
+        </td>
+        <td>
+            身高:
+        </td>
+        <td>
+            <input name="Stature" value="@Model.Stature" minValue="100" maxValue="250" class="mini-spinner"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            体重:
+        </td>
+        <td>
+            <input name="Width" value="@Model.Width" minValue="30" maxValue="500" class="mini-spinner"/>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>

@@ -40,21 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archives\BsBranchArchives.cs" />
+    <Compile Include="Archives\Ememployeearchive.cs" />
+    <Compile Include="Archives\FbSupplierArchives.cs" />
+    <Compile Include="Category\BsPaArea.cs" />
+    <Compile Include="Category\BsPaClass.cs" />
+    <Compile Include="Category\EmPaPolitics.cs" />
+    <Compile Include="Category\FbPaSupType.cs" />
+    <Compile Include="Category\Nation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkFlow\Case.cs" />
-    <Compile Include="WorkFlow\CaseStatus.cs" />
-    <Compile Include="WorkFlow\CheckPoint.cs" />
-    <Compile Include="WorkFlow\Invoice.cs" />
-    <Compile Include="WorkFlow\InvoicePoint.cs" />
-    <Compile Include="WorkFlow\Receipt.cs" />
-    <Compile Include="WorkFlow\WorkFlow.cs" />
-    <Compile Include="WorkFlow\WorkStep.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="WorkFlow\CheckPoint.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkFlow\Invoice.hbm.xml" />
+    <Compile Include="Sys\SysLoginPower.cs" />
+    <Compile Include="Sys\Sysmodulecontent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\NSH.Authorization.csproj">
@@ -67,20 +63,36 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WorkFlow\WorkStep.hbm.xml">
+    <EmbeddedResource Include="Sys\SysLoginPower.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sys\Sysmodulecontent.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Archives\Ememployeearchive.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WorkFlow\InvoicePoint.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Category\Nation.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WorkFlow\WorkFlow.hbm.xml" />
+    <EmbeddedResource Include="Category\EmPaPolitics.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WorkFlow\Case.hbm.xml" />
+    <EmbeddedResource Include="Archives\FbSupplierArchives.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Category\FbPaSupType.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Archives\BsBranchArchives.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Category\BsPaClass.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Category\BsPaArea.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

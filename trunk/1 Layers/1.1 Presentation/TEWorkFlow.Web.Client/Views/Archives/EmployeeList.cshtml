@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "人员档案";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section toolbar{
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
+                <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                <span class="separator"></span>
+            </td>
+            <td style="white-space: nowrap;">
+                <input id="Emname" class="mini-textbox" emptytext="请输入姓名" style="width: 150px;" onenter="onKeyEnter" />
+                <a class="mini-button" onclick="search()">查询</a>
+            </td>
+        </tr>
+    </table>
+}
+@section script
+{
+    <script type="text/javascript">
+        function search() {
+            grid.load({
+                "Emname": mini.get("#Emname").value
+            });
+        }
+        function editRow(id) {
+            mini.open({
+                url: "/Archives/EmployeeEdit/" + id,
+                title: "用户管理",
+                iconCls: "icon-user",
+                allowResize:false,
+                width: 450,
+                height: 460,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
+        function deleteItem(id) {
+            $.ajax({
+                url: "/Archives/EmployeeDelete",
+                data: { ids: id },
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+}
+<div id="datagrid1" class="mini-datagrid" url="/Archives/SearchEmployeeArchiveList"
+    style="width: 100%; height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]"
+    pagesize="20" multiselect="true">
+    <div property="columns">
+        <div type="indexcolumn" width="30">
+        </div>
+        <div type="checkcolumn" width="30">
+        </div>
+        <div field="Emname" headeralign="center" align="center" width="60">
+            姓名</div>
+        <div field="Nameused" headeralign="center" align="center" width="60">
+            曾用名</div>
+        <div field="Birthday" headeralign="center" align="center" dateFormat="yyyy-MM-dd">出生日期</div>
+        <div field="SexString" headeralign="center" align="center" width="50">性别</div>
+        <div field="PoliticsName" headeralign="center" align="center" width="60">政治面貌</div>
+        <div field="Nationcode" headeralign="center" align="center" width="50">民族</div>
+        <div field="Educationcode" headeralign="center" align="center" width="80">学历</div>
+        <div field="Professionaltitlecode" headeralign="center" align="center">职称</div>
+        <div field="Marriage" headeralign="center" align="center" width="50">婚否</div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            管理</div>
+    </div>
+</div>

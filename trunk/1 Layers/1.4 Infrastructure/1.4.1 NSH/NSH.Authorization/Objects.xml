@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects default-lazy-init="true" xmlns="http://www.springframework.net">
 
-  <object id="UserRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.User>, NSH.Repository">
+  <!--<object id="UserRepository" type="NSH.Repository.Repository&lt;NSH.Authorization.Domain.User>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
 
@@ -17,6 +17,8 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
   
+  
+  
   <object id="UserService" type="NSH.Authorization.Service.UserService, NSH.Authorization">
     <property name="UserRepository" ref="UserRepository"/>
   </object>
@@ -31,6 +33,6 @@
 
   <object id="RoleService" type="NSH.Authorization.Service.RoleService, NSH.Authorization">
     <property name="RoleRepository" ref="RoleRepository"/>
-  </object>
+  </object>-->
   
 </objects>

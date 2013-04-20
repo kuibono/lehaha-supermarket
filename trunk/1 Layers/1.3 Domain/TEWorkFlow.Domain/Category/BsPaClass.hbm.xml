@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Category">
+  <class name="BsPaClass" table="bs_pa_class" lazy="true" >
+    <id name="Id" type="string" column="class_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="ClassName" column="class_name" type="string" />
+  </class>
+</hibernate-mapping>
