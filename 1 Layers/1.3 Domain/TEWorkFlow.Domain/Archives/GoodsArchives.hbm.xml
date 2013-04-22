@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="GoodsArchives" table="fb_goods_archives" lazy="true" >
+    <id name="Id" type="string" column="goods_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="GoodsBarCode" column="goods_bar_code" type="string" />
+    <property name="GoodsSubCode" column="goods_sub_code" type="string" />
+    <property name="GbCode" column="gb_code" type="string" />
+    <property name="GmCode" column="gm_code" type="string" />
+    <property name="GsCode" column="gs_code" type="string" />
+    <property name="GlCode" column="gl_code" type="string" />
+    <property name="GoodsType" column="goods_type" type="string" />
+    <property name="CheckMode" column="check_mode" type="string" />
+    <property name="SupCode" column="sup_code" type="string" />
+    <property name="OpCode" column="op_code" type="string" />
+    <property name="PoolRate" column="pool_rate" type="decimal" />
+    <property name="GoodsName" column="goods_name" type="string" />
+    <property name="GoodsSubName" column="goods_sub_name" type="string" />
+    <property name="PyCode" column="py_code" type="string" />
+    <property name="GoodsState" column="goods_state" type="string" />
+    <property name="ProducingArea" column="producing_area" type="string" />
+    <property name="ArticleNumber" column="article_number" type="string" />
+    <property name="Specification" column="specification" type="string" />
+    <property name="ShelfLife" column="shelf_life" type="string" />
+    <property name="PackUnitCode" column="pack_unit_code" type="string" />
+    <property name="OfferMode" column="offer_mode" type="string" />
+    <property name="PackCoef" column="pack_coef" type="decimal" />
+    <property name="OfferMin" column="offer_min" type="decimal" />
+    <property name="InputTax" column="input_tax" type="decimal" />
+    <property name="OutputTax" column="output_tax" type="decimal" />
+    <property name="StockUpperLimit" column="stock_upper_limit" type="decimal" />
+    <property name="StockLowerLimit" column="stock_lower_limit" type="decimal" />
+    <property name="UnderFloorCode" column="under_floor_code" type="string" />
+    <property name="UnderCounterCode" column="under_counter_code" type="string" />
+    <property name="CheckUnitCode" column="check_unit_code" type="string" />
+    <property name="PurchasePrice" column="purchase_price" type="decimal" />
+    <property name="NontaxPurchasePrice" column="nontax_purchase_price" type="decimal" />
+    <property name="AvgCost" column="avg_cost" type="decimal" />
+    <property name="NontaxAvgCost" column="nontax_avg_cost" type="decimal" />
+    <property name="GrossRate" column="gross_rate" type="decimal" />
+    <property name="SalePrice" column="sale_price" type="decimal" />
+    <property name="VipPrice" column="vip_price" type="decimal" />
+    <property name="TradePrice" column="trade_price" type="decimal" />
+    <property name="PushRate" column="push_rate" type="decimal" />
+    <property name="CreateDate" column="create_date" type="System.DateTime" />
+    <property name="Operator" column="operator" type="string" />
+    <property name="Assessor" column="assessor" type="string" />
+    <property name="IfExamine" column="if_examine" type="string" />
+    <property name="ExamineDate" column="examine_date" type="System.DateTime" />
+    <property name="OperatorDate" column="operator_date" type="System.DateTime" />
+
+
+  </class>
+</hibernate-mapping>
+
+
