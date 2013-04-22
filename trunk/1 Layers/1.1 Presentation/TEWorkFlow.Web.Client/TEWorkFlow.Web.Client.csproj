@@ -808,6 +808,8 @@
     <Content Include="Views\Archives\SupplierEdit.cshtml" />
     <Content Include="Views\Archives\BranchList.cshtml" />
     <Content Include="Views\Archives\BranchEdit.cshtml" />
+    <Content Include="Views\Archives\GoodsList.cshtml" />
+    <Content Include="Views\Archives\GoodsEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

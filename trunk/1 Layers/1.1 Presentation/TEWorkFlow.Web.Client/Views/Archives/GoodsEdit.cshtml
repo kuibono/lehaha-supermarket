@@ -1,0 +1,348 @@
+﻿@{
+    ViewBag.Title = "商品档案编辑";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Archives.GoodsArchives
+@section script
+{
+    <script type="text/javascript">
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Archives/SaveGoodsArchive",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+
+	<tr>
+		<td style="width: 60px;">
+            GoodsCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsCode" value="@Model.Id" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GoodsBarCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsBarCode" value="@Model.GoodsBarCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GoodsSubCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsSubCode" value="@Model.GoodsSubCode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            GbCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GbCode" value="@Model.GbCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GmCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GmCode" value="@Model.GmCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GsCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GsCode" value="@Model.GsCode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            GlCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="GlCode" value="@Model.GlCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GoodsType:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsType" value="@Model.GoodsType" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            CheckMode:
+        </td>
+        <td style="width: 140px;">
+            <input name="CheckMode" value="@Model.CheckMode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            SupCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="SupCode" value="@Model.SupCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            OpCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            PoolRate:
+        </td>
+        <td style="width: 140px;">
+            <input name="PoolRate" value="@Model.PoolRate" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            GoodsName:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsName" value="@Model.GoodsName" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GoodsSubName:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsSubName" value="@Model.GoodsSubName" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            PyCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="PyCode" value="@Model.PyCode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            GoodsState:
+        </td>
+        <td style="width: 140px;">
+            <input name="GoodsState" value="@Model.GoodsState" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            ProducingArea:
+        </td>
+        <td style="width: 140px;">
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            ArticleNumber:
+        </td>
+        <td style="width: 140px;">
+            <input name="ArticleNumber" value="@Model.ArticleNumber" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            Specification:
+        </td>
+        <td style="width: 140px;">
+            <input name="Specification" value="@Model.Specification" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            ShelfLife:
+        </td>
+        <td style="width: 140px;">
+            <input name="ShelfLife" value="@Model.ShelfLife" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            PackUnitCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="PackUnitCode" value="@Model.PackUnitCode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            OfferMode:
+        </td>
+        <td style="width: 140px;">
+            <input name="OfferMode" value="@Model.OfferMode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            PackCoef:
+        </td>
+        <td style="width: 140px;">
+            <input name="PackCoef" value="@Model.PackCoef" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            OfferMin:
+        </td>
+        <td style="width: 140px;">
+            <input name="OfferMin" value="@Model.OfferMin" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            InputTax:
+        </td>
+        <td style="width: 140px;">
+            <input name="InputTax" value="@Model.InputTax" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            OutputTax:
+        </td>
+        <td style="width: 140px;">
+            <input name="OutputTax" value="@Model.OutputTax" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            StockUpperLimit:
+        </td>
+        <td style="width: 140px;">
+            <input name="StockUpperLimit" value="@Model.StockUpperLimit" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            StockLowerLimit:
+        </td>
+        <td style="width: 140px;">
+            <input name="StockLowerLimit" value="@Model.StockLowerLimit" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            UnderFloorCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="UnderFloorCode" value="@Model.UnderFloorCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            UnderCounterCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="UnderCounterCode" value="@Model.UnderCounterCode" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            CheckUnitCode:
+        </td>
+        <td style="width: 140px;">
+            <input name="CheckUnitCode" value="@Model.CheckUnitCode" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            PurchasePrice:
+        </td>
+        <td style="width: 140px;">
+            <input name="PurchasePrice" value="@Model.PurchasePrice" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            NontaxPurchasePrice:
+        </td>
+        <td style="width: 140px;">
+            <input name="NontaxPurchasePrice" value="@Model.NontaxPurchasePrice" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            AvgCost:
+        </td>
+        <td style="width: 140px;">
+            <input name="AvgCost" value="@Model.AvgCost" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            NontaxAvgCost:
+        </td>
+        <td style="width: 140px;">
+            <input name="NontaxAvgCost" value="@Model.NontaxAvgCost" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            GrossRate:
+        </td>
+        <td style="width: 140px;">
+            <input name="GrossRate" value="@Model.GrossRate" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            SalePrice:
+        </td>
+        <td style="width: 140px;">
+            <input name="SalePrice" value="@Model.SalePrice" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            VipPrice:
+        </td>
+        <td style="width: 140px;">
+            <input name="VipPrice" value="@Model.VipPrice" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            TradePrice:
+        </td>
+        <td style="width: 140px;">
+            <input name="TradePrice" value="@Model.TradePrice" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            PushRate:
+        </td>
+        <td style="width: 140px;">
+            <input name="PushRate" value="@Model.PushRate" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            CreateDate:
+        </td>
+        <td style="width: 140px;">
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            Operator:
+        </td>
+        <td style="width: 140px;">
+            <input name="Operator" value="@Model.Operator" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            Assessor:
+        </td>
+        <td style="width: 140px;">
+            <input name="Assessor" value="@Model.Assessor" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            IfExamine:
+        </td>
+        <td style="width: 140px;">
+            <input name="IfExamine" value="@Model.IfExamine" class="mini-textbox" required="true"/>
+        </td>
+		<td style="width: 60px;">
+            ExamineDate:
+        </td>
+        <td style="width: 140px;">
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-textbox" required="true"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            OperatorDate:
+        </td>
+        <td style="width: 140px;">
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-textbox" required="true"/>
+        </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    	</tr>
+</table>

@@ -153,6 +153,16 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "goods_archives",
+                ParentId = "archives",
+                Url = "/Archives/GoodsList",
+                Windowname = "商品档案"
+            };
+            SysmodulecontentService.Create(m1);
+
             return null;
         }
 
