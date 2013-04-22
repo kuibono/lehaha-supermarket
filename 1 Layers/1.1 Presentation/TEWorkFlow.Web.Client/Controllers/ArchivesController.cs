@@ -161,6 +161,55 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult BranchDelete(List<string> ids)
+        {
+            BsBranchArchivesService.Delete(ids);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region 商品档案
+
+        public IGoodsArchivesService GoodsArchivesService { get; set; }
+        public ActionResult GoodsList()
+        {
+            return View();
+        }
+
+        public JsonResult SearchGoodsArchiveList(SearchDtoBase<GoodsArchives> c, GoodsArchives s)
+        {
+            c.entity = s;
+            return Json(GoodsArchivesService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GoodsEdit(string id)
+        {
+            GoodsArchives entity = new GoodsArchives();
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                entity = GoodsArchivesService.GetById(id);
+            }
+            return View(entity);
+        }
+        public JsonResult SaveGoodsArchive(GoodsArchives s)
+        {
+            if (s.HaveId)
+            {
+                GoodsArchivesService.Update(s);
+            }
+            else
+            {
+                s.Id = Guid.NewGuid().ToString();
+                GoodsArchivesService.Create(s);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GoodsDelete(List<string> ids)
+        {
+            GoodsArchivesService.Delete(ids);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
     }

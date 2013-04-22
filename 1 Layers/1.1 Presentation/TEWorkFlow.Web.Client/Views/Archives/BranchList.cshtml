@@ -43,7 +43,7 @@
         }
         function deleteItem(id) {
             $.ajax({
-                url: "/Archives/EmployeeDelete",
+                url: "/Archives/BranchDelete",
                 data: { ids: id },
                 success: function (text) {
                     grid.reload();

@@ -14,6 +14,7 @@
     <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
     <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
     <property name="BsBranchArchivesService" ref="BsBranchArchivesService" />
+    <property name="GoodsArchivesService" ref="GoodsArchivesService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.CategoryController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="EmPaPoliticsService" ref="EmPaPoliticsService" />

@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "商品档案列表";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section toolbar{
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
+                <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                <span class="separator"></span>
+            </td>
+            <td style="white-space: nowrap;">
+                <input id="Id" class="mini-textbox" emptytext="请输入编码" style="width: 150px;" onenter="onKeyEnter" />
+                <a class="mini-button" onclick="search()">查询</a>
+            </td>
+        </tr>
+    </table>
+}
+@section script
+{
+    <script type="text/javascript">
+        function search() {
+            grid.load({
+                "Id": mini.get("#Id").value
+            });
+        }
+        function editRow(id) {
+            mini.open({
+                url: "/Archives/GoodsEdit/" + id,
+                title: "商品档案管理",
+                iconCls: "icon-user",
+                allowResize: false,
+                width: 750,
+                height: 500,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
+        function deleteItem(id) {
+            $.ajax({
+                url: "/Archives/GoodsDelete",
+                data: { ids: id },
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+}
+<div id="datagrid1" class="mini-datagrid" url="/Archives/SearchGoodsArchiveList"
+    style="width: 100%; height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]"
+    pagesize="20" multiselect="true">
+    <div property="columns">
+        <div type="indexcolumn" width="30">
+        </div>
+        <div type="checkcolumn" width="30">
+        </div>
+        <div field="GoodsCode" headeralign="center" align="center" width="60">GoodsCode</div>
+        <div field="GoodsBarCode" headeralign="center" align="center" width="60">GoodsBarCode</div>
+        <div field="GoodsSubCode" headeralign="center" align="center" width="60">GoodsSubCode</div>
+        <div field="GbCode" headeralign="center" align="center" width="60">GbCode</div>
+        <div field="GmCode" headeralign="center" align="center" width="60">GmCode</div>
+        <div field="GsCode" headeralign="center" align="center" width="60">GsCode</div>
+        <div field="GlCode" headeralign="center" align="center" width="60">GlCode</div>
+        <div field="GoodsType" headeralign="center" align="center" width="60">GoodsType</div>
+        <div field="CheckMode" headeralign="center" align="center" width="60">CheckMode</div>
+        <div field="SupCode" headeralign="center" align="center" width="60">SupCode</div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer" cellstyle="padding:0;">管理</div>
+    </div>
+</div>
