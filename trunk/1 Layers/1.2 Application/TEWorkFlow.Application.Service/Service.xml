@@ -33,6 +33,10 @@
   <object id="BsPaAreaRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.BsPaArea>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="GoodsArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.GoodsArchives>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -71,5 +75,8 @@
   </object>
   <object id="BsPaAreaService" type="TEWorkFlow.Application.Service.Category.BsPaAreaService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="BsPaAreaRepository"/>
+  </object>
+  <object id="GoodsArchivesService" type="TEWorkFlow.Application.Service.Archives.GoodsArchivesService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="GoodsArchivesRepository"/>
   </object>
 </objects>

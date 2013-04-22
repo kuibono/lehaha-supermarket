@@ -43,6 +43,7 @@
     <Compile Include="Archives\BsBranchArchives.cs" />
     <Compile Include="Archives\Ememployeearchive.cs" />
     <Compile Include="Archives\FbSupplierArchives.cs" />
+    <Compile Include="Archives\GoodsArchives.cs" />
     <Compile Include="Category\BsPaArea.cs" />
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
@@ -93,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Category\BsPaArea.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Archives\GoodsArchives.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
