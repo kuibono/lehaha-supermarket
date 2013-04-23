@@ -22,20 +22,20 @@
     <property name="TaxNumber" column="tax_number" type="string" />
     <property name="OpCode" column="op_code" type="string" />
     <property name="StockVoucher" column="stock_voucher" type="string" />
-    <property name="InputTax" column="input_tax" type="decimal" />
+    <property name="InputTax" column="input_tax" type="decimal" not-null="false" />
     <property name="BalanceMode" column="balance_mode" type="string" />
     <property name="PayMode" column="pay_mode" type="string" />
     <property name="BalancePeriod" column="balance_period" type="string" />
-    <property name="BalanceDay" column="balance_day" type="decimal" />
-    <property name="DeliveryDays" column="delivery_days" type="decimal" />
+    <property name="BalanceDay" column="balance_day" type="decimal" not-null="false"/>
+    <property name="DeliveryDays" column="delivery_days" type="decimal" not-null="false" />
     <property name="SupplyPriceType" column="supply_price_type" type="string" />
-    <property name="GrossRate" column="gross_rate" type="decimal" />
+    <property name="GrossRate" column="gross_rate" type="decimal" not-null="false" />
     <property name="WhCode" column="wh_code" type="string" />
-    <property name="CreateDate" column="create_date" type="System.DateTime" />
+    <property name="CreateDate" column="create_date" type="System.DateTime" not-null="false"/>
     <property name="Operator" column="operator" type="string" />
     <property name="Assessor" column="assessor" type="string" />
     <property name="IfExamine" column="if_examine" type="string" />
-    <property name="ExamineDate" column="examine_date" type="System.DateTime" />
-    <property name="OperatorDate" column="operator_date" type="System.DateTime" />
+    <property name="ExamineDate" column="examine_date" type="System.DateTime" not-null="false"/>
+    <property name="OperatorDate" column="operator_date" type="System.DateTime" not-null="false"/>
   </class>
 </hibernate-mapping>
