@@ -122,12 +122,12 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal BalanceDay { get; set; }
+        public virtual decimal? BalanceDay { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal DeliveryDays { get; set; }
+        public virtual decimal? DeliveryDays { get; set; }
 
         /// <summary>
         /// 
@@ -137,7 +137,7 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal GrossRate { get; set; }
+        public virtual decimal? GrossRate { get; set; }
 
         /// <summary>
         /// 
@@ -147,7 +147,7 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime CreateDate { get; set; }
+        public virtual System.DateTime? CreateDate { get; set; }
 
         /// <summary>
         /// 
@@ -167,12 +167,12 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime ExamineDate { get; set; }
+        public virtual System.DateTime? ExamineDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime OperatorDate { get; set; }
+        public virtual System.DateTime? OperatorDate { get; set; }
 
 
 

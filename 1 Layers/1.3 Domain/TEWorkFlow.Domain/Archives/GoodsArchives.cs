@@ -60,7 +60,7 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PoolRate { get; set; }
+        public virtual decimal? PoolRate { get; set; }
 
         /// <summary>
         /// 
@@ -115,32 +115,32 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PackCoef { get; set; }
+        public virtual decimal? PackCoef { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal OfferMin { get; set; }
+        public virtual decimal? OfferMin { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal InputTax { get; set; }
+        public virtual decimal? InputTax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal OutputTax { get; set; }
+        public virtual decimal? OutputTax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal StockUpperLimit { get; set; }
+        public virtual decimal? StockUpperLimit { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal StockLowerLimit { get; set; }
+        public virtual decimal? StockLowerLimit { get; set; }
 
         /// <summary>
         /// 
@@ -160,52 +160,52 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PurchasePrice { get; set; }
+        public virtual decimal? PurchasePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal NontaxPurchasePrice { get; set; }
+        public virtual decimal? NontaxPurchasePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal AvgCost { get; set; }
+        public virtual decimal? AvgCost { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal NontaxAvgCost { get; set; }
+        public virtual decimal? NontaxAvgCost { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal GrossRate { get; set; }
+        public virtual decimal? GrossRate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal SalePrice { get; set; }
+        public virtual decimal? SalePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal VipPrice { get; set; }
+        public virtual decimal? VipPrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal TradePrice { get; set; }
+        public virtual decimal? TradePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PushRate { get; set; }
+        public virtual decimal? PushRate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime CreateDate { get; set; }
+        public virtual System.DateTime? CreateDate { get; set; }
 
         /// <summary>
         /// 
@@ -225,12 +225,12 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime ExamineDate { get; set; }
+        public virtual System.DateTime? ExamineDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime OperatorDate { get; set; }
+        public virtual System.DateTime? OperatorDate { get; set; }
 
         protected override void Validate()
         {

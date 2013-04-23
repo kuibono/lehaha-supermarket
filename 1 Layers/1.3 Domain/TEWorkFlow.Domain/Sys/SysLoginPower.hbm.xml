@@ -10,8 +10,8 @@
     <property name="Ifcash" column="if_cash" type="string" />
     <property name="Cashfunction" column="cash_function" type="string" />
     <property name="Userstate" column="user_state" type="string" />
-    <property name="Maxdiscount" column="max_discount" type="decimal" />
-    <property name="UserType" column="user_type" type="int" />
+    <property name="Maxdiscount" column="max_discount" type="decimal" not-null="false"/>
+    <property name="UserType" column="user_type" type="int" not-null="false"/>
   </class>
 </hibernate-mapping>
 

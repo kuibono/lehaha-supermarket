@@ -14,8 +14,8 @@ namespace TEWorkFlow.Domain.Sys
         public virtual string Ifcash { get; set; }
         public virtual string Cashfunction { get; set; }
         public virtual string Userstate { get; set; }
-        public virtual decimal Maxdiscount { get; set; }
-        public virtual int UserType { get; set; }
+        public virtual decimal? Maxdiscount { get; set; }
+        public virtual int? UserType { get; set; }
 
         public virtual string UserTypeName
         {

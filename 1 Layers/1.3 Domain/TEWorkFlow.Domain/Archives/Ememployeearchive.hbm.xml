@@ -6,7 +6,7 @@
     </id>
     <property name="Emname" column="em_name" type="string" />
     <property name="Nameused" column="name_used" type="string" />
-    <property name="Birthday" column="birthday" type="DateTime" />
+    <property name="Birthday" column="birthday" type="DateTime" not-null="false"/>
     <property name="Sex" column="sex" type="string" />
     <property name="Politicscode" column="politics_code" type="string" />
     <property name="Nationcode" column="nation_code" type="string" />
@@ -15,22 +15,22 @@
     <property name="Ifmarried" column="if_married" type="string" />
     <property name="Nativeplace" column="native_place" type="string" />
     <property name="Idcard" column="idcard" type="string" />
-    <property name="Accededay" column="accede_day" type="DateTime" />
+    <property name="Accededay" column="accede_day" type="DateTime" not-null="false"/>
     <property name="Familyphone" column="family_phone" type="string" />
     <property name="Handset" column="handset" type="string" />
     <property name="Email" column="e_mail" type="string" />
     <property name="Familyaddress" column="family_address" type="string" />
     <property name="Postalcode" column="postalcode" type="string" />
     <property name="Graduateacademy" column="graduate_academy" type="string" />
-    <property name="Graduateday" column="graduate_day" type="DateTime" />
+    <property name="Graduateday" column="graduate_day" type="DateTime" not-null="false"/>
     <property name="Dcode" column="d_code" type="string" />
     <property name="Bcode" column="b_code" type="string" />
     <property name="Dutycode" column="duty_code" type="string" />
     <property name="Bankaccount" column="bank_account" type="string" />
     <property name="Pensionaccount" column="pension_account" type="string" />
     <property name="Emstate" column="em_state" type="string" />
-    <property name="Stature" column="stature" type="Decimal" />
-    <property name="Width" column="width" type="Decimal" />
+    <property name="Stature" column="stature" type="Decimal" not-null="false"/>
+    <property name="Width" column="width" type="Decimal" not-null="false"/>
   </class>
 </hibernate-mapping>
 
