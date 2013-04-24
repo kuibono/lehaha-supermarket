@@ -47,6 +47,7 @@
     <Compile Include="Category\BsPaArea.cs" />
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
+    <Compile Include="Category\FbPaGoodsGb.cs" />
     <Compile Include="Category\FbPaSupType.cs" />
     <Compile Include="Category\Nation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Archives\GoodsArchives.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Category\FbPaGoodsGb.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
