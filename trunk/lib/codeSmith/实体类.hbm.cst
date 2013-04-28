@@ -1,0 +1,36 @@
+﻿<%-- 
+Name: 数据库实体类
+Author: B哥
+Description: 数据库实体类
+--%>
+<%@ CodeTemplate Language="C#" TargetLanguage="C#" ResponseEncoding="UTF-8" Debug="False" Description="生成数据库实体" %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="属性" Description="要生成实体的数据表" %>
+<%@ Property Name="NameSpace" Type="System.String" Default="WanerSoft.Model" Optional="False" Category="属性" Description="实体类所在的命名空间" %>
+<%@ Property Name="opuser" Type="System.String" Default="" Optional="False" Category="属性" Description="请输入您的名字" %>
+<%@ Map Name="CSharpAlias" Src="System-CSharpAlias" Description="System to C# Type Map" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+/*
+*本代码由代码生成器自动生成，请不要更改此文件的任何代码。
+*生成时间：<%= DateTime.Now.ToLocalTime() %>
+*生成者：<%= opuser %>
+*/
+
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="<%= this.NameSpace %>">
+  <class name="<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>" table="<%= this.SourceTable.Name %>" lazy="true" >
+    <id name="Id" type="string" column="<%= this.SourceTable.PrimaryKey.MemberColumns[0].Column.Name %>" >
+      <generator class="assigned" />
+    </id>
+	<% foreach (ColumnSchema column in this.SourceTable.Columns) {  %>
+		<property name="<%= StringUtil.ToPascalCase(column.Name) %>" column="<%= column.Name %>" type="<%= CSharpAlias[column.SystemType.FullName] %>" />
+	<% } %>
+    
+
+  </class>
+</hibernate-mapping>
+
+
