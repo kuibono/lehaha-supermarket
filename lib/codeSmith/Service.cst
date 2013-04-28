@@ -1,0 +1,201 @@
+﻿<%-- 
+Name: 数据库实体类
+Author: B哥
+Description: 数据库实体类
+--%>
+<%@ CodeTemplate Language="C#" TargetLanguage="C#" ResponseEncoding="UTF-8" Debug="False" Description="生成数据库实体" %>
+<%@ Property Name="SourceTable" Type="SchemaExplorer.TableSchema" Category="属性" Description="要生成实体的数据表" %>
+<%@ Property Name="NameSpace" Type="System.String" Default="WanerSoft.Model" Optional="False" Category="属性" Description="实体类所在的命名空间" %>
+<%@ Property Name="opuser" Type="System.String" Default="" Optional="False" Category="属性" Description="请输入您的名字" %>
+<%@ Map Name="CSharpAlias" Src="System-CSharpAlias" Description="System to C# Type Map" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+/*
+*本代码由代码生成器自动生成，请不要更改此文件的任何代码。
+*生成时间：<%= DateTime.Now.ToLocalTime() %>
+*生成者：<%= opuser %>
+*/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NSH.Core.Domain;
+using NSH.Core.Domain.Specifications;
+using Spring.Transaction.Interceptor;
+using TEWorkFlow.Dto;
+
+namespace <%= this.NameSpace %>
+{
+    public interface I<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Service
+    {
+        string Create(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity);
+
+        <%= StringUtil.ToPascalCase(this.SourceTable.Name) %> GetById(string id);
+
+        IList<<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>> GetAll();
+
+        void Update(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity);
+
+        /// <summary>
+        /// 删除指定<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>
+        /// </summary>
+        /// <param name="entity"></param>
+        void Delete(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity);
+
+        /// <summary>
+        /// <%= StringUtil.ToPascalCase(this.SourceTable.Name) %>
+        /// </summary>
+        /// <param name="entitys"></param>
+        void Delete(IEnumerable<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> entitys);
+
+
+        SearchResult<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> Search(SearchDtoBase<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> c);
+
+        void Delete(IList<string> ids);
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using NSH.Core.Domain;
+using NSH.Core.Domain.Specifications;
+using Spring.Transaction.Interceptor;
+using TEWorkFlow.Dto;
+
+namespace <%= this.NameSpace %>
+{
+    public class <%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Service:I<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Service
+    {
+
+        public IRepositoryGUID<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> EntityRepository { get; set; }
+
+        [Transaction]
+        public string Create(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity)
+        {
+            return EntityRepository.Save(entity);
+        }
+
+        [Transaction]
+        public <%= StringUtil.ToPascalCase(this.SourceTable.Name) %> GetById(string id)
+        {
+            return EntityRepository.Get(id);
+        }
+
+        [Transaction]
+        public IList<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> GetAll()
+        {
+            var result=EntityRepository.LinqQuery.ToList();
+           
+            return result;
+        }
+
+
+        [Transaction]
+        public void Update(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity)
+        {
+            EntityRepository.Update(entity);
+        }
+
+        [Transaction]
+        public void Delete(<%= StringUtil.ToPascalCase(this.SourceTable.Name) %> entity)
+        {
+            EntityRepository.Delete(entity);
+        }
+
+        [Transaction]
+        public void Delete(IEnumerable<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> entitys)
+        {
+            foreach (var entity in entitys)
+            {
+                EntityRepository.Delete(entity);
+            }
+        }
+
+
+        [Transaction]
+        public SearchResult<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> Search(SearchDtoBase<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> c)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (c.entity != null)
+            {
+				
+				<% foreach (ColumnSchema column in this.SourceTable.Columns) {  %>
+					<% if (column.SystemType.ToString()=="System.String")
+					{%>
+					if (string.IsNullOrEmpty(c.entity.<%= StringUtil.ToPascalCase(column.Name) %>) == false)
+					{
+						q = q.Where(p => p.<%= StringUtil.ToPascalCase(column.Name) %>.Contains(c.entity.<%= StringUtil.ToPascalCase(column.Name) %>));
+					}
+					<%}
+					else if (column.SystemType.ToString()=="System.Decimal"){
+					%>
+					 if (c.entity.<%= StringUtil.ToPascalCase(column.Name) %> > 0)
+					{
+						q = q.Where(p => p.<%= StringUtil.ToPascalCase(column.Name) %> == c.entity.<%= StringUtil.ToPascalCase(column.Name) %>);
+					}
+					
+					<%}%>
+				<%}%>
+                
+            }
+            int count = q.Count();
+
+            q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
+            var result = q.ToList();
+            return result.ToSearchResult(count);
+        }
+
+        [Transaction]
+        public void Delete(IList<string> ids)
+        {
+            var q = EntityRepository.LinqQuery.Where(p => ids.Contains(p.Id));
+            foreach (var each in q)
+            {
+                Delete(each);
+            }
+        }
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////
+  <object id="<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Repository" type="NSH.Repository.RepositoryGUID&lt;<%= this.NameSpace %>.<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+////////////////////////////////////////////////////////////////
+<object id="<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Service" type="<%= this.NameSpace %>.<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Service, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="<%= StringUtil.ToPascalCase(this.SourceTable.Name) %>Repository"/>
+  </object>
+
+
+
+
+<script runat="template">
+private string _savefile;
+[Editor(typeof(FileNameEditor),typeof(System.Drawing.Design.UITypeEditor)),FileDialogAttribute(FileDialogType.Save,Title="save as",Filter="C# File|(*.cs)")]
+public string SaveFile
+{
+   get
+   {
+    return _savefile;
+   }
+   set
+   {
+    _savefile = value;
+   }
+}
+public override void Render(TextWriter tw)
+{
+   StreamWriter fs1 = new StreamWriter(_savefile,true);
+   this.Response.AddTextWriter(fs1);
+   base.Render(tw);
+   fs1.Close();
+}
+</script>
