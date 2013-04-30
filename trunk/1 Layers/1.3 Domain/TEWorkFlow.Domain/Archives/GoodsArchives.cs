@@ -232,6 +232,19 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual System.DateTime? OperatorDate { get; set; }
 
+
+
+
+
+        public virtual string GbName { get; set; }
+
+        public virtual string GmName { get; set; }
+
+        public virtual string GsName { get; set; }
+
+        public virtual string GlName { get; set; }
+
+
         protected override void Validate()
         {
         }

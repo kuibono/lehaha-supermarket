@@ -48,6 +48,9 @@
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
     <Compile Include="Category\FbPaGoodsGb.cs" />
+    <Compile Include="Category\FbPaGoodsGl.cs" />
+    <Compile Include="Category\FbPaGoodsGm.cs" />
+    <Compile Include="Category\FbPaGoodsGs.cs" />
     <Compile Include="Category\FbPaSupType.cs" />
     <Compile Include="Category\Nation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +106,11 @@
     <EmbeddedResource Include="Category\FbPaGoodsGb.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Category\FbPaGoodsGl.hbm.xml" />
+    <EmbeddedResource Include="Category\FbPaGoodsGm.hbm.xml" />
+    <EmbeddedResource Include="Category\FbPaGoodsGs.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

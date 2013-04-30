@@ -36,7 +36,18 @@
   <object id="GoodsArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.GoodsArchives>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  
+  <object id="FbPaGoodsGbRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaGoodsGb>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="FbPaGoodsGlRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaGoodsGl>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="FbPaGoodsGmRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaGoodsGm>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="FbPaGoodsGsRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaGoodsGs>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -78,5 +89,21 @@
   </object>
   <object id="GoodsArchivesService" type="TEWorkFlow.Application.Service.Archives.GoodsArchivesService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="GoodsArchivesRepository"/>
+    <property name="GbRepository" ref="FbPaGoodsGbRepository"/>
+    <property name="GmRepository" ref="FbPaGoodsGmRepository"/>
+    <property name="GsRepository" ref="FbPaGoodsGsRepository"/>
+    <property name="GlRepository" ref="FbPaGoodsGlRepository"/>
+  </object>
+  <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>
+  </object>
+  <object id="FbPaGoodsGlService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGlService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaGoodsGlRepository"/>
+  </object>
+  <object id="FbPaGoodsGmService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGmService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaGoodsGmRepository"/>
+  </object>
+  <object id="FbPaGoodsGsService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGsService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaGoodsGsRepository"/>
   </object>
 </objects>
