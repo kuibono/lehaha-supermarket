@@ -108,6 +108,47 @@ namespace TEWorkFlow.Web.Client.Controllers
             var result = BsPaAreaService.GetAll().Select(p => new { id = p.Id, text = p.AreaName }).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        #region 商品分类
+
+        #region 大类
+        public IFbPaGoodsGbService FbPaGoodsGbService { get; set; }
+        public JsonResult GetFbPaGoodsGb()
+        {
+            var result = FbPaGoodsGbService.GetAll().Select(p => new { id = p.Id, text = p.GbName }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region 中类
+        public IFbPaGoodsGmService FbPaGoodsGmService { get; set; }
+        public JsonResult GetFbPaGoodsGm(string id)
+        {
+            var result = FbPaGoodsGmService.GetByGbId(id).Select(p => new { id = p.Id, text = p.GmName }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region 小类
+        public IFbPaGoodsGsService FbPaGoodsGsService { get; set; }
+        public JsonResult GetFbPaGoodsGs(string id)
+        {
+            var result = FbPaGoodsGsService.GetByGbId(id).Select(p => new { id = p.Id, text = p.GsName }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region 细类
+        public IFbPaGoodsGlService FbPaGoodsGlService { get; set; }
+        public JsonResult GetFbPaGoodsGl(string id)
+        {
+            var result = FbPaGoodsGlService.GetByGsId(id).Select(p => new { id = p.Id, text = p.GlName }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #endregion
     }
 
     public class item

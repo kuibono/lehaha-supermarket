@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Domain.Category;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -14,6 +15,10 @@ namespace TEWorkFlow.Application.Service.Archives
     {
 
         public IRepositoryGUID<GoodsArchives> EntityRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGb> GbRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGm> GmRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGs> GsRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
 
         [Transaction]
         public string Create(GoodsArchives entity)
@@ -57,6 +62,39 @@ namespace TEWorkFlow.Application.Service.Archives
             }
         }
 
+        private void FillClassName(IList<GoodsArchives> entitys)
+        {
+            var gbs = GbRepository.LinqQuery.ToList();
+            var gms = GmRepository.LinqQuery.ToList();
+            var gss = GsRepository.LinqQuery.ToList();
+            var gls = GlRepository.LinqQuery.ToList();
+
+            foreach (var entity in entitys)
+            {
+                var gb = from l in gbs where l.Id == entity.GbCode select l;
+                if (gb.Count() > 0)
+                {
+                    entity.GbName = gb.First().GbName;
+                }
+                var gm = from l in gms where l.Id == entity.GmCode select l;
+                if (gm.Count() > 0)
+                {
+                    entity.GmName = gm.First().GmName;
+                }
+                var gs = from l in gss where l.Id == entity.GsCode select l;
+                if (gs.Count() > 0)
+                {
+                    entity.GsName = gs.First().GsName;
+                }
+
+                var gl = from l in gls where l.Id == entity.GlCode select l;
+                if (gl.Count() > 0)
+                {
+                    entity.GlName = gl.First().GlName;
+                }
+
+            }
+        }
 
         [Transaction]
         public SearchResult<GoodsArchives> Search(SearchDtoBase<GoodsArchives> c)
@@ -254,6 +292,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
+            FillClassName(result);
             return result.ToSearchResult(count);
         }
 

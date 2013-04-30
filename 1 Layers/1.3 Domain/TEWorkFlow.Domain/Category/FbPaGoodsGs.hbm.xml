@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Category">
+  <class name="FbPaGoodsGs" table="fb_pa_goods_gs" lazy="true" >
+    <id name="Id" type="string" column="gs_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="GmCode" column="gm_code" type="string" />
+    <property name="GsName" column="gs_name" type="string" />
+  </class>
+</hibernate-mapping>

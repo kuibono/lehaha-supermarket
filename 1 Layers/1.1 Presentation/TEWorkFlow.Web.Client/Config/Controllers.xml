@@ -23,5 +23,10 @@
     <property name="SysLoginPowerService" ref="SysLoginPowerService" />
     <property name="BsPaClassService" ref="BsPaClassService" />
     <property name="BsPaAreaService" ref="BsPaAreaService" />
+
+    <property name="FbPaGoodsGbService" ref="FbPaGoodsGbService" />
+    <property name="FbPaGoodsGlService" ref="FbPaGoodsGlService" />
+    <property name="FbPaGoodsGmService" ref="FbPaGoodsGmService" />
+    <property name="FbPaGoodsGsService" ref="FbPaGoodsGsService" />
   </object>
 </objects>

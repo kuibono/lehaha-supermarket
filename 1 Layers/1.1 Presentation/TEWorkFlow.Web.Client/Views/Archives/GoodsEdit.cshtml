@@ -6,6 +6,9 @@
 @section script
 {
     <script type="text/javascript">
+        mini.parse();
+
+        
         function SaveData() {
             var form = new mini.Form("form1");
             var o = form.getData(true);
@@ -28,6 +31,26 @@
                     CloseWindow();
                 }
             });
+        }
+        var GbCode = mini.get("GbCode");
+        var GmCode = mini.get("GmCode");
+        var GsCode = mini.get("GsCode");
+        var GlCode = mini.get("GlCode");
+
+        function onGbCodeChanged() {
+            var id = GbCode.getValue();
+            var url = "/Category/GetFbPaGoodsGm/" + id
+            GmCode.setUrl(url);
+        }
+        function onGmCodeChanged() {
+            var id = GmCode.getValue();
+            var url = "/Category/GetFbPaGoodsGs/" + id
+            GsCode.setUrl(url);
+        }
+        function onGsCodeChanged() {
+            var id = GsCode.getValue();
+            var url = "/Category/GetFbPaGoodsGl/" + id
+            GlCode.setUrl(url);
         }
     </script>
 }
@@ -58,19 +81,22 @@
             大类:
         </td>
         <td>
-            <input name="GbCode" value="@Model.GbCode" class="mini-textbox" required="true"/>
+            @*<input name="GbCode" value="@Model.GbCode" class="mini-textbox" required="true"/>*@
+            <input name="GbCode" value="@Model.GbCode" id="GbCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGb/" showNullItem="true"  required="true"/>  
         </td>
 		<td>
             中类:
         </td>
         <td>
-            <input name="GmCode" value="@Model.GmCode" class="mini-textbox" required="true"/>
+            @*<input name="GmCode" value="@Model.GmCode" class="mini-textbox" required="true"/>*@
+            <input name="GmCode" value="@Model.GmCode" id="GmCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGmCodeChanged" url="/Category/GetFbPaGoodsGm/" showNullItem="true"  required="true" />  
         </td>
 		<td>
             小类:
         </td>
         <td>
-            <input name="GsCode" value="@Model.GsCode" class="mini-textbox" required="true"/>
+            @*<input name="GsCode" value="@Model.GsCode" class="mini-textbox" required="true"/>*@
+            <input name="GsCode" value="@Model.GsCode" id="GsCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGsCodeChanged" url="/Category/GetFbPaGoodsGs/" showNullItem="true"  required="true" />  
         </td>
 	</tr>
 	<tr>
@@ -78,7 +104,8 @@
             细类:
         </td>
         <td>
-            <input name="GlCode" value="@Model.GlCode" class="mini-textbox" required="true"/>
+            @*<input name="GlCode" value="@Model.GlCode" class="mini-textbox" required="true"/>*@
+            <input name="GlCode" value="@Model.GlCode" id="GlCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGlCodeChanged" url="/Category/GetFbPaGoodsGl/" showNullItem="true"  required="true" />  
         </td>
 		<td>
             商品类型:
