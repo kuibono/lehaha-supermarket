@@ -8,7 +8,8 @@
             <td style="width: 100%;">
                 <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
                 <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
-                <span class="separator"></span>
+                <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
+                    筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
                 <input id="Emname" class="mini-textbox" emptytext="请输入姓名" style="width: 150px;" onenter="onKeyEnter" />
@@ -16,10 +17,190 @@
             </td>
         </tr>
     </table>
+    <div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 400px;"
+        iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
+        showmodal="false" allowresize="false" allowdrag="true">
+        <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
+            <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
+                筛选</a>
+        </div>
+        <form id="frmAdv">
+        <table class="edittable" border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 60px;">
+                    人员姓名:
+                </td>
+                <td style="width: 140px;">
+                    <input name="Emname" class="mini-textbox" />
+                </td>
+                <td style="width: 60px;">
+                    曾用名:
+                </td>
+                <td style="width: 140px;">
+                    <input name="Nameused"  class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    出生日期:
+                </td>
+                <td>
+                    <input name="Birthday"  class="mini-datepicker"/>
+                </td>
+                <td>
+                    性别:
+                </td>
+                <td>
+                    <div name="Sex" class="mini-radiobuttonlist" repeatLayout="table" textField="text" valueField="id"  url="/category/sex" >
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    政治面貌:
+                </td>
+                <td>
+                    <input name="Politicscode" class="mini-combobox" allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+                </td>
+                <td>
+                    民族:
+                </td>
+                <td>
+                    <input name="Nationcode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/Nations" allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    学历:
+                </td>
+                <td>
+                    <input name="Educationcode" class="mini-textbox"/>
+                </td>
+                <td>
+                    职称:
+                </td>
+                <td>
+                    <input name="Professionaltitlecode" class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    婚否:
+                </td>
+                <td>
+                    <div name="Ifmarried" class="mini-radiobuttonlist" repeatLayout="table" textField="text" valueField="id" url="/Category/Marriage" >
+                    </div>
+                </td>
+                <td>
+                    籍贯:
+                </td>
+                <td>
+                    <input name="Nativeplace" class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    身份证号:
+                </td>
+                <td>
+                    <input name="Idcard" class="mini-textbox"/>
+                </td>
+                <td>
+                    就职日期:
+                </td>
+                <td>
+                    <input name="Accededay" class="mini-datepicker"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    家庭电话:
+                </td>
+                <td>
+                    <input name="Familyphone" class="mini-textbox"/>
+                </td>
+                <td>
+                    手机:
+                </td>
+                <td>
+                    <input name="Handset" class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    E-mail:
+                </td>
+                <td>
+                    <input name="Email" class="mini-textbox"/>
+                </td>
+                <td>
+                    家庭住址:
+                </td>
+                <td>
+                    <input name="Familyaddress" class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    邮政编码:
+                </td>
+                <td>
+                    <input name="Postalcode" class="mini-textbox"/>
+                </td>
+                <td>
+                    毕业院校:
+                </td>
+                <td>
+                    <input name="Graduateacademy" class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    毕业时间:
+                </td>
+                <td>
+                    <input name="Graduateday" class="mini-datepicker"/>
+                </td>
+                <td>
+                    部门:
+                </td>
+                <td>
+                    <input name="Dcode"  class="mini-textbox"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    分店:
+                </td>
+                <td>
+                    <input name="Bcode"  class="mini-textbox"/>
+                </td>
+                <td>
+                    职务:
+                </td>
+                <td>
+                    <input name="Dutycode"  class="mini-textbox"/>
+                </td>
+            </tr>
+
+        </table>
+        </form>
+    </div>
 }
 @section script
 {
     <script type="text/javascript">
+        mini.parse();
+        function showSearchWindow() {
+            var win = mini.get("searchWindow");
+            win.show();
+        }
+        function advSearch() {
+            var frm = new mini.Form("frmAdv");
+            grid.load(frm.getData(true));
+            var win = mini.get("searchWindow");
+            win.hide();
+        }
         function search() {
             grid.load({
                 "Emname": mini.get("#Emname").value
@@ -30,7 +211,7 @@
                 url: "/Archives/EmployeeEdit/" + id,
                 title: "用户管理",
                 iconCls: "icon-user",
-                allowResize:false,
+                allowResize: false,
                 width: 450,
                 height: 460,
                 onload: function () {
@@ -69,13 +250,20 @@
             姓名</div>
         <div field="Nameused" headeralign="center" align="center" width="60">
             曾用名</div>
-        <div field="Birthday" headeralign="center" align="center" dateFormat="yyyy-MM-dd">出生日期</div>
-        <div field="SexString" headeralign="center" align="center" width="50">性别</div>
-        <div field="PoliticsName" headeralign="center" align="center" width="60">政治面貌</div>
-        <div field="Nationcode" headeralign="center" align="center" width="50">民族</div>
-        <div field="Educationcode" headeralign="center" align="center" width="80">学历</div>
-        <div field="Professionaltitlecode" headeralign="center" align="center">职称</div>
-        <div field="Marriage" headeralign="center" align="center" width="50">婚否</div>
+        <div field="Birthday" headeralign="center" align="center" dateformat="yyyy-MM-dd">
+            出生日期</div>
+        <div field="SexString" headeralign="center" align="center" width="50">
+            性别</div>
+        <div field="PoliticsName" headeralign="center" align="center" width="60">
+            政治面貌</div>
+        <div field="Nationcode" headeralign="center" align="center" width="50">
+            民族</div>
+        <div field="Educationcode" headeralign="center" align="center" width="80">
+            学历</div>
+        <div field="Professionaltitlecode" headeralign="center" align="center">
+            职称</div>
+        <div field="Marriage" headeralign="center" align="center" width="50">
+            婚否</div>
         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">
             管理</div>

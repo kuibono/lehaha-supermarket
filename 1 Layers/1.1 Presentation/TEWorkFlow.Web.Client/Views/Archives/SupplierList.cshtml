@@ -8,10 +8,12 @@
             <td style="width: 100%;">
                 <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
                 <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
-                <span class="separator"></span>
+                <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
+                    筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
-                <input id="SupName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
+                <input id="SupName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;"
+                    onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>
         </tr>
@@ -20,6 +22,17 @@
 @section script
 {
     <script type="text/javascript">
+        mini.parse();
+        function showSearchWindow() {
+            var win = mini.get("searchWindow");
+            win.show();
+        }
+        function advSearch() {
+            var frm = new mini.Form("frmAdv");
+            grid.load(frm.getData(true));
+            var win = mini.get("searchWindow");
+            win.hide();
+        }
         function search() {
             grid.load({
                 "SupName": mini.get("#SupName").value
@@ -65,18 +78,122 @@
         </div>
         <div type="checkcolumn" width="30">
         </div>
-        <div field="SupName" headeralign="center" align="center" width="60">名称</div>
-        <div field="PyCode" headeralign="center" align="center" width="60">拼音码</div>
-        <div field="SupTypeName" headeralign="center" align="center" width="60">供货商类型</div>
-        <div field="Functionary" headeralign="center" align="center" width="60">负责人</div>
-        <div field="FunctionaryPhone" headeralign="center" align="center" width="60">负责人电话</div>
-        <div field="Linkman" headeralign="center" align="center" width="60">联系人</div>
-        <div field="ContactPhone" headeralign="center" align="center" width="60">联系人电话</div>
-        <div field="OfficePhone" headeralign="center" align="center" width="60">办公电话</div>
-        <div field="FaxPhone" headeralign="center" align="center" width="60">传真</div>
-        <div field="eMail" headeralign="center" align="center" width="60">邮箱</div>
+        <div field="SupName" headeralign="center" align="center" width="60">
+            名称</div>
+        <div field="PyCode" headeralign="center" align="center" width="60">
+            拼音码</div>
+        <div field="SupTypeName" headeralign="center" align="center" width="60">
+            供货商类型</div>
+        <div field="Functionary" headeralign="center" align="center" width="60">
+            负责人</div>
+        <div field="FunctionaryPhone" headeralign="center" align="center" width="60">
+            负责人电话</div>
+        <div field="Linkman" headeralign="center" align="center" width="60">
+            联系人</div>
+        <div field="ContactPhone" headeralign="center" align="center" width="60">
+            联系人电话</div>
+        <div field="OfficePhone" headeralign="center" align="center" width="60">
+            办公电话</div>
+        <div field="FaxPhone" headeralign="center" align="center" width="60">
+            传真</div>
+        <div field="eMail" headeralign="center" align="center" width="60">
+            邮箱</div>
         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">
             管理</div>
     </div>
+</div>
+<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 250px;"
+    iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
+    showmodal="false" allowresize="false" allowdrag="true">
+    <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
+        <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
+            筛选</a>
+    </div>
+    <form id="frmAdv">
+    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="width:60px;">
+            名称:
+        </td>
+        <td colspan="2">
+            <input name="SupName" class="mini-textbox" required="true" width="192"/>
+        </td>
+        <td style="width:150px;">
+            
+        </td>
+	</tr>
+	<tr>
+		<td>
+            拼音码:
+        </td>
+        <td>
+            <input name="PyCode" class="mini-textbox" required="true"/>
+        </td>
+		<td>
+            类型:
+        </td>
+        <td>
+            <input name="SupTypeCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaSupTypes" allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+	</tr>
+	<tr>
+		<td>
+            负责人:
+        </td>
+        <td>
+            <input name="Functionary"  class="mini-textbox" />
+        </td>
+		<td>
+            负责人电话:
+        </td>
+        <td>
+            <input name="FunctionaryPhone" class="mini-textbox"/>
+        </td>
+	</tr>
+	<tr>
+		<td>
+            联系人:
+        </td>
+        <td>
+            <input name="Linkman" class="mini-textbox" />
+        </td>
+		<td>
+            联系人电话:
+        </td>
+        <td>
+            <input name="ContactPhone" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            联系地址:
+        </td>
+        <td>
+            <input name="ContactAddress" class="mini-textbox" />
+        </td>
+		<td>
+            办公电话:
+        </td>
+        <td>
+            <input name="OfficePhone" class="mini-textbox" />
+        </td>
+	</tr>
+	<tr>
+		<td>
+            传真:
+        </td>
+        <td>
+            <input name="FaxPhone" class="mini-textbox" />
+        </td>
+		<td>
+            邮箱:
+        </td>
+        <td>
+            <input name="eMail" class="mini-textbox" />
+        </td>
+	</tr>
+
+</table>
+    </form>
 </div>

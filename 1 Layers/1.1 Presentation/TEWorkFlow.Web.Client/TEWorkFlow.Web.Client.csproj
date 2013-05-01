@@ -612,9 +612,11 @@
     <Content Include="Scripts\miniui\themes\icons\addfolder.gif" />
     <Content Include="Scripts\miniui\themes\icons\addnew.gif" />
     <Content Include="Scripts\miniui\themes\icons\cancel.gif" />
+    <Content Include="Scripts\miniui\themes\icons\cart.png" />
     <Content Include="Scripts\miniui\themes\icons\chart_organisation.png" />
     <Content Include="Scripts\miniui\themes\icons\cut.png" />
     <Content Include="Scripts\miniui\themes\icons\date.gif" />
+    <Content Include="Scripts\miniui\themes\icons\date_magnify.png" />
     <Content Include="Scripts\miniui\themes\icons\downgrade.gif" />
     <Content Include="Scripts\miniui\themes\icons\download.gif" />
     <Content Include="Scripts\miniui\themes\icons\edit.gif" />
@@ -652,6 +654,7 @@
     <Content Include="Scripts\miniui\themes\icons\vcard_edit.png" />
     <Content Include="Scripts\miniui\themes\icons\wait.gif" />
     <Content Include="Scripts\miniui\themes\icons\warning.png" />
+    <Content Include="Scripts\miniui\themes\icons\zoom.png" />
     <Content Include="Scripts\miniui\themes\icons\zoomin.gif" />
     <Content Include="Scripts\miniui\themes\icons\zoomout.gif" />
     <Content Include="Scripts\miniui\themes\icons\_help.png" />
