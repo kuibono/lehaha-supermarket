@@ -29,4 +29,7 @@
     <property name="FbPaGoodsGmService" ref="FbPaGoodsGmService" />
     <property name="FbPaGoodsGsService" ref="FbPaGoodsGsService" />
   </object>
+  <object type="TEWorkFlow.Web.Client.Controllers.BusinessController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />
+  </object>
 </objects>

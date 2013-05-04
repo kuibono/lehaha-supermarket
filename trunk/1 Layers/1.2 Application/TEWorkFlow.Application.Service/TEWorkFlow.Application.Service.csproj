@@ -58,6 +58,10 @@
     <Compile Include="Archives\IEmemployeearchiveService.cs" />
     <Compile Include="Archives\IGoodsArchivesService.cs" />
     <Compile Include="Archives\IFbSupplierArchivesService.cs" />
+    <Compile Include="Business\IPcPurchaseDetailService.cs" />
+    <Compile Include="Business\IPcPurchaseManageService.cs" />
+    <Compile Include="Business\PcPurchaseDetailService.cs" />
+    <Compile Include="Business\PcPurchaseManageService.cs" />
     <Compile Include="Category\BsPaAreaService.cs" />
     <Compile Include="Category\BsPaClassService.cs" />
     <Compile Include="Category\EmPaPoliticsService.cs" />

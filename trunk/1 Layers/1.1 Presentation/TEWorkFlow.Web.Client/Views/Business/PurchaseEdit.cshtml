@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "采购管理";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Business.PcPurchaseManage
+@section script
+{
+    <script type="text/javascript">
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Business/SavePurchase",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            采购单号:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcNumber" value="@Model.Id" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            供货商:
+        </td>
+        <td style="width: 140px;">
+            <input name="SupCode" value="@Model.SupCode" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            企业编码:
+        </td>
+        <td style="width: 140px;">
+            <input name="EnCode" value="@Model.EnCode" class="mini-textbox"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            采购形式:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            部门编码:
+        </td>
+        <td style="width: 140px;">
+            <input name="dCode" value="@Model.dCode" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            门店编码:
+        </td>
+        <td style="width: 140px;">
+            <input name="bCode" value="@Model.bCode" class="mini-textbox"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            采购类型:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcType" value="@Model.PcType" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            采购方式:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcMode" value="@Model.PcMode" class="mini-textbox"/>
+        </td>
+		<td style="width: 60px;">
+            仓库编码:
+        </td>
+        <td style="width: 140px;">
+            <input name="WhCode" value="@Model.WhCode" class="mini-textbox"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            采购日期:
+        </td>
+        <td style="width: 140px;">
+            @*<input name="PurchaseDate" value="@Model.PurchaseDate" class="mini-textbox"/>*@
+            <input name="CreateDate" value="@Model.PurchaseDate" class="mini-datepicker"/>
+        </td>
+		<td style="width: 60px;">
+            预计到货<br/>日期:
+        </td>
+        <td style="width: 140px;">
+            @*<input name="ExpectArriveDate" value="@Model.ExpectArriveDate" class="mini-textbox"/>*@
+            <input name="CreateDate" value="@Model.ExpectArriveDate" class="mini-datepicker"/>
+        </td>
+		<td style="width: 60px;">
+            是否验收:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            @*<input name="IfCheck" value="@Model.IfCheck" class="mini-textbox"/>*@
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfCheck" readOnly="false" text="验收"></div>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            验收日期:
+        </td>
+        <td style="width: 140px;">
+            @*<input name="CheckDate" value="@Model.CheckDate" class="mini-textbox"/>*@
+            <input name="CreateDate" value="@Model.CheckDate" class="mini-datepicker"/>
+        </td>
+		<td style="width: 60px;">
+            是否入库:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            @*<input name="IfPutin" value="@Model.IfPutin" class="mini-textbox"/>*@
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfPutin" readOnly="false" text="入库"></div>
+        </td>
+		<td style="width: 60px;">
+            入库日期:
+        </td>
+        <td style="width: 140px;">
+            @*<input name="PutinDate" value="@Model.PutinDate" class="mini-textbox"/>*@
+            <input name="CreateDate" value="@Model.PutinDate" class="mini-datepicker"/>
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            创建时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker"/>
+        </td>
+		<td style="width: 60px;">
+            操作员:
+        </td>
+        <td style="width: 140px;">
+           @* <input name="Operator" value="@Model.Operator" class="mini-textbox"/>*@
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+		<td style="width: 60px;">
+            审核人:
+        </td>
+        <td style="width: 140px;">
+            @*<input name="Assessor" value="@Model.Assessor" class="mini-textbox"/>*@
+            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/> 
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 60px;">
+            是否审核:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            @*<input name="IfExamine" value="@Model.IfExamine" class="mini-textbox"/>*@
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核"></div>
+        </td>
+		<td style="width: 60px;">
+            审核时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
+        </td>
+		<td style="width: 60px;">
+            操作时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
+        </td>
+
+</table>
