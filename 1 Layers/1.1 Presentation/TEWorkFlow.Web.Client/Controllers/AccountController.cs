@@ -163,6 +163,37 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
+
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-car",
+                Id = "business",
+                ParentId = "root",
+                Url = "",
+                Windowname = "业务管理"
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "business-purchase",
+                ParentId = "business",
+                Url = "/Business/PurchaseList",
+                Windowname = "产品采购"
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart-delete",
+                Id = "business-return",
+                ParentId = "business",
+                Url = "/Business/ReturnList",
+                Windowname = "产品退货"
+            };
+            SysmodulecontentService.Create(m1);
             return null;
         }
 

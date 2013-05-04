@@ -48,6 +48,12 @@
   <object id="FbPaGoodsGsRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Category.FbPaGoodsGs>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="PcPurchaseManageRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseManage>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="PcPurchaseDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseDetail>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -105,5 +111,11 @@
   </object>
   <object id="FbPaGoodsGsService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGsService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGsRepository"/>
+  </object>
+  <object id="PcPurchaseManageService" type="TEWorkFlow.Application.Service.Business.PcPurchaseManageService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcPurchaseManageRepository"/>
+  </object>
+  <object id="PcPurchaseDetailService" type="TEWorkFlow.Application.Service.Business.PcPurchaseDetailService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcPurchaseDetailRepository"/>
   </object>
 </objects>

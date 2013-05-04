@@ -44,6 +44,8 @@
     <Compile Include="Archives\Ememployeearchive.cs" />
     <Compile Include="Archives\FbSupplierArchives.cs" />
     <Compile Include="Archives\GoodsArchives.cs" />
+    <Compile Include="Business\PcPurchaseDetail.cs" />
+    <Compile Include="Business\PcPurchaseManage.cs" />
     <Compile Include="Category\BsPaArea.cs" />
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
@@ -111,6 +113,10 @@
     <EmbeddedResource Include="Category\FbPaGoodsGl.hbm.xml" />
     <EmbeddedResource Include="Category\FbPaGoodsGm.hbm.xml" />
     <EmbeddedResource Include="Category\FbPaGoodsGs.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Business\PcPurchaseDetail.hbm.xml" />
+    <EmbeddedResource Include="Business\PcPurchaseManage.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
