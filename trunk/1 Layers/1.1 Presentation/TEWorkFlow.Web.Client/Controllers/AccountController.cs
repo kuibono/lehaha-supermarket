@@ -25,7 +25,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ISysmodulecontentService SysmodulecontentService { get; set; }
         public IBsPaClassService BsPaClassService { get; set; }
         public IBsPaAreaService BsPaAreaService { get; set; }
-
+        public ISysPaDepartmentService SysPaDepartmentService { get; set; }
         public ActionResult IniAll()
         {
             IniUser();
@@ -210,10 +210,6 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
-        //public ActionResult Login2()
-        //{
-        //    return View();
-        //}
 
         public ActionResult VCode()
         {
@@ -221,6 +217,15 @@ namespace TEWorkFlow.Web.Client.Controllers
             v.CreateImageOnPage(v.CreateForWordCode(), System.Web.HttpContext.Current);
             return null;
         }
+
+        public JsonResult GetDepatmentTree()
+        {
+            return Json(
+            SysPaDepartmentService.ModelListToDto(SysPaDepartmentService.GetAll()),
+            JsonRequestBehavior.AllowGet);
+
+        }
+
 
         [HttpPost]
         public ActionResult Login(LoginModel model, string returnUrl)
@@ -279,6 +284,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             //    return View(model);
             //}
 
+        }
+
+        public ActionResult DepartmentSelectTree()
+        {
+            return View();
         }
     }
 }

@@ -84,8 +84,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\ISysLoginPowerService.cs" />
     <Compile Include="Sys\ISysmodulecontentService.cs" />
+    <Compile Include="Sys\ISysPaDepartmentService.cs" />
     <Compile Include="Sys\SysLoginPowerService.cs" />
     <Compile Include="Sys\SysmodulecontentService.cs" />
+    <Compile Include="Sys\SysPaDepartmentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.3 Domain\TEWorkFlow.Domain\TEWorkFlow.Domain.csproj">

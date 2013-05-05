@@ -54,6 +54,10 @@
   <object id="PcPurchaseDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseDetail>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="SysPaDepartmentRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPaDepartment>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -117,5 +121,8 @@
   </object>
   <object id="PcPurchaseDetailService" type="TEWorkFlow.Application.Service.Business.PcPurchaseDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcPurchaseDetailRepository"/>
+  </object>
+  <object id="SysPaDepartmentService" type="TEWorkFlow.Application.Service.Sys.SysPaDepartmentService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="SysPaDepartmentRepository"/>
   </object>
 </objects>

@@ -11,12 +11,12 @@ using TEWorkFlow.Dto;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
-    public class FbSupplierArchivesService:IFbSupplierArchivesService
+    public class FbSupplierArchivesService : IFbSupplierArchivesService
     {
 
         public IRepositoryGUID<FbSupplierArchives> EntityRepository { get; set; }
         public IRepositoryGUID<FbPaSupType> PaSupTypeRepository { get; set; }
-        
+
         [Transaction]
         public string Create(FbSupplierArchives entity)
         {
@@ -32,8 +32,8 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public IList<FbSupplierArchives> GetAll()
         {
-            var result=EntityRepository.LinqQuery.ToList();
-           
+            var result = EntityRepository.LinqQuery.ToList();
+
             return result;
         }
 
@@ -66,134 +66,134 @@ namespace TEWorkFlow.Application.Service.Archives
             var q = EntityRepository.LinqQuery;
             if (c.entity != null)
             {
-				
-					if (string.IsNullOrEmpty(c.entity.SupName) == false)
-					{
-						q = q.Where(p => p.SupName.Contains(c.entity.SupName));
-					}
-					if (string.IsNullOrEmpty(c.entity.PyCode) == false)
-					{
-						q = q.Where(p => p.PyCode.Contains(c.entity.PyCode));
-					}
-					if (string.IsNullOrEmpty(c.entity.SupTypeCode) == false)
-					{
-						q = q.Where(p => p.SupTypeCode.Contains(c.entity.SupTypeCode));
-					}
-					if (string.IsNullOrEmpty(c.entity.Functionary) == false)
-					{
-						q = q.Where(p => p.Functionary.Contains(c.entity.Functionary));
-					}
-					if (string.IsNullOrEmpty(c.entity.FunctionaryPhone) == false)
-					{
-						q = q.Where(p => p.FunctionaryPhone.Contains(c.entity.FunctionaryPhone));
-					}
-					if (string.IsNullOrEmpty(c.entity.Linkman) == false)
-					{
-						q = q.Where(p => p.Linkman.Contains(c.entity.Linkman));
-					}
-					if (string.IsNullOrEmpty(c.entity.ContactPhone) == false)
-					{
-						q = q.Where(p => p.ContactPhone.Contains(c.entity.ContactPhone));
-					}
-					if (string.IsNullOrEmpty(c.entity.ContactAddress) == false)
-					{
-						q = q.Where(p => p.ContactAddress.Contains(c.entity.ContactAddress));
-					}
-					if (string.IsNullOrEmpty(c.entity.OfficePhone) == false)
-					{
-						q = q.Where(p => p.OfficePhone.Contains(c.entity.OfficePhone));
-					}
-					if (string.IsNullOrEmpty(c.entity.FaxPhone) == false)
-					{
-						q = q.Where(p => p.FaxPhone.Contains(c.entity.FaxPhone));
-					}
-					if (string.IsNullOrEmpty(c.entity.eMail) == false)
-					{
-						q = q.Where(p => p.eMail.Contains(c.entity.eMail));
-					}
-					if (string.IsNullOrEmpty(c.entity.Postalcode) == false)
-					{
-						q = q.Where(p => p.Postalcode.Contains(c.entity.Postalcode));
-					}
-					if (string.IsNullOrEmpty(c.entity.OpenAccount) == false)
-					{
-						q = q.Where(p => p.OpenAccount.Contains(c.entity.OpenAccount));
-					}
-					if (string.IsNullOrEmpty(c.entity.BankAccount) == false)
-					{
-						q = q.Where(p => p.BankAccount.Contains(c.entity.BankAccount));
-					}
-					if (string.IsNullOrEmpty(c.entity.TaxNumber) == false)
-					{
-						q = q.Where(p => p.TaxNumber.Contains(c.entity.TaxNumber));
-					}
-					if (string.IsNullOrEmpty(c.entity.OpCode) == false)
-					{
-						q = q.Where(p => p.OpCode.Contains(c.entity.OpCode));
-					}
-					if (string.IsNullOrEmpty(c.entity.StockVoucher) == false)
-					{
-						q = q.Where(p => p.StockVoucher.Contains(c.entity.StockVoucher));
-					}
-					 if (c.entity.InputTax > 0)
-					{
-						q = q.Where(p => p.InputTax == c.entity.InputTax);
-					}
-					
-					if (string.IsNullOrEmpty(c.entity.BalanceMode) == false)
-					{
-						q = q.Where(p => p.BalanceMode.Contains(c.entity.BalanceMode));
-					}
-					if (string.IsNullOrEmpty(c.entity.PayMode) == false)
-					{
-						q = q.Where(p => p.PayMode.Contains(c.entity.PayMode));
-					}
-					if (string.IsNullOrEmpty(c.entity.BalancePeriod) == false)
-					{
-						q = q.Where(p => p.BalancePeriod.Contains(c.entity.BalancePeriod));
-					}
-					 if (c.entity.BalanceDay > 0)
-					{
-						q = q.Where(p => p.BalanceDay == c.entity.BalanceDay);
-					}
-					
-					if (string.IsNullOrEmpty(c.entity.OfferMode) == false)
-					{
-						q = q.Where(p => p.OfferMode.Contains(c.entity.OfferMode));
-					}
-					 if (c.entity.DeliveryDays > 0)
-					{
-						q = q.Where(p => p.DeliveryDays == c.entity.DeliveryDays);
-					}
-					
-					 if (c.entity.PoolRate > 0)
-					{
-						q = q.Where(p => p.PoolRate == c.entity.PoolRate);
-					}
-					
-					 if (c.entity.FloorsMoney > 0)
-					{
-						q = q.Where(p => p.FloorsMoney == c.entity.FloorsMoney);
-					}
-					
-					 if (c.entity.ExcessRate > 0)
-					{
-						q = q.Where(p => p.ExcessRate == c.entity.ExcessRate);
-					}
-					
-					if (string.IsNullOrEmpty(c.entity.Operator) == false)
-					{
-						q = q.Where(p => p.Operator.Contains(c.entity.Operator));
-					}
-					if (string.IsNullOrEmpty(c.entity.Assessor) == false)
-					{
-						q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
-					}
-					if (string.IsNullOrEmpty(c.entity.IfExamine) == false)
-					{
-						q = q.Where(p => p.IfExamine.Contains(c.entity.IfExamine));
-					}
-                
+
+                if (string.IsNullOrEmpty(c.entity.SupName) == false)
+                {
+                    q = q.Where(p => p.SupName.Contains(c.entity.SupName));
+                }
+                if (string.IsNullOrEmpty(c.entity.PyCode) == false)
+                {
+                    q = q.Where(p => p.PyCode.Contains(c.entity.PyCode));
+                }
+                if (string.IsNullOrEmpty(c.entity.SupTypeCode) == false)
+                {
+                    q = q.Where(p => p.SupTypeCode.Contains(c.entity.SupTypeCode));
+                }
+                if (string.IsNullOrEmpty(c.entity.Functionary) == false)
+                {
+                    q = q.Where(p => p.Functionary.Contains(c.entity.Functionary));
+                }
+                if (string.IsNullOrEmpty(c.entity.FunctionaryPhone) == false)
+                {
+                    q = q.Where(p => p.FunctionaryPhone.Contains(c.entity.FunctionaryPhone));
+                }
+                if (string.IsNullOrEmpty(c.entity.Linkman) == false)
+                {
+                    q = q.Where(p => p.Linkman.Contains(c.entity.Linkman));
+                }
+                if (string.IsNullOrEmpty(c.entity.ContactPhone) == false)
+                {
+                    q = q.Where(p => p.ContactPhone.Contains(c.entity.ContactPhone));
+                }
+                if (string.IsNullOrEmpty(c.entity.ContactAddress) == false)
+                {
+                    q = q.Where(p => p.ContactAddress.Contains(c.entity.ContactAddress));
+                }
+                if (string.IsNullOrEmpty(c.entity.OfficePhone) == false)
+                {
+                    q = q.Where(p => p.OfficePhone.Contains(c.entity.OfficePhone));
+                }
+                if (string.IsNullOrEmpty(c.entity.FaxPhone) == false)
+                {
+                    q = q.Where(p => p.FaxPhone.Contains(c.entity.FaxPhone));
+                }
+                if (string.IsNullOrEmpty(c.entity.eMail) == false)
+                {
+                    q = q.Where(p => p.eMail.Contains(c.entity.eMail));
+                }
+                if (string.IsNullOrEmpty(c.entity.Postalcode) == false)
+                {
+                    q = q.Where(p => p.Postalcode.Contains(c.entity.Postalcode));
+                }
+                if (string.IsNullOrEmpty(c.entity.OpenAccount) == false)
+                {
+                    q = q.Where(p => p.OpenAccount.Contains(c.entity.OpenAccount));
+                }
+                if (string.IsNullOrEmpty(c.entity.BankAccount) == false)
+                {
+                    q = q.Where(p => p.BankAccount.Contains(c.entity.BankAccount));
+                }
+                if (string.IsNullOrEmpty(c.entity.TaxNumber) == false)
+                {
+                    q = q.Where(p => p.TaxNumber.Contains(c.entity.TaxNumber));
+                }
+                if (string.IsNullOrEmpty(c.entity.OpCode) == false)
+                {
+                    q = q.Where(p => p.OpCode.Contains(c.entity.OpCode));
+                }
+                if (string.IsNullOrEmpty(c.entity.StockVoucher) == false)
+                {
+                    q = q.Where(p => p.StockVoucher.Contains(c.entity.StockVoucher));
+                }
+                if (c.entity.InputTax > 0)
+                {
+                    q = q.Where(p => p.InputTax == c.entity.InputTax);
+                }
+
+                if (string.IsNullOrEmpty(c.entity.BalanceMode) == false)
+                {
+                    q = q.Where(p => p.BalanceMode.Contains(c.entity.BalanceMode));
+                }
+                if (string.IsNullOrEmpty(c.entity.PayMode) == false)
+                {
+                    q = q.Where(p => p.PayMode.Contains(c.entity.PayMode));
+                }
+                if (string.IsNullOrEmpty(c.entity.BalancePeriod) == false)
+                {
+                    q = q.Where(p => p.BalancePeriod.Contains(c.entity.BalancePeriod));
+                }
+                if (c.entity.BalanceDay > 0)
+                {
+                    q = q.Where(p => p.BalanceDay == c.entity.BalanceDay);
+                }
+
+                if (string.IsNullOrEmpty(c.entity.OfferMode) == false)
+                {
+                    q = q.Where(p => p.OfferMode.Contains(c.entity.OfferMode));
+                }
+                if (c.entity.DeliveryDays > 0)
+                {
+                    q = q.Where(p => p.DeliveryDays == c.entity.DeliveryDays);
+                }
+
+                if (c.entity.PoolRate > 0)
+                {
+                    q = q.Where(p => p.PoolRate == c.entity.PoolRate);
+                }
+
+                if (c.entity.FloorsMoney > 0)
+                {
+                    q = q.Where(p => p.FloorsMoney == c.entity.FloorsMoney);
+                }
+
+                if (c.entity.ExcessRate > 0)
+                {
+                    q = q.Where(p => p.ExcessRate == c.entity.ExcessRate);
+                }
+
+                if (string.IsNullOrEmpty(c.entity.Operator) == false)
+                {
+                    q = q.Where(p => p.Operator.Contains(c.entity.Operator));
+                }
+                if (string.IsNullOrEmpty(c.entity.Assessor) == false)
+                {
+                    q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
+                }
+                if (string.IsNullOrEmpty(c.entity.IfExamine) == false)
+                {
+                    q = q.Where(p => p.IfExamine.Contains(c.entity.IfExamine));
+                }
+
             }
             int count = q.Count();
 
@@ -203,13 +203,34 @@ namespace TEWorkFlow.Application.Service.Archives
             return result.ToSearchResult(count);
         }
 
+        [Transaction]
+        public IList<FbSupplierArchives> Search(string key, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key) == false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(key)
+                    || l.SupName.Contains(key)
+                    || l.PyCode.Contains(key)
+                    select l;
+
+
+            }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            FillFbPaSupType(result);
+            return result.ToList();
+        }
+
         private void FillFbPaSupType(IList<FbSupplierArchives> entities)
         {
             var type = PaSupTypeRepository.GetList();
             foreach (FbSupplierArchives fbSupplierArchivese in entities)
             {
                 var q = type.Where(p => p.Id == fbSupplierArchivese.SupTypeCode);
-                if(q.Count()>0)
+                if (q.Count() > 0)
                 {
                     fbSupplierArchivese.SupTypeName = q.First().SupTypeName;
                 }

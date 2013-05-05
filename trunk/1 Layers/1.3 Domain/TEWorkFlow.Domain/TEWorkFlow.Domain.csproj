@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\SysLoginPower.cs" />
     <Compile Include="Sys\Sysmodulecontent.cs" />
+    <Compile Include="Sys\SysPaDepartment.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\NSH.Authorization.csproj">
@@ -117,6 +118,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Business\PcPurchaseDetail.hbm.xml" />
     <EmbeddedResource Include="Business\PcPurchaseManage.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sys\SysPaDepartment.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
