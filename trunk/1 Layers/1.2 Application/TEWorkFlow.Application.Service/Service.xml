@@ -118,9 +118,7 @@
   </object>
   <object id="PcPurchaseManageService" type="TEWorkFlow.Application.Service.Business.PcPurchaseManageService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcPurchaseManageRepository"/>
-  </object>
-  <object id="PcPurchaseDetailService" type="TEWorkFlow.Application.Service.Business.PcPurchaseDetailService, TEWorkFlow.Application.Service">
-    <property name="EntityRepository" ref="PcPurchaseDetailRepository"/>
+    <property name="DetailRepository" ref="PcPurchaseDetailRepository"/>
   </object>
   <object id="SysPaDepartmentService" type="TEWorkFlow.Application.Service.Sys.SysPaDepartmentService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysPaDepartmentRepository"/>

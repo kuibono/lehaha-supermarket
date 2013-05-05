@@ -14,17 +14,32 @@ namespace TEWorkFlow.Application.Service.Business
     {
 
         public IRepositoryGUID<PcPurchaseManage> EntityRepository { get; set; }
-
+        public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
         [Transaction]
         public string Create(PcPurchaseManage entity)
         {
-            return EntityRepository.Save(entity);
+            string id = EntityRepository.Save(entity);
+
+            if (entity.Detail == null)
+            {
+                entity.Detail = new PcPurchaseDetail();
+                entity.Detail.Id = id;
+            }
+            return DetailRepository.Save(entity.Detail);
+            
         }
 
         [Transaction]
         public PcPurchaseManage GetById(string id)
         {
-            return EntityRepository.Get(id);
+            var entity = EntityRepository.Get(id);
+            entity.Detail = DetailRepository.Get(id);
+            if (entity.Detail == null)
+            {
+                entity.Detail = new PcPurchaseDetail();
+                entity.Detail.Id = id;
+            }
+            return entity;
         }
 
         [Transaction]
@@ -40,12 +55,20 @@ namespace TEWorkFlow.Application.Service.Business
         public void Update(PcPurchaseManage entity)
         {
             EntityRepository.Update(entity);
+            if (entity.Detail != null)
+            {
+                DetailRepository.Update(entity.Detail);
+            }
         }
 
         [Transaction]
         public void Delete(PcPurchaseManage entity)
         {
             EntityRepository.Delete(entity);
+            if (entity.Detail != null)
+            {
+                DetailRepository.Delete(entity.Detail);
+            }
         }
 
         [Transaction]
@@ -54,6 +77,10 @@ namespace TEWorkFlow.Application.Service.Business
             foreach (var entity in entitys)
             {
                 EntityRepository.Delete(entity);
+                if (entity.Detail != null)
+                {
+                    DetailRepository.Delete(entity.Detail);
+                }
             }
         }
 
@@ -133,6 +160,10 @@ namespace TEWorkFlow.Application.Service.Business
             foreach (var each in q)
             {
                 Delete(each);
+                if (each.Detail != null)
+                {
+                    DetailRepository.Delete(each.Detail);
+                }
             }
         }
     }

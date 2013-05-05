@@ -24,6 +24,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult PurchaseEdit(string id)
         {
             PcPurchaseManage model = new PcPurchaseManage();
+            model.Detail = new PcPurchaseDetail();
             if (string.IsNullOrEmpty(id) == false)
             {
                 model = PcPurchaseManageService.GetById(id);
@@ -35,6 +36,20 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             c.entity = s;
             return Json(PcPurchaseManageService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveBranchArchive(PcPurchaseManage s)
+        {
+            if (s.HaveId)
+            {
+                PcPurchaseManageService.Update(s);
+            }
+            else
+            {
+                s.Id = Guid.NewGuid().ToString();
+                PcPurchaseManageService.Create(s);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }
