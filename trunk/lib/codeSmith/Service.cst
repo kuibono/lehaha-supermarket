@@ -53,6 +53,8 @@ namespace <%= this.NameSpace %>
 
 
         SearchResult<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> Search(SearchDtoBase<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> c);
+		
+		IList<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);
     }
@@ -149,6 +151,32 @@ namespace <%= this.NameSpace %>
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             return result.ToSearchResult(count);
+        }
+		
+		[Transaction]
+        public IList<%="<"%><%= StringUtil.ToPascalCase(this.SourceTable.Name) %><%=">"%> Search(string key, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key)==false)
+            {
+				q = from l in q
+                    where 
+                    l.Id.Contains(key)
+					<% foreach (ColumnSchema column in this.SourceTable.Columns) {  %>
+					<% if (column.SystemType.ToString()=="System.String")
+					{%>
+					|| l.<%= StringUtil.ToPascalCase(column.Name) %>.Contains(key)
+					<%}
+					}%>
+                        || l.SupName.Contains(key)
+                    select l;
+					
+                
+            }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            FillFbPaSupType(result);
+            return result.ToList();
         }
 
         [Transaction]
