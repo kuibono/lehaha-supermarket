@@ -21,7 +21,8 @@
         iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
         showmodal="false" allowresize="false" allowdrag="true">
         <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
-            <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>筛选</a>
+            <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
+                筛选</a>
         </div>
         <form id="frmAdv">
         <table class="edittable" border="1" cellpadding="0" cellspacing="0">
@@ -30,19 +31,19 @@
                     商品编码:
                 </td>
                 <td style="width: 120px;">
-                    <input name="GoodsCode" class="mini-textbox"/>
+                    <input name="GoodsCode" class="mini-textbox" />
                 </td>
                 <td style="width: 80px;">
                     销售码:
                 </td>
                 <td style="width: 120px;">
-                    <input name="GoodsBarCode" class="mini-textbox"/>
+                    <input name="GoodsBarCode" class="mini-textbox" />
                 </td>
                 <td style="width: 80px;">
                     商品简码:
                 </td>
                 <td style="width: 120px;">
-                    <input name="GoodsSubCode" class="mini-textbox"/>
+                    <input name="GoodsSubCode" class="mini-textbox" />
                 </td>
             </tr>
             <tr>
@@ -50,22 +51,22 @@
                     大类:
                 </td>
                 <td>
-                    <input name="GbCode" id="GbCode" class="mini-combobox" textfield="text" valuefield="id" url="/category/GetFbPaGoodsGb/" shownullitem="true"
-                       />
+                    <input name="GbCode" id="GbCode" class="mini-combobox" textfield="text" valuefield="id"
+                        url="/category/GetFbPaGoodsGb/" shownullitem="true" />
                 </td>
                 <td>
                     中类:
                 </td>
                 <td>
-                    <input name="GmCode" id="GmCode" class="mini-combobox" textfield="text" valuefield="id"  url="/Category/GetFbPaGoodsGm/" shownullitem="true"
-                       />
+                    <input name="GmCode" id="GmCode" class="mini-combobox" textfield="text" valuefield="id"
+                        url="/Category/GetFbPaGoodsGm/" shownullitem="true" />
                 </td>
                 <td>
                     小类:
                 </td>
                 <td>
-                    <input name="GsCode" id="GsCode" class="mini-combobox" textfield="text" valuefield="id"  url="/Category/GetFbPaGoodsGs/" shownullitem="true"
-                       />
+                    <input name="GsCode" id="GsCode" class="mini-combobox" textfield="text" valuefield="id"
+                        url="/Category/GetFbPaGoodsGs/" shownullitem="true" />
                 </td>
             </tr>
             <tr>
@@ -73,20 +74,20 @@
                     细类:
                 </td>
                 <td>
-                    <input name="GlCode" id="GlCode" class="mini-combobox" textfield="text" valuefield="id"  url="/Category/GetFbPaGoodsGl/" shownullitem="true"
-                       />
+                    <input name="GlCode" id="GlCode" class="mini-combobox" textfield="text" valuefield="id"
+                        url="/Category/GetFbPaGoodsGl/" shownullitem="true" />
                 </td>
                 <td>
                     商品类型:
                 </td>
                 <td>
-                    <input name="GoodsType" class="mini-textbox"/>
+                    <input name="GoodsType" class="mini-textbox" />
                 </td>
                 <td>
                     核算方式:
                 </td>
                 <td>
-                    <input name="CheckMode" class="mini-textbox"/>
+                    <input name="CheckMode" class="mini-textbox" />
                 </td>
             </tr>
             <tr>
@@ -94,13 +95,13 @@
                     供货商:
                 </td>
                 <td>
-                    <input name="SupCode" class="mini-textbox"/>
+                    <input name="SupCode" class="mini-textbox" />
                 </td>
                 <td>
                     经营方式:
                 </td>
                 <td>
-                    <input name="OpCode" class="mini-textbox"/>
+                    <input name="OpCode" class="mini-textbox" />
                 </td>
                 <td>
                     扣率:
@@ -114,7 +115,7 @@
                     商品名称:
                 </td>
                 <td>
-                    <input name="GoodsName" class="mini-textbox"/>
+                    <input name="GoodsName" class="mini-textbox" />
                 </td>
                 <td>
                     商品简称:
@@ -194,6 +195,8 @@
         </div>
         <div field="Id" headeralign="center" align="center" width="60">
             编码</div>
+        <div field="GoodsName" headeralign="center" align="center" width="60">
+            名称</div>
         <div field="GoodsBarCode" headeralign="center" align="center" width="60">
             销售码</div>
         <div field="GoodsSubCode" headeralign="center" align="center" width="60">

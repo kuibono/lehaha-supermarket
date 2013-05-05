@@ -296,6 +296,49 @@ namespace TEWorkFlow.Application.Service.Archives
             return result.ToSearchResult(count);
         }
 
+        public IList<GoodsArchives> Search(string key, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key) == false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(key)
+                    || l.GoodsBarCode.Contains(key)
+                    || l.GoodsSubCode.Contains(key)
+                    || l.GbCode.Contains(key)
+                    || l.GmCode.Contains(key)
+                    || l.GsCode.Contains(key)
+                    || l.GlCode.Contains(key)
+                    || l.GoodsType.Contains(key)
+                    || l.CheckMode.Contains(key)
+                    || l.SupCode.Contains(key)
+                    || l.OpCode.Contains(key)
+                    || l.GoodsName.Contains(key)
+                    || l.GoodsSubName.Contains(key)
+                    || l.PyCode.Contains(key)
+                    || l.GoodsState.Contains(key)
+                    || l.ProducingArea.Contains(key)
+                    || l.ArticleNumber.Contains(key)
+                    || l.Specification.Contains(key)
+                    || l.ShelfLife.Contains(key)
+                    || l.PackUnitCode.Contains(key)
+                    || l.OfferMode.Contains(key)
+                    || l.UnderFloorCode.Contains(key)
+                    || l.UnderCounterCode.Contains(key)
+                    || l.CheckUnitCode.Contains(key)
+                    || l.Operator.Contains(key)
+                    || l.Assessor.Contains(key)
+                    || l.IfExamine.Contains(key)
+                    select l;
+
+
+            }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            return result.ToList();
+        }
+
         [Transaction]
         public void Delete(IList<string> ids)
         {

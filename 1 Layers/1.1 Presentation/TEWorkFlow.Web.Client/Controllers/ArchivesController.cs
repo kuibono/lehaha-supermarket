@@ -184,6 +184,11 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchGoodsArchiveList(SearchDtoBase<GoodsArchives> c, GoodsArchives s)
         {
+            if (string.IsNullOrEmpty(Request["key"]) == false)
+            {
+                return Json(GoodsArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            }
+
             c.entity = s;
             return Json(GoodsArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
@@ -214,6 +219,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             GoodsArchivesService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GoodsSelectWindow()
+        {
+            return View();
         }
         #endregion
 
