@@ -818,6 +818,7 @@
     <Content Include="Views\Archives\GoodsEdit.cshtml" />
     <Content Include="Views\Business\PurchaseList.cshtml" />
     <Content Include="Views\Business\PurchaseEdit.cshtml" />
+    <Content Include="Views\Account\DepartmentSelectTree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

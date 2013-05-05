@@ -34,6 +34,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
         SearchResult<FbSupplierArchives> Search(SearchDtoBase<FbSupplierArchives> c);
 
+        IList<FbSupplierArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
+
         void Delete(IList<string> ids);
     }
 }

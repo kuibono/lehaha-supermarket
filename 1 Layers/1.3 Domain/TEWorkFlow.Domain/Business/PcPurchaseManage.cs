@@ -56,12 +56,12 @@ namespace TEWorkFlow.Domain.Business
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime PurchaseDate { get; set; }
+        public virtual System.DateTime? PurchaseDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime ExpectArriveDate { get; set; }
+        public virtual System.DateTime? ExpectArriveDate { get; set; }
 
         /// <summary>
         /// 
@@ -71,7 +71,7 @@ namespace TEWorkFlow.Domain.Business
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime CheckDate { get; set; }
+        public virtual System.DateTime? CheckDate { get; set; }
 
         /// <summary>
         /// 
@@ -81,12 +81,12 @@ namespace TEWorkFlow.Domain.Business
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime PutinDate { get; set; }
+        public virtual System.DateTime? PutinDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime CreateDate { get; set; }
+        public virtual System.DateTime? CreateDate { get; set; }
 
         /// <summary>
         /// 
@@ -106,12 +106,12 @@ namespace TEWorkFlow.Domain.Business
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime ExamineDate { get; set; }
+        public virtual System.DateTime? ExamineDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime OperatorDate { get; set; }
+        public virtual System.DateTime? OperatorDate { get; set; }
 
         protected override void Validate()
         {

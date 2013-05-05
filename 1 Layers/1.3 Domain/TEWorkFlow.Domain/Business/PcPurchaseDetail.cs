@@ -36,67 +36,67 @@ namespace TEWorkFlow.Domain.Business
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal OfferMin { get; set; }
+        public virtual decimal? OfferMin { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal StockQty { get; set; }
+        public virtual decimal? StockQty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal OrderQty { get; set; }
+        public virtual decimal? OrderQty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PackQty { get; set; }
+        public virtual decimal? PackQty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PackCoef { get; set; }
+        public virtual decimal? PackCoef { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PurchaseQty { get; set; }
+        public virtual decimal? PurchaseQty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PutinQty { get; set; }
+        public virtual decimal? PutinQty { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal SalePrice { get; set; }
+        public virtual decimal? SalePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PurchasePrice { get; set; }
+        public virtual decimal? PurchasePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal NontaxPurchasePrice { get; set; }
+        public virtual decimal? NontaxPurchasePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PurchaseMoney { get; set; }
+        public virtual decimal? PurchaseMoney { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal NontaxPurchaseMoney { get; set; }
+        public virtual decimal? NontaxPurchaseMoney { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.DateTime ProduceDate { get; set; }
+        public virtual System.DateTime? ProduceDate { get; set; }
 
         /// <summary>
         /// 

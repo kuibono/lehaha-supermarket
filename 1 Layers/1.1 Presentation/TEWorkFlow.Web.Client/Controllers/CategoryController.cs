@@ -73,6 +73,32 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(items, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 采购方式
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult PcMode()
+        {
+            List<item> items = new List<item>();
+            items.Add(new item() { id = "传真", text = "传真" });
+            items.Add(new item() { id = "Email", text = "Email" });
+            items.Add(new item() { id = "电话", text = "电话" });
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// 采购类型
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult PcType()
+        {
+            List<item> items = new List<item>();
+            items.Add(new item() { id = "普通订货", text = "普通订货" });
+            items.Add(new item() { id = "开放订货", text = "开放订货" });
+            items.Add(new item() { id = "促销订货", text = "促销订货" });
+            items.Add(new item() { id = "赠品订货", text = "赠品订货" });
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Politics()
         {
             var result = EmPaPoliticsService.GetAll().Select(p => new { id = p.Id, text = p.Name }).ToList();

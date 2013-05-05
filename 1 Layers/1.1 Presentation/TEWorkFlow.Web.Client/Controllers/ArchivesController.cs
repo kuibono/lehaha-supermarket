@@ -120,6 +120,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetAllSupplierArchive(string key)
+        {
+            return Json(FbSupplierArchivesService.Search(key), JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
 
