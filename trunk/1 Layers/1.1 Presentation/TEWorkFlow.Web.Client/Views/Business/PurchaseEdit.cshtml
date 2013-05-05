@@ -58,6 +58,36 @@
                 }
             });
         }
+
+        function onGoodsCodeButtonEdit(e) {
+            var btnEdit = this;
+            mini.open({
+                url: "/Archives/GoodsSelectWindow",
+                showMaxButton: false,
+                title: "选择商品",
+                width: 400,
+                height: 350,
+                ondestroy: function (action) {
+                    if (action == "ok") {
+                        var iframe = this.getIFrameEl();
+                        var data = iframe.contentWindow.GetData();
+                        data = mini.clone(data);
+                        if (data) {
+                            btnEdit.setValue(data.Id);
+                            btnEdit.setText(data.Id);
+                            mini.get("GoodsCode").setValue(data.Id);
+                            mini.get("GoodsBarCode").setValue(data.GoodsBarCode);
+
+                            mini.get("Specification").setValue(data.Specification);
+                            mini.get("PackUnitCode").setValue(data.PackUnitCode);
+                            mini.get("OfferMin").setValue(data.OfferMin);
+
+                            mini.get("StockQty").setValue(data.OfferMin);
+                        }
+                    }
+                }
+            });
+        }
     </script>
 }
 <table class="edittable" border="1" cellpadding="0" cellspacing="0">
@@ -232,13 +262,13 @@
                 商品编码:
             </td>
             <td style="width: 140px;">
-                <input name="GoodsCode" value="@Model.Detail.GoodsCode" class="mini-textbox"/>
+                <input id="GoodsCode" name="GoodsCode" value="@Model.Detail.GoodsCode" class="mini-buttonedit"  onbuttonclick="onGoodsCodeButtonEdit"/>
             </td>
             <td style="width: 60px;">
                 商品销<br/>售码:
             </td>
             <td style="width: 140px;">
-                <input name="GoodsBarCode" value="@Model.Detail.GoodsBarCode" class="mini-textbox"/>
+                <input id="GoodsBarCode"  name="GoodsBarCode" value="@Model.Detail.GoodsBarCode" class="mini-textbox"/>
             </td>
         </tr>
         <tr>
@@ -246,19 +276,19 @@
                 规格:
             </td>
             <td style="width: 140px;">
-                <input name="Specification" value="@Model.Detail.Specification" class="mini-textbox"/>
+                <input id="Specification"  name="Specification" value="@Model.Detail.Specification" class="mini-textbox"/>
             </td>
             <td style="width: 60px;">
                 包装单位:
             </td>
             <td style="width: 140px;">
-                <input name="PackUnitCode" value="@Model.Detail.PackUnitCode" class="mini-textbox"/>
+                <input id="PackUnitCode" name="PackUnitCode" value="@Model.Detail.PackUnitCode" class="mini-textbox"/>
             </td>
             <td style="width: 60px;">
                 最小订量:
             </td>
             <td style="width: 140px;">
-                <input name="OfferMin" value="@Model.Detail.OfferMin" class="mini-spinner"/>
+                <input id="OfferMin" name="OfferMin" value="@Model.Detail.OfferMin" class="mini-spinner"/>
             </td>
         </tr>
         <tr>
@@ -266,19 +296,19 @@
                 库存数量:
             </td>
             <td style="width: 140px;">
-                <input name="StockQty" value="@Model.Detail.StockQty" class="mini-spinner"/>
+                <input id="StockQty" name="StockQty" value="@Model.Detail.StockQty" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 在途数量:
             </td>
             <td style="width: 140px;">
-                <input name="OrderQty" value="@Model.Detail.OrderQty" class="mini-spinner"/>
+                <input id="OrderQty" name="OrderQty" value="@Model.Detail.OrderQty" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 整件数量:
             </td>
             <td style="width: 140px;">
-                <input name="PackQty" value="@Model.Detail.PackQty" class="mini-spinner"/>
+                <input id="PackQty" name="PackQty" value="@Model.Detail.PackQty" class="mini-spinner"/>
             </td>
         </tr>
         <tr>
@@ -286,19 +316,19 @@
                 包装系数:
             </td>
             <td style="width: 140px;">
-                <input name="PackCoef" value="@Model.Detail.PackCoef" class="mini-textbox"/>
+                <input id="PackCoef" name="PackCoef" value="@Model.Detail.PackCoef" class="mini-textbox"/>
             </td>
             <td style="width: 60px;">
                 单品数量:
             </td>
             <td style="width: 140px;">
-                <input name="PurchaseQty" value="@Model.Detail.PurchaseQty" class="mini-spinner"/>
+                <input id="PurchaseQty" name="PurchaseQty" value="@Model.Detail.PurchaseQty" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 入库数量:
             </td>
             <td style="width: 140px;">
-                <input name="PutinQty" value="@Model.Detail.PutinQty" class="mini-spinner"/>
+                <input id="PutinQty" name="PutinQty" value="@Model.Detail.PutinQty" class="mini-spinner"/>
             </td>
         </tr>
         <tr>
@@ -306,19 +336,19 @@
                 销售价:
             </td>
             <td style="width: 140px;">
-                <input name="SalePrice" value="@Model.Detail.SalePrice" class="mini-spinner"/>
+                <input id="SalePrice" name="SalePrice" value="@Model.Detail.SalePrice" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 含税进价:
             </td>
             <td style="width: 140px;">
-                <input name="PurchasePrice" value="@Model.Detail.PurchasePrice" class="mini-spinner"/>
+                <input id="PurchasePrice" name="PurchasePrice" value="@Model.Detail.PurchasePrice" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 不含税<br/>进价:
             </td>
             <td style="width: 140px;">
-                <input name="NontaxPurchasePrice" value="@Model.Detail.NontaxPurchasePrice" class="mini-spinner"/>
+                <input id="NontaxPurchasePrice" name="NontaxPurchasePrice" value="@Model.Detail.NontaxPurchasePrice" class="mini-spinner"/>
             </td>
         </tr>
         <tr>
@@ -326,20 +356,20 @@
                 含税金额:
             </td>
             <td style="width: 140px;">
-                <input name="PurchaseMoney" value="@Model.Detail.PurchaseMoney" class="mini-spinner"/>
+                <input id="PurchaseMoney" name="PurchaseMoney" value="@Model.Detail.PurchaseMoney" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 不含税<br/>
                 金额:
             </td>
             <td style="width: 140px;">
-                <input name="NontaxPurchaseMoney" value="@Model.Detail.NontaxPurchaseMoney" class="mini-spinner"/>
+                <input id="NontaxPurchaseMoney" name="NontaxPurchaseMoney" value="@Model.Detail.NontaxPurchaseMoney" class="mini-spinner"/>
             </td>
             <td style="width: 60px;">
                 生产日期:
             </td>
             <td style="width: 140px;">
-                <input name="ProduceDate" value="@Model.Detail.ProduceDate" class="mini-datepicker"/>
+                <input id="ProduceDate" name="ProduceDate" value="@Model.Detail.ProduceDate" class="mini-datepicker"/>
             </td>
         </tr>
     </table>
