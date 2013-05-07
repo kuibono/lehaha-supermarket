@@ -103,8 +103,17 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchSupplierArchiveList(SearchDtoBase<FbSupplierArchives> c, FbSupplierArchives s)
         {
+            if (string.IsNullOrEmpty(Request["key"]) == false)
+            {
+                return Json(FbSupplierArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            }
             c.entity = s;
             return Json(FbSupplierArchivesService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchAllSuppliers(string key)
+        {
+            return Json(FbSupplierArchivesService.Search(key), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SaveSupplierArchive(FbSupplierArchives s)
@@ -125,6 +134,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(FbSupplierArchivesService.Search(key), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult SupplierSelectWindow()
+        {
+            return View();
+        }
+
         #endregion
 
 
@@ -141,6 +156,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             c.entity = s;
             return Json(BsBranchArchivesService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchAllranches(string key)
+        {
+            return Json(BsBranchArchivesService.Search(key), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult BranchEdit(string id)

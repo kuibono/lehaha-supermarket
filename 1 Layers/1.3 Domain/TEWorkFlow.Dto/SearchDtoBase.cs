@@ -8,9 +8,39 @@ namespace TEWorkFlow.Dto
 {
     public class SearchDtoBase<T>
     {
-        public int pageIndex { get; set; }
+        private int _pageindex = 1;
+        public int pageIndex
+        {
+            get
+            {
+                if (_pageindex <= 0)
+                {
+                    return 1;
+                }
+                return _pageindex;
+            }
+            set
+            {
+                _pageindex = value;
+            }
+        }
 
-        public int pageSize { get; set; }
+        private int _pagesize = 100;
+        public int pageSize
+        {
+            get
+            {
+                if (_pagesize <= 0)
+                {
+                    return 1;
+                }
+                return _pagesize;
+            }
+            set
+            {
+                _pagesize = value;
+            }
+        }
 
         public string sortField { get; set; }
 
@@ -21,9 +51,39 @@ namespace TEWorkFlow.Dto
 
     public class SearchDtoBaseTest
     {
-        public int pageIndex { get; set; }
+        private int _pageIndex = 1;
+        public int pageIndex
+        {
+            get
+            {
+                if (_pageIndex <= 0)
+                {
+                    return 1;
+                }
+                return _pageIndex;
+            }
+            set
+            {
+                _pageIndex = value;
+            }
+        }
 
-        public int pageSize { get; set; }
+        private int _pagesize = 100;
+        public int pageSize
+        {
+            get
+            {
+                if (_pagesize <= 0)
+                {
+                    return 1;
+                }
+                return _pagesize;
+            }
+            set
+            {
+                _pagesize = value;
+            }
+        }
 
         public int sortField { get; set; }
 

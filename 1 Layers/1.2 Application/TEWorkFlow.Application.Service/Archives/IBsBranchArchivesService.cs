@@ -35,6 +35,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
         SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c);
 
+        IList<BsBranchArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
+
         void Delete(IList<string> ids);
     }
 }

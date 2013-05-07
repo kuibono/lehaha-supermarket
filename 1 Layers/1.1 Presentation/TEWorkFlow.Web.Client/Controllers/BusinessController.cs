@@ -38,8 +38,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(PcPurchaseManageService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SaveBranchArchive(PcPurchaseManage s)
+        public JsonResult SavePurchase(PcPurchaseManage s,PcPurchaseDetail Detail)
         {
+            s.Detail = Detail;
+
             if (s.HaveId)
             {
                 PcPurchaseManageService.Update(s);
