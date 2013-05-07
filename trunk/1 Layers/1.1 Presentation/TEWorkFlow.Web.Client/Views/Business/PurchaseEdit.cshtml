@@ -83,6 +83,10 @@
                             mini.get("OfferMin").setValue(data.OfferMin);
 
                             mini.get("StockQty").setValue(data.OfferMin);
+                            mini.get("PackCoef").setValue(data.PackCoef);
+                            mini.get("SalePrice").setValue(data.SalePrice);
+                            mini.get("PurchasePrice").setValue(data.PurchasePrice);
+                            mini.get("NontaxPurchasePrice").setValue(data.NontaxPurchasePrice);
                         }
                     }
                 }
@@ -119,16 +123,17 @@
             <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
         </td>
         <td style="width: 60px;">
-            部门编码:
+            部门:
         </td>
         <td style="width: 140px;">
             <input name="dCode" value="@Model.dCode" class="mini-buttonedit"  onbuttonclick="onDCodeButtonEdit"/>
         </td>
         <td style="width: 60px;">
-            门店编码:
+            门店:
         </td>
         <td style="width: 140px;">
-            <input name="bCode" value="@Model.bCode" class="mini-textbox"/>
+            @*<input name="bCode" value="@Model.bCode" class="mini-textbox"/>*@
+            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
     </tr>
     <tr>
@@ -302,13 +307,13 @@
                 在途数量:
             </td>
             <td style="width: 140px;">
-                <input id="OrderQty" name="OrderQty" value="@Model.Detail.OrderQty" class="mini-spinner"/>
+                <input id="OrderQty" name="OrderQty" value="@Model.Detail.OrderQty" class="mini-spinner" required="true"/>
             </td>
             <td style="width: 60px;">
                 整件数量:
             </td>
             <td style="width: 140px;">
-                <input id="PackQty" name="PackQty" value="@Model.Detail.PackQty" class="mini-spinner"/>
+                <input id="PackQty" name="PackQty" value="@Model.Detail.PackQty" class="mini-spinner" required="true"/>
             </td>
         </tr>
         <tr>
@@ -322,13 +327,13 @@
                 单品数量:
             </td>
             <td style="width: 140px;">
-                <input id="PurchaseQty" name="PurchaseQty" value="@Model.Detail.PurchaseQty" class="mini-spinner"/>
+                <input id="PurchaseQty" name="PurchaseQty" value="@Model.Detail.PurchaseQty" class="mini-spinner" required="true"/>
             </td>
             <td style="width: 60px;">
                 入库数量:
             </td>
             <td style="width: 140px;">
-                <input id="PutinQty" name="PutinQty" value="@Model.Detail.PutinQty" class="mini-spinner"/>
+                <input id="PutinQty" name="PutinQty" value="@Model.Detail.PutinQty" class="mini-spinner" required="true"/>
             </td>
         </tr>
         <tr>
@@ -356,20 +361,20 @@
                 含税金额:
             </td>
             <td style="width: 140px;">
-                <input id="PurchaseMoney" name="PurchaseMoney" value="@Model.Detail.PurchaseMoney" class="mini-spinner"/>
+                <input id="PurchaseMoney" name="PurchaseMoney" value="@Model.Detail.PurchaseMoney" class="mini-spinner" required="true"/>
             </td>
             <td style="width: 60px;">
                 不含税<br/>
                 金额:
             </td>
             <td style="width: 140px;">
-                <input id="NontaxPurchaseMoney" name="NontaxPurchaseMoney" value="@Model.Detail.NontaxPurchaseMoney" class="mini-spinner"/>
+                <input id="NontaxPurchaseMoney" name="NontaxPurchaseMoney" value="@Model.Detail.NontaxPurchaseMoney" class="mini-spinner" required="true"/>
             </td>
             <td style="width: 60px;">
                 生产日期:
             </td>
             <td style="width: 140px;">
-                <input id="ProduceDate" name="ProduceDate" value="@Model.Detail.ProduceDate" class="mini-datepicker"/>
+                <input id="ProduceDate" name="ProduceDate" value="@Model.Detail.ProduceDate" class="mini-datepicker" required="true"/>
             </td>
         </tr>
     </table>
