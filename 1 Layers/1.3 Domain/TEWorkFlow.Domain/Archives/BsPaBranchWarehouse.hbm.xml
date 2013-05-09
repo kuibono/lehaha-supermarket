@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="BsPaBranchWarehouse" table="bs_pa_branch_warehouse" lazy="true" >
+    <id name="Id" type="string" column="sys_guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="bCode" column="b_code" type="string" />
+    <property name="WhCode" column="wh_code" type="string" />
+    <property name="WhName" column="wh_name" type="string" />
+    <property name="WhArea" column="wh_area" type="decimal" />
+  </class>
+</hibernate-mapping>
