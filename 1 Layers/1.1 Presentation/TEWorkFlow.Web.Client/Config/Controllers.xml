@@ -32,5 +32,7 @@
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.BusinessController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />
+    <property name="PcPurchaseDetailService" ref="PcPurchaseDetailService" />
+    <property name="GoodsArchivesService" ref="GoodsArchivesService" />
   </object>
 </objects>

@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -14,6 +15,8 @@ namespace TEWorkFlow.Application.Service.Business
     {
 
         public IRepositoryGUID<PcPurchaseDetail> EntityRepository { get; set; }
+
+        public IRepositoryGUID<GoodsArchives> GoodsRepository { get; set; }
 
         [Transaction]
         public string Create(PcPurchaseDetail entity)
@@ -57,6 +60,30 @@ namespace TEWorkFlow.Application.Service.Business
             }
         }
 
+        [Transaction]
+        public IList<PcPurchaseDetail> GetDetailsByManageId(string manageId)
+        {
+            var q = from l in EntityRepository.LinqQuery where l.ManageId == manageId select l;
+            if (q.Count() == 0)
+            {
+                return new List<PcPurchaseDetail>();
+            }
+            var result= (from l in EntityRepository.LinqQuery where l.ManageId == manageId select l).ToList();
+            FillGoodsName(result);
+            return result;
+        }
+
+        private void FillGoodsName(IList<PcPurchaseDetail> details)
+        {
+            var goods = GoodsRepository.LinqQuery.ToList();
+            for (int i = 0; i < details.Count; i++)
+            {
+                string goodsId = details[i].GoodsCode;
+                string goodsName = goods.Where(p => p.Id == goodsId).Count() > 0 ? goods.Where(p => p.Id == goodsId).First().GoodsName : "";
+
+                details[i].GoodsName = goodsName;
+            }
+        }
 
         [Transaction]
         public SearchResult<PcPurchaseDetail> Search(SearchDtoBase<PcPurchaseDetail> c)
@@ -140,9 +167,9 @@ namespace TEWorkFlow.Application.Service.Business
                     q = q.Where(p => p.NontaxPurchaseMoney == c.entity.NontaxPurchaseMoney);
                 }
 
-                if (string.IsNullOrEmpty(c.entity.SysGuid) == false)
+                if (string.IsNullOrEmpty(c.entity.ManageId) == false)
                 {
-                    q = q.Where(p => p.SysGuid.Contains(c.entity.SysGuid));
+                    q = q.Where(p => p.ManageId.Contains(c.entity.ManageId));
                 }
 
             }

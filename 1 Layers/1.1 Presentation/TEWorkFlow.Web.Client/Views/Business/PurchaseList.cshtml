@@ -12,7 +12,7 @@
                     筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
-                <input id="bName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
+                <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>
         </tr>
@@ -34,7 +34,7 @@
         }
         function search() {
             grid.load({
-                "bName": mini.get("#bName").value
+                "key": mini.get("#key").value
             });
         }
         function editRow(id) {
@@ -55,7 +55,7 @@
         }
         function deleteItem(id) {
             $.ajax({
-                url: "/Business/BranchDelete",
+                url: "/Business/PurchaseDelete",
                 data: { ids: id },
                 success: function (text) {
                     grid.reload();
@@ -66,30 +66,40 @@
         }
     </script>
 }
-
-<div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList"
-    style="width: 100%; height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]"
-    pagesize="20" multiselect="true">
+<div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList" style="width: 100%;
+    height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
+    multiselect="true">
     <div property="columns">
         <div type="indexcolumn" width="30">
         </div>
         <div type="checkcolumn" width="30">
         </div>
-        <div field="SupCode" headeralign="center" align="center" width="60">供货商编码</div>
-        <div field="EnCode" headeralign="center" align="center" width="60">企业编码</div>
-        <div field="PcForm" headeralign="center" align="center" width="60">采购形式</div>
-        <div field="dCode" headeralign="center" align="center" width="60">部门编码</div>
-        <div field="bCode" headeralign="center" align="center" width="60">门店编码</div>
-        <div field="PcType" headeralign="center" align="center" width="60">采购类型</div>
-        <div field="PcMode" headeralign="center" align="center" width="60">采购方式</div>
-        <div field="WhCode" headeralign="center" align="center" width="60">仓库编码</div>
-        <div field="PurchaseDate" headeralign="center" align="center" width="60">采购日期</div>
-        <div field="ExpectArriveDate" headeralign="center" align="center" width="60">预计到货日期</div>
-        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer" cellstyle="padding:0;">管理</div>
+        <div field="SupCode" headeralign="center" align="center" width="60">
+            供货商编码</div>
+        <div field="EnCode" headeralign="center" align="center" width="60">
+            企业编码</div>
+        <div field="PcForm" headeralign="center" align="center" width="60">
+            采购形式</div>
+        <div field="dName" headeralign="center" align="center" width="60">
+            部门</div>
+        <div field="bCode" headeralign="center" align="center" width="60">
+            门店编码</div>
+        <div field="PcType" headeralign="center" align="center" width="60">
+            采购类型</div>
+        <div field="PcMode" headeralign="center" align="center" width="60">
+            采购方式</div>
+        <div field="WhCode" headeralign="center" align="center" width="60">
+            仓库编码</div>
+        <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+            采购日期</div>
+        <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+            预计到货日期</div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            管理</div>
     </div>
 </div>
-
-<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 300px;"
+<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 180px;"
     iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
     showmodal="false" allowresize="false" allowdrag="true">
     <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
@@ -97,6 +107,57 @@
             筛选</a>
     </div>
     <form id="frmAdv">
-
+    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="width: 60px;">
+                采购单号:
+            </td>
+            <td style="width: 140px;">
+                <input name="Id" class="mini-textbox" />
+            </td>
+            <td style="width: 60px;">
+                供货商:
+            </td>
+            <td style="width: 140px;">
+                <input name="SupCode" class="mini-autocomplete" require="true" valuefield="SupName"
+                    displayfield="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"
+                    required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 60px;">
+                采购形式:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcForm" class="mini-textbox" />
+            </td>
+            <td style="width: 60px;">
+                门店:
+            </td>
+            <td style="width: 140px;">
+                <input name="bCode" class="mini-combobox" textfield="bName" valuefield="Id" emptytext="请选择..."
+                    url="/Archives/SearchAllranches" allowinput="false" shownullitem="true" nullitemtext="请选择..."
+                    required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 60px;">
+                采购类型:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcType" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
+                    url="/Category/PcType" allowinput="false" shownullitem="true" nullitemtext="请选择..."
+                    required="true" />
+            </td>
+            <td style="width: 60px;">
+                采购方式:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcMode" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
+                    url="/Category/PcMode" allowinput="false" shownullitem="true" nullitemtext="请选择..."
+                    required="true" />
+            </td>
+        </tr>
+    </table>
     </form>
 </div>
