@@ -7,6 +7,84 @@
 {
     <script type="text/javascript">
         mini.parse();
+
+        var grid = mini.get('datagrid1');
+        grid.url = "/Business/GetPurchaseDetailList/" + entityId;
+        grid.reload();
+
+        function onActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRow() {
+            var row = {};
+            grid.addRow(row, 0);
+
+            grid.cancelEdit();
+            grid.beginEditRow(row);
+        }
+        function editRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                grid.cancelEdit();
+                grid.beginEditRow(row);
+            }
+        }
+        function cancelRow(row_uid) {
+            grid.reload();
+        }
+        function delRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    grid.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Business/DeletePurchaseDetail/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+
+            grid.commitEdit();
+            var rowData = grid.getChanges()[0];
+
+            grid.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Business/SaveGoodsToPurchase/" + entityId,
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+
         function SaveData() {
             var form = new mini.Form("form1");
             var o = form.getData(true);
@@ -74,19 +152,7 @@
                         data = mini.clone(data);
                         if (data) {
                             btnEdit.setValue(data.Id);
-                            btnEdit.setText(data.Id);
-                            mini.get("GoodsCode").setValue(data.Id);
-                            mini.get("GoodsBarCode").setValue(data.GoodsBarCode);
-
-                            mini.get("Specification").setValue(data.Specification);
-                            mini.get("PackUnitCode").setValue(data.PackUnitCode);
-                            mini.get("OfferMin").setValue(data.OfferMin);
-
-                            mini.get("StockQty").setValue(data.OfferMin);
-                            mini.get("PackCoef").setValue(data.PackCoef);
-                            mini.get("SalePrice").setValue(data.SalePrice);
-                            mini.get("PurchasePrice").setValue(data.PurchasePrice);
-                            mini.get("NontaxPurchasePrice").setValue(data.NontaxPurchasePrice);
+                            btnEdit.setText(data.GoodsName);
                         }
                     }
                 }
@@ -100,13 +166,13 @@
             采购单号:
         </td>
         <td style="width: 140px;">
-            <input name="PcNumber" value="@Model.Id" class="mini-textbox"/>
+            <input name="PcNumber" value="@Model.Id" class="mini-textbox" readonly="readonly"/>
         </td>
         <td style="width: 60px;">
             供货商:
         </td>
         <td style="width: 140px;">
-            <input name="SupCode" value="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
+            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
         </td>
         <td style="width: 60px;">
             企业编码:
@@ -126,13 +192,12 @@
             部门:
         </td>
         <td style="width: 140px;">
-            <input name="dCode" value="@Model.dCode" class="mini-buttonedit"  onbuttonclick="onDCodeButtonEdit"/>
+            <input name="dCode" value="@Model.dCode" text="@Model.dName" class="mini-buttonedit"  onbuttonclick="onDCodeButtonEdit"/>
         </td>
         <td style="width: 60px;">
             门店:
         </td>
         <td style="width: 140px;">
-            @*<input name="bCode" value="@Model.bCode" class="mini-textbox"/>*@
             <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
     </tr>
@@ -141,14 +206,12 @@
             采购类型:
         </td>
         <td style="width: 140px;">
-            @*<input name="PcType" value="@Model.PcType" class="mini-textbox"/>*@
             <input name="PcType" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PcType" value="@Model.PcType"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td style="width: 60px;">
             采购方式:
         </td>
         <td style="width: 140px;">
-            @*<input name="PcMode" value="@Model.PcMode" class="mini-textbox"/>*@
             <input name="PcMode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PcMode" value="@Model.PcMode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td style="width: 60px;">
@@ -163,7 +226,6 @@
             采购日期:
         </td>
         <td style="width: 140px;">
-            @*<input name="PurchaseDate" value="@Model.PurchaseDate" class="mini-textbox"/>*@
             <input name="PurchaseDate" value="@Model.PurchaseDate" class="mini-datepicker"/>
         </td>
         <td style="width: 60px;">
@@ -171,15 +233,13 @@
             日期:
         </td>
         <td style="width: 140px;">
-            @*<input name="ExpectArriveDate" value="@Model.ExpectArriveDate" class="mini-textbox"/>*@
             <input name="ExpectArriveDate" value="@Model.ExpectArriveDate" class="mini-datepicker"/>
         </td>
         <td style="width: 60px;">
             是否验收:
         </td>
         <td align="left" style="padding-left: 2px;">
-            @*<input name="IfCheck" value="@Model.IfCheck" class="mini-textbox"/>*@
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfCheck" readOnly="false" text="验收">
+            <div name="IfCheck" class="mini-checkbox" checked="@Model.IfCheck" text="验收">
             </div>
         </td>
     </tr>
@@ -188,23 +248,20 @@
             验收日期:
         </td>
         <td style="width: 140px;">
-            @*<input name="CheckDate" value="@Model.CheckDate" class="mini-textbox"/>*@
-            <input name="CreateDate" value="@Model.CheckDate" class="mini-datepicker"/>
+            <input name="CheckDate" value="@Model.CheckDate" class="mini-datepicker"/>
         </td>
         <td style="width: 60px;">
             是否入库:
         </td>
         <td align="left" style="padding-left: 2px;">
-            @*<input name="IfPutin" value="@Model.IfPutin" class="mini-textbox"/>*@
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfPutin" readOnly="false" text="入库">
+            <div name="IfPutin" class="mini-checkbox" checked="@Model.IfPutin" readOnly="false" text="入库">
             </div>
         </td>
         <td style="width: 60px;">
             入库日期:
         </td>
         <td style="width: 140px;">
-            @*<input name="PutinDate" value="@Model.PutinDate" class="mini-textbox"/>*@
-            <input name="CreateDate" value="@Model.PutinDate" class="mini-datepicker"/>
+            <input name="PutinDate" value="@Model.PutinDate" class="mini-datepicker"/>
         </td>
     </tr>
     <tr>
@@ -250,132 +307,45 @@
         <td style="width: 140px;">
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
         </td>
-        </tr>
+    </tr>
 </table>
-<fieldset style="border: solid 1px #aaa; padding: 3px;">
-    <legend>详细信息</legend>
-    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
-        <tr>
-            <td style="width: 60px;">
-                系统标识:
-            </td>
-            <td style="width: 140px;">
-                <input name="SysGuid" value="@Model.Detail.SysGuid" class="mini-textbox"/>
-                @*<input name="PcNumber" value="@Model.Detail.Id" class="mini-textbox"/>*@
-            </td>
-            <td style="width: 60px;">
-                商品编码:
-            </td>
-            <td style="width: 140px;">
-                <input id="GoodsCode" name="GoodsCode" value="@Model.Detail.GoodsCode" class="mini-buttonedit"  onbuttonclick="onGoodsCodeButtonEdit"/>
-            </td>
-            <td style="width: 60px;">
-                商品销<br/>售码:
-            </td>
-            <td style="width: 140px;">
-                <input id="GoodsBarCode"  name="GoodsBarCode" value="@Model.Detail.GoodsBarCode" class="mini-textbox"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                规格:
-            </td>
-            <td style="width: 140px;">
-                <input id="Specification"  name="Specification" value="@Model.Detail.Specification" class="mini-textbox"/>
-            </td>
-            <td style="width: 60px;">
-                包装单位:
-            </td>
-            <td style="width: 140px;">
-                <input id="PackUnitCode" name="PackUnitCode" value="@Model.Detail.PackUnitCode" class="mini-textbox"/>
-            </td>
-            <td style="width: 60px;">
-                最小订量:
-            </td>
-            <td style="width: 140px;">
-                <input id="OfferMin" name="OfferMin" value="@Model.Detail.OfferMin" class="mini-spinner"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                库存数量:
-            </td>
-            <td style="width: 140px;">
-                <input id="StockQty" name="StockQty" value="@Model.Detail.StockQty" class="mini-spinner"/>
-            </td>
-            <td style="width: 60px;">
-                在途数量:
-            </td>
-            <td style="width: 140px;">
-                <input id="OrderQty" name="OrderQty" value="@Model.Detail.OrderQty" class="mini-spinner" required="true"/>
-            </td>
-            <td style="width: 60px;">
-                整件数量:
-            </td>
-            <td style="width: 140px;">
-                <input id="PackQty" name="PackQty" value="@Model.Detail.PackQty" class="mini-spinner" required="true"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                包装系数:
-            </td>
-            <td style="width: 140px;">
-                <input id="PackCoef" name="PackCoef" value="@Model.Detail.PackCoef" class="mini-textbox"/>
-            </td>
-            <td style="width: 60px;">
-                单品数量:
-            </td>
-            <td style="width: 140px;">
-                <input id="PurchaseQty" name="PurchaseQty" value="@Model.Detail.PurchaseQty" class="mini-spinner" required="true"/>
-            </td>
-            <td style="width: 60px;">
-                入库数量:
-            </td>
-            <td style="width: 140px;">
-                <input id="PutinQty" name="PutinQty" value="@Model.Detail.PutinQty" class="mini-spinner" required="true"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                销售价:
-            </td>
-            <td style="width: 140px;">
-                <input id="SalePrice" name="SalePrice" value="@Model.Detail.SalePrice" class="mini-spinner"/>
-            </td>
-            <td style="width: 60px;">
-                含税进价:
-            </td>
-            <td style="width: 140px;">
-                <input id="PurchasePrice" name="PurchasePrice" value="@Model.Detail.PurchasePrice" class="mini-spinner"/>
-            </td>
-            <td style="width: 60px;">
-                不含税<br/>进价:
-            </td>
-            <td style="width: 140px;">
-                <input id="NontaxPurchasePrice" name="NontaxPurchasePrice" value="@Model.Detail.NontaxPurchasePrice" class="mini-spinner"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                含税金额:
-            </td>
-            <td style="width: 140px;">
-                <input id="PurchaseMoney" name="PurchaseMoney" value="@Model.Detail.PurchaseMoney" class="mini-spinner" required="true"/>
-            </td>
-            <td style="width: 60px;">
-                不含税<br/>
-                金额:
-            </td>
-            <td style="width: 140px;">
-                <input id="NontaxPurchaseMoney" name="NontaxPurchaseMoney" value="@Model.Detail.NontaxPurchaseMoney" class="mini-spinner" required="true"/>
-            </td>
-            <td style="width: 60px;">
-                生产日期:
-            </td>
-            <td style="width: 140px;">
-                <input id="ProduceDate" name="ProduceDate" value="@Model.Detail.ProduceDate" class="mini-datepicker" required="true"/>
-            </td>
-        </tr>
-    </table>
-</fieldset>
+
+<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
+    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
+    showpager="false">
+    <div property="columns">
+        <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
+            产品
+            <input property="editor" class="mini-buttonedit" onbuttonclick="onGoodsCodeButtonEdit"
+                style="width: 100%;" />
+        </div>
+        <div field="PurchaseQty" width="60" headeralign="center" align="center" allowsort="true">
+            单品数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="StockQty" width="60" headeralign="center" align="center" allowsort="true">
+            库存数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="OrderQty" width="60" headeralign="center" align="center" allowsort="true">
+            在途数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="PackQty" width="60" headeralign="center" align="center" allowsort="true">
+            整件数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="PutinQty" width="60" headeralign="center" align="center" allowsort="true">
+            入库数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="ProduceDate" width="80" headeralign="center" align="center" allowsort="true"
+            dateformat="yyyy-MM-dd">
+            生产日期
+            <input property="editor" class="mini-datepicker" style="width: 100%;" />
+        </div>
+        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            操作</div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
+using TEWorkFlow.Domain.Sys;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -15,31 +16,39 @@ namespace TEWorkFlow.Application.Service.Business
 
         public IRepositoryGUID<PcPurchaseManage> EntityRepository { get; set; }
         public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
+        public IRepositoryGUID<SysPaDepartment>  DepartmentRepository { get; set; }
         [Transaction]
         public string Create(PcPurchaseManage entity)
         {
-            string id = EntityRepository.Save(entity);
+            return EntityRepository.Save(entity);
 
-            if (entity.Detail == null)
-            {
-                entity.Detail = new PcPurchaseDetail();
-                entity.Detail.Id = id;
-            }
-            return DetailRepository.Save(entity.Detail);
-            
+
         }
 
         [Transaction]
         public PcPurchaseManage GetById(string id)
         {
             var entity = EntityRepository.Get(id);
-            entity.Detail = DetailRepository.Get(id);
-            if (entity.Detail == null)
-            {
-                entity.Detail = new PcPurchaseDetail();
-                entity.Detail.Id = id;
-            }
+            FillDepartmentName(entity);
             return entity;
+        }
+
+        [Transaction]
+        private void FillDepartmentName(IList<PcPurchaseManage> manages)
+        {
+            var departments = DepartmentRepository.LinqQuery.ToList();
+            for (int i = 0; i < manages.Count; i++)
+            {
+                string depId = manages[i].dCode;
+                string depName = departments.Where(p => p.Id == depId).Count() > 0 ? departments.Where(p => p.Id == depId).First().dName : "";
+                manages[i].dName = depName;
+            }
+        }
+        private void FillDepartmentName(PcPurchaseManage manage)
+        {
+            var departments = DepartmentRepository.LinqQuery.ToList();
+            string depName = departments.Where(p => p.Id == manage.dCode).Count() > 0 ? departments.Where(p => p.Id == manage.dCode).First().dName : "";
+            manage.dName = depName;
         }
 
         [Transaction]
@@ -55,19 +64,18 @@ namespace TEWorkFlow.Application.Service.Business
         public void Update(PcPurchaseManage entity)
         {
             EntityRepository.Update(entity);
-            if (entity.Detail != null)
-            {
-                DetailRepository.Update(entity.Detail);
-            }
         }
 
         [Transaction]
         public void Delete(PcPurchaseManage entity)
         {
             EntityRepository.Delete(entity);
-            if (entity.Detail != null)
+
+            //删除下面的明细
+            var details = DetailRepository.LinqQuery.Where(p => p.ManageId == entity.Id);
+            foreach (var detail in details)
             {
-                DetailRepository.Delete(entity.Detail);
+                DetailRepository.Delete(detail);
             }
         }
 
@@ -77,10 +85,6 @@ namespace TEWorkFlow.Application.Service.Business
             foreach (var entity in entitys)
             {
                 EntityRepository.Delete(entity);
-                if (entity.Detail != null)
-                {
-                    DetailRepository.Delete(entity.Detail);
-                }
             }
         }
 
@@ -91,7 +95,10 @@ namespace TEWorkFlow.Application.Service.Business
             var q = EntityRepository.LinqQuery;
             if (c.entity != null)
             {
-
+                if (string.IsNullOrEmpty(c.entity.Id) == false)
+                {
+                    q = q.Where(p => p.Id.Contains(c.entity.Id));
+                }
                 if (string.IsNullOrEmpty(c.entity.SupCode) == false)
                 {
                     q = q.Where(p => p.SupCode.Contains(c.entity.SupCode));
@@ -150,7 +157,39 @@ namespace TEWorkFlow.Application.Service.Business
 
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
+            FillDepartmentName(result);
             return result.ToSearchResult(count);
+        }
+
+        public IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key) == false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(key)
+                    || l.SupCode.Contains(key)
+                    || l.EnCode.Contains(key)
+                    || l.PcForm.Contains(key)
+                    || l.dCode.Contains(key)
+                    || l.bCode.Contains(key)
+                    || l.PcType.Contains(key)
+                    || l.PcMode.Contains(key)
+                    || l.WhCode.Contains(key)
+                    || l.IfCheck.Contains(key)
+                    || l.IfPutin.Contains(key)
+                    || l.Operator.Contains(key)
+                    || l.Assessor.Contains(key)
+                    || l.IfExamine.Contains(key)
+                    select l;
+
+
+            }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            FillDepartmentName(result);
+            return result.ToList();
         }
 
         [Transaction]
@@ -160,11 +199,8 @@ namespace TEWorkFlow.Application.Service.Business
             foreach (var each in q)
             {
                 Delete(each);
-                if (each.Detail != null)
-                {
-                    DetailRepository.Delete(each.Detail);
-                }
             }
         }
     }
 }
+

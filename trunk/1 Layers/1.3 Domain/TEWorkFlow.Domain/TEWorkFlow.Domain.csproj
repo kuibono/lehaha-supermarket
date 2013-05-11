@@ -125,7 +125,9 @@
     <EmbeddedResource Include="Sys\SysPaDepartment.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Archives\BsPaBranchWarehouse.hbm.xml" />
+    <EmbeddedResource Include="Archives\BsPaBranchWarehouse.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Archives\OpPaWarehouse.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

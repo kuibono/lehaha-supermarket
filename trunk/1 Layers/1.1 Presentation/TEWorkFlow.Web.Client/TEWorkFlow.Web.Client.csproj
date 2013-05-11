@@ -154,6 +154,7 @@
     <Compile Include="Common\LocalizationAttribute.cs" />
     <Compile Include="Common\LocalizationHelpers.cs" />
     <Compile Include="Common\LocalizedDisplayName.cs" />
+    <Compile Include="Common\StaticClass.cs" />
     <Compile Include="Common\UserAuthorizeAttribute .cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArchivesController.cs" />

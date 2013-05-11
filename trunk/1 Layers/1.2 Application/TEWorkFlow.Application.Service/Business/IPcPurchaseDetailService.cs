@@ -32,6 +32,7 @@ namespace TEWorkFlow.Application.Service.Business
         /// <param name="entitys"></param>
         void Delete(IEnumerable<PcPurchaseDetail> entitys);
 
+        IList<PcPurchaseDetail> GetDetailsByManageId(string manageId);
 
         SearchResult<PcPurchaseDetail> Search(SearchDtoBase<PcPurchaseDetail> c);
 

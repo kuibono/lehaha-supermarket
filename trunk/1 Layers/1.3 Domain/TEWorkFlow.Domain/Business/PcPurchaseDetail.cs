@@ -12,7 +12,7 @@ namespace TEWorkFlow.Domain.Business
     ///</summary>
     public class PcPurchaseDetail : EntityGUIDBase, IAggregateRootGUID
     {
-
+        public virtual string ManageId { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -98,10 +98,10 @@ namespace TEWorkFlow.Domain.Business
         /// </summary>
         public virtual System.DateTime? ProduceDate { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual string SysGuid { get; set; }
+
+
+
+        public virtual string GoodsName { get; set; }
 
         protected override void Validate()
         {

@@ -113,7 +113,12 @@ namespace TEWorkFlow.Domain.Business
         /// </summary>
         public virtual System.DateTime? OperatorDate { get; set; }
 
-        public virtual PcPurchaseDetail Detail { get; set; }
+
+
+
+
+        public virtual string dName { get; set; }
+
 
         protected override void Validate()
         {
