@@ -63,6 +63,12 @@
   <object id="PcReturnDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcReturnDetail>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="PcSupplementManageRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcSupplementManage>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="PcSupplementDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcSupplementDetail>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -139,6 +145,15 @@
   </object>
   <object id="PcReturnDetailService" type="TEWorkFlow.Application.Service.Business.PcReturnDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcReturnDetailRepository"/>
+    <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
+  </object>
+  <object id="PcSupplementManageService" type="TEWorkFlow.Application.Service.Business.PcSupplementManageService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcSupplementManageRepository"/>
+    <property name="DetailRepository" ref="PcSupplementDetailRepository"/>
+    <property name="DepartmentRepository" ref="SysPaDepartmentRepository"/>
+  </object>
+  <object id="PcSupplementDetailService" type="TEWorkFlow.Application.Service.Business.PcSupplementDetailService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcSupplementDetailRepository"/>
     <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
   </object>
 </objects>

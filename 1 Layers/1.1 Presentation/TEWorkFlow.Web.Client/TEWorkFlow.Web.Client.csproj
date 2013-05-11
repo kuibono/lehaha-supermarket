@@ -825,6 +825,8 @@
     <Content Include="Views\Archives\SupplierSelectWindow.cshtml" />
     <Content Include="Views\Business\ReturnList.cshtml" />
     <Content Include="Views\Business\ReturnEdit.cshtml" />
+    <Content Include="Views\Business\SupplementList.cshtml" />
+    <Content Include="Views\Business\SupplementEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
