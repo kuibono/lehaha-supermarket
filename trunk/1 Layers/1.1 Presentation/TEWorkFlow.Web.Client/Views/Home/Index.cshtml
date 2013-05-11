@@ -132,13 +132,16 @@
     <div data-options="region:'north',split:false,border:false" style="overflow: hidden;
         height: 30px; background: url(Images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
         line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float: right; padding-right: 20px;" class="head">welcome <a href="javascript:void(0)"
-            class="usertooltips">
-            @Session[AuthorizeSettings.SessionUserName]</a> <a href="#" class="editpass" onclick="modifyPassword()">
-                password</a> <a href="@Url.Content("~/Home/Logout")" class="loginOut">LogOff</a> </span>
+        <span style="float: right; padding-right: 20px;" class="head">welcome 
+            <a href="javascript:void(0)" class="usertooltips">@Session[AuthorizeSettings.SessionUserName]</a> 
+            <a href="#" class="editpass" onclick="modifyPassword()">password</a> 
+            <a href="javascript:void(0)" title="风格" onclick="$('#win-theme').window('open').dialog('设置风格', '设置风格'); ">
+                <img src="~/Scripts/jquery-easyui/themes/icons/color_swatch.png"/>
+            </a>
+            <a href="@Url.Content("~/Home/Logout")" class="loginOut">LogOff</a> </span>
         <span style="padding-left: 10px; font-size: 16px;">
             <img src="images/blocks.gif" width="20" height="20" align="absmiddle" />
-            T&E WorkFlow </span>
+            @Global.ProjectName</span>
     </div>
     <div data-options="region:'south',split:false" style="height: 30px; background: #D2E0F2;">
         <div class="footer">Copyright & other infomation</div>
@@ -173,6 +176,14 @@
             <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savePassword()">@Global.Ok</a>
             <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">
                 @Global.Cancel</a>
+        </div>
+        <div id="win-theme"class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
+             closed="true" buttons="#dlg-buttons">
+            <select class="easyui-combobox">
+                <option value="default">Metro</option>
+                <option value="classic">经典</option>
+                <option value="gray">灰色</option>
+            </select>
         </div>
     </div>
 </body>

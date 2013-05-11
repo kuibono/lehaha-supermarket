@@ -245,5 +245,115 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         #endregion
 
+        #region 补货
+        public IPcSupplementManageService PcSupplementManageService { get; set; }
+        public IPcSupplementDetailService PcSupplementDetailService { get; set; }
+
+
+        public ActionResult SupplementList()
+        {
+            return View();
+        }
+        public ActionResult SupplementEdit(string id)
+        {
+            PcSupplementManage model = new PcSupplementManage();
+            model.Id = Guid.NewGuid().ToString();
+
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                model = PcSupplementManageService.GetById(id);
+            }
+            return View(model);
+        }
+
+        public JsonResult SearchSupplementList(SearchDtoBase<PcSupplementManage> c, PcSupplementManage s)
+        {
+            if (string.IsNullOrEmpty(Request["key"]) == false)
+            {
+                return Json(PcSupplementManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            }
+            c.entity = s;
+            return Json(PcSupplementManageService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchAllSupplementList(string key)
+        {
+            return Json(PcSupplementManageService.Search(key), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetSupplementDetailList(string Id)
+        {
+            return Json(PcSupplementDetailService.GetDetailsByManageId(Id), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsToSupplement(string Id)
+        {
+
+            //ArrayList datas = (ArrayList)(Request["data"].JsonDecode());
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode()); // (Hashtable)datas[0];
+            bool IsAdd = row["_state"].ToString() == "added";
+
+            PcSupplementDetail detail = new PcSupplementDetail();
+            if (!IsAdd)
+            {
+                detail = PcSupplementDetailService.GetById(row["Id"].ToString());
+            }
+
+            GoodsArchives good = GoodsArchivesService.GetById(row["GoodsCode"].ToString());
+
+            detail.GoodsCode = good.Id;
+            detail.GoodsBarCode = good.GoodsBarCode;
+            detail.Specification = good.Specification;
+            detail.PackUnitCode = good.PackUnitCode;
+            detail.OfferMin = good.OfferMin;
+            detail.PackCoef = good.PackCoef;
+            detail.SalePrice = good.SalePrice;
+            detail.PurchasePrice = good.PurchasePrice;
+            detail.NontaxPurchasePrice = good.NontaxPurchasePrice;
+
+            detail.PurchaseQty = Convert.ToInt32(row["PurchaseQty"]);
+            detail.StockQty = Convert.ToInt32(row["StockQty"]);
+            detail.OrderQty = Convert.ToInt32(row["OrderQty"]);
+            detail.PackQty = Convert.ToInt32(row["PackQty"]);
+            detail.PutinQty = Convert.ToInt32(row["PutinQty"]);
+            detail.ProduceDate = row["ProduceDate"].ToNullAbleDateTime();
+
+            //计算金额
+            detail.PurchaseMoney = detail.PurchaseQty * detail.SalePrice;
+            detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.NontaxPurchasePrice;
+
+            if (IsAdd)
+            {
+                detail.ManageId = Id;
+                detail.Id = Guid.NewGuid().ToString();
+                PcSupplementDetailService.Create(detail);
+            }
+            else
+            {
+                PcSupplementDetailService.Update(detail);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult SupplementDelete(List<string> ids)
+        {
+            PcSupplementManageService.Delete(ids);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteSupplementDetail(string Id)
+        {
+            PcSupplementDetailService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveSupplement(PcSupplementManage s, PcSupplementDetail Detail)
+        {
+            PcSupplementManageService.Save(s);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion 
     }
 }
