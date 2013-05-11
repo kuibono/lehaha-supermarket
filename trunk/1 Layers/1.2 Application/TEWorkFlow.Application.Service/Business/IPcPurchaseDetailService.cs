@@ -18,6 +18,8 @@ namespace TEWorkFlow.Application.Service.Business
 
         IList<PcPurchaseDetail> GetAll();
 
+
+
         void Update(PcPurchaseDetail entity);
 
         /// <summary>

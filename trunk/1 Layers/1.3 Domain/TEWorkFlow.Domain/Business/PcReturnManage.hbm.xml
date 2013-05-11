@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Business">
+  <class name="PcReturnManage" table="pc_return_manage" lazy="true" >
+    <id name="Id" type="string" column="rt_number" >
+      <generator class="assigned" />
+    </id>
+    <property name="PcNumber" column="pc_number" type="string" />
+    <property name="SupCode" column="sup_code" type="string" />
+    <property name="EnCode" column="en_code" type="string" />
+    <property name="PcForm" column="pc_form" type="string" />
+    <property name="dCode" column="d_code" type="string" />
+    <property name="bCode" column="b_code" type="string" />
+    <property name="WhCode" column="wh_code" type="string" />
+    <property name="ReturnDate" column="return_date" type="System.DateTime" />
+    <property name="IfPutout" column="if_putout" type="string" />
+    <property name="PutoutDate" column="putout_date" type="System.DateTime" />
+    <property name="CreateDate" column="create_date" type="System.DateTime" />
+    <property name="Operator" column="operator" type="string" />
+    <property name="Assessor" column="assessor" type="string" />
+    <property name="IfExamine" column="if_examine" type="string" />
+    <property name="ExamineDate" column="examine_date" type="System.DateTime" />
+    <property name="OperatorDate" column="operator_date" type="System.DateTime" />
+  </class>
+</hibernate-mapping>

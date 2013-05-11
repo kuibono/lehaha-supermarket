@@ -1,0 +1,303 @@
+﻿@{
+    ViewBag.Title = "返货管理";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Business.PcReturnManage
+@section script
+{
+    <script type="text/javascript">
+        mini.parse();
+
+        var grid = mini.get('datagrid1');
+        grid.url = "/Business/GetReturnDetailList/" + entityId;
+        grid.reload();
+
+        function onActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRow() {
+            var row = {};
+            grid.addRow(row, 0);
+
+            grid.cancelEdit();
+            grid.beginEditRow(row);
+        }
+        function editRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                grid.cancelEdit();
+                grid.beginEditRow(row);
+            }
+        }
+        function cancelRow(row_uid) {
+            grid.reload();
+        }
+        function delRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    grid.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Business/DeleteReturnDetail/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+
+            grid.commitEdit();
+            var rowData = grid.getChanges()[0];
+
+            grid.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Business/SaveGoodsToReturn/" + entityId,
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+        function onDCodeButtonEdit(e) {
+            var btnEdit = this;
+            mini.open({
+                url: "/Account/DepartmentSelectTree",
+                showMaxButton: false,
+                title: "选择部门",
+                width: 350,
+                height: 350,
+                ondestroy: function (action) {
+                    if (action == "ok") {
+                        var iframe = this.getIFrameEl();
+                        var data = iframe.contentWindow.GetData();
+                        data = mini.clone(data);
+                        if (data) {
+                            btnEdit.setValue(data.id);
+                            btnEdit.setText(data.text);
+                        }
+                    }
+                }
+            });
+        }
+        function onSupCodeValueChanged(e) {
+            var item = e.selected;
+            if (item) {
+                mini.get("EnCode").setValue(item.Id);
+            }
+        }
+        function onGoodsCodeButtonEdit(e) {
+            var btnEdit = this;
+            mini.open({
+                url: "/Archives/GoodsSelectWindow",
+                showMaxButton: false,
+                title: "选择商品",
+                width: 400,
+                height: 350,
+                ondestroy: function (action) {
+                    if (action == "ok") {
+                        var iframe = this.getIFrameEl();
+                        var data = iframe.contentWindow.GetData();
+                        data = mini.clone(data);
+                        if (data) {
+                            btnEdit.setValue(data.Id);
+                            btnEdit.setText(data.GoodsName);
+                        }
+                    }
+                }
+            });
+        }
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Business/SaveReturn",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 60px;">
+            返货单号:
+        </td>
+        <td style="width: 140px;">
+            <input name="Id" value="@Model.Id" class="mini-textbox" required="true"  readonly="readonly"/>
+        </td>
+        <td style="width: 60px;">
+            采购单号:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcNumber" value="@Model.PcNumber" text="@Model.PcNumber" class="mini-autocomplete" require="true" valueField="Id" displayField="Id" url="/Business/SearchAllPurchaseList" required="true"/>
+        </td>
+        <td style="width: 60px;">
+            供货商:
+        </td>
+        <td style="width: 140px;">
+            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            企业编码:
+        </td>
+        <td style="width: 140px;">
+            <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-textbox" required="true"/>
+        </td>
+        <td style="width: 60px;">
+            采购形式:
+        </td>
+        <td style="width: 140px;">
+            <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
+        </td>
+        <td style="width: 60px;">
+            部门:
+        </td>
+        <td style="width: 140px;">
+            <input name="dCode" value="@Model.dCode" text="@Model.dName" class="mini-buttonedit"  onbuttonclick="onDCodeButtonEdit"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            门店:
+        </td>
+        <td style="width: 140px;">
+            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
+        </td>
+        <td style="width: 60px;">
+            仓库编码:
+        </td>
+        <td style="width: 140px;">
+            <input name="WhCode" value="@Model.WhCode" class="mini-textbox"/>
+        </td>
+        <td style="width: 60px;">
+            返货日期:
+        </td>
+        <td style="width: 140px;">
+            <input name="ReturnDate" value="@Model.ReturnDate" class="mini-datepicker"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            是否出库:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            <div name="IfPutout" class="mini-checkbox" checked="@Model.IfPutout" text="出库">
+            </div>
+        </td>
+        <td style="width: 60px;">
+            出库日期:
+        </td>
+        <td style="width: 140px;">
+            <input name="PutoutDate" value="@Model.PutoutDate" class="mini-datepicker"/>
+        </td>
+        <td style="width: 60px;">
+            创建时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            操作员:
+        </td>
+        <td style="width: 140px;">
+           <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+        </td>
+        <td style="width: 60px;">
+            审核人:
+        </td>
+        <td style="width: 140px;">
+            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+        </td>
+        <td style="width: 60px;">
+            是否审核:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            @*<input name="IfExamine" value="@Model.IfExamine" class="mini-textbox"/>*@
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            审核时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
+        </td>
+        <td style="width: 60px;">
+            操作时间:
+        </td>
+        <td style="width: 140px;">
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
+    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
+    showpager="false">
+    <div property="columns">
+        <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
+            产品
+            <input property="editor" class="mini-buttonedit" onbuttonclick="onGoodsCodeButtonEdit"
+                style="width: 100%;" />
+        </div>
+        <div field="ReturnQty" width="60" headeralign="center" align="center" allowsort="true">
+            单品数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div field="PackQty" width="60" headeralign="center" align="center" allowsort="true">
+            整件数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        </div>
+        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            操作</div>
+    </div>
+</div>
