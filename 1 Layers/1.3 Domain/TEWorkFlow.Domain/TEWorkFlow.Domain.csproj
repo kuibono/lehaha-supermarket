@@ -50,6 +50,8 @@
     <Compile Include="Business\PcPurchaseManage.cs" />
     <Compile Include="Business\PcReturnDetail.cs" />
     <Compile Include="Business\PcReturnManage.cs" />
+    <Compile Include="Business\PcSupplementDetail.cs" />
+    <Compile Include="Business\PcSupplementManage.cs" />
     <Compile Include="Category\BsPaArea.cs" />
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
@@ -135,6 +137,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Business\PcReturnDetail.hbm.xml" />
     <EmbeddedResource Include="Business\PcReturnManage.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Business\PcSupplementDetail.hbm.xml" />
+    <EmbeddedResource Include="Business\PcSupplementManage.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
