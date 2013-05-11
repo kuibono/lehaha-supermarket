@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Business">
+  <class name="PcReturnDetail" table="pc_return_detail" lazy="true" >
+    <id name="Id" type="string" column="sys_guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="RtNumber" column="rt_number" type="string" />
+    <property name="GoodsCode" column="goods_code" type="string" />
+    <property name="GoodsBarCode" column="goods_bar_code" type="string" />
+    <property name="Specification" column="specification" type="string" />
+    <property name="PackUnitCode" column="pack_unit_code" type="string" />
+    <property name="PackQty" column="pack_qty" type="decimal" />
+    <property name="PackCoef" column="pack_coef" type="decimal" />
+    <property name="ReturnQty" column="return_qty" type="decimal" />
+    <property name="SalePrice" column="sale_price" type="decimal" />
+    <property name="PurchasePrice" column="purchase_price" type="decimal" />
+    <property name="NontaxPurchasePrice" column="nontax_purchase_price" type="decimal" />
+    <property name="ReturnMoney" column="return_money" type="decimal" />
+    <property name="NontaxReturnMoney" column="nontax_return_money" type="decimal" />
+    <property name="SaleMoney" column="sale_money" type="decimal" />
+    <property name="NontaxSaleMoney" column="nontax_sale_money" type="decimal" />
+  </class>
+</hibernate-mapping>
+
+

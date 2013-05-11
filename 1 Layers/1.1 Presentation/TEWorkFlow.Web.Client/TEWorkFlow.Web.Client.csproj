@@ -616,6 +616,7 @@
     <Content Include="Scripts\miniui\themes\icons\cancel.gif" />
     <Content Include="Scripts\miniui\themes\icons\car.png" />
     <Content Include="Scripts\miniui\themes\icons\cart.png" />
+    <Content Include="Scripts\miniui\themes\icons\cart_add.png" />
     <Content Include="Scripts\miniui\themes\icons\cart_delete.png" />
     <Content Include="Scripts\miniui\themes\icons\chart_organisation.png" />
     <Content Include="Scripts\miniui\themes\icons\cut.png" />
@@ -822,6 +823,8 @@
     <Content Include="Views\Account\DepartmentSelectTree.cshtml" />
     <Content Include="Views\Archives\GoodsSelectWindow.cshtml" />
     <Content Include="Views\Archives\SupplierSelectWindow.cshtml" />
+    <Content Include="Views\Business\ReturnList.cshtml" />
+    <Content Include="Views\Business\ReturnEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

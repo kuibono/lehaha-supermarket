@@ -194,6 +194,16 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Windowname = "产品退货"
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart-add",
+                Id = "business-supplement",
+                ParentId = "business",
+                Url = "/Business/SupplementList",
+                Windowname = "产品补货"
+            };
+            SysmodulecontentService.Create(m1);
             return null;
         }
 

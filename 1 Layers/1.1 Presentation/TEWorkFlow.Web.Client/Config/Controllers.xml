@@ -34,5 +34,7 @@
     <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />
     <property name="PcPurchaseDetailService" ref="PcPurchaseDetailService" />
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
+    <property name="PcReturnManageService" ref="PcReturnManageService" />
+    <property name="PcReturnDetailService" ref="PcReturnDetailService" />
   </object>
 </objects>

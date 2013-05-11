@@ -17,13 +17,17 @@ namespace TEWorkFlow.Web.Client.Controllers
         //
         // GET: /Business/
 
+        public IGoodsArchivesService GoodsArchivesService { get; set; }
+
+        #region 采购
+        public IPcPurchaseManageService PcPurchaseManageService { get; set; }
+        public IPcPurchaseDetailService PcPurchaseDetailService { get; set; }
+       
+
         public ActionResult PurchaseList()
         {
             return View();
         }
-        public IPcPurchaseManageService PcPurchaseManageService { get; set; }
-        public IPcPurchaseDetailService PcPurchaseDetailService { get; set; }
-        public IGoodsArchivesService GoodsArchivesService { get; set; }
         public ActionResult PurchaseEdit(string id)
         {
             PcPurchaseManage model = new PcPurchaseManage();
@@ -44,6 +48,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             c.entity = s;
             return Json(PcPurchaseManageService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchAllPurchaseList(string key)
+        {
+            return Json(PcPurchaseManageService.Search(key), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetPurchaseDetailList(string Id)
@@ -126,5 +135,115 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        #endregion 
+
+        #region 退货
+        public IPcReturnManageService PcReturnManageService { get; set; }
+        public IPcReturnDetailService PcReturnDetailService { get; set; }
+
+        public ActionResult ReturnList()
+        {
+            return View();
+        }
+
+        public ActionResult ReturnEdit(string id)
+        {
+            PcReturnManage model = new PcReturnManage();
+            model.Id = Guid.NewGuid().ToString();
+
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                model = PcReturnManageService.GetById(id);
+            }
+            return View(model);
+        }
+
+        public JsonResult SearchReturnList(SearchDtoBase<PcReturnManage> c, PcReturnManage s)
+        {
+            if (string.IsNullOrEmpty(Request["key"]) == false)
+            {
+                return Json(PcReturnManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            }
+            c.entity = s;
+            return Json(PcReturnManageService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetReturnDetailList(string Id)
+        {
+            return Json(PcReturnDetailService.GetDetailsByManageId(Id), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsToReturn(string Id)
+        {
+
+            //ArrayList datas = (ArrayList)(Request["data"].JsonDecode());
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode()); // (Hashtable)datas[0];
+            bool IsAdd = row["_state"].ToString() == "added";
+
+            PcReturnDetail detail = new PcReturnDetail();
+            if (!IsAdd)
+            {
+                detail = PcReturnDetailService.GetById(row["Id"].ToString());
+            }
+
+            GoodsArchives good = GoodsArchivesService.GetById(row["GoodsCode"].ToString());
+
+            detail.GoodsCode = good.Id;
+            detail.GoodsBarCode = good.GoodsBarCode;
+            detail.Specification = good.Specification;
+            detail.PackUnitCode = good.PackUnitCode;
+            detail.PackCoef = good.PackCoef;
+            detail.SalePrice = good.SalePrice;
+            detail.PurchasePrice = good.PurchasePrice;
+            detail.NontaxPurchasePrice = good.PurchasePrice;
+            
+
+
+
+
+
+            detail.ReturnQty = Convert.ToInt32(row["ReturnQty"]);
+            detail.PackQty = Convert.ToInt32(row["PackQty"]);
+
+            //计算金额
+            detail.ReturnMoney = detail.ReturnQty * detail.PurchasePrice;
+            detail.NontaxReturnMoney = detail.ReturnQty * detail.NontaxPurchasePrice;
+
+            if (IsAdd)
+            {
+                detail.RtNumber = Id;
+                detail.Id = Guid.NewGuid().ToString();
+                PcReturnDetailService.Create(detail);
+            }
+            else
+            {
+                PcReturnDetailService.Update(detail);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult ReturnDelete(List<string> ids)
+        {
+            PcReturnManageService.Delete(ids);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteReturnDetail(string Id)
+        {
+            PcReturnDetailService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveReturn(PcReturnManage s)
+        {
+            PcReturnManageService.Save(s);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+
+        #endregion
+
     }
 }

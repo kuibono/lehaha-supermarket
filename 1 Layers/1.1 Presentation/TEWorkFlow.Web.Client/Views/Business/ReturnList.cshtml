@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "商品采购管理";
+    ViewBag.Title = "ReturnList";
     Layout = "~/Views/Shared/_ListLayout.cshtml";
 }
 @section toolbar{
@@ -39,12 +39,12 @@
         }
         function editRow(id) {
             mini.open({
-                url: "/Business/PurchaseEdit/" + id,
-                title: "采购管理",
-                iconCls: "icon-cart",
+                url: "/Business/ReturnEdit/" + id,
+                title: "退货管理",
+                iconCls: "icon-cart-delete",
                 allowResize: false,
                 width: 660,
-                height: 550,
+                height: 480,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -55,7 +55,7 @@
         }
         function deleteItem(id) {
             $.ajax({
-                url: "/Business/PurchaseDelete",
+                url: "/Business/ReturnDelete",
                 data: { ids: id },
                 success: function (text) {
                     grid.reload();
@@ -66,7 +66,7 @@
         }
     </script>
 }
-<div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList" style="width: 100%;
+<div id="datagrid1" class="mini-datagrid" url="/Business/SearchReturnList" style="width: 100%;
     height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
     multiselect="true">
     <div property="columns">
@@ -76,6 +76,8 @@
         </div>
         <div field="SupCode" headeralign="center" align="center" width="60">
             供货商编码</div>
+        <div field="PcNumber" headeralign="center" align="center" width="60">
+            采购单号</div>
         <div field="EnCode" headeralign="center" align="center" width="60">
             企业编码</div>
         <div field="PcForm" headeralign="center" align="center" width="60">
@@ -84,16 +86,8 @@
             部门</div>
         <div field="bCode" headeralign="center" align="center" width="60">
             门店编码</div>
-        <div field="PcType" headeralign="center" align="center" width="60">
-            采购类型</div>
-        <div field="PcMode" headeralign="center" align="center" width="60">
-            采购方式</div>
-        <div field="WhCode" headeralign="center" align="center" width="60">
-            仓库编码</div>
-        <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-            采购日期</div>
-        <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-            预计到货日期</div>
+        <div field="ReturnDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+            返货日期</div>
         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">
             管理</div>
@@ -110,7 +104,7 @@
     <table class="edittable" border="1" cellpadding="0" cellspacing="0">
         <tr>
             <td style="width: 60px;">
-                采购单号:
+                返货单号:
             </td>
             <td style="width: 140px;">
                 <input name="Id" class="mini-textbox" />
@@ -125,18 +119,18 @@
         </tr>
         <tr>
             <td style="width: 60px;">
+                采购单号:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcNumber" class="mini-textbox" />
+            </td>
+            <td style="width: 60px;">
                 采购形式:
             </td>
             <td style="width: 140px;">
                 <input name="PcForm" class="mini-textbox" />
             </td>
-            <td style="width: 60px;">
-                门店:
-            </td>
-            <td style="width: 140px;">
-                <input name="bCode" class="mini-combobox" textfield="bName" valuefield="Id" emptytext="请选择..."
-                    url="/Archives/SearchAllranches" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
-            </td>
+            
         </tr>
         <tr>
             <td style="width: 60px;">

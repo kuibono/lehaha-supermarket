@@ -141,6 +141,9 @@
 .icon-cart-delete{
 	background:url(icons/cart_delete.png) no-repeat;
 }
+.icon-cart-add{
+	background:url(icons/cart_add.png) no-repeat;
+}
 .icon-date-magnify{
 	background:url(icons/date_magnify.png) no-repeat;
 }
