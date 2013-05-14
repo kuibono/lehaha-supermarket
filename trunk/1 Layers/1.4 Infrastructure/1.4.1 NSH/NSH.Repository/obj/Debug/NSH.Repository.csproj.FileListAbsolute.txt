@@ -118,3 +118,27 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\NSH.Repository.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\NSH.Repository.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NSH.Repository.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NSH.Repository.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NHibernate.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NSH.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Remotion.Data.Linq.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Data.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Data.NHibernate31.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\System.Data.SQLite.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\System.Data.SQLite.Linq.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Iesi.Collections.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Common.Logging.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Aop.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NSH.Core.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\NHibernate.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Core.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Data.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Data.NHibernate31.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\System.Data.SQLite.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Iesi.Collections.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\bin\Debug\Spring.Aop.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\NSH.Repository.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Repository\obj\Debug\NSH.Repository.pdb

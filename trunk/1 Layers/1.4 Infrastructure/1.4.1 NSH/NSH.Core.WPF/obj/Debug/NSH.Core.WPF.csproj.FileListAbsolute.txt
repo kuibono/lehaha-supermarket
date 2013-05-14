@@ -53,3 +53,14 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\NSH.Core.WPF.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\NSH.Core.WPF.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\NSH.Core.WPF.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\NSH.Core.WPF.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\NSH.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\System.Windows.Interactivity.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\Spring.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\Common.Logging.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\NSH.Core.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\bin\Debug\Spring.Core.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\NSH.Core.WPF.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Core.WPF\obj\Debug\NSH.Core.WPF.pdb

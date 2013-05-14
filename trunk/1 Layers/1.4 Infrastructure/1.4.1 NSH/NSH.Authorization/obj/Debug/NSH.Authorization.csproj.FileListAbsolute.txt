@@ -20,3 +20,25 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\NSH.Authorization.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\NSH.Authorization.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Authorization.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Authorization.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NHibernate.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Repository.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Data.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Data.NHibernate31.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Iesi.Collections.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Common.Logging.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Aop.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Core.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NSH.Repository.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\NHibernate.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Core.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Data.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Data.NHibernate31.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Iesi.Collections.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\bin\Debug\Spring.Aop.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\NSH.Authorization.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\obj\Debug\NSH.Authorization.pdb

@@ -106,6 +106,16 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 PcPurchaseDetailService.Update(detail);
             }
+
+            //如果订单不存在，则现在新建一个
+            if (PcPurchaseManageService.GetById(Id)==null || PcPurchaseManageService.GetById(Id).HaveId == false)
+            {
+                //不存在
+                PcPurchaseManage manage = new PcPurchaseManage();
+                manage.Id = Id;
+                PcPurchaseManageService.Create(manage);
+            }
+
             return Json(true, JsonRequestBehavior.AllowGet);
 
         }
@@ -124,15 +134,16 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SavePurchase(PcPurchaseManage s, PcPurchaseDetail Detail)
         {
-            if (s.HaveId)
-            {
-                PcPurchaseManageService.Update(s);
-            }
-            else
-            {
-                s.Id = Guid.NewGuid().ToString();
-                PcPurchaseManageService.Create(s);
-            }
+            //if (s.HaveId)
+            //{
+            //    PcPurchaseManageService.Update(s);
+            //}
+            //else
+            //{
+            //    s.Id = Guid.NewGuid().ToString();
+            //    PcPurchaseManageService.Create(s);
+            //}
+            PcPurchaseManageService.Save(s);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
@@ -220,6 +231,16 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 PcReturnDetailService.Update(detail);
             }
+
+            //如果订单不存在，则现在新建一个
+            if (PcReturnManageService.GetById(Id)==null || PcReturnManageService.GetById(Id).HaveId == false)
+            {
+                //不存在
+                PcReturnManage manage = new PcReturnManage();
+                manage.Id = Id;
+                PcReturnManageService.Create(manage);
+            }
+
             return Json(true, JsonRequestBehavior.AllowGet);
 
         }
@@ -332,6 +353,15 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 PcSupplementDetailService.Update(detail);
             }
+            //如果订单不存在，则现在新建一个
+            if (PcSupplementManageService.GetById(Id)==null || PcSupplementManageService.GetById(Id).HaveId == false)
+            {
+                //不存在
+                PcSupplementManage manage = new PcSupplementManage();
+                manage.Id = Id;
+                PcSupplementManageService.Create(manage);
+            }
+
             return Json(true, JsonRequestBehavior.AllowGet);
 
         }

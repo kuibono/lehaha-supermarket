@@ -176,15 +176,11 @@
         </td>
         <td style="width: 140px;">
             <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
+             <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-hidden" required="true"/>
         </td>
     </tr>
     <tr>
-        <td style="width: 60px;">
-            企业编码:
-        </td>
-        <td style="width: 140px;">
-            <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-textbox" required="true"/>
-        </td>
+
         <td style="width: 60px;">
             采购形式:
         </td>
@@ -192,25 +188,12 @@
             <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
         </td>
         <td style="width: 60px;">
-            部门:
-        </td>
-        <td style="width: 140px;">
-            <input name="dCode" value="@Model.dCode" text="@Model.dName" class="mini-buttonedit"  onbuttonclick="onDCodeButtonEdit"/>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 60px;">
             门店:
         </td>
         <td style="width: 140px;">
             <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
-        <td style="width: 60px;">
-            仓库编码:
-        </td>
-        <td style="width: 140px;">
-            <input name="WhCode" value="@Model.WhCode" class="mini-textbox"/>
-        </td>
+
         <td style="width: 60px;">
             返货日期:
         </td>
@@ -219,27 +202,14 @@
         </td>
     </tr>
     <tr>
-        <td style="width: 60px;">
-            是否出库:
-        </td>
-        <td align="left" style="padding-left: 2px;">
-            <div name="IfPutout" class="mini-checkbox" checked="@Model.IfPutout" text="出库">
-            </div>
-        </td>
-        <td style="width: 60px;">
-            出库日期:
-        </td>
-        <td style="width: 140px;">
-            <input name="PutoutDate" value="@Model.PutoutDate" class="mini-datepicker"/>
-        </td>
+  
         <td style="width: 60px;">
             创建时间:
         </td>
         <td style="width: 140px;">
             <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker"/>
         </td>
-    </tr>
-    <tr>
+
         <td style="width: 60px;">
             操作员:
         </td>
@@ -249,19 +219,20 @@
         <td style="width: 60px;">
             审核人:
         </td>
+
         <td style="width: 140px;">
             <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
+            </tr>
+    <tr>
         <td style="width: 60px;">
             是否审核:
         </td>
         <td align="left" style="padding-left: 2px;">
-            @*<input name="IfExamine" value="@Model.IfExamine" class="mini-textbox"/>*@
             <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
             </div>
         </td>
-    </tr>
-    <tr>
+
         <td style="width: 60px;">
             审核时间:
         </td>
@@ -274,8 +245,6 @@
         <td style="width: 140px;">
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
         </td>
-        <td></td>
-        <td></td>
     </tr>
 </table>
 
@@ -289,12 +258,17 @@
                 style="width: 100%;" />
         </div>
         <div field="ReturnQty" width="60" headeralign="center" align="center" allowsort="true">
-            单品数量
+            数量
             <input property="editor" class="mini-spinner" style="width: 100%;" />
         </div>
-        <div field="PackQty" width="60" headeralign="center" align="center" allowsort="true">
-            整件数量
-            <input property="editor" class="mini-spinner" style="width: 100%;" />
+        <div field="PurchasePrice" width="60" headeralign="center" align="center" allowsort="true" dataType="currency" currencyUnit="￥">
+            单价
+        </div>
+        <div field="ReturnMoney" width="60" headeralign="center" align="center" allowsort="true" dataType="currency" currencyUnit="￥">
+            金额
+        </div>
+        <div field="GoodsBarCode" width="80" headeralign="center" align="center" allowsort="true">
+            条码
         </div>
         <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">

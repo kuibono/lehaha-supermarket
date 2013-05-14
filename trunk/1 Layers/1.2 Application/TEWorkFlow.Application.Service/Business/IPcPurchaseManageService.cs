@@ -14,6 +14,8 @@ namespace TEWorkFlow.Application.Service.Business
     {
         string Create(PcPurchaseManage entity);
 
+        void Save(PcPurchaseManage entity);
+
         PcPurchaseManage GetById(string id);
 
         IList<PcPurchaseManage> GetAll();

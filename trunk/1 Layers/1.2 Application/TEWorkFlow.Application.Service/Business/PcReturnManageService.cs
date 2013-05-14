@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Domain.Sys;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -16,7 +17,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public IRepositoryGUID<PcReturnManage> EntityRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment> DepartmentRepository { get; set; }
-
+        public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
         [Transaction]
         private void FillDepartmentName(IList<PcReturnManage> manages)
         {
@@ -34,7 +35,16 @@ namespace TEWorkFlow.Application.Service.Business
             string depName = departments.Where(p => p.Id == manage.dCode).Count() > 0 ? departments.Where(p => p.Id == manage.dCode).First().dName : "";
             manage.dName = depName;
         }
-
+        private void FillBranchName(IList<PcReturnManage> manages)
+        {
+            var branchs = BranchRepository.LinqQuery.ToList();
+            for (int i = 0; i < manages.Count; i++)
+            {
+                string id = manages[i].bCode;
+                string name = branchs.Where(p => p.Id == id).Count() > 0 ? branchs.Where(p => p.Id == id).First().bName : "";
+                manages[i].bName = name;
+            }
+        }
         [Transaction]
         public string Create(PcReturnManage entity)
         {
@@ -76,7 +86,6 @@ namespace TEWorkFlow.Application.Service.Business
         public PcReturnManage GetById(string id)
         {
             var result=EntityRepository.Get(id);
-            FillDepartmentName(result);
             return result;
         }
 
@@ -173,6 +182,7 @@ namespace TEWorkFlow.Application.Service.Business
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
+            FillBranchName(result);
             return result.ToSearchResult(count);
         }
 
@@ -204,6 +214,7 @@ namespace TEWorkFlow.Application.Service.Business
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
+            FillBranchName(result);
             return result.ToList();
         }
 
