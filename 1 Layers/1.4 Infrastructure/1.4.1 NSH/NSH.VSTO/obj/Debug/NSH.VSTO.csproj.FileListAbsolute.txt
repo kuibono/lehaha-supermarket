@@ -28,3 +28,8 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\NSH.VSTO.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\NSH.VSTO.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\bin\Debug\NSH.VSTO.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\bin\Debug\NSH.VSTO.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\NSH.VSTO.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\obj\Debug\NSH.VSTO.pdb

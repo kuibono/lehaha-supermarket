@@ -22,3 +22,8 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.5 Test\TEWorkFlow.Appl
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\bin\Debug\TEWorkFlow.Application.Service.Test.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.5 Test\TEWorkFlow.Application.Service.Test\obj\Debug\TEWorkFlow.Application.Service.Test.pdb

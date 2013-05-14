@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Domain.Sys;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -17,6 +18,7 @@ namespace TEWorkFlow.Application.Service.Business
         public IRepositoryGUID<PcPurchaseManage> EntityRepository { get; set; }
         public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment>  DepartmentRepository { get; set; }
+        public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
         [Transaction]
         public string Create(PcPurchaseManage entity)
         {
@@ -24,12 +26,40 @@ namespace TEWorkFlow.Application.Service.Business
 
 
         }
+        [Transaction]
+        public void Save(PcPurchaseManage entity)
+        {
+            bool add = false;
+            if (string.IsNullOrEmpty(entity.Id))
+            {
+                add = true;
+                entity.Id = Guid.NewGuid().ToString();
+            }
+            else
+            {
+                if (EntityRepository.LinqQuery.Count(p => p.Id == entity.Id) > 0)
+                {
+                    add = false;
+                }
+                else
+                {
+                    add = true;
+                }
+            }
 
+            if (add)
+            {
+                EntityRepository.Save(entity);
+            }
+            else
+            {
+                EntityRepository.Update(entity);
+            }
+        }
         [Transaction]
         public PcPurchaseManage GetById(string id)
         {
             var entity = EntityRepository.Get(id);
-            FillDepartmentName(entity);
             return entity;
         }
 
@@ -44,6 +74,18 @@ namespace TEWorkFlow.Application.Service.Business
                 manages[i].dName = depName;
             }
         }
+
+        private void FillBranchName(IList<PcPurchaseManage> manages)
+        {
+            var branchs = BranchRepository.LinqQuery.ToList();
+            for (int i = 0; i < manages.Count; i++)
+            {
+                string id = manages[i].bCode;
+                string name = branchs.Where(p => p.Id == id).Count() > 0 ? branchs.Where(p => p.Id == id).First().bName : "";
+                manages[i].bName = name;
+            }
+        }
+
         private void FillDepartmentName(PcPurchaseManage manage)
         {
             var departments = DepartmentRepository.LinqQuery.ToList();
@@ -158,6 +200,7 @@ namespace TEWorkFlow.Application.Service.Business
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
+            FillBranchName(result);
             return result.ToSearchResult(count);
         }
 
@@ -189,6 +232,7 @@ namespace TEWorkFlow.Application.Service.Business
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
+            FillBranchName(result);
             return result.ToList();
         }
 

@@ -90,3 +90,15 @@ D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.3 Domain\TEWorkFlow.Do
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\ResolveAssemblyReference.cache
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\TEWorkFlow.Domain.dll
 D:\项目\SuperMarket\lehaha-supermarket\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\TEWorkFlow.Domain.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\TEWorkFlow.Domain.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\TEWorkFlow.Domain.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\NSH.Authorization.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\NSH.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\Spring.Core.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\Common.Logging.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\NSH.Authorization.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\NSH.Core.pdb
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\bin\Debug\Spring.Core.xml
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\TEWorkFlow.Domain.dll
+E:\Projects\External Libraries\trunk\1 Layers\1.3 Domain\TEWorkFlow.Domain\obj\Debug\TEWorkFlow.Domain.pdb
