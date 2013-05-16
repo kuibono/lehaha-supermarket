@@ -16,6 +16,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         BsPaClass GetById(string id);
 
+        void Save(BsPaClass entity);
+
         IList<BsPaClass> GetAll();
 
         void Update(BsPaClass entity);

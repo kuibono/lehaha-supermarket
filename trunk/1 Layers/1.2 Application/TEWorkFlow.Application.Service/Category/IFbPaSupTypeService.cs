@@ -16,6 +16,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         FbPaSupType GetById(string id);
 
+        void Save(FbPaSupType entity);
+
         IList<FbPaSupType> GetAll();
 
         void Update(FbPaSupType entity);
