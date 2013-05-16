@@ -613,6 +613,8 @@
     <Content Include="Scripts\miniui\themes\icons\add.gif" />
     <Content Include="Scripts\miniui\themes\icons\addfolder.gif" />
     <Content Include="Scripts\miniui\themes\icons\addnew.gif" />
+    <Content Include="Scripts\miniui\themes\icons\brick.png" />
+    <Content Include="Scripts\miniui\themes\icons\bricks.png" />
     <Content Include="Scripts\miniui\themes\icons\cancel.gif" />
     <Content Include="Scripts\miniui\themes\icons\car.png" />
     <Content Include="Scripts\miniui\themes\icons\cart.png" />
@@ -827,6 +829,9 @@
     <Content Include="Views\Business\ReturnEdit.cshtml" />
     <Content Include="Views\Business\SupplementList.cshtml" />
     <Content Include="Views\Business\SupplementEdit.cshtml" />
+    <Content Include="Views\Shared\_RowEditLayout.cshtml" />
+    <Content Include="Views\Category\SupTypeList.cshtml" />
+    <Content Include="Views\Category\PaClassList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

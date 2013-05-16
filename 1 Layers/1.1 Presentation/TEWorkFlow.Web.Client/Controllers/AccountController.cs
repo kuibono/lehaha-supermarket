@@ -115,6 +115,27 @@ namespace TEWorkFlow.Web.Client.Controllers
 
             m1 = new Sysmodulecontent()
             {
+                Icon = "icon-bricks",
+                Id = "suptypelist",
+                ParentId = "system",
+                Url = "/Category/SupTypeList",
+                Windowname = "行业管理"
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-brick",
+                Id = "paclasslist",
+                ParentId = "system",
+                Url = "/Category/PaClassList",
+                Windowname = "分店类型"
+            };
+            SysmodulecontentService.Create(m1);
+
+
+            m1 = new Sysmodulecontent()
+            {
                 Icon = "icon-vcard",
                 Id = "archives",
                 ParentId = "root",

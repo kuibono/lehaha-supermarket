@@ -7,6 +7,8 @@ using TEWorkFlow.Application.Service.Category;
 using TEWorkFlow.Application.Service.Sys;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Application.Service.Archives;
+using System.Collections;
+using TEWorkFlow.Web.Client.Common;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -22,6 +24,64 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IBsPaClassService BsPaClassService { get; set; }
         public IBsPaAreaService BsPaAreaService { get; set; }
 
+
+        public ActionResult SupTypeList()
+        {
+            return View();
+        }
+
+        public JsonResult GetSupTypeList()
+        {
+            return Json(FbPaSupTypeService.Search(new Dto.SearchDtoBase<FbPaSupType>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveSupType()
+        {
+            FbPaSupType e = new FbPaSupType();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.SupTypeName = row["SupTypeName"].ToString();
+            FbPaSupTypeService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteSupType(string Id)
+        {
+            FbPaSupTypeService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        // ////////////////////////////////////////////////////////////////
+        public ActionResult PaClassList()
+        {
+            return View();
+        }
+
+        public JsonResult GetPaClassList()
+        {
+            return Json(BsPaClassService.Search(new Dto.SearchDtoBase<BsPaClass>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SavePaClass()
+        {
+            BsPaClass e = new BsPaClass();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"] == null ? Guid.NewGuid().ToString() : row["Id"].ToString();
+            e.ClassName = row["ClassName"].ToString();
+            BsPaClassService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeletePaClass(string Id)
+        {
+            BsPaClassService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+        #region  category
 
         public ActionResult Index()
         {
@@ -134,6 +194,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             var result = BsPaAreaService.GetAll().Select(p => new { id = p.Id, text = p.AreaName }).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
         #region 商品分类
 

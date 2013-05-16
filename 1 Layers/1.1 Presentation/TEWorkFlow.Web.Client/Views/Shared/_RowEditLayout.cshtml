@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+</head>
+<body>
+    <div style="width: 100%">
+        <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+           @RenderSection("toolbar", required: false)
+        </div>
+    </div>
+    <div class="mini-fit">
+        @RenderBody()
+    </div>
+      <script type="text/javascript">
+          mini.parse();
+
+          var grid = mini.get('datagrid1');
+          grid.url = "@ViewBag.GetListUrl";
+          grid.reload();
+
+          function onActionRenderer(e) {
+              var grid = e.sender;
+              var record = e.record;
+              var uid = record._uid;
+              var rowIndex = e.rowIndex;
+
+              var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
+
+              if (grid.isEditingRow(record)) {
+                  s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
+              }
+              return s;
+          }
+          function newRow() {
+              var row = {};
+              grid.addRow(row, 0);
+
+              grid.cancelEdit();
+              grid.beginEditRow(row);
+          }
+          function editRow(row_uid) {
+              var row = grid.getRowByUID(row_uid);
+              if (row) {
+                  grid.cancelEdit();
+                  grid.beginEditRow(row);
+              }
+          }
+          function cancelRow(row_uid) {
+              grid.reload();
+          }
+          function delRow(row_uid) {
+              var row = grid.getRowByUID(row_uid);
+              if (row) {
+                  if (confirm("确定删除此记录？")) {
+                      grid.loading("删除中，请稍后......");
+                      $.ajax({
+                          url: "@ViewBag.DeleteItemUrl" + row.Id,
+                          success: function (text) {
+                              grid.reload();
+                          },
+                          error: function () {
+                          }
+                      });
+                  }
+              }
+          }
+
+          function updateRow(row_uid) {
+              var row = grid.getRowByUID(row_uid);
+
+              grid.commitEdit();
+              if (grid.getChanges().length == 0) {
+                  return false;
+              }
+              var rowData = grid.getChanges()[0];
+
+              grid.loading("保存中，请稍后......");
+              var json = mini.encode(rowData);
+
+              $.ajax({
+                  url: "@ViewBag.SaveItemUrl" ,
+                  data: { "data": json },
+                  type: "post",
+                  success: function (text) {
+                      grid.reload();
+                  },
+                  error: function (jqXHR, textStatus, errorThrown) {
+                      alert(jqXHR.responseText);
+                  }
+              });
+
+          }
+    </script>
+    @RenderSection("script", required: false)
+</body>
+</html>
