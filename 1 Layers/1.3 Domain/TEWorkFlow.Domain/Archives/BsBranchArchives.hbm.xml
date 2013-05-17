@@ -37,5 +37,6 @@
     <property name="IfExamine" column="if_examine" type="string" />
     <property name="ExamineDate" column="examine_date" type="System.DateTime" not-null="false"/>
     <property name="OperatorDate" column="operator_date" type="System.DateTime" not-null="false"/>
+    <property name="Remark" column="remark" type="string" />
   </class>
 </hibernate-mapping>

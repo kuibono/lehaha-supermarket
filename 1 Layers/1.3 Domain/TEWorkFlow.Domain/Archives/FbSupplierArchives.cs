@@ -179,7 +179,9 @@ namespace TEWorkFlow.Domain.Archives
         public virtual System.DateTime? OperatorDate { get; set; }
 
 
-
+        public virtual string LoginName { get; set; }
+        public virtual string LoginPass { get; set; }
+        public virtual string Remark { get; set; }
 
 
         public virtual string SupTypeName { get; set; }
