@@ -31,6 +31,9 @@
     <property name="Emstate" column="em_state" type="string" />
     <property name="Stature" column="stature" type="Decimal" not-null="false"/>
     <property name="Width" column="width" type="Decimal" not-null="false"/>
+    <property name="LoginName" column="login_name" type="string" />
+    <property name="LoginPass" column="login_pass" type="string" />
+    <property name="Remark" column="remark" type="string" />
   </class>
 </hibernate-mapping>
 

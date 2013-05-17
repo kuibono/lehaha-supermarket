@@ -246,5 +246,24 @@ namespace TEWorkFlow.Application.Service.Archives
                 Delete(each);
             }
         }
+
+        [Transaction]
+        public string GenerateLoginName()
+        {
+            string result = GenerateString();
+            while(EntityRepository.LinqQuery.Any(p=>p.LoginName==result))
+            {
+                result = GenerateString();
+            }
+            return result;
+        }
+
+        private string GenerateString()
+        {
+            Guid randSeedGuid = Guid.NewGuid();
+
+            Random random = new Random(BitConverter.ToInt32(randSeedGuid.ToByteArray(), 0));
+            return  random.Next(10001, 99999).ToString();
+        }
     }
 }

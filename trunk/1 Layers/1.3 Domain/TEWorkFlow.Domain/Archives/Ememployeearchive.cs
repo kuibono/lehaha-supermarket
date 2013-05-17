@@ -37,6 +37,10 @@ namespace TEWorkFlow.Domain.Archives
         public virtual decimal? Stature { get; set; }
         public virtual decimal? Width { get; set; }
 
+        public virtual string LoginName { get; set; }
+        public virtual string LoginPass { get; set; }
+        public virtual string Remark { get; set; }
+
         public virtual string SexString
         {
             get { return Sex == "0" ? "男" : "女"; }
@@ -48,6 +52,9 @@ namespace TEWorkFlow.Domain.Archives
         }
 
         public virtual string PoliticsName { get; set; }
+
+
+
 
         protected override void Validate()
         {

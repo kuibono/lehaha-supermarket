@@ -80,12 +80,16 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public ActionResult SupplierEdit(string id)
         {
+            string loginName=FbSupplierArchivesService.GenerateLoginName();
+
             FbSupplierArchives model=new FbSupplierArchives()
                                          {
                                              //Id=Guid.NewGuid() .ToString(),
                                              CreateDate = DateTime.Now,
                                              ExamineDate = DateTime.Now,
-                                             OperatorDate = DateTime.Now
+                                             OperatorDate = DateTime.Now,
+                                             LoginPass = loginName,
+                                             LoginName = loginName
                                          };
 
             if(string.IsNullOrEmpty(id)==false)

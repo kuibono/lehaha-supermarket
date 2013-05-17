@@ -232,6 +232,7 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual System.DateTime? OperatorDate { get; set; }
 
+        public virtual string Remark { get; set; }
 
 
 
