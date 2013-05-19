@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@model TEWorkFlow.Domain.Sys.SysEnterpriseArchives
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,14 +15,15 @@
     <div id="layout1" class="mini-layout fill">
         <div class="header" region="north" height="70" showsplit="false" showheader="false">
             <h1 style="margin: 0; padding: 15px; cursor: default; font-family: 微软雅黑,黑体,宋体;">
-                
+                @Model.EnName
             </h1>
             <div style="position: absolute; top: 18px; right: 10px;">
-                <a class="mini-button mini-button-iconTop" iconcls="icon-add" onclick="onQuickClick" plain="true">快捷</a> 
+                <!--<a class="mini-button mini-button-iconTop" iconcls="icon-add" onclick="onQuickClick" plain="true">快捷</a> 
                 <a class="mini-button mini-button-iconTop" iconcls="icon-edit"onclick="onClick" plain="true">首页</a> 
                 <a class="mini-button mini-button-iconTop" iconcls="icon-date" onclick="onClick" plain="true">消息</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="onClick" plain="true">设置</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onClick" plain="true">关闭</a>
+                -->
+                <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="showSettingWindow" plain="true">设置</a> 
+                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onLogOut" plain="true">关闭</a>
             </div>
         </div>
         <div title="south" region="south" showsplit="false" showheader="false" height="30">
@@ -86,6 +88,28 @@
         function onClick(e) {
             var text = this.getText();
             alert(text);
+        }
+
+        function showSettingWindow(e) {
+            mini.open({
+                url: "/Account/SysSetting/",
+                title: "系统设置",
+                iconCls: "icon-edit",
+                allowResize: false,
+                width: 650,
+                height: 200,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+                    location.href = location.href;
+                }
+            });
+        }
+        function onLogOut(e) {
+            location.href="/Account/Logout/"
         }
         function onQuickClick(e) {
             tree.expandPath("datagrid");

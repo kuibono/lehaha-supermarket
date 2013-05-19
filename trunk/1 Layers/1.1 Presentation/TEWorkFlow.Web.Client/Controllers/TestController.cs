@@ -15,10 +15,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         // GET: /Test/
 
         private ISysLoginPowerService SysLoginPowerService { get; set; }
-
+        private ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
         public ActionResult Index()
         {
-            return View();
+            var setting = SysEnterpriseArchivesService.Get();
+            return View(setting);
         }
 
         public ActionResult List()

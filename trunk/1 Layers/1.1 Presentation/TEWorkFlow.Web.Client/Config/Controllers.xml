@@ -11,6 +11,7 @@
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.TestController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="SysLoginPowerService" ref="SysLoginPowerService" />
+    <property name="SysEnterpriseArchivesService" ref="SysEnterpriseArchivesService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.ArchivesController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />

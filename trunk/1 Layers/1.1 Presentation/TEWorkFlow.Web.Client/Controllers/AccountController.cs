@@ -489,5 +489,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             SysEnterpriseArchivesService.Save(setting);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
