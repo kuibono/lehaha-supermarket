@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>人员档案管理</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/Styles/demo.css" />
+    <script src="/scripts/boot.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" method="post">
+    <div style="padding-left: 11px; padding-bottom: 5px;">
+        <table class="edittable" border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 60px;">
+                    企业编码:
+                </td>
+                <td style="width: 140px;">
+                    <input name="Id" value="@Model.Id" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    企业名称:
+                </td>
+                <td style="width: 140px;">
+                    <input name="EnName" value="@Model.EnName" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    公司简称:
+                </td>
+                <td style="width: 140px;">
+                    <input name="EnComName" value="@Model.EnComName" class="mini-textbox" required="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 60px;">
+                    企业类型:
+                </td>
+                <td style="width: 140px;">
+                    <input name="EnType" value="@Model.EnType" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    企业性质:
+                </td>
+                <td style="width: 140px;">
+                    <input name="EnCharacter" value="@Model.EnCharacter" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    经营面积:
+                </td>
+                <td style="width: 140px;">
+                    <input name="DealArea" value="@Model.DealArea" class="mini-textbox" required="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 60px;">
+                    注册地址:
+                </td>
+                <td style="width: 140px;">
+                    <input name="RegisterAddress" value="@Model.RegisterAddress" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    系统版本:
+                </td>
+                <td style="width: 140px;">
+                    <input name="CurrentVersion" value="@Model.CurrentVersion" class="mini-textbox" required="true"/>
+                </td>
+                <td style="width: 60px;">
+                    最后更新版本:
+                </td>
+                <td style="width: 140px;">
+                    <input name="LastVersion" value="@Model.LastVersion" class="mini-textbox" required="true"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align: center; padding: 0 10px 10px 10px;">
+        <a class="mini-button" onclick="onOk" style="width: 60px; margin-right: 20px;">确定</a>
+        <a class="mini-button" onclick="onCancel" style="width: 60px;">取消</a>
+    </div>
+    </form>
+    <script type="text/javascript">
+        var entityId = "00000000-0000-0000-0000-000000000000";
+        mini.parse();
+
+        var form = new mini.Form("form1");
+
+        function GetData() {
+            var o = form.getData();
+            return o;
+        }
+        function CloseWindow(action) {
+            if (action == "close" && form.isChanged()) {
+                if (confirm("数据被修改了，是否先保存？")) {
+                    return false;
+                }
+            }
+            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+            else window.close();
+        }
+        function onOk(e) {
+            SaveData();
+        }
+        function onCancel(e) {
+            CloseWindow("cancel");
+        }
+
+    </script>
+    <script type="text/javascript">
+        function SaveData() {
+            var form = new mini.Form("form1");
+            var o = form.getData(true);
+
+            form.validate();
+            if (form.isValid() == false) return;
+
+            var json = mini.encode([o]);
+
+            $.ajax({
+                type: "post",
+                url: "/Account/SaveSysSetting",
+                data: o,
+                cache: false,
+                success: function (text) {
+                    CloseWindow("save");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                    CloseWindow();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
