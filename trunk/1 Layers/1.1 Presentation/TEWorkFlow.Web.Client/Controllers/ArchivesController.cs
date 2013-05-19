@@ -115,9 +115,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(FbSupplierArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchAllSuppliers(string key)
+        public JsonResult SearchAllSuppliers(string id)
         {
-            return Json(FbSupplierArchivesService.Search(key), JsonRequestBehavior.AllowGet);
+            return Json(FbSupplierArchivesService.Search(id), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SaveSupplierArchive(FbSupplierArchives s)
@@ -205,7 +205,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
-
+        public ActionResult GoodsListTree()
+        {
+            return View();
+        }
         public JsonResult SearchGoodsArchiveList(SearchDtoBase<GoodsArchives> c, GoodsArchives s)
         {
             if (string.IsNullOrEmpty(Request["key"]) == false)
@@ -215,6 +218,15 @@ namespace TEWorkFlow.Web.Client.Controllers
 
             c.entity = s;
             return Json(GoodsArchivesService.Search(c), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllGoodsArchive(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                id = Request["key"];
+            }
+            return Json(GoodsArchivesService.Search(id), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GoodsEdit(string id)

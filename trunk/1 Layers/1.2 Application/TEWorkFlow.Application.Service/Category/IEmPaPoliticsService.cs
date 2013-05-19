@@ -18,6 +18,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         IList<EmPaPolitics> GetAll();
 
+        void Save(EmPaPolitics entity);
+
         void Update(EmPaPolitics entity);
 
         /// <summary>

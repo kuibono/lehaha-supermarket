@@ -32,6 +32,38 @@ namespace TEWorkFlow.Application.Service.Category
             return NationRepository.LinqQuery.ToList();
         }
 
+
+        [Transaction]
+        public void Save(Nation entity)
+        {
+            bool add = false;
+            if (string.IsNullOrEmpty(entity.Id))
+            {
+                add = true;
+                entity.Id = Guid.NewGuid().ToString();
+            }
+            else
+            {
+                if (NationRepository.LinqQuery.Count(p => p.Id == entity.Id) > 0)
+                {
+                    add = false;
+                }
+                else
+                {
+                    add = true;
+                }
+            }
+
+            if (add)
+            {
+                NationRepository.Save(entity);
+            }
+            else
+            {
+                NationRepository.Update(entity);
+            }
+        }
+
         [Transaction]
         public void Update(Nation entity)
         {

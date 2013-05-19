@@ -35,6 +35,38 @@ namespace TEWorkFlow.Application.Service.Category
             return result;
         }
 
+        [Transaction]
+        public void Save(BsPaArea entity)
+        {
+            bool add = false;
+            if (string.IsNullOrEmpty(entity.Id))
+            {
+                add = true;
+                entity.Id = Guid.NewGuid().ToString();
+            }
+            else
+            {
+                if (EntityRepository.LinqQuery.Count(p => p.Id == entity.Id) > 0)
+                {
+                    add = false;
+                }
+                else
+                {
+                    add = true;
+                }
+            }
+
+            if (add)
+            {
+                EntityRepository.Save(entity);
+            }
+            else
+            {
+                EntityRepository.Update(entity);
+            }
+        }
+
+
 
         [Transaction]
         public void Update(BsPaArea entity)

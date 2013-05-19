@@ -17,6 +17,10 @@
     <property name="BsBranchArchivesService" ref="BsBranchArchivesService" />
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
   </object>
+  <object type="TEWorkFlow.Web.Client.Common.MyEnv, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
+    <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
+  </object>
   <object type="TEWorkFlow.Web.Client.Controllers.CategoryController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="EmPaPoliticsService" ref="EmPaPoliticsService" />
     <property name="NationService" ref="NationService" />
@@ -38,5 +42,8 @@
     <property name="PcReturnDetailService" ref="PcReturnDetailService" />
     <property name="PcSupplementManageService" ref="PcSupplementManageService" />
     <property name="PcSupplementDetailService" ref="PcSupplementDetailService" />
+  </object>
+  <object type="TEWorkFlow.Web.Client.Controllers.QueryController, TEWorkFlow.Web.Client" singleton="false" >
+    <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />
   </object>
 </objects>

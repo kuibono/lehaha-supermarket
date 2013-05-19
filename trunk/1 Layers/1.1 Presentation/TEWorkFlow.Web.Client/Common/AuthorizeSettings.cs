@@ -25,6 +25,12 @@ namespace TEWorkFlow.Web.Client.Common
         {
             get { return settings["SessionUserName"]; }
         }
+
+        public static string SessionUserType
+        {
+            get { return settings["SessionUserType"]; }
+        }
+
         /// <summary>
         /// 用户idsession节点（session）
         /// </summary>

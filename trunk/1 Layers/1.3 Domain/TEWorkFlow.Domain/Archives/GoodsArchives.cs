@@ -245,6 +245,10 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string GlName { get; set; }
 
+        public virtual string SupName { get; set; }
+
+        public virtual string SupTel { get; set; }
+
 
         protected override void Validate()
         {

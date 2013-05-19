@@ -1,0 +1,489 @@
+﻿@{
+    ViewBag.Title = "分类管理";
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>商品分类</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/Styles/demo.css" />
+    <script src="/scripts/boot.js" type="text/javascript"></script>
+    <style type="text/css">
+    fieldset
+    {
+        float:left;
+    }
+    .clear
+    {
+        clear:both;
+    }
+    </style>
+</head>
+<body>
+    <fieldset id="fd1" style="width: 98%; height: 25%; padding: 0 10px 0 10px;">
+        <legend><span>大类</span></legend>
+        <div style="width: 100%">
+            <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" iconcls="icon-add" onclick="newRow()" plain="true">增加</a>
+                            <span class="separator"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mini-fit">
+            <div id="datagrid1" style="width: 100%;" class="mini-datagrid" idfield="Id" emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>"
+                showemptytext="true" showpager="false" multiselect="true">
+                <div property="columns">
+                    <div type="indexcolumn" width="30">
+                    </div>
+                    <div field="GbName" headeralign="center" align="center" width="60">
+                        分类
+                        <input property="editor" class="mini-textbox" style="width: 100%;" />
+                    </div>
+                    <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+                        cellstyle="padding:0;">
+                        管理</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="fd2" style="width: 98%; height: 25%; padding: 0 10px 0 10px;">
+        <legend><span>中类</span></legend>
+        <div style="width: 100%">
+            <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" iconcls="icon-add" onclick="newRowGm()" plain="true">增加</a>
+                            <span class="separator"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mini-fit">
+            <div id="datagridGm" style="width: 100%;" class="mini-datagrid" idfield="Id" emptytext="数据为空，<a href='javascript:newRowGm()'>增加一条</a>"
+                showemptytext="true" showpager="false" multiselect="true">
+                <div property="columns">
+                    <div type="indexcolumn" width="30">
+                    </div>
+                    <div field="GmName" headeralign="center" align="center" width="60">
+                        分类
+                        <input property="editor" class="mini-textbox" style="width: 100%;" />
+                    </div>
+                    <div field="GbCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
+                        大类
+                        <input property="editor" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGb/" showNullItem="true"  required="true"/>
+                    </div>
+                    <div name="action" width="120" headeralign="center" align="center" renderer="onActionRendererGm"
+                        cellstyle="padding:0;">
+                        管理</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="fd3" style="width: 98%; height: 25%; padding: 0 10px 0 10px;">
+        <legend><span>小类</span></legend>
+        <div style="width: 100%">
+            <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" iconcls="icon-add" onclick="newRowGs()" plain="true">增加</a>
+                            <span class="separator"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mini-fit">
+            <div id="datagridGs" style="width: 100%;" class="mini-datagrid" idfield="Id" emptytext="数据为空，<a href='javascript:newRowGs()'>增加一条</a>"
+                showemptytext="true" showpager="false" multiselect="true">
+                <div property="columns">
+                    <div type="indexcolumn" width="30">
+                    </div>
+                    <div field="GsName" headeralign="center" align="center" width="60">
+                        分类
+                        <input property="editor" class="mini-textbox" style="width: 100%;" />
+                    </div>
+                    <div field="GbCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
+                        中类
+                        <input property="editor" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGm/" showNullItem="true"  required="true"/>
+                    </div>
+                    <div name="action" width="120" headeralign="center" align="center" renderer="onActionRendererGs"
+                        cellstyle="padding:0;">
+                        管理</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="fd4" style="width: 98%; height: 25%; padding: 0 10px 0 10px;">
+        <legend><span>细类</span></legend>
+        <div style="width: 100%">
+            <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" iconcls="icon-add" onclick="newRowGl()" plain="true">增加</a>
+                            <span class="separator"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mini-fit">
+            <div id="datagridGl" style="width: 100%;" class="mini-datagrid" idfield="Id" emptytext="数据为空，<a href='javascript:newRowGs()'>增加一条</a>"
+                showemptytext="true" showpager="false" multiselect="true">
+                <div property="columns">
+                    <div type="indexcolumn" width="30">
+                    </div>
+                    <div field="GlName" headeralign="center" align="center" width="60">
+                        分类
+                        <input property="editor" class="mini-textbox" style="width: 100%;" />
+                    </div>
+                    <div field="GbCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
+                        小类
+                        <input property="editor" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGs/" showNullItem="true"  required="true"/>
+                    </div>
+                    <div name="action" width="120" headeralign="center" align="center" renderer="onActionRendererGl"
+                        cellstyle="padding:0;">
+                        管理</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        mini.parse();
+
+        var grid = mini.get('datagrid1');
+        grid.url = "/Category/GetGoodsGbList/";
+        grid.reload();
+
+        function onActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRow() {
+            var row = {};
+            grid.addRow(row, 0);
+
+            grid.cancelEdit();
+            grid.beginEditRow(row);
+        }
+        function editRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                grid.cancelEdit();
+                grid.beginEditRow(row);
+            }
+        }
+        function cancelRow(row_uid) {
+            grid.reload();
+        }
+        function delRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    grid.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Category/DeleteGoodsGb/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRow(row_uid) {
+            var row = grid.getRowByUID(row_uid);
+
+            grid.commitEdit();
+            if (grid.getChanges().length == 0) {
+                return false;
+            }
+            var rowData = grid.getChanges()[0];
+
+            grid.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Category/SaveGoodsGb/",
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    grid.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+
+        /////////////Gm
+
+        var gridGm = mini.get('datagridGm');
+        gridGm.url = "/Category/GetGoodsGmList/";
+        gridGm.reload();
+
+        function onActionRendererGm(e) {
+            var gridGm = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRowGm()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRowGm(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRowGm(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRowGm(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRowGm(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRowGm() {
+            var row = {};
+            gridGm.addRow(row, 0);
+
+            gridGm.cancelEdit();
+            gridGm.beginEditRow(row);
+        }
+        function editRowGm(row_uid) {
+            var row = gridGm.getRowByUID(row_uid);
+            if (row) {
+                gridGm.cancelEdit();
+                gridGm.beginEditRow(row);
+            }
+        }
+        function cancelRowGm(row_uid) {
+            gridGm.reload();
+        }
+        function delRowGm(row_uid) {
+            var row = gridGm.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    gridGm.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Category/DeleteGoodsGm/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRowm(row_uid) {
+            var row = gridGm.getRowByUID(row_uid);
+
+            gridGm.commitEdit();
+            if (gridGm.getChanges().length == 0) {
+                return false;
+            }
+            var rowData = gridGm.getChanges()[0];
+
+            gridGm.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Category/SaveGoodsGm/",
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    gridGm.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+
+        ///////////////Gs
+        var gridGs = mini.get('datagridGs');
+        gridGs.url = "/Category/GetGoodsGsList/";
+        gridGs.reload();
+
+        function onActionRendererGs(e) {
+            var gridGs = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRowGs()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRowGs(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRowGs(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRowGs(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRowGs(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRowGs() {
+            var row = {};
+            gridGs.addRow(row, 0);
+
+            gridGs.cancelEdit();
+            gridGs.beginEditRow(row);
+        }
+        function editRowGs(row_uid) {
+            var row = gridGs.getRowByUID(row_uid);
+            if (row) {
+                gridGs.cancelEdit();
+                gridGs.beginEditRow(row);
+            }
+        }
+        function cancelRowGs(row_uid) {
+            gridGs.reload();
+        }
+        function delRowGs(row_uid) {
+            var row = gridGs.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    gridGs.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Category/DeleteGoodsGs/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRowm(row_uid) {
+            var row = gridGs.getRowByUID(row_uid);
+
+            gridGs.commitEdit();
+            if (gridGs.getChanges().length == 0) {
+                return false;
+            }
+            var rowData = gridGs.getChanges()[0];
+
+            gridGs.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Category/SaveGoodsGs/",
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    gridGs.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+
+        ////////////Gl
+
+        var gridGl = mini.get('datagridGl');
+        gridGl.url = "/Category/GetGoodsGlList/";
+        gridGl.reload();
+
+        function onActionRendererGl(e) {
+            var gridGl = e.sender;
+            var record = e.record;
+            var uid = record._uid;
+            var rowIndex = e.rowIndex;
+
+            var s = '<a class="New_Button" href="javascript:newRowGl()">增加</a>&nbsp;'
+                    + ' <a class="Edit_Button" href="javascript:editRowGl(\'' + uid + '\')" >编辑</a>&nbsp;'
+                    + ' <a class="Delete_Button" href="javascript:delRowGl(\'' + uid + '\')">删除</a>';
+
+            if (grid.isEditingRow(record)) {
+                s = '<a class="Update_Button" href="javascript:updateRowGl(\'' + uid + '\')">保存</a>&nbsp;'
+                    + '<a class="Cancel_Button" href="javascript:cancelRowGl(\'' + uid + '\')">取消</a>'
+            }
+            return s;
+        }
+        function newRowGl() {
+            var row = {};
+            gridGl.addRow(row, 0);
+
+            gridGl.cancelEdit();
+            gridGl.beginEditRow(row);
+        }
+        function editRowGl(row_uid) {
+            var row = gridGl.getRowByUID(row_uid);
+            if (row) {
+                gridGl.cancelEdit();
+                gridGl.beginEditRow(row);
+            }
+        }
+        function cancelRowGl(row_uid) {
+            gridGl.reload();
+        }
+        function delRowGl(row_uid) {
+            var row = gridGl.getRowByUID(row_uid);
+            if (row) {
+                if (confirm("确定删除此记录？")) {
+                    gridGl.loading("删除中，请稍后......");
+                    $.ajax({
+                        url: "/Category/DeleteGoodsGl/" + row.Id,
+                        success: function (text) {
+                            grid.reload();
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            }
+        }
+
+        function updateRowm(row_uid) {
+            var row = gridGl.getRowByUID(row_uid);
+
+            gridGl.commitEdit();
+            if (gridGl.getChanges().length == 0) {
+                return false;
+            }
+            var rowData = gridGl.getChanges()[0];
+
+            gridGl.loading("保存中，请稍后......");
+            var json = mini.encode(rowData);
+
+            $.ajax({
+                url: "/Category/SaveGoodsGl/",
+                data: { "data": json },
+                type: "post",
+                success: function (text) {
+                    gridGl.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(jqXHR.responseText);
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>

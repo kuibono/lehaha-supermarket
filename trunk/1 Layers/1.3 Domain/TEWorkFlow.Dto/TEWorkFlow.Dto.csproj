@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Extend.cs" />
     <Compile Include="InvoiceSearchDto.cs" />
+    <Compile Include="LoginResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchDtoBase.cs" />
     <Compile Include="SearchResult.cs" />

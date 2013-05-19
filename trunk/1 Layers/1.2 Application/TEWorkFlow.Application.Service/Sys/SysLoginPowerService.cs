@@ -11,13 +11,15 @@ using NSH.Core.Domain;
 using NSH.Core.DataPage;
 //using NSH.Authorization.Domain;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Sys
 {
     public class SysLoginPowerService : ISysLoginPowerService
     {
         public IRepositoryGUID<SysLoginPower> SysLoginPowerRepository { get; set; }
-
+        public IRepositoryGUID<Ememployeearchive> EmployeeRepository { get; set; }
+        public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
         [Transaction]
         public string Create(SysLoginPower entity)
         {
@@ -69,6 +71,49 @@ namespace TEWorkFlow.Application.Service.Sys
             {
                 return null;
             }
+        }
+
+        [Transaction]
+        public LoginResult CheckUser(string UserName, string Password, int UserType)
+        {
+            LoginResult result = new LoginResult();
+            if (UserType == 0)
+            {
+                //员工
+                var q = from l in EmployeeRepository.LinqQuery
+                        where l.LoginName == UserName
+                            && l.LoginPass == Password
+                        select l;
+                if (q.Count() > 0)
+                {
+                    result.Employee = q.First();
+                    result.IsSuccess = true;
+                }
+                else
+                {
+                    result.IsSuccess = false;
+                }
+            }
+            else
+            {
+                //供货商
+                var q = from l in SupplierRepository.LinqQuery
+                        where l.LoginName == UserName
+                            && l.LoginPass == Password
+                        select l;
+                if (q.Count() > 0)
+                {
+                    result.Supplier = q.First();
+                    result.IsSuccess = true;
+                }
+                else
+                {
+                    result.IsSuccess = false;
+                }
+
+            }
+
+            return result;
         }
 
         [Transaction]

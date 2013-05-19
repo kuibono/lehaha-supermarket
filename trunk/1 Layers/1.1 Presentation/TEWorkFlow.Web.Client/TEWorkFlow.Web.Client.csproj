@@ -154,6 +154,7 @@
     <Compile Include="Common\LocalizationAttribute.cs" />
     <Compile Include="Common\LocalizationHelpers.cs" />
     <Compile Include="Common\LocalizedDisplayName.cs" />
+    <Compile Include="Common\MyEnv.cs" />
     <Compile Include="Common\StaticClass.cs" />
     <Compile Include="Common\UserAuthorizeAttribute .cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Controllers\BusinessController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -621,20 +623,24 @@
     <Content Include="Scripts\miniui\themes\icons\cart_add.png" />
     <Content Include="Scripts\miniui\themes\icons\cart_delete.png" />
     <Content Include="Scripts\miniui\themes\icons\chart_organisation.png" />
+    <Content Include="Scripts\miniui\themes\icons\coins.png" />
     <Content Include="Scripts\miniui\themes\icons\cut.png" />
     <Content Include="Scripts\miniui\themes\icons\date.gif" />
     <Content Include="Scripts\miniui\themes\icons\date_magnify.png" />
     <Content Include="Scripts\miniui\themes\icons\downgrade.gif" />
     <Content Include="Scripts\miniui\themes\icons\download.gif" />
+    <Content Include="Scripts\miniui\themes\icons\drive_user.png" />
     <Content Include="Scripts\miniui\themes\icons\edit.gif" />
     <Content Include="Scripts\miniui\themes\icons\filter.gif" />
     <Content Include="Scripts\miniui\themes\icons\find.png" />
     <Content Include="Scripts\miniui\themes\icons\folder-open.gif" />
     <Content Include="Scripts\miniui\themes\icons\folder.gif" />
     <Content Include="Scripts\miniui\themes\icons\goto.gif" />
+    <Content Include="Scripts\miniui\themes\icons\group_link.png" />
     <Content Include="Scripts\miniui\themes\icons\help.gif" />
     <Content Include="Scripts\miniui\themes\icons\help.png" />
     <Content Include="Scripts\miniui\themes\icons\lock.png" />
+    <Content Include="Scripts\miniui\themes\icons\map.png" />
     <Content Include="Scripts\miniui\themes\icons\new.gif" />
     <Content Include="Scripts\miniui\themes\icons\no.png" />
     <Content Include="Scripts\miniui\themes\icons\node.png" />
@@ -642,6 +648,7 @@
     <Content Include="Scripts\miniui\themes\icons\nowait.gif" />
     <Content Include="Scripts\miniui\themes\icons\ok.png" />
     <Content Include="Scripts\miniui\themes\icons\open.gif" />
+    <Content Include="Scripts\miniui\themes\icons\page_excel.png" />
     <Content Include="Scripts\miniui\themes\icons\print.gif" />
     <Content Include="Scripts\miniui\themes\icons\redo.gif" />
     <Content Include="Scripts\miniui\themes\icons\reload.png" />
@@ -832,6 +839,13 @@
     <Content Include="Views\Shared\_RowEditLayout.cshtml" />
     <Content Include="Views\Category\SupTypeList.cshtml" />
     <Content Include="Views\Category\PaClassList.cshtml" />
+    <Content Include="Views\Category\BsPaAreaList.cshtml" />
+    <Content Include="Views\Category\EmPaPoliticsList.cshtml" />
+    <Content Include="Views\Category\NationList.cshtml" />
+    <Content Include="Views\Category\ClassList.cshtml" />
+    <Content Include="Views\Archives\GoodsListTree.cshtml" />
+    <Content Include="Views\Query\PurchaseQuery.cshtml" />
+    <Content Include="Views\Query\PurchaseView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -98,7 +98,7 @@ namespace TEWorkFlow.Domain.Business
         /// </summary>
         public virtual System.DateTime? ProduceDate { get; set; }
 
-
+        public virtual bool IsFree { get; set; }
 
 
         public virtual string GoodsName { get; set; }

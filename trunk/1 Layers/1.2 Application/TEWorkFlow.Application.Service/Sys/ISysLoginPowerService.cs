@@ -33,6 +33,8 @@ namespace TEWorkFlow.Application.Service.Sys
 
         SysLoginPower CheckUser(string UserName, string Password);
 
+        LoginResult CheckUser(string UserName, string Password, int UserType);
+
         IList<SysLoginPower> GetList(ISpecification<SysLoginPower> specification, Action<Orderable<SysLoginPower>> order);
 
         SearchResult<SysLoginPower> Search(SearchDtoBase<SysLoginPower> c);

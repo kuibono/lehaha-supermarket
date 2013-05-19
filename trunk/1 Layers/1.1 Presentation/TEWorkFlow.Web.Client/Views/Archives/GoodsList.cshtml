@@ -12,6 +12,7 @@
                     筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
+                <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" />
                 <input id="Id" class="mini-textbox" emptytext="请输入编码" style="width: 150px;" onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>
@@ -28,13 +29,13 @@
         <table class="edittable" border="1" cellpadding="0" cellspacing="0">
             <tr>
                 <td style="width: 80px;">
-                    商品编码:
+                    店内码:
                 </td>
                 <td style="width: 120px;">
                     <input name="GoodsCode" class="mini-textbox" />
                 </td>
                 <td style="width: 80px;">
-                    销售码:
+                    条形码:
                 </td>
                 <td style="width: 120px;">
                     <input name="GoodsBarCode" class="mini-textbox" />
@@ -150,13 +151,14 @@
         }
         function search() {
             grid.load({
-                "Id": mini.get("#Id").value
+                "Id": mini.get("#Id").value,
+                "IfExamine": mini.get("#ifexame").value
             });
         }
         function editRow(id) {
             mini.open({
                 url: "/Archives/GoodsEdit/" + id,
-                title: "商品档案管理",
+                title: "商品档案:" + grid.getSelected().SupName + " " + grid.getSelected().SupTel,
                 iconCls: "icon-user",
                 allowResize: false,
                 width: 700,
@@ -194,11 +196,11 @@
         <div type="checkcolumn" width="30">
         </div>
         <div field="Id" headeralign="center" align="center" width="60">
-            编码</div>
+            店内码</div>
         <div field="GoodsName" headeralign="center" align="center" width="60">
             名称</div>
         <div field="GoodsBarCode" headeralign="center" align="center" width="60">
-            销售码</div>
+            条形码</div>
         <div field="GoodsSubCode" headeralign="center" align="center" width="60">
             简码</div>
         <div field="GbName" headeralign="center" align="center" width="60">
@@ -213,7 +215,7 @@
             类型</div>
         <div field="CheckMode" headeralign="center" align="center" width="60">
             核算方式</div>
-        <div field="SupCode" headeralign="center" align="center" width="60">
+        <div field="SupName" headeralign="center" align="center" width="60">
             供货商</div>
         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">

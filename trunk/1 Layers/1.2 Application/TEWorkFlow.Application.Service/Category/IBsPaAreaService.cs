@@ -20,6 +20,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         void Update(BsPaArea entity);
 
+        void Save(BsPaArea entity);
+
         /// <summary>
         /// 删除指定BsPaArea
         /// </summary>

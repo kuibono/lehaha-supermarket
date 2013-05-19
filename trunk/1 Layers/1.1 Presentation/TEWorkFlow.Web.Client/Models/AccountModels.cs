@@ -27,6 +27,9 @@ namespace TEWorkFlow.Web.Client.Models
         [Display(Name = "V Code")]
         public string VCode { get; set; }
 
+        [Display(Name = "logintype")]
+        public int logintype { get; set; }
+
     }
 
     public class JsonTreeModel

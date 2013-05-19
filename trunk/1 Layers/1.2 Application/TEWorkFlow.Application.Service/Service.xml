@@ -4,6 +4,7 @@
   <!--Repository-->
   <object id="SysLoginPowerRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysLoginPower>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
+    
   </object>
   <object id="SysmodulecontentRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.Sysmodulecontent>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
@@ -69,6 +70,9 @@
   <object id="PcSupplementDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcSupplementDetail>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="SysEnterpriseArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysEnterpriseArchives>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -76,6 +80,8 @@
 
   <object id="SysLoginPowerService" type="TEWorkFlow.Application.Service.Sys.SysLoginPowerService, TEWorkFlow.Application.Service">
     <property name="SysLoginPowerRepository" ref="SysLoginPowerRepository"/>
+    <property name="EmployeeRepository" ref="EmemployeearchiveRepository"/>
+    <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
   </object>
   <object id="SysmodulecontentService" type="TEWorkFlow.Application.Service.Sys.SysmodulecontentService, TEWorkFlow.Application.Service">
     <property name="SysmodulecontentRepository" ref="SysmodulecontentRepository"/>
@@ -114,6 +120,7 @@
     <property name="GmRepository" ref="FbPaGoodsGmRepository"/>
     <property name="GsRepository" ref="FbPaGoodsGsRepository"/>
     <property name="GlRepository" ref="FbPaGoodsGlRepository"/>
+    <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
   </object>
   <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>
@@ -158,5 +165,8 @@
   <object id="PcSupplementDetailService" type="TEWorkFlow.Application.Service.Business.PcSupplementDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcSupplementDetailRepository"/>
     <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
+  </object>
+  <object id="SysEnterpriseArchivesService" type="TEWorkFlow.Application.Service.Sys.SysEnterpriseArchivesService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="SysEnterpriseArchivesRepository"/>
   </object>
 </objects>

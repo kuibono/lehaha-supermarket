@@ -30,7 +30,7 @@ h4
 }
 .center
 {
-    text-align:center;
+    text-align: center;
 }
 
 
@@ -49,27 +49,47 @@ body
 }
 .fill
 {
-    width:100% !important;
-    height:100% !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 .noborder
 {
-    border:0 !important;
+    border: 0 !important;
 }
-table.edittable {
+table.edittable
+{
     text-align: right;
     margin: 5px;
     border-width: 0;
     border-collapse: collapse;
-    border-color:#EEE;
+    border-color: #EEE;
 }
-table.edittable tr {
+table.edittable tr
+{
     height: 23px;
     line-height: 23px;
 }
-table.edittable tr td{
+table.edittable tr td
+{
     padding: 1px;
 }
-table.edittable input {
+table.edittable input
+{
     text-align: left;
+}
+
+
+.asLabel .mini-textbox-border, .asLabel .mini-textbox-input, .asLabel .mini-buttonedit-border, .asLabel .mini-buttonedit-input, .asLabel .mini-textboxlist-border
+{
+    border: 0;
+    background: none;
+    cursor: default;
+}
+.asLabel .mini-buttonedit-button, .asLabel .mini-textboxlist-close
+{
+    display: none;
+}
+.asLabel .mini-textboxlist-item
+{
+    padding-right: 8px;
 }

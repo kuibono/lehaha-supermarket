@@ -33,6 +33,37 @@ namespace TEWorkFlow.Application.Service.Category
         }
 
         [Transaction]
+        public void Save(EmPaPolitics entity)
+        {
+            bool add = false;
+            if (string.IsNullOrEmpty(entity.Id))
+            {
+                add = true;
+                entity.Id = Guid.NewGuid().ToString();
+            }
+            else
+            {
+                if (EmPaPoliticsRepository.LinqQuery.Count(p => p.Id == entity.Id) > 0)
+                {
+                    add = false;
+                }
+                else
+                {
+                    add = true;
+                }
+            }
+
+            if (add)
+            {
+                EmPaPoliticsRepository.Save(entity);
+            }
+            else
+            {
+                EmPaPoliticsRepository.Update(entity);
+            }
+        }
+
+        [Transaction]
         public void Update(EmPaPolitics entity)
         {
             EmPaPoliticsRepository.Update(entity);

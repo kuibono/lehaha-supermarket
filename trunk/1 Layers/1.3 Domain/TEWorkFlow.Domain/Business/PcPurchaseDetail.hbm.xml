@@ -22,5 +22,6 @@
     <property name="PurchaseMoney" column="purchase_money" type="decimal" />
     <property name="NontaxPurchaseMoney" column="nontax_purchase_money" type="decimal" />
     <property name="ProduceDate" column="produce_date" type="System.DateTime" />
+    <property name="IsFree" column="Is_free" type="bool" />
   </class>
 </hibernate-mapping>

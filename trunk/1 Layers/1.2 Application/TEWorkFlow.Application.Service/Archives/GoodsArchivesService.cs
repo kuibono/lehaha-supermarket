@@ -19,6 +19,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbPaGoodsGm> GmRepository { get; set; }
         public IRepositoryGUID<FbPaGoodsGs> GsRepository { get; set; }
         public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
+        public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
 
         [Transaction]
         public string Create(GoodsArchives entity)
@@ -93,6 +94,25 @@ namespace TEWorkFlow.Application.Service.Archives
                     entity.GlName = gl.First().GlName;
                 }
 
+            }
+        }
+
+        private void FillSupInfo(IList<GoodsArchives> goods)
+        {
+            var sups = SupplierRepository.LinqQuery.ToList();
+            for (int i = 0; i < goods.Count; i++)
+            {
+                var sup = sups.Where(p => p.Id == goods[i].SupCode);
+                if (sup.Count() == 0)
+                {
+                    goods[i].SupName = "";
+                    goods[i].SupTel = "";
+                }
+                else
+                {
+                    goods[i].SupName = sup.First().SupName;
+                    goods[i].SupTel = sup.First().ContactPhone;
+                }
             }
         }
 
@@ -293,6 +313,7 @@ namespace TEWorkFlow.Application.Service.Archives
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillClassName(result);
+            FillSupInfo(result);
             return result.ToSearchResult(count);
         }
 
@@ -336,6 +357,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
+            FillSupInfo(result);
             return result.ToList();
         }
 
