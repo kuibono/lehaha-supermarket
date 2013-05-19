@@ -12,10 +12,6 @@ namespace TEWorkFlow.Domain.Sys
     ///</summary>
     public class SysEnterpriseArchives : EntityGUIDBase, IAggregateRootGUID
     {
-        /// <summary>
-        /// 企业编码
-        /// </summary>
-        public virtual string EnCode { get; set; }
 
         /// <summary>
         /// 企业名称

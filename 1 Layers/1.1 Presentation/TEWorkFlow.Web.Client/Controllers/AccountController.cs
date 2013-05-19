@@ -27,6 +27,8 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IBsPaClassService BsPaClassService { get; set; }
         public IBsPaAreaService BsPaAreaService { get; set; }
         public ISysPaDepartmentService SysPaDepartmentService { get; set; }
+        public ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
+
         public ActionResult IniAll()
         {
             IniUser();
@@ -106,8 +108,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                          ParentId = "root",
                          Url = "",
                          Windowname = "系统设置",
-                         EmployeeVisible=true,
-                         SupplierVisible=true
+                         EmployeeVisible = true,
+                         SupplierVisible = true
                      };
             SysmodulecontentService.Create(m1);
 
@@ -345,7 +347,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "query",
                 Url = "/Query/PurchaseQuery",
                 Windowname = "超市订单",
-                Index=21,
+                Index = 21,
                 EmployeeVisible = true,
                 SupplierVisible = true
             };
@@ -361,7 +363,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(
                 SysmodulecontentService.ModelListToDto(
-                    SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0).OrderBy(p=>p.Index).ToList()
+                    SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0).OrderBy(p => p.Index).ToList()
                     ),
                 JsonRequestBehavior.AllowGet);
         }
@@ -424,7 +426,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserName] = result.Employee.LoginName;
                     Session[AuthorizeSettings.SessionUserID] = result.Employee.Id;
                     Session[AuthorizeSettings.SessionUserType] = "0";
-                    
+
                 }
                 else
                 {
@@ -475,6 +477,17 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult DepartmentSelectTree()
         {
             return View();
+        }
+
+        public ActionResult SysSetting()
+        {
+            return View(SysEnterpriseArchivesService.Get());
+        }
+
+        public JsonResult SaveSysSetting(SysEnterpriseArchives setting)
+        {
+            SysEnterpriseArchivesService.Save(setting);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

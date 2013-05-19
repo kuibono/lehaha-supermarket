@@ -35,11 +35,11 @@ namespace TEWorkFlow.Application.Service.Sys
             if (q.Count() == 0)
             {
                 //不存在
-                EntityRepository.Update(entity);
+                 EntityRepository.Save(entity);
             }
             else
             {
-                EntityRepository.Save(entity);
+                EntityRepository.Update(entity);
             }
         }
     }
