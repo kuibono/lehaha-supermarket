@@ -62,6 +62,7 @@
     <Compile Include="Category\FbPaSupType.cs" />
     <Compile Include="Category\Nation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\SysEnterpriseArchives.cs" />
     <Compile Include="Sys\SysLoginPower.cs" />
     <Compile Include="Sys\Sysmodulecontent.cs" />
     <Compile Include="Sys\SysPaDepartment.cs" />
@@ -141,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Business\PcSupplementDetail.hbm.xml" />
     <EmbeddedResource Include="Business\PcSupplementManage.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sys\SysEnterpriseArchives.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

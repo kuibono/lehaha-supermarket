@@ -17,6 +17,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         IList<Nation> GetAll();
 
+        void Save(Nation entity);
+
         void Update(Nation entity);
 
         /// <summary>

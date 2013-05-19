@@ -7,27 +7,12 @@
 {
     <script type="text/javascript">
         mini.parse();
-
+        labelModel(new mini.Form("form1"));
         var grid = mini.get('datagrid1');
         grid.url = "/Business/GetPurchaseDetailList/" + entityId;
         grid.reload();
 
-        function onActionRenderer(e) {
-            var grid = e.sender;
-            var record = e.record;
-            var uid = record._uid;
-            var rowIndex = e.rowIndex;
 
-            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
-                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
-                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
-
-            if (grid.isEditingRow(record)) {
-                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
-                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
-            }
-            return s;
-        }
         function newRow() {
             if (grid.isEditing()) {
                 if (grid.isEditingRow(grid.getRow(0)) && grid.getRow(0)._state == "added") {
@@ -108,13 +93,11 @@
 
         }
         var issaving = false;
-        
-        
         function SaveData() {
 
             var form = new mini.Form("form1");
             var o = form.getData(true);
-
+            labelModel(form);
             form.validate();
             if (form.isValid() == false) return;
 
@@ -363,8 +346,5 @@
         </div>
         <div type="checkboxcolumn" field="IsFree" headeralign="center">
             是否赠品</div>
-        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
-            cellstyle="padding:0;">
-            操作</div>
     </div>
 </div>

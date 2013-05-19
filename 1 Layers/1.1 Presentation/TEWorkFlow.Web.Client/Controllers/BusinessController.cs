@@ -32,6 +32,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             PcPurchaseManage model = new PcPurchaseManage();
             model.Id = Guid.NewGuid().ToString();
+            //if (Common.Env.IsSupplierLogin)
+            //{
+            //    var sup=Common.Env.CurrentSupplier;
+            //    model.SupCode = sup.SupName;
+            //    model.EnCode = sup.Id;
+            //}
 
             if (string.IsNullOrEmpty(id) == false)
             {
@@ -90,6 +96,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             detail.OrderQty = Convert.ToInt32(row["OrderQty"]);
             detail.PackQty = Convert.ToInt32(row["PackQty"]);
             detail.PutinQty = Convert.ToInt32(row["PutinQty"]);
+            detail.IsFree = Convert.ToBoolean(row["IsFree"]);
             detail.ProduceDate = row["ProduceDate"].ToNullAbleDateTime();
 
             //计算金额

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "行业维护";
+    ViewBag.GetListUrl = "/Category/GetNationList/";
+    ViewBag.DeleteItemUrl = "/Category/DeleteNation/";
+    ViewBag.SaveItemUrl = "/Category/SaveNation/";
+    Layout = "~/Views/Shared/_RowEditLayout.cshtml";
+}
+@section toolbar{
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                <a class="mini-button" iconcls="icon-add" onclick="newRow()" plain="true">增加</a>
+                 <span class="separator"></span>
+            </td>
+        </tr>
+    </table>
+}
+<div id="datagrid1"  style="width: 100%;" class="mini-datagrid" idfield="Id"
+    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
+    showpager="false" multiselect="true">
+    <div property="columns">
+        <div type="indexcolumn" width="30">
+        </div>
+        <div type="checkcolumn" width="30">
+        </div>
+        <div field="Name" headeralign="center" align="center" width="60">民族名称
+            <input property="editor" class="mini-textbox" style="width: 100%;" />
+        </div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer" cellstyle="padding:0;">管理</div>
+    </div>
+</div>

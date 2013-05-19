@@ -251,7 +251,7 @@
         </td>
         <td style="width: 140px;">
             @*<input name="Assessor" value="@Model.Assessor" class="mini-textbox"/>*@
-            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            @*<input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>*@
         </td>
         <td style="width: 60px;">
             是否审核:
@@ -262,7 +262,7 @@
             </div>
         </td>
         <td style="width: 60px;">
-            审核时间:
+            开始时间:
         </td>
         <td style="width: 140px;">
             <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
@@ -270,7 +270,7 @@
     </tr>
     <tr>
         <td style="width: 60px;">
-            操作时间:
+            结束时间:
         </td>
         <td style="width: 140px;">
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>

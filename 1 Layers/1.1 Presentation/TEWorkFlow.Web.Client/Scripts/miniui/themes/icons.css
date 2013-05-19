@@ -161,3 +161,23 @@
 {
     background:url(icons/brick.png) no-repeat;
 }
+.icon-map
+{
+    background:url(icons/map.png) no-repeat;
+}
+.icon-group-link
+{
+    background:url(icons/group_link.png) no-repeat;
+}
+.icon-drive-user
+{
+    background:url(icons/drive_user.png) no-repeat;
+}
+.icon-coins
+{
+    background:url(icons/coins.png) no-repeat;
+}
+.icon-excel
+{
+    background:url(icons/page_excel.png) no-repeat;
+}

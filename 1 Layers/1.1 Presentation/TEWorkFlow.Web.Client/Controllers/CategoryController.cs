@@ -24,7 +24,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IBsPaClassService BsPaClassService { get; set; }
         public IBsPaAreaService BsPaAreaService { get; set; }
 
-
+        #region SupType
         public ActionResult SupTypeList()
         {
             return View();
@@ -51,6 +51,189 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
 
         }
+        #endregion
+
+        #region Area
+        public ActionResult BsPaAreaList()
+        {
+            return View();
+        }
+
+        public JsonResult GetAreaList()
+        {
+            return Json(BsPaAreaService.Search(new Dto.SearchDtoBase<BsPaArea>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveArea()
+        {
+            BsPaArea e = new BsPaArea();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.AreaName = row["AreaName"].ToString();
+            BsPaAreaService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteArea(string Id)
+        {
+            BsPaAreaService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
+
+        #region Politics
+        public ActionResult EmPaPoliticsList()
+        {
+            return View();
+        }
+
+        public JsonResult GetPoliticsList()
+        {
+            return Json(EmPaPoliticsService.Search(new Dto.SearchDtoBase<EmPaPolitics>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SavePolitics()
+        {
+            EmPaPolitics e = new EmPaPolitics();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.Name = row["Name"].ToString();
+            EmPaPoliticsService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeletePolitics(string Id)
+        {
+            EmPaPoliticsService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
+
+        #region Nation
+        public ActionResult NationList()
+        {
+            return View();
+        }
+
+        public JsonResult GetNationList()
+        {
+            return Json(NationService.Search(new Dto.SearchDtoBase<Nation>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveNation()
+        {
+            Nation e = new Nation();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.Name = row["Name"].ToString();
+            NationService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteNation(string Id)
+        {
+            NationService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
+
+        #region Class
+        public ActionResult ClassList()
+        {
+            return View();
+        }
+
+        public JsonResult GetGoodsGbList()
+        {
+            return Json(FbPaGoodsGbService.Search(new Dto.SearchDtoBase<FbPaGoodsGb>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsGb()
+        {
+            FbPaGoodsGb e = new FbPaGoodsGb();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.GbName = row["GbName"].ToString();
+            FbPaGoodsGbService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteGoodsGb(string Id)
+        {
+            FbPaGoodsGbService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult GetGoodsGmList()
+        {
+            return Json(FbPaGoodsGmService.Search(new Dto.SearchDtoBase<FbPaGoodsGm>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsGm()
+        {
+            FbPaGoodsGm e = new FbPaGoodsGm();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.GmName = row["GmName"].ToString();
+            FbPaGoodsGmService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteGoodsGm(string Id)
+        {
+            FbPaGoodsGmService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult GetGoodsGsList()
+        {
+            return Json(FbPaGoodsGsService.Search(new Dto.SearchDtoBase<FbPaGoodsGs>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsGs()
+        {
+            FbPaGoodsGs e = new FbPaGoodsGs();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.GsName = row["GsName"].ToString();
+            FbPaGoodsGsService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteGoodsGs(string Id)
+        {
+            FbPaGoodsGsService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult GetGoodsGlList()
+        {
+            return Json(FbPaGoodsGlService.Search(new Dto.SearchDtoBase<FbPaGoodsGl>()), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SaveGoodsGl()
+        {
+            FbPaGoodsGl e = new FbPaGoodsGl();
+            Hashtable row = (Hashtable)(Request["data"].JsonDecode());
+            e.Id = row["Id"].ToString();
+            e.GlName = row["GlName"].ToString();
+            FbPaGoodsGlService.Save(e);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteGoodsGl(string Id)
+        {
+            FbPaGoodsGlService.Delete(new List<string> { Id });
+            return Json(true, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
+
         // ////////////////////////////////////////////////////////////////
         public ActionResult PaClassList()
         {
@@ -145,6 +328,20 @@ namespace TEWorkFlow.Web.Client.Controllers
             items.Add(new item() { id = "电话", text = "电话" });
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+
+        /// <summary>
+        /// 是否审核
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult ExameItems()
+        {
+            List<item> items = new List<item>();
+            items.Add(new item() { id = "", text = "--是否审核--" });
+            items.Add(new item() { id = "true", text = "审核" });
+            items.Add(new item() { id = "false", text = "未审核" });
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+
         /// <summary>
         /// 采购类型
         /// </summary>

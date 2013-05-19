@@ -18,6 +18,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         IList<FbPaGoodsGb> GetAll();
 
+        void Save(FbPaGoodsGb entity);
+
         void Update(FbPaGoodsGb entity);
 
         /// <summary>

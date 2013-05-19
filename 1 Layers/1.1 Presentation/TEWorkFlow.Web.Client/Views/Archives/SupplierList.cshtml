@@ -12,6 +12,7 @@
                     筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
+                <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" />  
                 <input id="SupName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;"
                     onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
@@ -35,7 +36,8 @@
         }
         function search() {
             grid.load({
-                "SupName": mini.get("#SupName").value
+                "SupName": mini.get("#SupName").value,
+                "IfExamine": mini.get("#ifexame").value
             });
         }
         function editRow(id) {

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Sys">
+  <class name="SysEnterpriseArchives" table="sys_enterprise_archives" lazy="true" >
+    <id name="Id" type="string" column="en_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="EnName" column="en_name" type="string" />
+    <property name="EnComName" column="en_com_name" type="string" />
+    <property name="EnType" column="en_type" type="string" />
+    <property name="EnCharacter" column="en_character" type="string" />
+    <property name="DealArea" column="deal_area" type="decimal" />
+    <property name="RegisterAddress" column="register_address" type="string" />
+    <property name="CurrentVersion" column="current_version" type="string" />
+    <property name="LastVersion" column="last_version" type="string" />
+
+
+  </class>
+</hibernate-mapping>

@@ -14,6 +14,7 @@ using TEWorkFlow.Web.Client.Common;
 using TEWorkFlow.Application.Service.Sys;
 ///using NSH.Core.WPF;
 using NSH.VSTO;
+using TEWorkFlow.Dto;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -92,14 +93,21 @@ namespace TEWorkFlow.Web.Client.Controllers
             m1.ParentId = "";
             m1.Url = "";
             m1.Windowname = "root";
+            m1.SupplierVisible = true;
+            m1.EmployeeVisible = true;
+
             SysmodulecontentService.Create(m1);
+
+            #region 系统设置
             m1 = new Sysmodulecontent()
                      {
                          Icon = "icon-node",
                          Id = "system",
                          ParentId = "root",
                          Url = "",
-                         Windowname = "系统设置"
+                         Windowname = "系统设置",
+                         EmployeeVisible=true,
+                         SupplierVisible=true
                      };
             SysmodulecontentService.Create(m1);
 
@@ -109,7 +117,9 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "users",
                 ParentId = "system",
                 Url = "/Test/List",
-                Windowname = "用户管理"
+                Windowname = "用户管理",
+                EmployeeVisible = true,
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
@@ -119,7 +129,9 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "suptypelist",
                 ParentId = "system",
                 Url = "/Category/SupTypeList",
-                Windowname = "行业管理"
+                Windowname = "行业管理",
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -129,18 +141,71 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "paclasslist",
                 ParentId = "system",
                 Url = "/Category/PaClassList",
-                Windowname = "分店类型"
+                Windowname = "分店类型",
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-group-link",
+                Id = "empapoliticslist",
+                ParentId = "system",
+                Url = "/Category/EmPaPoliticsList",
+                Windowname = "员工政治面貌",
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-map",
+                Id = "BsAreaList",
+                ParentId = "system",
+                Url = "/Category/BsPaAreaList",
+                Windowname = "区域管理",
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-drive-user",
+                Id = "nationlist",
+                ParentId = "system",
+                Url = "/Category/NationList",
+                Windowname = "员工民族",
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-coins",
+                Id = "classlist",
+                ParentId = "system",
+                Url = "/Category/ClassList",
+                Windowname = "商品分类",
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+
+            #endregion
+
+            #region 档案管理
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-vcard",
                 Id = "archives",
                 ParentId = "root",
                 Url = "",
-                Windowname = "档案管理"
+                Windowname = "档案管理",
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -150,7 +215,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "user_archives",
                 ParentId = "archives",
                 Url = "/Archives/EmployeeList",
-                Windowname = "人员档案"
+                Windowname = "公司人员档案",
+                Index = 11,
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -160,7 +228,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "supplier_archives",
                 ParentId = "archives",
                 Url = "/Archives/SupplierList",
-                Windowname = "供应商档案"
+                Windowname = "供应商档案",
+                Index = 12,
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -170,7 +241,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "branch_archives",
                 ParentId = "archives",
                 Url = "/Archives/BranchList",
-                Windowname = "分店档案"
+                Windowname = "链锁店档案",
+                Index = 13,
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -180,19 +254,37 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "goods_archives",
                 ParentId = "archives",
                 Url = "/Archives/GoodsList",
-                Windowname = "商品档案"
+                Windowname = "商品档案",
+                Index = 14,
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "goods_archivestree",
+                ParentId = "archives",
+                Url = "/Archives/GoodsListTree",
+                Windowname = "商品档案2",
+                Index = 15,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+            #endregion
 
-
+            #region 业务管理
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-car",
                 Id = "business",
                 ParentId = "root",
                 Url = "",
-                Windowname = "业务管理"
+                Windowname = "业务管理",
+                EmployeeVisible = true,
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
@@ -202,7 +294,9 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "business-purchase",
                 ParentId = "business",
                 Url = "/Business/PurchaseList",
-                Windowname = "产品采购"
+                Windowname = "超市订单",
+                EmployeeVisible = true,
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
@@ -212,7 +306,9 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "business-return",
                 ParentId = "business",
                 Url = "/Business/ReturnList",
-                Windowname = "产品退货"
+                Windowname = "产品退货",
+                EmployeeVisible = true,
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
@@ -222,9 +318,42 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "business-supplement",
                 ParentId = "business",
                 Url = "/Business/SupplementList",
-                Windowname = "产品补货"
+                Windowname = "产品补货",
+                EmployeeVisible = true,
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
+            #endregion
+
+            #region 数据查询
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-search",
+                Id = "query",
+                ParentId = "root",
+                Url = "",
+                Windowname = "数据查询",
+                EmployeeVisible = true,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-purchase",
+                ParentId = "query",
+                Url = "/Query/PurchaseQuery",
+                Windowname = "超市订单",
+                Index=21,
+                EmployeeVisible = true,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+
+            #endregion
+
             return null;
         }
 
@@ -232,7 +361,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(
                 SysmodulecontentService.ModelListToDto(
-                    SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0).ToList()
+                    SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0).OrderBy(p=>p.Index).ToList()
                     ),
                 JsonRequestBehavior.AllowGet);
         }
@@ -286,18 +415,44 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             Session.Remove("SafeCode");//删除验证码Session 防止机器登录
 
-            var u = SysLoginPowerService.CheckUser(model.UserName, model.Password);
-            if (u == null)
+
+            LoginResult result = SysLoginPowerService.CheckUser(model.UserName, model.Password, model.logintype);
+            if (result.IsSuccess)
+            {
+                if (result.Employee != null)
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Employee.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Employee.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "0";
+                    
+                }
+                else
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Supplier.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "1";
+                }
+                return RedirectToAction("Index", "Test");
+            }
+            else
             {
                 ModelState.AddModelError("", "账号或密码错误，请重试");
                 return View(model);
             }
-            else
-            {
-                Session[AuthorizeSettings.SessionUserName] = u.Username;
-                Session[AuthorizeSettings.SessionUserID] = u.Id;
-                return RedirectToAction("Index", "Test");
-            }
+
+
+            //var u = SysLoginPowerService.CheckUser(model.UserName, model.Password);
+            //if (u == null)
+            //{
+            //    ModelState.AddModelError("", "账号或密码错误，请重试");
+            //    return View(model);
+            //}
+            //else
+            //{
+            //    Session[AuthorizeSettings.SessionUserName] = u.Username;
+            //    Session[AuthorizeSettings.SessionUserID] = u.Id;
+            //    return RedirectToAction("Index", "Test");
+            //}
 
             //NSH.Authorization.Domain.User user = new NSH.Authorization.Domain.User();
             //user.LoginName = model.UserName;

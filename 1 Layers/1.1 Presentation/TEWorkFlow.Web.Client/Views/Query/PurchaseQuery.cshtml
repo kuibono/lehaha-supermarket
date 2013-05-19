@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "商品采购管理";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+@section toolbar{
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 100%;">
+                
+                <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
+                    筛选</a> 
+                <a class="mini-button" iconcls="icon-excel" onclick="export('')" plain="true">导出</a>
+                    <span class="separator"></span>
+            </td>
+            <td style="white-space: nowrap;">
+                <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
+                <a class="mini-button" onclick="search()">查询</a>
+            </td>
+        </tr>
+    </table>
+}
+@section script
+{
+    <script type="text/javascript">
+        mini.parse();
+        function showSearchWindow() {
+            var win = mini.get("searchWindow");
+            win.show();
+        }
+        function advSearch() {
+            var frm = new mini.Form("frmAdv");
+            grid.load(frm.getData(true));
+            var win = mini.get("searchWindow");
+            win.hide();
+        }
+        function search() {
+            grid.load({
+                "key": mini.get("#key").value
+            });
+        }
+        function onActionRenderer2(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+
+            var s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>';
+            return s;
+        }
+        function viewRow(id) {
+            mini.open({
+                url: "/Query/PurchaseView/" + id+"?readonly=true",
+                title: "采购查看",
+                iconCls: "icon-cart",
+                allowResize: false,
+                width: 660,
+                height: 480,
+                onload: function () {
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
+    </script>
+}
+<div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList" style="width: 100%;
+    height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
+    multiselect="true">
+    <div property="columns">
+        <div type="indexcolumn" width="30">
+        </div>
+        <div type="checkcolumn" width="30">
+        </div>
+        <div field="SupCode" headeralign="center" align="center" width="60">
+            供货商</div>
+        <div field="PcForm" headeralign="center" align="center" width="60">
+            采购形式</div>
+        <div field="bName" headeralign="center" align="center" width="60">
+            门店名称</div>
+        <div field="bCode" headeralign="center" align="center" width="60">
+            门店编码</div>
+        <div field="PcType" headeralign="center" align="center" width="60">
+            采购类型</div>
+        <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+            采购日期</div>
+        <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+            预计到货日期</div>
+        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer2"
+            cellstyle="padding:0;">
+            管理</div>
+    </div>
+</div>
+<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 180px;"
+    iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
+    showmodal="false" allowresize="false" allowdrag="true">
+    <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
+        <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
+            筛选</a>
+    </div>
+    <form id="frmAdv">
+    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="width: 60px;">
+                采购单号:
+            </td>
+            <td style="width: 140px;">
+                <input name="Id" class="mini-textbox" />
+            </td>
+            <td style="width: 60px;">
+                供货商:
+            </td>
+            <td style="width: 140px;">
+                <input name="SupCode" class="mini-autocomplete" require="true" valuefield="SupName"
+                    displayfield="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 60px;">
+                采购形式:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcForm" class="mini-textbox" />
+            </td>
+            <td style="width: 60px;">
+                门店:
+            </td>
+            <td style="width: 140px;">
+                <input name="bCode" class="mini-combobox" textfield="bName" valuefield="Id" emptytext="请选择..."
+                    url="/Archives/SearchAllranches" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 60px;">
+                采购类型:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcType" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
+                    url="/Category/PcType" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
+            </td>
+            <td style="width: 60px;">
+                采购方式:
+            </td>
+            <td style="width: 140px;">
+                <input name="PcMode" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
+                    url="/Category/PcMode" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>

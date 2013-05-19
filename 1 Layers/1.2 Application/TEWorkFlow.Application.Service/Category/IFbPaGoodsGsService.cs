@@ -18,6 +18,8 @@ namespace TEWorkFlow.Application.Service.Category
 
         IList<FbPaGoodsGs> GetAll();
 
+        void Save(FbPaGoodsGs entity);
+
         IList<FbPaGoodsGs> GetByGbId(string GmId);
 
         void Update(FbPaGoodsGs entity);

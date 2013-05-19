@@ -29,6 +29,12 @@
             return s;
         }
         function newRow() {
+            if (grid.isEditing()) {
+                if (grid.isEditingRow(grid.getRow(0)) && grid.getRow(0)._state == "added") {
+                    return;
+                }
+                grid.cancelEdit();
+            }
             var row = {};
             grid.addRow(row, 0);
 
@@ -36,6 +42,12 @@
             grid.beginEditRow(row);
         }
         function editRow(row_uid) {
+            if (grid.isEditing()) {
+                if (grid.isEditingRow(grid.getRow(0)) && grid.getRow(0)._state == "added") {
+                    return;
+                }
+                grid.cancelEdit();
+            }
             var row = grid.getRowByUID(row_uid);
             if (row) {
                 grid.cancelEdit();
@@ -64,9 +76,20 @@
 
         function updateRow(row_uid) {
             var row = grid.getRowByUID(row_uid);
-
+            if (grid.isValid() == false) {
+                return false;
+            }
             grid.commitEdit();
             var rowData = grid.getChanges()[0];
+            if (!rowData) {
+                //没有改动
+                return;
+            }
+            if (!rowData.GoodsCode) {
+                alert("没有选择产品");
+                grid.reload();
+                return;
+            }
 
             grid.loading("保存中，请稍后......");
             var json = mini.encode(rowData);
@@ -132,6 +155,7 @@
                 }
             });
         }
+        var issaving = false;
         function SaveData() {
             var form = new mini.Form("form1");
             var o = form.getData(true);
@@ -140,21 +164,52 @@
             if (form.isValid() == false) return;
 
             var json = mini.encode([o]);
-
+            issaving = true;
             $.ajax({
                 type: "post",
                 url: "/Business/SaveReturn",
                 data: o,
                 cache: false,
                 success: function (text) {
+                    issaving = false;
                     CloseWindow("save");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
+                    issaving = false;
                     alert(jqXHR.responseText);
                     CloseWindow();
                 }
             });
         }
+        document.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                //return
+                if (grid.isEditing()) {
+                    //grid.commitEdit();
+                    if (grid.getChanges().length > 0 && grid.getChanges()[0].GoodsCode != undefined) {
+                        updateRow();
+                    }
+                }
+                else {
+                    newRow();
+                }
+                return false;
+            }
+
+            //ctrl+s
+            if (e.keyCode == 83 && e.ctrlKey) {
+                if (issaving == false) {
+                    SaveData();
+                }
+                return false;
+            }
+            //ecs
+            if (e.keyCode == 27) {
+                grid.reload();
+                return false;
+            }
+        };
     </script>
 }
 <table class="edittable" border="1" cellpadding="0" cellspacing="0">
@@ -176,11 +231,10 @@
         </td>
         <td style="width: 140px;">
             <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
-             <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-hidden" required="true"/>
+            <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-hidden" required="true"/>
         </td>
     </tr>
     <tr>
-
         <td style="width: 60px;">
             采购形式:
         </td>
@@ -193,7 +247,6 @@
         <td style="width: 140px;">
             <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
-
         <td style="width: 60px;">
             返货日期:
         </td>
@@ -202,28 +255,25 @@
         </td>
     </tr>
     <tr>
-  
         <td style="width: 60px;">
             创建时间:
         </td>
         <td style="width: 140px;">
             <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker"/>
         </td>
-
         <td style="width: 60px;">
             操作员:
         </td>
         <td style="width: 140px;">
-           <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
         <td style="width: 60px;">
-            审核人:
+            @*审核人:*@
         </td>
-
         <td style="width: 140px;">
-            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            @*<input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>*@
         </td>
-            </tr>
+    </tr>
     <tr>
         <td style="width: 60px;">
             是否审核:
@@ -232,39 +282,49 @@
             <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
             </div>
         </td>
-
         <td style="width: 60px;">
-            审核时间:
+            开始时间:
         </td>
         <td style="width: 140px;">
             <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
         </td>
         <td style="width: 60px;">
-            操作时间:
+            结束时间:
         </td>
         <td style="width: 140px;">
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
         </td>
     </tr>
 </table>
-
 <div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false">
     <div property="columns">
         <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
-            产品
-            <input property="editor" class="mini-buttonedit" onbuttonclick="onGoodsCodeButtonEdit"
-                style="width: 100%;" />
+            产品 @*<input property="editor" class="mini-buttonedit" onbuttonclick="onGoodsCodeButtonEdit"
+                style="width: 100%;" />*@
+            <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupwidth="400"
+                valuefield="Id" url="/Archives/GetAllGoodsArchive">
+                <div property="columns">
+                    <div header="店内码" field="Id" width="30">
+                    </div>
+                    <div header="名称" field="GoodsName">
+                    </div>
+                    <div header="条形码" field="GoodsBarCode">
+                    </div>
+                </div>
+            </div>
         </div>
         <div field="ReturnQty" width="60" headeralign="center" align="center" allowsort="true">
             数量
-            <input property="editor" class="mini-spinner" style="width: 100%;" />
+            <input property="editor" class="mini-spinner" style="width: 100%;" minvalue="1" maxvalue="5000" />
         </div>
-        <div field="PurchasePrice" width="60" headeralign="center" align="center" allowsort="true" dataType="currency" currencyUnit="￥">
+        <div field="PurchasePrice" width="60" headeralign="center" align="center" allowsort="true"
+            datatype="currency" currencyunit="￥">
             单价
         </div>
-        <div field="ReturnMoney" width="60" headeralign="center" align="center" allowsort="true" dataType="currency" currencyUnit="￥">
+        <div field="ReturnMoney" width="60" headeralign="center" align="center" allowsort="true"
+            datatype="currency" currencyunit="￥">
             金额
         </div>
         <div field="GoodsBarCode" width="80" headeralign="center" align="center" allowsort="true">

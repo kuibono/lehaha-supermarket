@@ -135,7 +135,31 @@
         {
             padding:5px;
         }
+        #login .active
+        {
+            color:#33BCEF;
+            font-weight:bold;
+            font-size:16px;
+        }
+        #login a
+        {
+            color:#999;
+            font-size:14px;
+        }
     </style>
+    <script type="text/javascript">
+        function setAvtive(v) {
+            if (v == 0) {
+                $("#tbUser0").addClass("active");
+                $("#tbUser1").removeClass("active");
+            }
+            else {
+                $("#tbUser1").addClass("active");
+                $("#tbUser0").removeClass("active");
+            }
+            $("#logintype").val(v);
+        }
+    </script>
 </head>
 <body>
     <div id="bg">
@@ -155,15 +179,16 @@
         {
         <div class="panel" id="login">
             <h2>
-                用户登录</h2>
+                <a href="javascript:setAvtive(0);" id="tbUser0" class="active">员工登录</a>
+                <a href="javascript:setAvtive(1);" id="tbUser1">供货商登录</a>
+                <input type="hidden" id="logintype" name="logintype" value="0" />
+            </h2>
             <div class="textrow">
-                @*<input type="text" class="textbox" id="t1" />*@
                 @Html.TextBoxFor(m => m.UserName, new { maxlength = 20, @class = "textbox", @id = "t1" })
                 <label class="placeholder" for="t1">
                     请输入您的账号</label>
             </div>
             <div class="textrow">
-                @*<input type="password" class="textbox" id="Text1" />*@
                 @Html.PasswordFor(m => m.Password, new { maxlength = 20, @class = "textbox", @id = "Text1" })
                 <label class="placeholder" for="Text1">
                     请输入密码</label>
@@ -172,7 +197,6 @@
                 <table>
                     <tr>
                         <td style="width: 220px;">
-                            @*<input type="text" class="textbox" id="Text2" />*@
                             @Html.TextBoxFor(m => m.VCode, new { maxlength = 20, @class = "textbox", @id = "Text2" })
                             <label class="placeholder" for="Text2">
                                 请输入验证码</label>
@@ -186,7 +210,7 @@
             <div class="textrow">
                 <div id="validation">@Html.ValidationSummary(true, "")</div>
                 <button type="submit" class="btn" id="sub">
-                    Login</button>
+                    登录</button>
             </div>
         </div>
         }
