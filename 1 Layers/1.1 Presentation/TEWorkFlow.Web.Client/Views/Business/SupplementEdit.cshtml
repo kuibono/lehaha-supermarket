@@ -8,82 +8,82 @@
     <script type="text/javascript">
         mini.parse();
 
-        var grid = mini.get('datagrid1');
-        grid.url = "/Business/GetSupplementDetailList/" + entityId;
-        grid.reload();
+//        var grid = mini.get('datagrid1');
+//        grid.url = "/Business/GetSupplementDetailList/" + entityId;
+//        grid.reload();
 
-        function onActionRenderer(e) {
-            var grid = e.sender;
-            var record = e.record;
-            var uid = record._uid;
-            var rowIndex = e.rowIndex;
+//        function onActionRenderer(e) {
+//            var grid = e.sender;
+//            var record = e.record;
+//            var uid = record._uid;
+//            var rowIndex = e.rowIndex;
 
-            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
-                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
-                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
+//            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
+//                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+//                    + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
 
-            if (grid.isEditingRow(record)) {
-                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
-                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
-            }
-            return s;
-        }
-        function newRow() {
-            var row = {};
-            grid.addRow(row, 0);
+//            if (grid.isEditingRow(record)) {
+//                s = '<a class="Update_Button" href="javascript:updateRow(\'' + uid + '\')">保存</a>&nbsp;'
+//                    + '<a class="Cancel_Button" href="javascript:cancelRow(\'' + uid + '\')">取消</a>'
+//            }
+//            return s;
+//        }
+//        function newRow() {
+//            var row = {};
+//            grid.addRow(row, 0);
 
-            grid.cancelEdit();
-            grid.beginEditRow(row);
-        }
-        function editRow(row_uid) {
-            var row = grid.getRowByUID(row_uid);
-            if (row) {
-                grid.cancelEdit();
-                grid.beginEditRow(row);
-            }
-        }
-        function cancelRow(row_uid) {
-            grid.reload();
-        }
-        function delRow(row_uid) {
-            var row = grid.getRowByUID(row_uid);
-            if (row) {
-                if (confirm("确定删除此记录？")) {
-                    grid.loading("删除中，请稍后......");
-                    $.ajax({
-                        url: "/Business/DeleteSupplementDetail/" + row.Id,
-                        success: function (text) {
-                            grid.reload();
-                        },
-                        error: function () {
-                        }
-                    });
-                }
-            }
-        }
+//            grid.cancelEdit();
+//            grid.beginEditRow(row);
+//        }
+//        function editRow(row_uid) {
+//            var row = grid.getRowByUID(row_uid);
+//            if (row) {
+//                grid.cancelEdit();
+//                grid.beginEditRow(row);
+//            }
+//        }
+//        function cancelRow(row_uid) {
+//            grid.reload();
+//        }
+//        function delRow(row_uid) {
+//            var row = grid.getRowByUID(row_uid);
+//            if (row) {
+//                if (confirm("确定删除此记录？")) {
+//                    grid.loading("删除中，请稍后......");
+//                    $.ajax({
+//                        url: "/Business/DeleteSupplementDetail/" + row.Id,
+//                        success: function (text) {
+//                            grid.reload();
+//                        },
+//                        error: function () {
+//                        }
+//                    });
+//                }
+//            }
+//        }
 
-        function updateRow(row_uid) {
-            var row = grid.getRowByUID(row_uid);
+//        function updateRow(row_uid) {
+//            var row = grid.getRowByUID(row_uid);
 
-            grid.commitEdit();
-            var rowData = grid.getChanges()[0];
+//            grid.commitEdit();
+//            var rowData = grid.getChanges()[0];
 
-            grid.loading("保存中，请稍后......");
-            var json = mini.encode(rowData);
+//            grid.loading("保存中，请稍后......");
+//            var json = mini.encode(rowData);
 
-            $.ajax({
-                url: "/Business/SaveGoodsToSupplement/" + entityId,
-                data: { "data": json },
-                type: "post",
-                success: function (text) {
-                    grid.reload();
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(jqXHR.responseText);
-                }
-            });
+//            $.ajax({
+//                url: "/Business/SaveGoodsToSupplement/" + entityId,
+//                data: { "data": json },
+//                type: "post",
+//                success: function (text) {
+//                    grid.reload();
+//                },
+//                error: function (jqXHR, textStatus, errorThrown) {
+//                    alert(jqXHR.responseText);
+//                }
+//            });
 
-        }
+//        }
 
         function SaveData() {
             var form = new mini.Form("form1");
@@ -275,13 +275,15 @@
         <td style="width: 140px;">
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
         </td>
-        <td></td>
-        <td></td>
+        <td>金额：</td>
+        <td>
+            <input name="MoneyAmount" value="@Model.MoneyAmount" class="mini-spinner" minValue="0" maxValue="1000" decimalPlaces="2" required="true" style="width: 100%;" />
+        </td>
         <td></td>
         <td></td>
     </tr>
 </table>
-<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
+@*<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false">
     <div property="columns">
@@ -307,4 +309,4 @@
             cellstyle="padding:0;">
             操作</div>
     </div>
-</div>
+</div>*@

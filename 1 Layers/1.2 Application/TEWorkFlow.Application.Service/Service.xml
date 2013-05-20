@@ -73,6 +73,9 @@
   <object id="SysEnterpriseArchivesRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysEnterpriseArchives>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="FbPaBaseSetRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.FbPaBaseSet>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -168,5 +171,8 @@
   </object>
   <object id="SysEnterpriseArchivesService" type="TEWorkFlow.Application.Service.Sys.SysEnterpriseArchivesService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysEnterpriseArchivesRepository"/>
+  </object>
+  <object id="FbPaBaseSetService" type="TEWorkFlow.Application.Service.Sys.FbPaBaseSetService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbPaBaseSetRepository"/>
   </object>
 </objects>

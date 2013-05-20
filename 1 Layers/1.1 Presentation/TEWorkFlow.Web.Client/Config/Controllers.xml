@@ -8,6 +8,7 @@
     <property name="BsPaAreaService" ref="BsPaAreaService" />
     <property name="SysPaDepartmentService" ref="SysPaDepartmentService" />
     <property name="SysEnterpriseArchivesService" ref="SysEnterpriseArchivesService" />
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.TestController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="SysLoginPowerService" ref="SysLoginPowerService" />
