@@ -90,6 +90,8 @@
     <Compile Include="Category\NationService.cs" />
     <Compile Include="IAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\FbPaBaseSetService.cs" />
+    <Compile Include="Sys\IFbPaBaseSetService.cs" />
     <Compile Include="Sys\ISysEnterpriseArchivesService.cs" />
     <Compile Include="Sys\ISysLoginPowerService.cs" />
     <Compile Include="Sys\ISysmodulecontentService.cs" />

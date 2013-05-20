@@ -623,6 +623,7 @@
     <Content Include="Scripts\miniui\themes\icons\cart_add.png" />
     <Content Include="Scripts\miniui\themes\icons\cart_delete.png" />
     <Content Include="Scripts\miniui\themes\icons\chart_organisation.png" />
+    <Content Include="Scripts\miniui\themes\icons\cog_edit.png" />
     <Content Include="Scripts\miniui\themes\icons\coins.png" />
     <Content Include="Scripts\miniui\themes\icons\cut.png" />
     <Content Include="Scripts\miniui\themes\icons\date.gif" />
@@ -847,6 +848,7 @@
     <Content Include="Views\Query\PurchaseQuery.cshtml" />
     <Content Include="Views\Query\PurchaseView.cshtml" />
     <Content Include="Views\Account\SysSetting.cshtml" />
+    <Content Include="Views\Account\BaseSetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -113,8 +113,10 @@ namespace TEWorkFlow.Domain.Business
         /// </summary>
         public virtual System.DateTime? OperatorDate { get; set; }
 
-
-
+        /// <summary>
+        /// 补货金额
+        /// </summary>
+        public virtual decimal? MoneyAmount { get; set; }
 
 
         public virtual string dName { get; set; }

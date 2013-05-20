@@ -28,6 +28,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IBsPaAreaService BsPaAreaService { get; set; }
         public ISysPaDepartmentService SysPaDepartmentService { get; set; }
         public ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
+        public IFbPaBaseSetService FbPaBaseSetService { get; set; }
 
         public ActionResult IniAll()
         {
@@ -494,6 +495,17 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             Session.Abandon();
             return RedirectToAction("Login", "Account");
+        }
+
+        public ActionResult BaseSetting()
+        {
+            return View(FbPaBaseSetService.Get());
+        }
+
+        public JsonResult SaveBaseSetting(FbPaBaseSet setting)
+        {
+            FbPaBaseSetService.Save(setting);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }
