@@ -38,7 +38,7 @@ Description: 数据库实体类
 	<tr>
 		<%}%>
 		<td style="width: 60px;">
-            <%=StringUtil.ToPascalCase(this.SourceTable.Columns[i].Name)%>:
+            <%=StringUtil.ToPascalCase(this.SourceTable.Columns[i].Description)%>:
         </td>
         <td style="width: 140px;">
             <input name="<%=StringUtil.ToPascalCase(this.SourceTable.Columns[i].Name)%>" value="@Model.<%=StringUtil.ToPascalCase(this.SourceTable.Columns[i].Name)%>" class="mini-textbox" required="true"/>
