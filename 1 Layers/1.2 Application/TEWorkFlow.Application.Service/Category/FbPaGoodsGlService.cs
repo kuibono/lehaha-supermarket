@@ -7,14 +7,15 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Category;
-
+using NSH.VSTO;
+using TEWorkFlow.Application.Service.Sys;
 namespace TEWorkFlow.Application.Service.Category
 {
     public class FbPaGoodsGlService : IFbPaGoodsGlService
     {
 
         public IRepositoryGUID<FbPaGoodsGl> EntityRepository { get; set; }
-
+        public IFbPaBaseSetService FbPaBaseSetService { get; set; }
         [Transaction]
         public string Create(FbPaGoodsGl entity)
         {
@@ -52,7 +53,7 @@ namespace TEWorkFlow.Application.Service.Category
             if (string.IsNullOrEmpty(entity.Id))
             {
                 add = true;
-                entity.Id = Guid.NewGuid().ToString();
+                entity.Id = GenarateId();
             }
             else
             {
@@ -130,6 +131,14 @@ namespace TEWorkFlow.Application.Service.Category
             {
                 Delete(each);
             }
+        }
+
+        [Transaction]
+        public string GenarateId()
+        {
+            var setting = FbPaBaseSetService.Get();
+            int maxId = (from l in EntityRepository.LinqQuery orderby l.Id descending select l).First().Id.ToInt32();
+            return (maxId + 1).ToString().FillByStrings('0', setting.GoodsGlLen.ToInt32());
         }
     }
 }

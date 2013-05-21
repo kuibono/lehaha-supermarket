@@ -12,7 +12,7 @@ namespace NSH.VSTO
         /// </summary>
         /// <param name="Column">列头字母，如“A”，“H”</param>
         /// <returns></returns>
-        public static int ToInt32(this string Column)
+        public static int ToColumnIndex(this string Column)
         {
             string[] arr = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ" };
 

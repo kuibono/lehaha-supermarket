@@ -155,7 +155,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             FbPaGoodsGb e = new FbPaGoodsGb();
             Hashtable row = (Hashtable)(Request["data"].JsonDecode());
-            e.Id = row["Id"].ToString();
+            if (row["Id"] != null)
+            {
+                e.Id = row["Id"].ToString();
+            }
             e.GbName = row["GbName"].ToString();
             FbPaGoodsGbService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
@@ -177,8 +180,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             FbPaGoodsGm e = new FbPaGoodsGm();
             Hashtable row = (Hashtable)(Request["data"].JsonDecode());
-            e.Id = row["Id"].ToString();
+            if (row["Id"] != null)
+            {
+                e.Id = row["Id"].ToString();
+            }
             e.GmName = row["GmName"].ToString();
+            e.GbCode = row["GbCode"].ToString();
             FbPaGoodsGmService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -198,8 +205,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             FbPaGoodsGs e = new FbPaGoodsGs();
             Hashtable row = (Hashtable)(Request["data"].JsonDecode());
-            e.Id = row["Id"].ToString();
+            if (row["Id"] != null)
+            {
+                e.Id = row["Id"].ToString();
+            }
             e.GsName = row["GsName"].ToString();
+            e.GmCode = row["GmCode"].ToString();
             FbPaGoodsGsService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -220,8 +231,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             FbPaGoodsGl e = new FbPaGoodsGl();
             Hashtable row = (Hashtable)(Request["data"].JsonDecode());
-            e.Id = row["Id"].ToString();
+            if (row["Id"] != null)
+            {
+                e.Id = row["Id"].ToString();
+            }
             e.GlName = row["GlName"].ToString();
+            e.GsCode = row["GsCode"].ToString();
             FbPaGoodsGlService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
         }

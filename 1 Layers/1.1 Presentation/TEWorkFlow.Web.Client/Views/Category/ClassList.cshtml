@@ -111,7 +111,7 @@
                         分类
                         <input property="editor" class="mini-textbox" style="width: 100%;" />
                     </div>
-                    <div field="GbCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
+                    <div field="GmCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
                         中类
                         <input property="editor" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGm/" showNullItem="true"  required="true"/>
                     </div>
@@ -146,7 +146,7 @@
                         分类
                         <input property="editor" class="mini-textbox" style="width: 100%;" />
                     </div>
-                    <div field="GbCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
+                    <div field="GsCode" type="comboboxcolumn" headeralign="center" align="center" width="60">
                         小类
                         <input property="editor" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGs/" showNullItem="true"  required="true"/>
                     </div>
@@ -296,7 +296,7 @@
             }
         }
 
-        function updateRowm(row_uid) {
+        function updateRowGm(row_uid) {
             var row = gridGm.getRowByUID(row_uid);
 
             gridGm.commitEdit();
@@ -377,7 +377,7 @@
             }
         }
 
-        function updateRowm(row_uid) {
+        function updateRowGs(row_uid) {
             var row = gridGs.getRowByUID(row_uid);
 
             gridGs.commitEdit();
@@ -459,7 +459,7 @@
             }
         }
 
-        function updateRowm(row_uid) {
+        function updateRowGl(row_uid) {
             var row = gridGl.getRowByUID(row_uid);
 
             gridGl.commitEdit();
