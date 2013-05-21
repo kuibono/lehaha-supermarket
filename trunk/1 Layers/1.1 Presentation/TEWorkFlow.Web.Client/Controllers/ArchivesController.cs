@@ -246,7 +246,8 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             else
             {
-                s.Id = Guid.NewGuid().ToString();
+                s.GoodsSubCode = GoodsArchivesService.GenarateGbCode();
+                s.Id = GoodsArchivesService.GenarateId(s);
                 GoodsArchivesService.Create(s);
             }
             return Json(true, JsonRequestBehavior.AllowGet);

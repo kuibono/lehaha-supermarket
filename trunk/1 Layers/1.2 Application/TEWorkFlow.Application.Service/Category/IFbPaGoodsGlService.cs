@@ -40,5 +40,7 @@ namespace TEWorkFlow.Application.Service.Category
         SearchResult<FbPaGoodsGl> Search(SearchDtoBase<FbPaGoodsGl> c);
 
         void Delete(IList<string> ids);
+
+        string GenarateId();
     }
 }

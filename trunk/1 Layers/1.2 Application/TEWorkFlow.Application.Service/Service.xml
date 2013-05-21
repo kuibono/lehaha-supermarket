@@ -124,18 +124,23 @@
     <property name="GsRepository" ref="FbPaGoodsGsRepository"/>
     <property name="GlRepository" ref="FbPaGoodsGlRepository"/>
     <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
   </object>
   <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
   </object>
   <object id="FbPaGoodsGlService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGlService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGlRepository"/>
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
   </object>
   <object id="FbPaGoodsGmService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGmService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGmRepository"/>
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
   </object>
   <object id="FbPaGoodsGsService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGsService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGsRepository"/>
+    <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
   </object>
   <object id="PcPurchaseManageService" type="TEWorkFlow.Application.Service.Business.PcPurchaseManageService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcPurchaseManageRepository"/>

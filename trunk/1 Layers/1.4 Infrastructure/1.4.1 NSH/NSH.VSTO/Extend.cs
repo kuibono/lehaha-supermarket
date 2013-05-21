@@ -96,5 +96,6 @@ namespace NSH.VSTO
             sb.Append("])}");
             return sb.ToString();
         }
+
     }
 }

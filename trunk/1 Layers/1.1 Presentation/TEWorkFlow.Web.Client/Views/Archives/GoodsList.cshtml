@@ -156,9 +156,13 @@
             });
         }
         function editRow(id) {
+            var winTitle = "商品档案:";
+            if (isNaN(id) == true) {
+                winTitle += grid.getSelected().SupName + " " + grid.getSelected().SupTel;
+            }
             mini.open({
                 url: "/Archives/GoodsEdit/" + id,
-                title: "商品档案:" + grid.getSelected().SupName + " " + grid.getSelected().SupTel,
+                title: winTitle,
                 iconCls: "icon-user",
                 allowResize: false,
                 width: 700,

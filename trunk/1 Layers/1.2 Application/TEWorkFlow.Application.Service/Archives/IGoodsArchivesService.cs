@@ -38,5 +38,9 @@ namespace TEWorkFlow.Application.Service.Archives
         IList<GoodsArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);
+
+        string GenarateGbCode();
+
+        string GenarateId(GoodsArchives entity);
     }
 }

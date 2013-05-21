@@ -8,6 +8,8 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Category;
+using TEWorkFlow.Application.Service.Sys;
+using NSH.VSTO;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -20,6 +22,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbPaGoodsGs> GsRepository { get; set; }
         public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
+        public IFbPaBaseSetService FbPaBaseSetService { get; set; }
 
         [Transaction]
         public string Create(GoodsArchives entity)
@@ -369,6 +372,20 @@ namespace TEWorkFlow.Application.Service.Archives
             {
                 Delete(each);
             }
+        }
+
+        [Transaction]
+        public string GenarateGbCode()
+        {
+            var setting = FbPaBaseSetService.Get();
+            int maxId = (from l in EntityRepository.LinqQuery orderby l.GoodsSubCode descending select l).First().GoodsSubCode.ToInt32();
+            return (maxId + 1).ToString().FillByStrings('0', setting.SupLen.ToInt32());
+        }
+
+        [Transaction]
+        public string GenarateId(GoodsArchives entity)
+        {
+            return entity.GbCode + entity.GmCode + entity.GsCode + entity.GlCode + entity.GoodsSubCode;
         }
     }
 }
