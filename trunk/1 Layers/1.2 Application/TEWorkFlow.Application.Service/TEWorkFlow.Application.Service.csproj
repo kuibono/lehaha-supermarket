@@ -122,6 +122,10 @@
       <Project>{0E74AF39-D8D6-4E78-8137-5F875F36A82B}</Project>
       <Name>NSH.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\NSH.VSTO.csproj">
+      <Project>{A6628A7C-E438-4DB6-B7E0-FE4ED2F1F4E5}</Project>
+      <Name>NSH.VSTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Service.xml">

@@ -504,6 +504,9 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveBaseSetting(FbPaBaseSet setting)
         {
+            setting.Id = "1";
+            setting.Operator = "1";
+            setting.OperatorDate = DateTime.Now;
             FbPaBaseSetService.Save(setting);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
