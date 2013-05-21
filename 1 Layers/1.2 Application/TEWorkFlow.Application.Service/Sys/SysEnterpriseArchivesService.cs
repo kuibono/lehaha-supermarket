@@ -18,14 +18,17 @@ namespace TEWorkFlow.Application.Service.Sys
         [Transaction]
         public SysEnterpriseArchives Get()
         {
-            if (EntityRepository.LinqQuery.Count() == 0)
+            if (NSH.VSTO.Cache.GetCache("SysSetting") == null)
             {
-                return new SysEnterpriseArchives();
+                SysEnterpriseArchives item = new SysEnterpriseArchives();
+                if (EntityRepository.LinqQuery.Count() != 0)
+                {
+
+                    item = EntityRepository.LinqQuery.First();
+                }
+                NSH.VSTO.Cache.SetCache("SysSetting", item);
             }
-            else
-            {
-                return EntityRepository.LinqQuery.First();
-            }
+            return (SysEnterpriseArchives)NSH.VSTO.Cache.GetCache("SysSetting");
         }
 
         [Transaction]
@@ -35,12 +38,13 @@ namespace TEWorkFlow.Application.Service.Sys
             if (q.Count() == 0)
             {
                 //不存在
-                 EntityRepository.Save(entity);
+                EntityRepository.Save(entity);
             }
             else
             {
                 EntityRepository.Update(entity);
             }
+            NSH.VSTO.Cache.Clear("SysSetting");
         }
     }
 }
