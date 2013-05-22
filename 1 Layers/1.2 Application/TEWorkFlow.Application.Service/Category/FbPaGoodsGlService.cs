@@ -137,7 +137,14 @@ namespace TEWorkFlow.Application.Service.Category
         public string GenarateId()
         {
             var setting = FbPaBaseSetService.Get();
-            int maxId = (from l in EntityRepository.LinqQuery orderby l.Id descending select l).First().Id.ToInt32();
+            var q = from l in EntityRepository.LinqQuery orderby l.Id descending select l;
+            int maxId = 0;
+            if (q.Count() > 0)
+            {
+
+                var item = q.First();
+                maxId = item.Id.ToInt32();
+            }
             return (maxId + 1).ToString().FillByStrings('0', setting.GoodsGlLen.ToInt32());
         }
     }

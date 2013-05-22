@@ -378,8 +378,15 @@ namespace TEWorkFlow.Application.Service.Archives
         public string GenarateGbCode()
         {
             var setting = FbPaBaseSetService.Get();
-            int maxId = (from l in EntityRepository.LinqQuery orderby l.GoodsSubCode descending select l).First().GoodsSubCode.ToInt32();
-            return (maxId + 1).ToString().FillByStrings('0', setting.SupLen.ToInt32());
+            var q = from l in EntityRepository.LinqQuery orderby l.GoodsSubCode descending select l;
+            int maxId = 0;
+            if (q.Count() > 0)
+            {
+
+                var item = q.First();
+                maxId = item.GoodsSubCode.ToInt32(0);
+            }
+            return (maxId + 1).ToString().FillByStrings('0', setting.GoodsLen.ToInt32());
         }
 
         [Transaction]
