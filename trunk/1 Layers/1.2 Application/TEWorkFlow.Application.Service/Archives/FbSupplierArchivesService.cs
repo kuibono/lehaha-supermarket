@@ -20,6 +20,9 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public string Create(FbSupplierArchives entity)
         {
+            entity.LoginName = GenerateLoginName();
+            entity.LoginPass = entity.LoginName;
+            entity.Id = entity.LoginName;
             return EntityRepository.Save(entity);
         }
 
@@ -265,5 +268,7 @@ namespace TEWorkFlow.Application.Service.Archives
             Random random = new Random(BitConverter.ToInt32(randSeedGuid.ToByteArray(), 0));
             return  random.Next(10001, 99999).ToString();
         }
+
+      
     }
 }

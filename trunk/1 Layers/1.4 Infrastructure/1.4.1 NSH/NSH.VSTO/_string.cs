@@ -926,11 +926,12 @@ namespace NSH.VSTO
         {
             if (str.Length < Length)
             {
-                for (int i = 0; i <= Length - str.Length; i++)
+                string newStr = str;
+                for (int i = 0; i < Length - str.Length; i++)
                 {
-                    str = FillChar.ToString() + str;
+                    newStr = FillChar.ToString() + newStr;
                 }
-                return str;
+                return newStr;
             }
             else
             {
