@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+
 @model TEWorkFlow.Domain.Sys.SysEnterpriseArchives
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,12 +19,11 @@
                 @Model.EnName
             </h1>
             <div style="position: absolute; top: 18px; right: 10px;">
-                <!--<a class="mini-button mini-button-iconTop" iconcls="icon-add" onclick="onQuickClick" plain="true">快捷</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-edit"onclick="onClick" plain="true">首页</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-date" onclick="onClick" plain="true">消息</a> 
-                -->
+                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
+                {
                 <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow" plain="true">业务设置</a> 
                 <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="showSettingWindow" plain="true">系统设置</a> 
+                }
                 <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onLogOut" plain="true">退出</a>
             </div>
         </div>
