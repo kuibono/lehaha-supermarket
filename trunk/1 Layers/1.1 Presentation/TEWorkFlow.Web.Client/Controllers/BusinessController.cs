@@ -31,6 +31,9 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult PurchaseEdit(string id)
         {
             PcPurchaseManage model = new PcPurchaseManage();
+            var currentUser = Common.MyEnv.CurrentSupplier;
+            model.EnCode = currentUser.Id;
+            model.SupCode = currentUser.SupName;
             model.Id = Guid.NewGuid().ToString();
             //if (Common.Env.IsSupplierLogin)
             //{
@@ -168,6 +171,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult ReturnEdit(string id)
         {
             PcReturnManage model = new PcReturnManage();
+            var currentUser = Common.MyEnv.CurrentSupplier;
+            model.EnCode = currentUser.Id;
+            model.SupCode = currentUser.SupName;
+
             model.Id = Guid.NewGuid().ToString();
 
             if (string.IsNullOrEmpty(id) == false)

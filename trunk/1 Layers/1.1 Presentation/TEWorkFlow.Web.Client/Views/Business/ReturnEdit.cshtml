@@ -218,7 +218,7 @@
             返货单号:
         </td>
         <td style="width: 140px;">
-            <input name="Id" value="@Model.Id" class="mini-textbox" required="true"  readonly="readonly"/>
+            <input name="Id" value="@Model.Id" class="mini-textbox" required="true"  enabled="false"/>
         </td>
         <td style="width: 60px;">
             采购单号:
@@ -230,7 +230,7 @@
             供货商:
         </td>
         <td style="width: 140px;">
-            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
+            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"   enabled="false"/>
             <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-hidden" required="true"/>
         </td>
     </tr>

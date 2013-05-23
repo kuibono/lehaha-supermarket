@@ -81,13 +81,13 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult SupplierEdit(string id)
         {
            // string loginName=FbSupplierArchivesService.GenerateLoginName();
-
+            
             FbSupplierArchives model=new FbSupplierArchives()
                                          {
                                              //Id=Guid.NewGuid() .ToString(),
                                              CreateDate = DateTime.Now,
                                              ExamineDate = DateTime.Now,
-                                             OperatorDate = DateTime.Now
+                                             OperatorDate = DateTime.Now                                             
                                          };
 
             if(string.IsNullOrEmpty(id)==false)
@@ -134,7 +134,14 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetAllSupplierArchive(string key)
         {
-            return Json(FbSupplierArchivesService.Search(key), JsonRequestBehavior.AllowGet);
+            var result = FbSupplierArchivesService.Search(key);
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                var currentSupplier = Common.MyEnv.CurrentSupplier;
+                result = new List<FbSupplierArchives>();
+                result.Add(currentSupplier);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SupplierSelectWindow()

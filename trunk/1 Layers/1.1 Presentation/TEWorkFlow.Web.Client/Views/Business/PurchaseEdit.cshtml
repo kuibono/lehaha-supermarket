@@ -224,13 +224,13 @@
             采购单号:
         </td>
         <td style="width: 140px;">
-            <input name="PcNumber" value="@Model.Id" class="mini-textbox" readonly="readonly"/>
+            <input name="PcNumber" value="@Model.Id" class="mini-textbox"  enabled="false"/>
         </td>
         <td style="width: 60px;">
             供货商:
         </td>
         <td style="width: 140px;">
-            <input id="EnCode" name="EnCode" value="@Model.EnCode" readonly="readonly" class="mini-hidden" required="true"/>
+            <input id="EnCode" name="EnCode" value="@Model.EnCode" enabled="false" class="mini-hidden" required="true"/>
             <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" readonly="readonly" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
         </td>
         <td style="width: 60px;">
