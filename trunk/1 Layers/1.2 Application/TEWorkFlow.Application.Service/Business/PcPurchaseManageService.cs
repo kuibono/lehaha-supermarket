@@ -230,7 +230,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1)
         {
-            var q = EntityRepository.LinqQuery;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower()=="true" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
