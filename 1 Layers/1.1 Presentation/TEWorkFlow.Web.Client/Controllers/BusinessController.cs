@@ -10,6 +10,7 @@ using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Application.Service.Archives;
 using TEWorkFlow.Web.Client.Common;
 using System.Collections;
+using NSH.VSTO;
 namespace TEWorkFlow.Web.Client.Controllers
 {
     public class BusinessController : Controller
@@ -22,7 +23,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         #region 采购
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
         public IPcPurchaseDetailService PcPurchaseDetailService { get; set; }
-       
+
 
         public ActionResult PurchaseList()
         {
@@ -34,7 +35,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             var currentUser = Common.MyEnv.CurrentSupplier;
             model.EnCode = currentUser.Id;
             model.SupCode = currentUser.SupName;
-            model.Id = Guid.NewGuid().ToString();
+            model.Id = _string.GenerateBillNumber();
             //if (Common.Env.IsSupplierLogin)
             //{
             //    var sup=Common.Env.CurrentSupplier;
@@ -83,7 +84,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
 
             GoodsArchives good = GoodsArchivesService.GetById(row["GoodsCode"].ToString());
-            
+
             detail.GoodsCode = good.Id;
             detail.GoodsBarCode = good.GoodsBarCode;
             detail.Specification = good.Specification;
@@ -105,7 +106,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             //计算金额
             detail.PurchaseMoney = detail.PurchaseQty * detail.SalePrice;
             detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.NontaxPurchasePrice;
-            
+
             if (IsAdd)
             {
                 detail.ManageId = Id;
@@ -118,7 +119,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
 
             //如果订单不存在，则现在新建一个
-            if (PcPurchaseManageService.GetById(Id)==null || PcPurchaseManageService.GetById(Id).HaveId == false)
+            if (PcPurchaseManageService.GetById(Id) == null || PcPurchaseManageService.GetById(Id).HaveId == false)
             {
                 //不存在
                 PcPurchaseManage manage = new PcPurchaseManage();
@@ -157,7 +158,12 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
-        #endregion 
+        public JsonResult SearchForReport(SearchDtoBase<PcPurchaseManage> c, DateTime? dateS, DateTime? dateE, string Encode)
+        {
+            return Json(PcPurchaseManageService.Search(dateS, dateE, Encode, c.pageSize, c.pageIndex), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
         #region 退货
         public IPcReturnManageService PcReturnManageService { get; set; }
@@ -222,7 +228,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             detail.SalePrice = good.SalePrice;
             detail.PurchasePrice = good.PurchasePrice;
             detail.NontaxPurchasePrice = good.PurchasePrice;
-            
+
 
 
 
@@ -247,7 +253,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
 
             //如果订单不存在，则现在新建一个
-            if (PcReturnManageService.GetById(Id)==null || PcReturnManageService.GetById(Id).HaveId == false)
+            if (PcReturnManageService.GetById(Id) == null || PcReturnManageService.GetById(Id).HaveId == false)
             {
                 //不存在
                 PcReturnManage manage = new PcReturnManage();
@@ -368,7 +374,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 PcSupplementDetailService.Update(detail);
             }
             //如果订单不存在，则现在新建一个
-            if (PcSupplementManageService.GetById(Id)==null || PcSupplementManageService.GetById(Id).HaveId == false)
+            if (PcSupplementManageService.GetById(Id) == null || PcSupplementManageService.GetById(Id).HaveId == false)
             {
                 //不存在
                 PcSupplementManage manage = new PcSupplementManage();
@@ -398,6 +404,6 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
-        #endregion 
+        #endregion
     }
 }

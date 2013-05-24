@@ -1481,5 +1481,33 @@ namespace NSH.VSTO
             return result;
         }
         #endregion
+
+        public static string ToChinese(this bool value)
+        {
+            if (value)
+                return "是";
+            return "否";
+        }
+
+        public static string GenerateBillNumber()
+        {
+            return DateTime.Now.ToString("yyyyMMddHHmmssfff") + GetRandomNumber(1000, 9999).ToString();
+        }
+
+        #region 产生特定范围内的随机数字
+        /// <summary>
+        /// 产生特定范围内的随机数字
+        /// </summary>
+        /// <param name="min">下限</param>
+        /// <param name="max">上线</param>
+        /// <returns></returns>
+        public static int GetRandomNumber(int min, int max)
+        {
+            Guid randSeedGuid = Guid.NewGuid();
+
+            Random random = new Random(BitConverter.ToInt32(randSeedGuid.ToByteArray(), 0));
+            return random.Next(min, max);
+        }
+        #endregion
     }
 }

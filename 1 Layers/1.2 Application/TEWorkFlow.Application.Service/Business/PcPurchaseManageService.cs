@@ -9,6 +9,7 @@ using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Domain.Sys;
 using TEWorkFlow.Domain.Archives;
+using TEWorkFlow.Application.Service.Archives;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -19,6 +20,8 @@ namespace TEWorkFlow.Application.Service.Business
         public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment>  DepartmentRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
+
+        public IEmemployeearchiveService EmemployeearchiveService { get; set; }
         [Transaction]
         public string Create(PcPurchaseManage entity)
         {
@@ -60,7 +63,28 @@ namespace TEWorkFlow.Application.Service.Business
         public PcPurchaseManage GetById(string id)
         {
             var entity = EntityRepository.Get(id);
+            if (entity != null)
+            {
+                FillPurchaseInfo(entity);
+            }
             return entity;
+        }
+
+        private void FillPurchaseInfo(PcPurchaseManage entity)
+        {
+            var branchs = BranchRepository.LinqQuery.ToList();
+            var q = from l in branchs where l.Id == entity.bCode select l;
+            if (q.Count() > 0)
+            {
+                entity.bName = q.First().bName;
+            }
+
+            var users = EmemployeearchiveService.GetAll();
+            var q_u = from l in users where l.Id == entity.Operator select l;
+            if (q_u.Count() > 0)
+            {
+                entity.operatorName = q_u.First().LoginName;
+            }
         }
 
         [Transaction]
@@ -198,6 +222,31 @@ namespace TEWorkFlow.Application.Service.Business
             int count = q.Count();
 
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
+            var result = q.ToList();
+            FillDepartmentName(result);
+            FillBranchName(result);
+            return result.ToSearchResult(count);
+        }
+
+        public SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (dateS == null || dateE == null)
+            {
+                q = from l in q
+                    where  l.EnCode == Encode
+                    select l;
+            }
+            if (dateS <= dateE && string.IsNullOrEmpty(Encode) == false)
+            {
+                q = from l in q
+                    where l.PurchaseDate >= dateS
+                        && l.PurchaseDate <= dateE
+                        && l.EnCode == Encode
+                    select l;
+            }
+            int count = q.Count();
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
             FillBranchName(result);
