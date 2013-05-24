@@ -121,6 +121,8 @@ namespace TEWorkFlow.Domain.Business
 
         public virtual string bName { get; set; }
 
+        public virtual string operatorName { get; set; }
+
         protected override void Validate()
         {
         }

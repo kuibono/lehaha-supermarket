@@ -37,6 +37,8 @@ namespace TEWorkFlow.Application.Service.Business
 
         SearchResult<PcPurchaseManage> Search(SearchDtoBase<PcPurchaseManage> c);
 
+        SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
+
         IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);

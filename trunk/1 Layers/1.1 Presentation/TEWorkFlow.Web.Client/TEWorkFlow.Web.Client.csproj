@@ -245,6 +245,7 @@
     <Content Include="Scripts\dialog-edit.js" />
     <Content Include="Scripts\jquery-1.6.2.min.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.PrintArea.js" />
     <Content Include="Scripts\miniui\locale\en_US.js" />
     <Content Include="Scripts\miniui\locale\zh_CN.js" />
     <Content Include="Scripts\miniui\miniui.js" />
@@ -849,6 +850,7 @@
     <Content Include="Views\Query\PurchaseView.cshtml" />
     <Content Include="Views\Account\SysSetting.cshtml" />
     <Content Include="Views\Account\BaseSetting.cshtml" />
+    <Content Include="Views\Shared\_WindowLayoutView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
