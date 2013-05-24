@@ -16,6 +16,7 @@ namespace NSH.Repository
         public virtual IQueryable<TEntity> LinqQuery
         {
             get { return new NhQueryable<TEntity>(Session.GetSessionImplementation()); }
+            
         }
 
         public virtual TEntity Get(int id)
