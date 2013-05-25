@@ -57,7 +57,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 return Json(PcPurchaseManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
-            return Json(PcPurchaseManageService.Search(c), JsonRequestBehavior.AllowGet);
+            return Json(PcPurchaseManageService.Search(Common.MyEnv.CurrentSupplier.Id,c), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchAllPurchaseList(string key)
@@ -202,7 +202,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 return Json(PcReturnManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
-            return Json(PcReturnManageService.Search(c), JsonRequestBehavior.AllowGet);
+            return Json(PcReturnManageService.Search(Common.MyEnv.CurrentSupplier.Id,c), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetReturnDetailList(string Id)
@@ -319,7 +319,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 return Json(PcSupplementManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
-            return Json(PcSupplementManageService.Search(c), JsonRequestBehavior.AllowGet);
+            return Json(PcSupplementManageService.Search(Common.MyEnv.CurrentSupplier.Id, c), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchAllSupplementList(string key)

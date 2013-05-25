@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using TEWorkFlow.Application.Service.Sys;
 using TEWorkFlow.Domain.Sys;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Web.Client.Common;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
+    [UserAuthorizeAttribute]
     public class TestController : Controller
     {
         //

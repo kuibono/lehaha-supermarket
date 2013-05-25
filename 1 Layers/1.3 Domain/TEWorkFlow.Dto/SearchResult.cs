@@ -10,5 +10,8 @@ namespace TEWorkFlow.Dto
         public int total { get; set; }
 
         public IList<T> data { get; set; }
+
+        public object Statistics { get; set; }
+
     }
 }

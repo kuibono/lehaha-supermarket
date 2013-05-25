@@ -112,21 +112,21 @@ namespace TEWorkFlow.Web.Client.Controllers
                          Url = "",
                          Windowname = "系统设置",
                          EmployeeVisible = true,
-                         SupplierVisible = true
+                         SupplierVisible = false
                      };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-user",
-                Id = "users",
-                ParentId = "system",
-                Url = "/Test/List",
-                Windowname = "用户管理",
-                EmployeeVisible = true,
-                SupplierVisible = true
-            };
-            SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-user",
+            //    Id = "users",
+            //    ParentId = "system",
+            //    Url = "/Test/List",
+            //    Windowname = "用户管理",
+            //    EmployeeVisible = true,
+            //    SupplierVisible = true
+            //};
+            //SysmodulecontentService.Create(m1);
 
             m1 = new Sysmodulecontent()
             {
@@ -288,7 +288,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "root",
                 Url = "",
                 Windowname = "业务管理",
-                EmployeeVisible = true,
+                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -300,7 +300,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/PurchaseList",
                 Windowname = "超市订单",
-                EmployeeVisible = true,
+                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -312,7 +312,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/ReturnList",
                 Windowname = "产品退货",
-                EmployeeVisible = true,
+                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -324,7 +324,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/SupplementList",
                 Windowname = "产品补货",
-                EmployeeVisible = true,
+                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -356,7 +356,45 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-branch-order-purchase",
+                ParentId = "query",
+                Url = "/Query/BranchPurchaseOrder",
+                Windowname = "分店订货单据",
+                Index = 21,
+                EmployeeVisible = true,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
 
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-branch-order-goods",
+                ParentId = "query",
+                Url = "/Query/BranchPurchaseGoods",
+                Windowname = "分店订货商品",
+                Index = 22,
+                EmployeeVisible = true,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-branch-order-supplier",
+                ParentId = "query",
+                Url = "/Query/BranchPurchaseSupplier",
+                Windowname = "分店供货商订货",
+                Index = 23,
+                EmployeeVisible = true,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+            
             #endregion
 
             return null;
@@ -364,11 +402,30 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetModules()
         {
-            return Json(
-                SysmodulecontentService.ModelListToDto(
-                    SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0).OrderBy(p => p.Index).ToList()
-                    ),
-                JsonRequestBehavior.AllowGet);
+            if (Session[AuthorizeSettings.SessionUserType] == null)
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+            if (Session[AuthorizeSettings.SessionUserType].ToString() == "0")
+            {
+                return Json(
+                    SysmodulecontentService.ModelListToDto(
+                        SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0 && p.EmployeeVisible).OrderBy(p => p.Index).ToList()
+                        ),
+                    JsonRequestBehavior.AllowGet);
+            }
+            else if (Session[AuthorizeSettings.SessionUserType].ToString() == "1")
+            {
+                return Json(
+                    SysmodulecontentService.ModelListToDto(
+                        SysmodulecontentService.GetAll().Where(p => p.ParentId.Length > 0 && p.SupplierVisible).OrderBy(p => p.Index).ToList()
+                        ),
+                    JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult Login()
