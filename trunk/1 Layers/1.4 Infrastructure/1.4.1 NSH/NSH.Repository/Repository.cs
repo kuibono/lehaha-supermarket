@@ -19,6 +19,14 @@ namespace NSH.Repository
             
         }
 
+        public virtual NHibernate.ISession Session
+        {
+            get
+            {
+                return Session;
+            }
+        }
+
         public virtual TEntity Get(int id)
         {
             return HibernateTemplate.Get<TEntity>(id);
