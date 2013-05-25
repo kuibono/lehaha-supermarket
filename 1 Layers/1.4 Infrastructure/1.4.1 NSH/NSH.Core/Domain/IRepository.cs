@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using NSH.Core.Domain.Specifications;
 
+
 namespace NSH.Core.Domain
 {
     public interface IRepository<TEntity> where TEntity : IAggregateRoot
@@ -13,6 +14,9 @@ namespace NSH.Core.Domain
         /// Provides the main entry point to a LINQ query.
         /// </summary>
         IQueryable<TEntity> LinqQuery { get; }
+
+
+        NHibernate.ISession Session { get; }
 
         /// <summary>
         /// Return the persistent instance of the given entity type with the given identifier,

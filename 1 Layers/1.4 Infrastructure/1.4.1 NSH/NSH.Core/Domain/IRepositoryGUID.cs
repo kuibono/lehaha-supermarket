@@ -13,6 +13,8 @@ namespace NSH.Core.Domain
         /// </summary>
         IQueryable<TEntity> LinqQuery { get; }
 
+        NHibernate.ISession Session { get; }
+
         /// <summary>
         /// Return the persistent instance of the given entity type with the given identifier,
         /// or null if not found.  Obtains the specified lock mode if the instance exists.

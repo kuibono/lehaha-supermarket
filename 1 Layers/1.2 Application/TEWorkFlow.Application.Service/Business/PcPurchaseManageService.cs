@@ -26,8 +26,7 @@ namespace TEWorkFlow.Application.Service.Business
         public string Create(PcPurchaseManage entity)
         {
             return EntityRepository.Save(entity);
-
-
+            
         }
         [Transaction]
         public void Save(PcPurchaseManage entity)
