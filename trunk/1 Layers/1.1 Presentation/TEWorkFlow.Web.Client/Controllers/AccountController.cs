@@ -522,42 +522,42 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             if (Common.MyEnv.IsEmployeeLogin == false && Common.MyEnv.IsSupplierLogin == false)
             {
-                return Json(new Result() { Sucess = false, Text = "没有登录，请登录后修改密码！" }, JsonRequestBehavior.AllowGet);
+                return Json(new Result() { Success = false, Text = "没有登录，请登录后修改密码！" }, JsonRequestBehavior.AllowGet);
             }
 
             if (newpass != confirmpass)
             {
-                return Json(new Result() { Sucess = false, Text = "新密码和确认密码输入不一致，请重新输入" }, JsonRequestBehavior.AllowGet);
+                return Json(new Result() { Success = false, Text = "新密码和确认密码输入不一致，请重新输入" }, JsonRequestBehavior.AllowGet);
             }
 
             if (Common.MyEnv.IsEmployeeLogin)
             {
                 //员工
                 var currentEmployee = Common.MyEnv.CurrentEmployee;
-                if (old.ToMD5() != currentEmployee.LoginPass)
+                if (old != currentEmployee.LoginPass)
                 {
-                    return Json(new Result() { Sucess = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
+                    return Json(new Result() { Success = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    currentEmployee.LoginPass = newpass.ToMD5();
+                    currentEmployee.LoginPass = newpass;
                     EmemployeearchiveService.Update(currentEmployee);
-                    return Json(new Result() { Sucess = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
+                    return Json(new Result() { Success = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
                 }
             }
             else
             {
                 //供货商
                 var currentSupplier = Common.MyEnv.CurrentSupplier;
-                if (old.ToMD5() != currentSupplier.LoginPass)
+                if (old != currentSupplier.LoginPass)
                 {
-                    return Json(new Result() { Sucess = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
+                    return Json(new Result() { Success = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    currentSupplier.LoginPass = newpass.ToMD5();
+                    currentSupplier.LoginPass = newpass;
                     FbSupplierArchivesService.Update(currentSupplier);
-                    return Json(new Result() { Sucess = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
+                    return Json(new Result() { Success = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
                 }
             }
         }
