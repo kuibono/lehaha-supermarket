@@ -9,6 +9,8 @@
     <property name="SysPaDepartmentService" ref="SysPaDepartmentService" />
     <property name="SysEnterpriseArchivesService" ref="SysEnterpriseArchivesService" />
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService" />
+    <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
+    <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.TestController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="SysLoginPowerService" ref="SysLoginPowerService" />
@@ -20,10 +22,7 @@
     <property name="BsBranchArchivesService" ref="BsBranchArchivesService" />
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
   </object>
-  <object type="TEWorkFlow.Web.Client.Common.MyEnv, TEWorkFlow.Web.Client" singleton="false" >
-    <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
-    <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
-  </object>
+
   <object type="TEWorkFlow.Web.Client.Controllers.CategoryController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="EmPaPoliticsService" ref="EmPaPoliticsService" />
     <property name="NationService" ref="NationService" />
@@ -36,6 +35,9 @@
     <property name="FbPaGoodsGlService" ref="FbPaGoodsGlService" />
     <property name="FbPaGoodsGmService" ref="FbPaGoodsGmService" />
     <property name="FbPaGoodsGsService" ref="FbPaGoodsGsService" />
+
+    <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
+    <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.BusinessController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />

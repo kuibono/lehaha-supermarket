@@ -24,6 +24,8 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IBsPaClassService BsPaClassService { get; set; }
         public IBsPaAreaService BsPaAreaService { get; set; }
 
+        public IEmemployeearchiveService EmemployeearchiveService { get; set; }
+        public IFbSupplierArchivesService FbSupplierArchivesService { get; set; }
         #region SupType
         public ActionResult SupTypeList()
         {
@@ -391,7 +393,8 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult AllUsers()
         {
-            var result = SysLoginPowerService.GetAll().Select(p => new { id = p.Id, text = p.Emname }).ToList();
+            var result = EmemployeearchiveService.GetAll().Select(p => new { id = p.Id, text = p.Emname }).ToList();
+            //var result = SysLoginPowerService.GetAll().Select(p => new { id = p.Id, text = p.Emname }).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
