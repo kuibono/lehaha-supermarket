@@ -19,6 +19,7 @@
                 @Model.EnName
             </h1>
             <div style="position: absolute; top: 18px; right: 10px;">
+                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow" plain="true">修改密码</a> 
                 @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
                 {
                 <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow" plain="true">业务设置</a> 
@@ -117,6 +118,24 @@
                 allowResize: false,
                 width: 680,
                 height: 270,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+                }
+            });
+        }
+
+        function showChangePassWindow() {
+            mini.open({
+                url: "/Account/ChangePassword/",
+                title: "修改密码",
+                iconCls: "icon-group-key",
+                allowResize: false,
+                width: 250,
+                height: 170,
                 onload: function () {
                     //var iframe = this.getIFrameEl();
                     //var data = { action: "new" };

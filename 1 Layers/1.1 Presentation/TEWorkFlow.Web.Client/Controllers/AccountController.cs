@@ -15,6 +15,7 @@ using TEWorkFlow.Application.Service.Sys;
 ///using NSH.Core.WPF;
 using NSH.VSTO;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Application.Service.Archives;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -29,7 +30,8 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ISysPaDepartmentService SysPaDepartmentService { get; set; }
         public ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
-
+        public IEmemployeearchiveService EmemployeearchiveService { get; set; }
+        public IFbSupplierArchivesService FbSupplierArchivesService { get; set; }
         public ActionResult IniAll()
         {
             IniUser();
@@ -509,6 +511,55 @@ namespace TEWorkFlow.Web.Client.Controllers
             setting.OperatorDate = DateTime.Now;
             FbPaBaseSetService.Save(setting);
             return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult ChangePassword(string old,string newpass,string confirmpass)
+        {
+            if (Common.MyEnv.IsEmployeeLogin == false && Common.MyEnv.IsSupplierLogin == false)
+            {
+                return Json(new Result() { Sucess = false, Text = "没有登录，请登录后修改密码！" }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (newpass != confirmpass)
+            {
+                return Json(new Result() { Sucess = false, Text = "新密码和确认密码输入不一致，请重新输入" }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (Common.MyEnv.IsEmployeeLogin)
+            {
+                //员工
+                var currentEmployee = Common.MyEnv.CurrentEmployee;
+                if (old.ToMD5() != currentEmployee.LoginPass)
+                {
+                    return Json(new Result() { Sucess = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    currentEmployee.LoginPass = newpass.ToMD5();
+                    EmemployeearchiveService.Update(currentEmployee);
+                    return Json(new Result() { Sucess = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                //供货商
+                var currentSupplier = Common.MyEnv.CurrentSupplier;
+                if (old.ToMD5() != currentSupplier.LoginPass)
+                {
+                    return Json(new Result() { Sucess = false, Text = "旧密码输入错误，请重新输入" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    currentSupplier.LoginPass = newpass.ToMD5();
+                    FbSupplierArchivesService.Update(currentSupplier);
+                    return Json(new Result() { Sucess = true, Text = "密码修改成功！" }, JsonRequestBehavior.AllowGet);
+                }
+            }
         }
     }
 }
