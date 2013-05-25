@@ -163,6 +163,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(PcPurchaseManageService.Search(dateS, dateE, Encode, c.pageSize, c.pageIndex), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Test()
+        {
+            return Json(PcPurchaseManageService.SearchReportByBranch(new DateTime(2013,1,1),new DateTime(2014,1,1),"2740c64d-8dcb-45ef-92cc-57ff24442184"),JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
         #region 退货

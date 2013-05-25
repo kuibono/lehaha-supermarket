@@ -252,6 +252,44 @@ namespace TEWorkFlow.Application.Service.Business
             return result.ToSearchResult(count);
         }
 
+        public SearchResult<PcPurchaseDetail> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
+        {
+//            var query = EntityRepository.Session.CreateQuery(string.Format(@"
+//from 
+//	PcPurchaseDetail d
+//left join PcPurchaseManage m
+//	on d.ManageId=m.Id
+//	and m.Id != null
+//	and m.PurchaseDate>:datee and m.PurchaseDate<:dates
+//left join BsBranchArchives b
+//	on b.Id=m.bCode
+//	and b.bCode=:bcode
+//
+//", dateE, dateS, BranchId));
+            var query = EntityRepository.Session.CreateSQLQuery(string.Format(@"
+select * from 
+	pc_purchase_detail as d
+left join pc_purchase_manage as m
+	on d.pc_number=m.pc_number
+	and d.pc_number is not null
+	and m.purchase_date>'2013-1-1' and m.purchase_date<'2013-6-1'
+left join bs_branch_archives as b
+	on b.b_code=m.b_code
+	and m.b_code is not null
+	and b.b_code='2740c64d-8dcb-45ef-92cc-57ff24442184'
+	
+"));
+            //query.SetParameter("dates", dateS);
+            //query.SetParameter("datee", dateE);
+            //query.SetParameter("bcode", BranchId);
+            var q=query.List<PcPurchaseDetail>();
+            int count = q.Count();
+            var result = q.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            //FillDepartmentName(result);
+            //FillBranchName(result);
+            return result.ToSearchResult(count);
+        }
+
         public IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1)
         {
             var q = EntityRepository.LinqQuery;
