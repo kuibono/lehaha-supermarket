@@ -35,11 +35,15 @@ namespace TEWorkFlow.Application.Service.Business
         void Delete(IEnumerable<PcPurchaseManage> entitys);
 
 
-        SearchResult<PcPurchaseManage> Search(SearchDtoBase<PcPurchaseManage> c);
+        SearchResult<PcPurchaseManage> Search(string SupplierId, SearchDtoBase<PcPurchaseManage> c);
 
         SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
 
-        SearchResult<PcPurchaseDetail> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1);
+        SearchResult<PcPurchaseManage> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1);
+
+        SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1);
+
+        SearchResult<PurchaseSupplierResult> SearchForPurchaseSupllier(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
 
         IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1);
 

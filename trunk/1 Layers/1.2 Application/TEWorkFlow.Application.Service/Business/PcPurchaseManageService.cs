@@ -18,15 +18,16 @@ namespace TEWorkFlow.Application.Service.Business
 
         public IRepositoryGUID<PcPurchaseManage> EntityRepository { get; set; }
         public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
-        public IRepositoryGUID<SysPaDepartment>  DepartmentRepository { get; set; }
+        public IRepositoryGUID<SysPaDepartment> DepartmentRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
-
+        public IRepositoryGUID<PcPurchaseDetail> PurchaseDetailRepository { get; set; }
+        public IRepositoryGUID<GoodsArchives> GoodsArchivesRepository { get; set; }
         public IEmemployeearchiveService EmemployeearchiveService { get; set; }
         [Transaction]
         public string Create(PcPurchaseManage entity)
         {
             return EntityRepository.Save(entity);
-            
+
         }
         [Transaction]
         public void Save(PcPurchaseManage entity)
@@ -155,9 +156,9 @@ namespace TEWorkFlow.Application.Service.Business
 
 
         [Transaction]
-        public SearchResult<PcPurchaseManage> Search(SearchDtoBase<PcPurchaseManage> c)
+        public SearchResult<PcPurchaseManage> Search(string SupplierId,SearchDtoBase<PcPurchaseManage> c)
         {
-            var q = EntityRepository.LinqQuery;
+            var q = EntityRepository.LinqQuery.Where(p=>p.EnCode==SupplierId);
             if (c.entity != null)
             {
                 if (string.IsNullOrEmpty(c.entity.Id) == false)
@@ -229,11 +230,11 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower()=="true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
-                    where  l.EnCode == Encode
+                    where l.EnCode == Encode
                     select l;
             }
             if (dateS <= dateE && string.IsNullOrEmpty(Encode) == false)
@@ -252,42 +253,144 @@ namespace TEWorkFlow.Application.Service.Business
             return result.ToSearchResult(count);
         }
 
-        public SearchResult<PcPurchaseDetail> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
+        public SearchResult<PcPurchaseManage> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
         {
-//            var query = EntityRepository.Session.CreateQuery(string.Format(@"
-//from 
-//	PcPurchaseDetail d
-//left join PcPurchaseManage m
-//	on d.ManageId=m.Id
-//	and m.Id != null
-//	and m.PurchaseDate>:datee and m.PurchaseDate<:dates
-//left join BsBranchArchives b
-//	on b.Id=m.bCode
-//	and b.bCode=:bcode
-//
-//", dateE, dateS, BranchId));
-            var query = EntityRepository.Session.CreateSQLQuery(string.Format(@"
-select * from 
-	pc_purchase_detail as d
-left join pc_purchase_manage as m
-	on d.pc_number=m.pc_number
-	and d.pc_number is not null
-	and m.purchase_date>'2013-1-1' and m.purchase_date<'2013-6-1'
-left join bs_branch_archives as b
-	on b.b_code=m.b_code
-	and m.b_code is not null
-	and b.b_code='2740c64d-8dcb-45ef-92cc-57ff24442184'
-	
-"));
-            //query.SetParameter("dates", dateS);
-            //query.SetParameter("datee", dateE);
-            //query.SetParameter("bcode", BranchId);
-            var q=query.List<PcPurchaseDetail>();
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            if (dateS == null || dateE == null)
+            {
+                q = from l in q
+                    where l.bCode == BranchId
+                    select l;
+            }
+            if (dateS <= dateE && string.IsNullOrEmpty(BranchId) == false)
+            {
+                q = from l in q
+                    where l.PurchaseDate >= dateS
+                        && l.PurchaseDate <= dateE
+                        && l.bCode == BranchId
+                    select l;
+            }
             int count = q.Count();
-            var result = q.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            //FillDepartmentName(result);
-            //FillBranchName(result);
-            return result.ToSearchResult(count);
+
+            var result = q.ToList();
+            for (int i = 0; i < result.Count; i++)
+            {
+                var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
+                result[i].detailCount = statics.Count();
+                result[i].count = Convert.ToInt32(statics.Sum(p => p.PurchaseQty));
+                result[i].amount = statics.Sum(p => p.PurchaseMoney);
+            }
+
+            var sta = new
+            {
+                count = result.Count,
+                detailCount = result.Sum(p => p.detailCount),
+                goodscount = result.Sum(p => p.count),
+                amount = result.Sum(p => p.amount)
+            };
+
+            var searchResult = result.ToSearchResult(count);
+            searchResult.Statistics = sta;
+            return searchResult;
+
+        }
+
+        public SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            if (dateS == null || dateE == null)
+            {
+                q = from l in q
+                    where l.bCode == BranchId
+                    select l;
+            }
+            if (dateS <= dateE && string.IsNullOrEmpty(BranchId) == false)
+            {
+                q = from l in q
+                    where l.PurchaseDate >= dateS
+                        && l.PurchaseDate <= dateE
+                        && l.bCode == BranchId
+                    select l;
+            }
+
+            var manages = q.ToList();
+            var manageIds = manages.Select(p => p.Id).ToArray();
+
+            var details = (from l in PurchaseDetailRepository.LinqQuery
+                           where
+                               manageIds.Contains(l.ManageId)
+                           select l).ToList();
+
+            var goods = GoodsArchivesRepository.LinqQuery.ToList();
+
+            var result = details.GroupBy(p => p.GoodsCode).Select(p => new PurchaseGoodsResult
+            {
+                count = p.Count(),
+                Amount = p.Sum(z => z.PurchaseMoney),
+                GoodsCode = p.Key,
+                GoodsBarCode = p.First().GoodsBarCode,
+                OrderQty = p.Sum(z => z.OrderQty),
+                PurchasePrice = p.First().PurchasePrice,
+                GoodsName = goods.Where(z => z.Id == p.Key).First().GoodsName,
+                SupName = manages.Where(z => z.Id == p.First().ManageId).First().SupCode
+            });
+
+            var sta = new
+            {
+                count = result.Count(),
+                purchasecount = result.Sum(p => p.OrderQty),
+                avgprice = result.Sum(p => p.OrderQty) == 0 ? 0 : result.Sum(p => p.PurchasePrice) / result.Sum(p => p.OrderQty),
+                amount = result.Sum(p => p.Amount)
+            };
+
+            var returnValue = result.ToList().ToSearchResult(0);
+            returnValue.Statistics = sta;
+
+            return returnValue;
+        }
+
+        public SearchResult<PurchaseSupplierResult> SearchForPurchaseSupllier(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            if (dateS == null || dateE == null)
+            {
+                q = from l in q
+                    where l.bCode == BranchId
+                    select l;
+            }
+            if (dateS <= dateE && string.IsNullOrEmpty(BranchId) == false)
+            {
+                q = from l in q
+                    where l.PurchaseDate >= dateS
+                        && l.PurchaseDate <= dateE
+                        && l.bCode == BranchId
+                    select l;
+            }
+
+            var manages = q.ToList();
+            var manageIds = manages.Select(p => p.Id).ToArray();
+
+            var details = (from l in PurchaseDetailRepository.LinqQuery
+                           where
+                               manageIds.Contains(l.ManageId)
+                           select l).ToList();
+
+            var suppliers = manages.GroupBy(p => p.EnCode).Select(p => new PurchaseSupplierResult
+            { 
+                SupName = p.First().SupCode,
+                goodsCount = Convert.ToInt32(details.Where(z=>z.ManageId==p.First().Id).Sum(x=>x.PurchaseQty)),
+                amount = Convert.ToInt32(details.Where(z => z.ManageId == p.First().Id).Sum(x => x.PurchaseMoney))
+            });
+
+            var sta = new { 
+                count=suppliers.Count(),
+                goodsCount = suppliers.Sum(p=>p.goodsCount),
+                amount=suppliers.Sum(p=>p.amount)
+            };
+
+            var result = suppliers.ToList().ToSearchResult(0);
+            result.Statistics = sta;
+            return result;
         }
 
         public IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1)

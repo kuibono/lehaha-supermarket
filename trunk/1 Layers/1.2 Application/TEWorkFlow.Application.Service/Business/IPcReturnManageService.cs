@@ -35,7 +35,7 @@ namespace TEWorkFlow.Application.Service.Business
         void Delete(IEnumerable<PcReturnManage> entitys);
 
 
-        SearchResult<PcReturnManage> Search(SearchDtoBase<PcReturnManage> c);
+        SearchResult<PcReturnManage> Search(string SupplierId, SearchDtoBase<PcReturnManage> c);
 
         IList<PcReturnManage> Search(string key, int pageSize = 20, int pageIndex = 1);
 

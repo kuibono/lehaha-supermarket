@@ -123,6 +123,12 @@ namespace TEWorkFlow.Domain.Business
 
         public virtual string operatorName { get; set; }
 
+        public virtual int detailCount { get; set; }
+
+        public virtual int count{get;set;}
+
+        public virtual decimal? amount { get; set; }
+
         protected override void Validate()
         {
         }

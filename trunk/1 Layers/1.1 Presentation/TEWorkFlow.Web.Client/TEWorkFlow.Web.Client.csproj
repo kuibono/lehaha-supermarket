@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="Common\AuthorizeSettings.cs" />
     <Compile Include="Common\ConfigReader.cs" />
+    <Compile Include="Common\EmployeeAuthorizeAttribute.cs" />
     <Compile Include="Common\JsonNetResult.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,6 +157,7 @@
     <Compile Include="Common\LocalizedDisplayName.cs" />
     <Compile Include="Common\MyEnv.cs" />
     <Compile Include="Common\StaticClass.cs" />
+    <Compile Include="Common\SupplierAuthorizeAttribute.cs" />
     <Compile Include="Common\UserAuthorizeAttribute .cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArchivesController.cs" />
@@ -854,6 +856,9 @@
     <Content Include="Views\Account\BaseSetting.cshtml" />
     <Content Include="Views\Shared\_WindowLayoutView.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Query\BranchPurchaseOrder.cshtml" />
+    <Content Include="Views\Query\BranchPurchaseGoods.cshtml" />
+    <Content Include="Views\Query\BranchPurchaseSupplier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

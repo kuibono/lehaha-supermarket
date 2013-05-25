@@ -29,5 +29,35 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return View(model);
         }
+
+        public ActionResult BranchPurchaseOrder()
+        {
+            return View();
+        }
+
+        public JsonResult SearchBranchPurchaseOrder(string branch, DateTime? dates, DateTime? datee)
+        {
+            return Json(PcPurchaseManageService.SearchReportByBranch(dates, datee, branch), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult BranchPurchaseGoods()
+        {
+            return View();
+        }
+
+        public JsonResult SearchBranchPurchaseGoods(string branch, DateTime? dates, DateTime? datee)
+        {
+            return Json(PcPurchaseManageService.SearchForPurchaseGoods(dates, datee, branch), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult BranchPurchaseSupplier()
+        {
+            return View();
+        }
+
+        public JsonResult SearchBranchPurchaseSupplier(string branch, DateTime? dates, DateTime? datee)
+        {
+            return Json(PcPurchaseManageService.SearchForPurchaseSupllier(dates, datee, branch), JsonRequestBehavior.AllowGet);
+        }
     }
 }
