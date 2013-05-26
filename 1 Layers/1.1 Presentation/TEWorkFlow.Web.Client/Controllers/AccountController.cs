@@ -253,18 +253,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart",
-                Id = "goods_archives",
-                ParentId = "archives",
-                Url = "/Archives/GoodsList",
-                Windowname = "商品档案",
-                Index = 14,
-                EmployeeVisible = true,
-                SupplierVisible = false
-            };
-            SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "goods_archives",
+            //    ParentId = "archives",
+            //    Url = "/Archives/GoodsList",
+            //    Windowname = "商品档案",
+            //    Index = 14,
+            //    EmployeeVisible = true,
+            //    SupplierVisible = false
+            //};
+            //SysmodulecontentService.Create(m1);
 
             m1 = new Sysmodulecontent()
             {
@@ -272,7 +272,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "goods_archivestree",
                 ParentId = "archives",
                 Url = "/Archives/GoodsListTree",
-                Windowname = "商品档案2",
+                Windowname = "商品档案",
                 Index = 15,
                 EmployeeVisible = true,
                 SupplierVisible = false
