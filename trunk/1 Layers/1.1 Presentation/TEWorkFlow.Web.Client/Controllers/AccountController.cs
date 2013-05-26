@@ -288,7 +288,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "root",
                 Url = "",
                 Windowname = "业务管理",
-                EmployeeVisible = false,
+                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -324,8 +324,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/SupplementList",
                 Windowname = "产品补货",
-                EmployeeVisible = false,
-                SupplierVisible = true
+                EmployeeVisible = true,
+                SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
             #endregion
