@@ -49,8 +49,12 @@
             });
         }
         function editRow(id) {
+            var eUrl = "/Business/PurchaseEdit/" + id + "?bCode=";
+            if (tree.getSelectedNode()) {
+                eUrl += tree.getSelectedNode().Id;
+            }
             mini.open({
-                url: "/Business/PurchaseEdit/" + id,
+                url: eUrl,
                 title: "采购管理",
                 iconCls: "icon-cart",
                 allowResize: false,

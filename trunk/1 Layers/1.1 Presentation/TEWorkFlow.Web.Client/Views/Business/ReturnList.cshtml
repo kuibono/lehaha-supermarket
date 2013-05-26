@@ -49,8 +49,12 @@
             });
         }
         function editRow(id) {
+            var eUrl = "/Business/ReturnEdit/" + id + "?bCode=";
+            if (tree.getSelectedNode()) {
+                eUrl += tree.getSelectedNode().Id;
+            }
             mini.open({
-                url: "/Business/ReturnEdit/" + id,
+                url: eUrl,
                 title: "退货管理",
                 iconCls: "icon-cart-delete",
                 allowResize: false,
