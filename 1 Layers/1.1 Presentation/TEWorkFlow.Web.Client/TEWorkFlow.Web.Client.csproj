@@ -656,6 +656,7 @@
     <Content Include="Scripts\miniui\themes\icons\open.gif" />
     <Content Include="Scripts\miniui\themes\icons\page_excel.png" />
     <Content Include="Scripts\miniui\themes\icons\print.gif" />
+    <Content Include="Scripts\miniui\themes\icons\printer.png" />
     <Content Include="Scripts\miniui\themes\icons\redo.gif" />
     <Content Include="Scripts\miniui\themes\icons\reload.png" />
     <Content Include="Scripts\miniui\themes\icons\remove.gif" />
