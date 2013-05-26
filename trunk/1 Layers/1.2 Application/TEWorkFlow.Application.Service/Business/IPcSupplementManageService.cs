@@ -35,7 +35,7 @@ namespace TEWorkFlow.Application.Service.Business
         void Delete(IEnumerable<PcSupplementManage> entitys);
 
 
-        SearchResult<PcSupplementManage> Search(string SupplierId, SearchDtoBase<PcSupplementManage> c);
+        SearchResult<PcSupplementManage> Search(SearchDtoBase<PcSupplementManage> c);
 
         IList<PcSupplementManage> Search(string key, int pageSize = 20, int pageIndex = 1);
 

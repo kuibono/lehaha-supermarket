@@ -336,7 +336,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 return Json(PcSupplementManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
-            return Json(PcSupplementManageService.Search(Common.MyEnv.CurrentSupplier.Id, c), JsonRequestBehavior.AllowGet);
+            return Json(PcSupplementManageService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchAllSupplementList(string key)

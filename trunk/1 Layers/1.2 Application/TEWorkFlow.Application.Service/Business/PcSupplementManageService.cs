@@ -133,9 +133,9 @@ namespace TEWorkFlow.Application.Service.Business
 
 
         [Transaction]
-        public SearchResult<PcSupplementManage> Search(string SupplierId, SearchDtoBase<PcSupplementManage> c)
+        public SearchResult<PcSupplementManage> Search( SearchDtoBase<PcSupplementManage> c)
         {
-            var q = EntityRepository.LinqQuery.Where(p=>p.EnCode==SupplierId);
+            var q = EntityRepository.LinqQuery;//.Where(p=>p.EnCode==SupplierId);
             if (c.entity != null)
             {
                 if (string.IsNullOrEmpty(c.entity.Id) == false)
