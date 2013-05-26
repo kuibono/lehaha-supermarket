@@ -32,6 +32,13 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult PurchaseEdit(string id)
         {
             PcPurchaseManage model = new PcPurchaseManage();
+
+            if (Request["bCode"] != null)
+            {
+                string bcode = Request["bCode"].ToString();
+                model.bCode = bcode;
+            }
+
             var currentUser = Common.MyEnv.CurrentSupplier;
             model.EnCode = currentUser.Id;
             model.SupCode = currentUser.SupName;
@@ -182,6 +189,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult ReturnEdit(string id)
         {
             PcReturnManage model = new PcReturnManage();
+            if (Request["bCode"] != null)
+            {
+                string bcode = Request["bCode"].ToString();
+                model.bCode = bcode;
+            }
             var currentUser = Common.MyEnv.CurrentSupplier;
             model.EnCode = currentUser.Id;
             model.SupCode = currentUser.SupName;
@@ -303,6 +315,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult SupplementEdit(string id)
         {
             PcSupplementManage model = new PcSupplementManage();
+            if (Request["bCode"] != null)
+            {
+                string bcode = Request["bCode"].ToString();
+                model.bCode = bcode;
+            }
             model.Id = Guid.NewGuid().ToString();
 
             if (string.IsNullOrEmpty(id) == false)

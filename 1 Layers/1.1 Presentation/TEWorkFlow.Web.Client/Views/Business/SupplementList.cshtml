@@ -49,9 +49,14 @@
                 "key": mini.get("#key").value
             });
         }
+
         function editRow(id) {
+            var eUrl = "/Business/SupplementEdit/" + id + "?bCode=";
+            if (tree.getSelectedNode()) {
+                eUrl += tree.getSelectedNode().Id;
+            }
             mini.open({
-                url: "/Business/SupplementEdit/" + id,
+                url: eUrl,
                 title: "补货管理",
                 iconCls: "icon-cart",
                 allowResize: false,
