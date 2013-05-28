@@ -12,7 +12,7 @@
                     筛选</a> <span class="separator"></span>
             </td>
             <td style="white-space: nowrap;">
-                <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" />
+                <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" onvaluechanged="search()"/>
                 <input id="Id" class="mini-textbox" emptytext="请输入编码" style="width: 150px;" onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>

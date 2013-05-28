@@ -21,7 +21,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public string Create(FbSupplierArchives entity)
         {
             entity.LoginName = GenerateLoginName();
-            entity.LoginPass = entity.LoginName;
+            entity.LoginPass = "111111";
             entity.Id = entity.LoginName;
             return EntityRepository.Save(entity);
         }
