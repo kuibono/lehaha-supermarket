@@ -21,6 +21,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult Index()
         {
             var setting = SysEnterpriseArchivesService.Get();
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                setting.EnName = Common.MyEnv.CurrentSupplier.SupName;
+            }
             return View(setting);
         }
 
