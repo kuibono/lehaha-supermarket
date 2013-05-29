@@ -36,8 +36,11 @@ namespace TEWorkFlow.Application.Service.Archives
 
         IList<FbSupplierArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
 
+        IList<FbSupplierArchives> SearchWithGoodsCount(string key, int pageSize = 20, int pageIndex = 1);
+
         void Delete(IList<string> ids);
 
         string GenerateLoginName();
+
     }
 }

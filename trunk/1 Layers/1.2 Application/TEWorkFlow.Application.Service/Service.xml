@@ -102,6 +102,7 @@
   <object id="FbSupplierArchivesService" type="TEWorkFlow.Application.Service.Archives.FbSupplierArchivesService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbSupplierArchivesRepository"/>
     <property name="PaSupTypeRepository" ref="FbPaSupTypeRepository"/>
+    <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
   </object>
   <object id="FbPaSupTypeService" type="TEWorkFlow.Application.Service.Category.FbPaSupTypeService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaSupTypeRepository"/>
