@@ -117,6 +117,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(FbSupplierArchivesService.Search(id), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult SearchAllSuppliersWithGoodsCount(string id)
+        {
+            return Json(FbSupplierArchivesService.SearchWithGoodsCount(id), JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult SaveSupplierArchive(FbSupplierArchives s)
         {
@@ -231,7 +235,12 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 id = Request["key"];
             }
-            return Json(GoodsArchivesService.Search(id), JsonRequestBehavior.AllowGet);
+            var result=GoodsArchivesService.Search(id);
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                result = result.Where(p => p.SupCode == Common.MyEnv.CurrentSupplier.Id).ToList();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GoodsEdit(string id)

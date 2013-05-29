@@ -432,11 +432,21 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
+        public ActionResult SLogin()
+        {
+            return View();
+        }
+        public ActionResult ELogin()
+        {
+            return View();
+        }
 
         public ActionResult VCode()
         {
             VerifyCode v = new VerifyCode();
-            v.CreateImageOnPage(v.CreateForWordCode(), System.Web.HttpContext.Current);
+            string vcode = VerifyCode.GetRandomNumber(1000, 9999).ToString();
+            Session["SafeCode"] = vcode;
+            v.CreateImageOnPage(vcode, System.Web.HttpContext.Current);
             return null;
         }
 
@@ -534,6 +544,116 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult SLogin(LoginModel model, string returnUrl)
+        {
+
+            if (String.IsNullOrWhiteSpace(model.UserName))
+            {
+                ModelState.AddModelError("", "账号不能为空");
+                return View(model);
+            }
+
+            if (String.IsNullOrWhiteSpace(model.Password))
+            {
+                ModelState.AddModelError("", "密码不能为空");
+                return View(model);
+            }
+            if (String.IsNullOrWhiteSpace(model.VCode))
+            {
+                ModelState.AddModelError("", "验证码不能为空");
+                return View(model);
+            }
+            if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
+            {
+                ModelState.AddModelError("", "验证码错误");
+                Session.Remove("SafeCode");
+                return View(model);
+            }
+            Session.Remove("SafeCode");//删除验证码Session 防止机器登录
+
+
+            LoginResult result = SysLoginPowerService.CheckUser(model.UserName, model.Password, model.logintype);
+            if (result.IsSuccess)
+            {
+                if (result.Employee != null)
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Employee.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Employee.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "0";
+
+                }
+                else
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Supplier.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "1";
+                }
+                return RedirectToAction("Index", "Test");
+            }
+            else
+            {
+                ModelState.AddModelError("", "账号或密码错误，请重试");
+                return View(model);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult ELogin(LoginModel model, string returnUrl)
+        {
+
+            if (String.IsNullOrWhiteSpace(model.UserName))
+            {
+                ModelState.AddModelError("", "账号不能为空");
+                return View(model);
+            }
+
+            if (String.IsNullOrWhiteSpace(model.Password))
+            {
+                ModelState.AddModelError("", "密码不能为空");
+                return View(model);
+            }
+            if (String.IsNullOrWhiteSpace(model.VCode))
+            {
+                ModelState.AddModelError("", "验证码不能为空");
+                return View(model);
+            }
+            if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
+            {
+                ModelState.AddModelError("", "验证码错误");
+                Session.Remove("SafeCode");
+                return View(model);
+            }
+            Session.Remove("SafeCode");//删除验证码Session 防止机器登录
+
+
+            LoginResult result = SysLoginPowerService.CheckUser(model.UserName, model.Password, model.logintype);
+            if (result.IsSuccess)
+            {
+                if (result.Employee != null)
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Employee.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Employee.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "0";
+
+                }
+                else
+                {
+                    Session[AuthorizeSettings.SessionUserName] = result.Supplier.LoginName;
+                    Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
+                    Session[AuthorizeSettings.SessionUserType] = "1";
+                }
+                return RedirectToAction("Index", "Test");
+            }
+            else
+            {
+                ModelState.AddModelError("", "账号或密码错误，请重试");
+                return View(model);
+            }
+
+        }
+
         public ActionResult DepartmentSelectTree()
         {
             return View();
@@ -552,6 +672,16 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult LogOut()
         {
+            if (Common.MyEnv.IsEmployeeLogin)
+            {
+                Session.Abandon();
+                return RedirectToAction("ELogin", "Account");
+            }
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                Session.Abandon();
+                return RedirectToAction("SLogin", "Account");
+            }
             Session.Abandon();
             return RedirectToAction("Login", "Account");
         }

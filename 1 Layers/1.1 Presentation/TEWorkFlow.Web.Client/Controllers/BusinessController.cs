@@ -32,7 +32,12 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult PurchaseEdit(string id)
         {
             PcPurchaseManage model = new PcPurchaseManage();
-
+            model.PurchaseDate = DateTime.Now;
+            model.ExpectArriveDate = DateTime.Now;
+            model.CheckDate = DateTime.Now;
+            model.CreateDate = DateTime.Now;
+            model.ExamineDate = DateTime.Now;
+            model.OperatorDate = DateTime.Now;
             if (Request["bCode"] != null)
             {
                 string bcode = Request["bCode"].ToString();

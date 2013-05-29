@@ -152,7 +152,7 @@
                     <a class="mini-button" iconcls="icon-search" plain="true" onclick="treesearch">查找</a>
                 </div>
                 <div class="mini-fit">
-                    <ul id="tree1" class="mini-tree" url="/Archives/SearchAllSuppliers" style="width: 100%;"
+                    <ul id="tree1" class="mini-tree" url="/Archives/SearchAllSuppliersWithGoodsCount" style="width: 100%;"
                         showtreeicon="true" textfield="SupName" idfield="Id" parentfield="pid" resultastree="false">
                     </ul>
                 </div>
@@ -174,7 +174,7 @@
                             条形码</div>
                         <div field="GoodsSubCode" headeralign="center" align="center" width="60">
                             简码</div>
-                        <div field="GbName" headeralign="center" align="center" width="60">
+                        <@*div field="GbName" headeralign="center" align="center" width="60">
                             大类</div>
                         <div field="GmName" headeralign="center" align="center" width="60">
                             中类</div>
@@ -185,9 +185,10 @@
                         <div field="GoodsType" headeralign="center" align="center" width="60">
                             类型</div>
                         <div field="CheckMode" headeralign="center" align="center" width="60">
-                            核算方式</div>
-                        <div field="SupName" headeralign="center" align="center" width="60">
+                            核算方式</div>*@
+                        <div name="SupName" field="SupName" headeralign="center" align="center" width="60">
                             供货商</div>
+                        <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">审核</div>
                         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
                             cellstyle="padding:0;">
                             管理</div>
@@ -252,6 +253,7 @@
         var tree = mini.get("tree1");
         tree.on("nodeselect", function (e) {
             if (e.isLeaf) {
+                grid.columns[6].visible = false;
                 grid.load({ SupCode: e.node.Id });
             } else {
                 grid.setData([]);
@@ -281,9 +283,10 @@
         }
         function editRow(id) {
             var winTitle = "商品档案:";
-            if (isNaN(id) == true) {
+            try {
                 winTitle += grid.getSelected().SupName + " " + grid.getSelected().SupTel;
             }
+            catch (e) { }
             mini.open({
                 url: "/Archives/GoodsEdit/" + id,
                 title: winTitle,

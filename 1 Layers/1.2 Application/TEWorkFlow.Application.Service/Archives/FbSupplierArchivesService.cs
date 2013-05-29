@@ -16,7 +16,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
         public IRepositoryGUID<FbSupplierArchives> EntityRepository { get; set; }
         public IRepositoryGUID<FbPaSupType> PaSupTypeRepository { get; set; }
-
+        public IRepositoryGUID<GoodsArchives> GoodsRepository { get; set; }
         [Transaction]
         public string Create(FbSupplierArchives entity)
         {
@@ -223,6 +223,34 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
+            FillFbPaSupType(result);
+            return result.ToList();
+        }
+
+        [Transaction]
+        public IList<FbSupplierArchives> SearchWithGoodsCount(string key, int pageSize = 20, int pageIndex = 1)
+        {
+            var goods = GoodsRepository.LinqQuery.ToList();
+
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key) == false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(key)
+                    || l.SupName.Contains(key)
+                    || l.PyCode.Contains(key)
+                    select l;
+
+
+            }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            result = result.Select(p => {
+                var item = p;
+                p.SupName = p.SupName + "(" + goods.Count(x=>x.SupCode==p.Id) + ")";
+                return item;
+            }).ToList();
             FillFbPaSupType(result);
             return result.ToList();
         }

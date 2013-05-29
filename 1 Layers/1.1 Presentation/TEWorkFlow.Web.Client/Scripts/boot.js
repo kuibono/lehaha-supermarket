@@ -75,3 +75,7 @@ function labelModel(form) {
         if (c.addCls) c.addCls("asLabel");          //增加asLabel外观
     }
 }
+function onExamRender(e) {
+    if (e.value == "true") return "<span style='color:green'>是</span>";
+    else return "<span style='color:red'>否</span>";
+}
