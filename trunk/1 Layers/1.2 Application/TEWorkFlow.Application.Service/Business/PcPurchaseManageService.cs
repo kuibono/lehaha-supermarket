@@ -117,6 +117,18 @@ namespace TEWorkFlow.Application.Service.Business
             manage.dName = depName;
         }
 
+        public void UpdatePurchaseAmount(string id)
+        {
+            PcPurchaseManage entity = EntityRepository.Get(id);
+            if (entity == null)
+                return;
+
+            var amount = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == entity.Id).Sum(p => p.PurchaseMoney);
+            entity.amount = amount;
+
+            EntityRepository.Update(entity);
+        }
+
         [Transaction]
         public IList<PcPurchaseManage> GetAll()
         {

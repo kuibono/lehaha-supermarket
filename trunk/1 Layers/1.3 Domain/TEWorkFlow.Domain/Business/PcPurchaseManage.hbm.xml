@@ -24,7 +24,7 @@
     <property name="IfExamine" column="if_examine" type="string" />
     <property name="ExamineDate" column="examine_date" type="System.DateTime" />
     <property name="OperatorDate" column="operator_date" type="System.DateTime" />
-
+    <property name="amount" column="amount" type="decimal" />
 
   </class>
 </hibernate-mapping>

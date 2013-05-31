@@ -138,7 +138,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 manage.Id = Id;
                 PcPurchaseManageService.Create(manage);
             }
-
+            PcPurchaseManageService.UpdatePurchaseAmount(Id);
             return Json(true, JsonRequestBehavior.AllowGet);
 
         }

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Application.Service.Business;
+using TEWorkFlow.Domain.Archives;
+using TEWorkFlow.Application.Service.Archives;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -14,6 +16,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         // GET: /Query/
 
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
+        public IGoodsArchivesService GoodsArchivesService { get; set; }
         public ActionResult PurchaseQuery()
         {
             return View();
@@ -58,6 +61,21 @@ namespace TEWorkFlow.Web.Client.Controllers
         public JsonResult SearchBranchPurchaseSupplier(string branch, DateTime? dates, DateTime? datee)
         {
             return Json(PcPurchaseManageService.SearchForPurchaseSupllier(dates, datee, branch), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GoodsArchiveList()
+        {
+            return View();
+        }
+
+        public ActionResult ViewGoods(string id)
+        {
+            GoodsArchives entity = new GoodsArchives();
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                entity = GoodsArchivesService.GetById(id);
+            }
+            return View(entity);
         }
     }
 }

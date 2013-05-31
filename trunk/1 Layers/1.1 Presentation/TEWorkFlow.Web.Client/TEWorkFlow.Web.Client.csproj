@@ -862,6 +862,8 @@
     <Content Include="Views\Query\BranchPurchaseSupplier.cshtml" />
     <Content Include="Views\Account\SLogin.cshtml" />
     <Content Include="Views\Account\ELogin.cshtml" />
+    <Content Include="Views\Query\GoodsArchiveList.cshtml" />
+    <Content Include="Views\Query\ViewGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

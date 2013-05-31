@@ -1,0 +1,374 @@
+﻿@{
+    ViewBag.Title = "商品查看";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Archives.GoodsArchives
+@section script
+{
+    <script type="text/javascript">
+        mini.parse();
+
+        labelModel(new mini.Form("form1"));
+        function SaveData() {
+            CloseWindow();
+        }
+        var GbCode = mini.get("GbCode");
+        var GmCode = mini.get("GmCode");
+        var GsCode = mini.get("GsCode");
+        var GlCode = mini.get("GlCode");
+
+        function onGbCodeChanged() {
+            var id = GbCode.getValue();
+            var url = "/Category/GetFbPaGoodsGm/" + id
+            GmCode.setUrl(url);
+        }
+        function onGmCodeChanged() {
+            var id = GmCode.getValue();
+            var url = "/Category/GetFbPaGoodsGs/" + id
+            GsCode.setUrl(url);
+        }
+        function onGsCodeChanged() {
+            var id = GsCode.getValue();
+            var url = "/Category/GetFbPaGoodsGl/" + id
+            GlCode.setUrl(url);
+        }
+    </script>
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 80px;">
+            店内码:
+        </td>
+        <td style="width: 120px;">
+            <input name="GoodsCode" value="@Model.Id" class="mini-textbox" />
+        </td>
+        <td style="width: 80px;">
+            条形码:
+        </td>
+        <td style="width: 120px;">
+            <input name="GoodsBarCode" value="@Model.GoodsBarCode" class="mini-textbox"/>
+        </td>
+        <td style="width: 80px;">
+            商品简码:
+        </td>
+        <td style="width: 120px;">
+            <input name="GoodsSubCode" value="@Model.GoodsSubCode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            大类:
+        </td>
+        <td>
+            <input name="GbCode" value="@Model.GbCode" id="GbCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGb/" showNullItem="true" >
+        </td>
+        <td>
+            中类:
+        </td>
+        <td>
+            <input name="GmCode" value="@Model.GmCode" id="GmCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGmCodeChanged" url="/Category/GetFbPaGoodsGm/" showNullItem="true" />
+        </td>
+        <td>
+            小类:
+        </td>
+        <td>
+            <input name="GsCode" value="@Model.GsCode" id="GsCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGsCodeChanged" url="/Category/GetFbPaGoodsGs/" showNullItem="true" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            细类:
+        </td>
+        <td>
+            <input name="GlCode" value="@Model.GlCode" id="GlCode" class="mini-combobox" textField="text" valueField="id" url="/Category/GetFbPaGoodsGl/" showNullItem="true"  />
+        </td>
+        <td>
+            商品类型:
+        </td>
+        <td>
+            <input name="GoodsType" value="@Model.GoodsType" class="mini-textbox"/>
+        </td>
+        <td>
+            核算方式:
+        </td>
+        <td>
+            <input name="CheckMode" value="@Model.CheckMode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            供货商:
+        </td>
+        <td>
+            <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." />
+        </td>
+        <td>
+            备用码:
+        </td>
+        <td>
+            <input name="BackupCode" value="@Model.BackupCode" class="mini-textbox"/>
+        </td>
+        <td>
+            扣率:
+        </td>
+        <td>
+            <input name="PoolRate" value="@Model.PoolRate" class="mini-spinner" decimalPlaces="2"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            商品名称:
+        </td>
+        <td>
+            <input name="GoodsName" value="@Model.GoodsName" class="mini-textbox"/>
+        </td>
+        <td>
+            商品简称:
+        </td>
+        <td>
+            <input name="GoodsSubName" value="@Model.GoodsSubName" class="mini-textbox"/>
+        </td>
+        <td>
+            拼音码:
+        </td>
+        <td>
+            <input name="PyCode" value="@Model.PyCode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            商品状态:
+        </td>
+        <td>
+            <input name="GoodsState" value="@Model.GoodsState" class="mini-textbox" />
+        </td>
+        <td>
+            产地:
+        </td>
+        <td>
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
+        </td>
+        <td>
+            货号:
+        </td>
+        <td>
+            <input name="ArticleNumber" value="@Model.ArticleNumber" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            规格:
+        </td>
+        <td>
+            <input name="Specification" value="@Model.Specification" class="mini-textbox"/>
+        </td>
+        <td>
+            保质期:
+        </td>
+        <td>
+            <input name="ShelfLife" value="@Model.ShelfLife" class="mini-datepicker"/>
+        </td>
+        <td>
+            包装单位:
+        </td>
+        <td>
+            <input name="PackUnitCode" value="@Model.PackUnitCode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            供货方式:
+        </td>
+        <td>
+            <input name="OfferMode" value="@Model.OfferMode" class="mini-textbox" />
+        </td>
+        <td>
+            包装系数:
+        </td>
+        <td>
+            <input name="PackCoef" value="@Model.PackCoef" class="mini-textbox"/>
+        </td>
+        <td>
+            最小订量:
+        </td>
+        <td>
+            <input name="OfferMin" value="@Model.OfferMin" class="mini-spinner" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            进项税率:
+        </td>
+        <td>
+            <input name="InputTax" value="@Model.InputTax" class="mini-spinner" />
+        </td>
+        <td>
+            销项税率:
+        </td>
+        <td>
+            <input name="OutputTax" value="@Model.OutputTax" class="mini-spinner"/>
+        </td>
+        <td>
+            库存上限:
+        </td>
+        <td>
+            <input name="StockUpperLimit" value="@Model.StockUpperLimit" class="mini-spinner" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            库存下限:
+        </td>
+        <td>
+            <input name="StockLowerLimit" value="@Model.StockLowerLimit" class="mini-spinner" />
+        </td>
+        <td>
+            所属楼层:
+        </td>
+        <td>
+            <input name="UnderFloorCode" value="@Model.UnderFloorCode" class="mini-textbox"/>
+        </td>
+        <td>
+            所属柜台:
+        </td>
+        <td>
+            <input name="UnderCounterCode" value="@Model.UnderCounterCode" class="mini-textbox"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            核算单位:
+        </td>
+        <td>
+            <input name="CheckUnitCode" value="@Model.CheckUnitCode" class="mini-textbox" />
+        </td>
+        <td>
+            含税进价:
+        </td>
+        <td>
+            <input name="PurchasePrice" value="@Model.PurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
+        </td>
+        <td>
+            建议零售价:
+        </td>
+        <td>
+            <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            不含税进价:
+        </td>
+        <td>
+            <input name="NontaxPurchasePrice" value="@Model.NontaxPurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999"/>
+        </td>
+        <td>
+            平均成本:
+        </td>
+        <td>
+            <input name="AvgCost" value="@Model.AvgCost" class="mini-spinner" decimalPlaces="2" />
+        </td>
+        <td>
+            含税平均成本:
+        </td>
+        <td>
+            <input name="NontaxAvgCost" value="@Model.NontaxAvgCost" class="mini-spinner" decimalPlaces="2" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            毛利率:
+        </td>
+        <td>
+            <input name="GrossRate" value="@Model.GrossRate" class="mini-spinner" decimalPlaces="2" />
+        </td>
+        <td>
+            销售价:
+        </td>
+        <td>
+            <input name="SalePrice" value="@Model.SalePrice" class="mini-spinner" decimalPlaces="2" />
+        </td>
+        <td>
+            会员价:
+        </td>
+        <td>
+            <input name="VipPrice" value="@Model.VipPrice" class="mini-spinner" decimalPlaces="2" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            批发价:
+        </td>
+        <td>
+            <input name="TradePrice" value="@Model.TradePrice" class="mini-spinner" decimalPlaces="2" />
+        </td>
+        <td>
+            营业员提成:
+        </td>
+        <td>
+            <input name="PushRate" value="@Model.PushRate" class="mini-spinner" decimalPlaces="2" />
+        </td>
+        <td>
+            创建时间:
+        </td>
+        <td>
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            操作员:
+        </td>
+        <td>
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id"  url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+        </td>
+        <td>
+            审核人:
+        </td>
+        <td>
+            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id"  url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+        </td>
+        <td>
+            是否审核:
+        </td>
+        <td>
+            @(Model.IfExamine=="true"?"审核":"")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            审核时间:
+        </td>
+        <td>
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
+        </td>
+        <td>
+            操作时间:
+        </td>
+        <td>
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" />
+        </td>
+        <td>
+            经营方式:
+        </td>
+        <td>
+            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            备注:
+        </td>
+        <td colspan="5">
+            <input name="Remark" value="@Model.Remark" class="mini-textarea" width="100%"/>
+        </td>
+    </tr>
+    @*    <tr>
+        <td>
+            历史进价:
+        </td>
+        <td colspan="5">
+            <input name="PriceHistory" value="@Model.PriceHistory" class="mini-textarea" width="100%" enabled="false"/>
+        </td>
+    </tr>*@
+</table>

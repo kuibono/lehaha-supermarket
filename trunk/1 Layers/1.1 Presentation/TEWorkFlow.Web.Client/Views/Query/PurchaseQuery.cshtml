@@ -51,7 +51,15 @@
             <div property="columns">
                 <div type="indexcolumn" width="30">
                 </div>
-                <div field="SupCode" headeralign="center" align="center" width="60">
+                <div field="Id" headeralign="center" align="center" width="60">
+                    订单号</div>
+                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
+                    审核状态</div>
+                <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+                    订单时间</div>
+                    <div field="amount" headeralign="center" align="center" width="60">
+                    金额</div>
+  @*              <div field="SupCode" headeralign="center" align="center" width="60">
                     供货商</div>
                 <div field="PcForm" headeralign="center" align="center" width="60">
                     采购形式</div>
@@ -64,7 +72,7 @@
                 <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     采购日期</div>
                 <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                    预计到货日期</div>
+                    预计到货日期</div>*@
                 <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer2"
                     cellstyle="padding:0;">
                     管理</div>
@@ -134,17 +142,22 @@
         });
 
         function doSearch() {
-            if (tree.getSelectedNode()) {
-                grid.load({
-                    EnCode: tree.getSelectedNode().Id,
-                    dateS: mini.get("dateS").getValue(),
-                    dateE: mini.get("dateE").getValue()
-                });
-            }
-            else {
-                grid.setData([]);
-                grid.setTotalCount(0);
-            }
+            grid.load({
+                //EnCode: tree.getSelectedNode().Id,
+                dateS: mini.get("dateS").getValue(),
+                dateE: mini.get("dateE").getValue()
+            });
+//            if (tree.getSelectedNode()) {
+//                grid.load({
+//                    //EnCode: tree.getSelectedNode().Id,
+//                    dateS: mini.get("dateS").getValue(),
+//                    dateE: mini.get("dateE").getValue()
+//                });
+//            }
+//            else {
+//                grid.setData([]);
+//                grid.setTotalCount(0);
+//            }
         }
 
         function showSearchWindow() {
@@ -159,7 +172,7 @@
         }
         function search() {
             grid.load({
-                EnCode: tree.getSelectedNode().Id,
+                //EnCode: tree.getSelectedNode().Id,
                 dateS: mini.get("dateS").getFormValue(),
                 dateE: mini.get("dateE").getFormValue()
             });
