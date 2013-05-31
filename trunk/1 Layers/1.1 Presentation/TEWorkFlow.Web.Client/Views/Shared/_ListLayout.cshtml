@@ -43,6 +43,11 @@
             var record = e.record;
             var uid = record.Id;
             var rowIndex = e.rowIndex;
+            if (record.IfExamine) {
+                if (record.IfExamine == "true") {
+                    return "";
+                }
+            }
 
             var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';

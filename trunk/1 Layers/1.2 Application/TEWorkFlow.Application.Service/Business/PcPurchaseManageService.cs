@@ -117,6 +117,7 @@ namespace TEWorkFlow.Application.Service.Business
             manage.dName = depName;
         }
 
+        [Transaction]
         public void UpdatePurchaseAmount(string id)
         {
             PcPurchaseManage entity = EntityRepository.Get(id);

@@ -3,20 +3,7 @@
     Layout = "~/Views/Shared/_ListLayout.cshtml";
 }
 @section toolbar{
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 100%;">
-                <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
-                <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
-                <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
-                    筛选</a> <span class="separator"></span>
-            </td>
-            <td style="white-space: nowrap;">
-                <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
-                <a class="mini-button" onclick="search()">查询</a>
-            </td>
-        </tr>
-    </table>
+
 }
 @section script
 {
@@ -93,6 +80,24 @@
         </div>
     </div>
     <div showcollapsebutton="true" id="printArea">
+        <div style="width: 100%">
+            <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 100%;">
+                            <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
+                            <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                            <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
+                                筛选</a> <span class="separator"></span>
+                        </td>
+                        <td style="white-space: nowrap;">
+                            <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
+                            <a class="mini-button" onclick="search()">查询</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         <div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList" style="width: 100%;
             height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
             multiselect="true">
@@ -113,8 +118,9 @@
                     采购日期</div>
                 <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     预计到货日期</div>
-                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">审核</div>
-                <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
+                    审核</div>
+                <div name="action" width="30" headeralign="center" align="center" renderer="onActionRenderer"
                     cellstyle="padding:0;">
                     管理</div>
             </div>

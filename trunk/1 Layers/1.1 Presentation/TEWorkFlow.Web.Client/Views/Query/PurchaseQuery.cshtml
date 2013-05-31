@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>商品采购管理</title>
@@ -10,56 +8,52 @@
     <script type="text/javascript" src="~/Scripts/jquery.PrintArea.js"></script>
 </head>
 <body>
-    <div style="width: 100%">
-        <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
-           
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 100%;">
-                <a class="mini-button" iconcls="icon-printer" onclick="print()" plain="true">打印</a>
-                <span class="separator"></span>
-            </td>
-            <td style="white-space: nowrap;">
-                <input id="dateS" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" emptytext="开始时间" />
-                ~<input id="dateE" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" emptytext="结束时间" />
-                <a class="mini-button" onclick="search()">查询</a>
-            </td>
-        </tr>
-    </table>
-
-        </div>
-    </div>
     <div class="mini-fit">
-        
-<div class="mini-splitter" style="width: 100%; height: 100%;">
-    <div size="240" showcollapsebutton="true">
-        <div class="mini-toolbar" style="padding: 2px; border-top: 0; border-left: 0; border-right: 0;">
-            <span style="padding-left: 5px;">选择供应商查看数据</span>
-           @* <input class="mini-textbox" id="treekey" />
+        <div class="mini-splitter" style="width: 100%; height: 100%;">
+            <div size="240" showcollapsebutton="true">
+                <div class="mini-toolbar" style="padding: 2px; border-top: 0; border-left: 0; border-right: 0;">
+                    <span style="padding-left: 5px;">选择供应商查看数据</span> @* <input class="mini-textbox" id="treekey" />
             <a class="mini-button" iconcls="icon-search" plain="true" onclick="treesearch">查找</a>*@
-        </div>
-        <div class="mini-fit">
-            <ul id="tree1" class="mini-tree" url="/Archives/SearchAllSuppliers" style="width: 100%;"
-                showtreeicon="true" textfield="SupName" idfield="Id" parentfield="pid" resultastree="false">
-            </ul>
-        </div>
-    </div>
-    <div showcollapsebutton="true" id="printArea">
-        <div id="datagrid1" class="mini-datagrid" url="/Business/SearchForReport" style="width: 100%;
-            height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
-            multiselect="true">
-            <div property="columns">
-                <div type="indexcolumn" width="30">
                 </div>
-                <div field="Id" headeralign="center" align="center" width="60">
-                    订单号</div>
-                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
-                    审核状态</div>
-                <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                    订单时间</div>
-                    <div field="amount" headeralign="center" align="center" width="60">
-                    金额</div>
-  @*              <div field="SupCode" headeralign="center" align="center" width="60">
+                <div class="mini-fit">
+                    <ul id="tree1" class="mini-tree" url="/Archives/SearchAllSuppliers" style="width: 100%;"
+                        showtreeicon="true" textfield="SupName" idfield="Id" parentfield="pid" resultastree="false">
+                    </ul>
+                </div>
+            </div>
+            <div showcollapsebutton="true" id="printArea">
+                <div style="width: 100%">
+                    <div class="mini-toolbar" style="border-bottom: 0; padding: 0px;">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 100%;">
+                                    <a class="mini-button" iconcls="icon-printer" onclick="print()" plain="true">打印</a>
+                                    <span class="separator"></span>
+                                </td>
+                                <td style="white-space: nowrap;">
+                                    <input id="dateS" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" emptytext="开始时间" />
+                                    ~<input id="dateE" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" emptytext="结束时间" />
+                                    <a class="mini-button" onclick="search()">查询</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="datagrid1" class="mini-datagrid" url="/Business/SearchForReport" style="width: 100%;
+                    height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
+                    multiselect="true">
+                    <div property="columns">
+                        <div type="indexcolumn" width="30">
+                        </div>
+                        <div field="Id" headeralign="center" align="center" width="60">
+                            订单号</div>
+                        <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
+                            审核状态</div>
+                        <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+                            订单时间</div>
+                        <div field="amount" headeralign="center" align="center" width="60">
+                            金额</div>
+                        @*              <div field="SupCode" headeralign="center" align="center" width="60">
                     供货商</div>
                 <div field="PcForm" headeralign="center" align="center" width="60">
                     采购形式</div>
@@ -73,142 +67,140 @@
                     采购日期</div>
                 <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     预计到货日期</div>*@
-                <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer2"
-                    cellstyle="padding:0;">
-                    管理</div>
+                        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer2"
+                            cellstyle="padding:0;">
+                            管理</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    </div>
-    <script type="text/javascript">
-        mini.parse();
+        <script type="text/javascript">
+            mini.parse();
 
 
-        var grid = mini.get("datagrid1");
+            var grid = mini.get("datagrid1");
 
 
-        grid.load();
-        //对"createtime"字段，进行降级排序
-        grid.sortBy("Id", "desc");
+            grid.load();
+            //对"createtime"字段，进行降级排序
+            grid.sortBy("Id", "desc");
 
 
-        $("#key").bind("keydown", function (e) {
-            if (e.keyCode == 13) {
-                search();
-            }
-        });
+            $("#key").bind("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    search();
+                }
+            });
 
 
 
-        function onActionRenderer(e) {
-            var grid = e.sender;
-            var record = e.record;
-            var uid = record.Id;
-            var rowIndex = e.rowIndex;
+            function onActionRenderer(e) {
+                var grid = e.sender;
+                var record = e.record;
+                var uid = record.Id;
+                var rowIndex = e.rowIndex;
 
-            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
-            return s;
-        }
+                return s;
+            }
 
 
 
-        function remove() {
-            var rows = grid.getSelecteds();
-            if (rows.length > 0) {
-                if (confirm("确定删除选中记录？")) {
-                    var ids = [];
-                    for (var i = 0, l = rows.length; i < l; i++) {
-                        var r = rows[i];
-                        ids.push(r.Id);
+            function remove() {
+                var rows = grid.getSelecteds();
+                if (rows.length > 0) {
+                    if (confirm("确定删除选中记录？")) {
+                        var ids = [];
+                        for (var i = 0, l = rows.length; i < l; i++) {
+                            var r = rows[i];
+                            ids.push(r.Id);
+                        }
+                        var id = ids.join(',');
+                        grid.loading("操作中，请稍后......");
+                        deleteItem(id);
                     }
-                    var id = ids.join(',');
-                    grid.loading("操作中，请稍后......");
-                    deleteItem(id);
+                } else {
+                    alert("请选中一条记录");
                 }
-            } else {
-                alert("请选中一条记录");
             }
-        }
-        var tree = mini.get("tree1");
-        tree.on("nodeselect", function (e) {
-            if (e.isLeaf) {
-                search();
-            } else {
-                grid.setData([]);
-                grid.setTotalCount(0);
-            }
-        });
-
-        function doSearch() {
-            grid.load({
-                //EnCode: tree.getSelectedNode().Id,
-                dateS: mini.get("dateS").getValue(),
-                dateE: mini.get("dateE").getValue()
-            });
-//            if (tree.getSelectedNode()) {
-//                grid.load({
-//                    //EnCode: tree.getSelectedNode().Id,
-//                    dateS: mini.get("dateS").getValue(),
-//                    dateE: mini.get("dateE").getValue()
-//                });
-//            }
-//            else {
-//                grid.setData([]);
-//                grid.setTotalCount(0);
-//            }
-        }
-
-        function showSearchWindow() {
-            var win = mini.get("searchWindow");
-            win.show();
-        }
-        function advSearch() {
-            var frm = new mini.Form("frmAdv");
-            grid.load(frm.getData(true));
-            var win = mini.get("searchWindow");
-            win.hide();
-        }
-        function search() {
-            grid.load({
-                //EnCode: tree.getSelectedNode().Id,
-                dateS: mini.get("dateS").getFormValue(),
-                dateE: mini.get("dateE").getFormValue()
-            });
-        }
-        function onActionRenderer2(e) {
-            var grid = e.sender;
-            var record = e.record;
-            var uid = record.Id;
-            var rowIndex = e.rowIndex;
-
-            var s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>';
-            return s;
-        }
-        function viewRow(id) {
-            mini.open({
-                url: "/Query/PurchaseView/" + id + "?readonly=true",
-                title: "采购查看",
-                iconCls: "icon-cart",
-                allowResize: false,
-                width: 700,
-                height: 480,
-                onload: function () {
-                },
-                ondestroy: function (action) {
-
-                    grid.reload();
+            var tree = mini.get("tree1");
+            tree.on("nodeselect", function (e) {
+                if (e.isLeaf) {
+                    search();
+                } else {
+                    grid.setData([]);
+                    grid.setTotalCount(0);
                 }
             });
-        }
-        function print() {
-            var oldHeight = $("#printArea .mini-grid-body").first().height();
-            $("#printArea .mini-grid-body").first().height(($("#printArea tr").size() - 7) * 23)
-            $("#printArea").printArea();
-            $("#printArea .mini-grid-body").first().height(oldHeight);
-        }
-    </script>
 
+            function doSearch() {
+                grid.load({
+                    //EnCode: tree.getSelectedNode().Id,
+                    dateS: mini.get("dateS").getValue(),
+                    dateE: mini.get("dateE").getValue()
+                });
+                //            if (tree.getSelectedNode()) {
+                //                grid.load({
+                //                    //EnCode: tree.getSelectedNode().Id,
+                //                    dateS: mini.get("dateS").getValue(),
+                //                    dateE: mini.get("dateE").getValue()
+                //                });
+                //            }
+                //            else {
+                //                grid.setData([]);
+                //                grid.setTotalCount(0);
+                //            }
+            }
+
+            function showSearchWindow() {
+                var win = mini.get("searchWindow");
+                win.show();
+            }
+            function advSearch() {
+                var frm = new mini.Form("frmAdv");
+                grid.load(frm.getData(true));
+                var win = mini.get("searchWindow");
+                win.hide();
+            }
+            function search() {
+                grid.load({
+                    //EnCode: tree.getSelectedNode().Id,
+                    dateS: mini.get("dateS").getFormValue(),
+                    dateE: mini.get("dateE").getFormValue()
+                });
+            }
+            function onActionRenderer2(e) {
+                var grid = e.sender;
+                var record = e.record;
+                var uid = record.Id;
+                var rowIndex = e.rowIndex;
+
+                var s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>';
+                return s;
+            }
+            function viewRow(id) {
+                mini.open({
+                    url: "/Query/PurchaseView/" + id + "?readonly=true",
+                    title: "采购查看",
+                    iconCls: "icon-cart",
+                    allowResize: false,
+                    width: 700,
+                    height: 480,
+                    onload: function () {
+                    },
+                    ondestroy: function (action) {
+
+                        grid.reload();
+                    }
+                });
+            }
+            function print() {
+                var oldHeight = $("#printArea .mini-grid-body").first().height();
+                $("#printArea .mini-grid-body").first().height(($("#printArea tr").size() - 7) * 23)
+                $("#printArea").printArea();
+                $("#printArea .mini-grid-body").first().height(oldHeight);
+            }
+        </script>
 </body>
 </html>
