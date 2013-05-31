@@ -50,6 +50,8 @@
     <property name="ExamineDate" column="examine_date" type="System.DateTime" />
     <property name="OperatorDate" column="operator_date" type="System.DateTime" />
     <property name="Remark" column="remark" type="string" />
+    <property name="ProposePrice" column="propose_price" type="decimal" />
+    <property name="PriceHistory" column="price_history" type="string" />
   </class>
 </hibernate-mapping>
 

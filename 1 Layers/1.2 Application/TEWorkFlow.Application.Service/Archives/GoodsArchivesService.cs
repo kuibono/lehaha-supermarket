@@ -48,6 +48,16 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public void Update(GoodsArchives entity)
         {
+            var oldEntity = EntityRepository.Get(entity.Id);
+            if (entity.PurchasePrice != oldEntity.PurchasePrice)
+            {
+                if (string.IsNullOrEmpty(entity.PriceHistory)==false)
+                {
+                    entity.PriceHistory += ",";
+                }
+                entity.PriceHistory += string.Format("{0}|{1}", oldEntity.PurchasePrice, oldEntity.OperatorDate);
+            }
+            entity.OperatorDate = DateTime.Now;
             EntityRepository.Update(entity);
         }
 

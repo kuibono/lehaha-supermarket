@@ -234,7 +234,12 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string Remark { get; set; }
 
+        /// <summary>
+        /// 建议价格
+        /// </summary>
+        public virtual decimal? ProposePrice { get; set; }
 
+        public virtual string PriceHistory { get; set; }
 
 
         public virtual string GbName { get; set; }
