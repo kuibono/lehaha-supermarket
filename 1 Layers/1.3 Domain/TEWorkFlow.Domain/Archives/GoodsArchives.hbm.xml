@@ -52,6 +52,7 @@
     <property name="Remark" column="remark" type="string" />
     <property name="ProposePrice" column="propose_price" type="decimal" />
     <property name="PriceHistory" column="price_history" type="string" />
+    <property name="BackupCode" column="backup_code" type="string" />
   </class>
 </hibernate-mapping>
 
