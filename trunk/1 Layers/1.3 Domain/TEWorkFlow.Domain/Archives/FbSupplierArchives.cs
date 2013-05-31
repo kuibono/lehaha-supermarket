@@ -184,6 +184,21 @@ namespace TEWorkFlow.Domain.Archives
         public virtual string Remark { get; set; }
 
 
+
+
+
+
+        public virtual int GoodsCount { get; set; }
+
+        public virtual string TreeDisplayText
+        {
+            get
+            {
+                return string.Format("{0}({1})", SupName, GoodsCount);
+            }
+        }
+
+
         public virtual string SupTypeName { get; set; }
 
         protected override void Validate()
