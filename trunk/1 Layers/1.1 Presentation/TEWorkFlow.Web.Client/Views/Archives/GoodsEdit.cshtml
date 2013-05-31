@@ -80,21 +80,18 @@
             大类:
         </td>
         <td>
-            @*<input name="GbCode" value="@Model.GbCode" class="mini-textbox" required="true"/>*@
             <input name="GbCode" value="@Model.GbCode" id="GbCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGbCodeChanged" url="/category/GetFbPaGoodsGb/" showNullItem="true"  required="true"/>
         </td>
         <td>
             中类:
         </td>
         <td>
-            @*<input name="GmCode" value="@Model.GmCode" class="mini-textbox" required="true"/>*@
             <input name="GmCode" value="@Model.GmCode" id="GmCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGmCodeChanged" url="/Category/GetFbPaGoodsGm/" showNullItem="true"  required="true" />
         </td>
         <td>
             小类:
         </td>
         <td>
-            @*<input name="GsCode" value="@Model.GsCode" class="mini-textbox" required="true"/>*@
             <input name="GsCode" value="@Model.GsCode" id="GsCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGsCodeChanged" url="/Category/GetFbPaGoodsGs/" showNullItem="true"  required="true" />
         </td>
     </tr>
@@ -103,7 +100,6 @@
             细类:
         </td>
         <td>
-            @*<input name="GlCode" value="@Model.GlCode" class="mini-textbox" required="true"/>*@
             <input name="GlCode" value="@Model.GlCode" id="GlCode" class="mini-combobox" textField="text" valueField="id" url="/Category/GetFbPaGoodsGl/" showNullItem="true"  required="true" />
         </td>
         <td>
@@ -124,7 +120,6 @@
             供货商:
         </td>
         <td>
-            @*<input name="SupCode" value="@Model.SupCode" class="mini-textbox" required="true"/>*@
             <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td>
@@ -271,16 +266,23 @@
             含税进价:
         </td>
         <td>
-            <input name="PurchasePrice" value="@Model.PurchasePrice" class="mini-spinner" decimalPlaces="2" />
+            <input name="PurchasePrice" value="@Model.PurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
+        <td>
+            建议零售价:
+        </td>
+        <td>
+            <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
+        </td>
+            </tr>
+    <tr>
         <td>
             不含税进价:
         </td>
         <td>
-            <input name="NontaxPurchasePrice" value="@Model.NontaxPurchasePrice" class="mini-spinner" decimalPlaces="2"/>
+            <input name="NontaxPurchasePrice" value="@Model.NontaxPurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999"/>
         </td>
-    </tr>
-    <tr>
+
         <td>
             平均成本:
         </td>
@@ -293,14 +295,15 @@
         <td>
             <input name="NontaxAvgCost" value="@Model.NontaxAvgCost" class="mini-spinner" decimalPlaces="2" />
         </td>
+            </tr>
+    <tr>
         <td>
             毛利率:
         </td>
         <td>
             <input name="GrossRate" value="@Model.GrossRate" class="mini-spinner" decimalPlaces="2" />
         </td>
-    </tr>
-    <tr>
+
         <td>
             销售价:
         </td>
@@ -313,14 +316,15 @@
         <td>
             <input name="VipPrice" value="@Model.VipPrice" class="mini-spinner" decimalPlaces="2" />
         </td>
+            </tr>
+    <tr>
         <td>
             批发价:
         </td>
         <td>
             <input name="TradePrice" value="@Model.TradePrice" class="mini-spinner" decimalPlaces="2" />
         </td>
-    </tr>
-    <tr>
+
         <td>
             营业员提成:
         </td>
@@ -333,38 +337,35 @@
         <td>
             <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" />
         </td>
+            </tr>
+    <tr>
         <td>
             操作员:
         </td>
         <td>
-            @*<input name="Operator" value="@Model.Operator" class="mini-textbox" required="true"/>*@
             <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
-    </tr>
-    <tr>
         <td>
             审核人:
         </td>
         <td>
-            @*<input name="Assessor" value="@Model.Assessor" class="mini-textbox" required="true"/>*@
             <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
         <td>
             是否审核:
         </td>
         <td>
-            @*<input name="IfExamine" value="@Model.IfExamine" class="mini-textbox" required="true"/>*@
             <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
             </div>
         </td>
+            </tr>
+    <tr>
         <td>
             审核时间:
         </td>
         <td>
             <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
         </td>
-    </tr>
-    <tr>
         <td>
             操作时间:
         </td>
@@ -373,19 +374,21 @@
         </td>
         <td>
         </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
     </tr>
-    <tr>
+     <tr>
         <td>
             备注:
         </td>
         <td colspan="5">
             <input name="Remark" value="@Model.Remark" class="mini-textarea" width="100%"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            历史进价:
+        </td>
+        <td colspan="5">
+            <input name="PriceHistory" value="@Model.PriceHistory" class="mini-textarea" width="100%" enabled="false"/>
         </td>
     </tr>
 </table>
