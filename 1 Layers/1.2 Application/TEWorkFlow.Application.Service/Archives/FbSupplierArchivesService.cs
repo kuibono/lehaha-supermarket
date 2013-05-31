@@ -247,8 +247,12 @@ namespace TEWorkFlow.Application.Service.Archives
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             result = result.Select(p => {
-                var item = p;
-                p.SupName = p.SupName + "(" + goods.Count(x=>x.SupCode==p.Id) + ")";
+                var item = p; 
+                if (p.SupName.EndsWith(")") == false)
+                {
+                    //p.SupName = p.SupName + "(" + goods.Count(x => x.SupCode == p.Id) + ")";
+                    p.GoodsCount = goods.Count(x => x.SupCode == p.Id);
+                }
                 return item;
             }).ToList();
             FillFbPaSupType(result);
