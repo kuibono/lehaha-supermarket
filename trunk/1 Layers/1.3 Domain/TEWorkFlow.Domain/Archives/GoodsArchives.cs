@@ -241,6 +241,8 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string PriceHistory { get; set; }
 
+        public virtual string BackupCode { get; set; }
+
 
         public virtual string GbName { get; set; }
 

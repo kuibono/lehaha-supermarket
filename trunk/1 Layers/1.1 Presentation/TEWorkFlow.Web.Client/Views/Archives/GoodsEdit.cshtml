@@ -123,10 +123,10 @@
             <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td>
-            经营方式:
+            备用码:
         </td>
         <td>
-            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
+            <input name="BackupCode" value="@Model.BackupCode" class="mini-textbox"/>
         </td>
         <td>
             扣率:
@@ -274,7 +274,7 @@
         <td>
             <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             不含税进价:
@@ -282,7 +282,6 @@
         <td>
             <input name="NontaxPurchasePrice" value="@Model.NontaxPurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999"/>
         </td>
-
         <td>
             平均成本:
         </td>
@@ -295,7 +294,7 @@
         <td>
             <input name="NontaxAvgCost" value="@Model.NontaxAvgCost" class="mini-spinner" decimalPlaces="2" />
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             毛利率:
@@ -303,7 +302,6 @@
         <td>
             <input name="GrossRate" value="@Model.GrossRate" class="mini-spinner" decimalPlaces="2" />
         </td>
-
         <td>
             销售价:
         </td>
@@ -316,7 +314,7 @@
         <td>
             <input name="VipPrice" value="@Model.VipPrice" class="mini-spinner" decimalPlaces="2" />
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             批发价:
@@ -324,7 +322,6 @@
         <td>
             <input name="TradePrice" value="@Model.TradePrice" class="mini-spinner" decimalPlaces="2" />
         </td>
-
         <td>
             营业员提成:
         </td>
@@ -337,7 +334,7 @@
         <td>
             <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" />
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             操作员:
@@ -358,7 +355,7 @@
             <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
             </div>
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             审核时间:
@@ -373,9 +370,13 @@
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" />
         </td>
         <td>
+            经营方式:
+        </td>
+        <td>
+            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td>
             备注:
         </td>
@@ -383,7 +384,7 @@
             <input name="Remark" value="@Model.Remark" class="mini-textarea" width="100%"/>
         </td>
     </tr>
-@*    <tr>
+    @*    <tr>
         <td>
             历史进价:
         </td>
