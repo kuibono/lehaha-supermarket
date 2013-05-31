@@ -394,6 +394,19 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-goods",
+                ParentId = "query",
+                Url = "/Query/GoodsArchiveList",
+                Windowname = "产品查询",
+                Index = 24,
+                EmployeeVisible = false,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
             
             #endregion
 

@@ -34,6 +34,7 @@ namespace TEWorkFlow.Application.Service.Business
         /// <param name="entitys"></param>
         void Delete(IEnumerable<PcPurchaseManage> entitys);
 
+        void UpdatePurchaseAmount(string id);
 
         SearchResult<PcPurchaseManage> Search(string SupplierId, SearchDtoBase<PcPurchaseManage> c);
 
