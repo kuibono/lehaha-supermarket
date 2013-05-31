@@ -226,6 +226,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
 
             c.entity = s;
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                c.entity.SupCode = Common.MyEnv.CurrentSupplier.Id;
+            }
             return Json(GoodsArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
