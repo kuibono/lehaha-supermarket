@@ -284,19 +284,11 @@
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false">
     <div property="columns">
-        <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
-            产品 
-            <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupWidth="400"
-                valuefield="Id" url="/Archives/GetAllGoodsArchive">
-                <div property="columns">
-                    <div header="店内码" field="Id" width="30">
-                    </div>
-                    <div header="名称" field="GoodsName">
-                    </div>
-                    <div header="条形码" field="GoodsBarCode">
-                    </div>
-                </div>
-            </div>
+        <div field="GoodsName" headeralign="center">
+            产品
+        </div>
+        <div field="Id" headeralign="center">
+            内码
         </div>
         <div field="PurchaseQty" width="40"  headeralign="center" align="center" allowsort="true">
             数量
@@ -314,7 +306,5 @@
         <div field="GoodsBarCode"  headeralign="center" align="center" allowsort="true">
             条码
         </div>
-        <div width="40" field="IsFree" headeralign="center"  headeralign="center" align="center" renderer="onBoolRenderer">
-            是否赠品</div>
     </div>
 </div>
