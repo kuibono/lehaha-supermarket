@@ -41,7 +41,10 @@
             grid.cancelEdit();
             grid.beginEditRow(row);
             //$(".mini-grid-newRow input.mini-buttonedit-input").eq(0).click();
-            $(".mini-grid-newRow input.mini-buttonedit-input").eq(0).focus();
+            setTimeout(function () {
+                $(".mini-grid-newRow input.mini-buttonedit-input").eq(0).focus();
+            }, 200);
+            
         }
         function editRow(row_uid) {
             if (grid.isEditing()) {
