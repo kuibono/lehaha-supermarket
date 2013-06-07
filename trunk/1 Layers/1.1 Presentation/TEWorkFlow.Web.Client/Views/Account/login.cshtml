@@ -6,18 +6,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>系统登录</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
     <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/reset.css")" />
     <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/controls.css")" />
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.0.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/basic.js")"></script>
+    
 
     <style type="text/css">
         #login
         {
-            width: 300px;
             position: absolute;
             top: 0;
-            left: 536px;
+            left: 310px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
         }
         #float
         {
@@ -166,65 +171,12 @@
         <img src="@Url.Content("~/Images/jp-mountain@2x.jpg")" />
     </div>
     <div id="float">
-        <div id="text">
-            <h1>
-                感谢使用本系统</h1>
-            <p>
-                ............<br />
-                ............<br />
-                ..............
-            </p>
-        </div>
-        @using (Html.BeginForm())
-        {
         <div class="panel" id="login">
-            <h2>
-                <a href="javascript:setAvtive(0);" id="tbUser0" class="active">员工登录</a>
-                <a href="javascript:setAvtive(1);" id="tbUser1">供货商登录</a>
-                <input type="hidden" id="logintype" name="logintype" value="0" />
-            </h2>
-            <div class="textrow">
-                @Html.TextBoxFor(m => m.UserName, new { maxlength = 20, @class = "textbox", @id = "t1" })
-                <label class="placeholder" for="t1">
-                    请输入您的账号</label>
-            </div>
-            <div class="textrow">
-                @Html.PasswordFor(m => m.Password, new { maxlength = 20, @class = "textbox", @id = "Text1" })
-                <label class="placeholder" for="Text1">
-                    请输入密码</label>
-            </div>
-            <div class="textrow">
-                <table>
-                    <tr>
-                        <td style="width: 220px;">
-                            @Html.TextBoxFor(m => m.VCode, new { maxlength = 20, @class = "textbox", @id = "Text2" })
-                            <label class="placeholder" for="Text2">
-                                请输入验证码</label>
-                        </td>
-                        <td>
-                            <img title="点击刷新验证码" alt="点击刷新验证码" src="@Url.Content("~/Account/vcode")" onclick="this.src='@Url.Content("~/Account/vcode")?'+Math.random()" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="textrow">
-                <div id="validation">@Html.ValidationSummary(true, "")</div>
-                <button type="submit" class="btn" id="sub">
-                    登录</button>
-            </div>
+            <a href="SLogin" class="mini-button mini-button-iconTop" iconCls="icon-car" plain="true">供应商登录</a>
+            <a href="ELogin" class="mini-button mini-button-iconTop" iconCls="icon-user" plain="true">员工登录</a>
         </div>
-        }
     </div>
-    <div id="footer">
-        <ul>
-            <li><a href="/">Index</a></li>
-            <li><a href="/">Website</a></li>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/">Twitter</a></li>
-            <li><a href="/">FaceBook</a></li>
-            <li>Copyright &copy; kuibono 2012</li>
-        </ul>
-    </div>
+    
     
 </body>
 </html>
