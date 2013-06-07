@@ -110,10 +110,6 @@
       <Project>{5B1E28FD-70C3-4511-A801-F3ADFBEAF8E3}</Project>
       <Name>TEWorkFlow.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Authorization\NSH.Authorization.csproj">
-      <Project>{A9D6CB1B-707E-4F82-A6F3-96A978E01BA2}</Project>
-      <Name>NSH.Authorization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Core\NSH.Core.csproj">
       <Project>{DDD1A0BF-884A-4F37-8186-04B30DBAEC94}</Project>
       <Name>NSH.Core</Name>

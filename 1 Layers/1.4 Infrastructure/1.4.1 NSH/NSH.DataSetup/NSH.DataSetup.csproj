@@ -48,10 +48,6 @@
       <Project>{EE525669-C178-469E-BFB0-38E18900A1D3}</Project>
       <Name>TEWorkFlow.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NSH.Authorization\NSH.Authorization.csproj">
-      <Project>{A9D6CB1B-707E-4F82-A6F3-96A978E01BA2}</Project>
-      <Name>NSH.Authorization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NSH.Core\NSH.Core.csproj">
       <Project>{DDD1A0BF-884A-4F37-8186-04B30DBAEC94}</Project>
       <Name>NSH.Core</Name>
