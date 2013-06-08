@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -864,6 +865,7 @@
     <Content Include="Views\Account\ELogin.cshtml" />
     <Content Include="Views\Query\GoodsArchiveList.cshtml" />
     <Content Include="Views\Query\ViewGoods.cshtml" />
+    <Content Include="Views\Test\Blank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

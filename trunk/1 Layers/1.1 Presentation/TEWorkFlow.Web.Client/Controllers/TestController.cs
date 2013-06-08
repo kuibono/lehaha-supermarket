@@ -70,5 +70,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Blank()
+        {
+            return View();
+        }
     }
 }
