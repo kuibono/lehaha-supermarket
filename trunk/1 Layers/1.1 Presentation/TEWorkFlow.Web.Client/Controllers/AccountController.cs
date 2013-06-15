@@ -459,42 +459,67 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
-
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-cart",
-                Id = "query-purchase",
+                Id = "report-branch-purchase-sup",
                 ParentId = "query",
-                Url = "/Query/PurchaseQuery",
-                Windowname = "超市订单",
-                Index = 21,
-                SupplierVisible = true
+                Url = "/Report/BranchPurchase",
+                Windowname = "分店订单查询统计",
+                Index = 31,
+                SupplierVisible = true,
+                EmployeeVisible=false
             };
             SysmodulecontentService.Create(m1);
 
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-cart",
-                Id = "query-branch-order-purchase",
-                ParentId = "query",
-                Url = "/Query/BranchPurchaseOrder",
-                Windowname = "分店订货单据",
-                Index = 21,
-                SupplierVisible = true
-            };
-            SysmodulecontentService.Create(m1);
-
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart",
-                Id = "query-branch-order-goods",
+                Id = "report-branch-goods-sup",
                 ParentId = "query",
                 Url = "/Query/BranchPurchaseGoods",
-                Windowname = "分店订货商品",
-                Index = 22,
-                SupplierVisible = true
+                Windowname = "分店商品统计",
+                Index = 32,
+                SupplierVisible = true,
+                EmployeeVisible = false
             };
             SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "query-purchase",
+            //    ParentId = "query",
+            //    Url = "/Query/PurchaseQuery",
+            //    Windowname = "超市订单",
+            //    Index = 21,
+            //    SupplierVisible = true
+            //};
+            //SysmodulecontentService.Create(m1);
+
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "query-branch-order-purchase",
+            //    ParentId = "query",
+            //    Url = "/Query/BranchPurchaseOrder",
+            //    Windowname = "分店订货单据",
+            //    Index = 21,
+            //    SupplierVisible = true
+            //};
+            //SysmodulecontentService.Create(m1);
+
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "query-branch-order-goods",
+            //    ParentId = "query",
+            //    Url = "/Query/BranchPurchaseGoods",
+            //    Windowname = "分店订货商品",
+            //    Index = 33,
+            //    SupplierVisible = true,
+            //    EmployeeVisible = false
+            //};
+            //SysmodulecontentService.Create(m1);
 
             //m1 = new Sysmodulecontent()
             //{

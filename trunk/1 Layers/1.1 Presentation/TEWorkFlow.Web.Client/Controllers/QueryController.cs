@@ -42,18 +42,26 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(PcPurchaseManageService.SearchReportByBranch(dates, datee, branch), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult SearchSupplierOrder(string supCode, DateTime? dates, DateTime? datee)
+        public JsonResult SearchSupplierOrder(string supCode,string bCode, DateTime? dates, DateTime? datee)
         {
-            return Json(PcPurchaseManageService.SearchReportBySupplier(dates, datee, supCode), JsonRequestBehavior.AllowGet);
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                supCode = Common.MyEnv.CurrentSupplier.Id;
+            }
+            return Json(PcPurchaseManageService.SearchReportBySupplier(dates, datee, supCode,bCode), JsonRequestBehavior.AllowGet);
         }
         public ActionResult BranchPurchaseGoods()
         {
             return View();
         }
 
-        public JsonResult SearchBranchPurchaseGoods(string branch, DateTime? dates, DateTime? datee)
+        public JsonResult SearchBranchPurchaseGoods(string branch,string SupCode, DateTime? dates, DateTime? datee)
         {
-            return Json(PcPurchaseManageService.SearchForPurchaseGoods(dates, datee, branch), JsonRequestBehavior.AllowGet);
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                SupCode = Common.MyEnv.CurrentSupplier.Id;
+            }
+            return Json(PcPurchaseManageService.SearchForPurchaseGoods(dates, datee, branch, SupCode), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult BranchPurchaseSupplier()
