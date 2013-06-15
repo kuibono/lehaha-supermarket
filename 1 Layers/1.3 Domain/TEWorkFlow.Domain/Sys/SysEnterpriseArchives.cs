@@ -53,6 +53,9 @@ namespace TEWorkFlow.Domain.Sys
         /// </summary>
         public virtual string LastVersion { get; set; }
 
+
+        public virtual string TempString { get; set; }
+
         protected override void Validate()
         {
         }

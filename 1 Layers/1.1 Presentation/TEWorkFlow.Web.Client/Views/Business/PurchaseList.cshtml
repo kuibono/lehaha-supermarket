@@ -55,6 +55,26 @@
                 }
             });
         }
+        function viewItem(id) {
+            var eUrl = "/Query/PurchaseView/" + id + "?bCode=";
+            if (tree.getSelectedNode()) {
+                eUrl += tree.getSelectedNode().Id;
+            }
+            mini.open({
+                url: eUrl,
+                title: "订单查看",
+                iconCls: "icon-cart",
+                allowResize: false,
+                width: 760,
+                height: 480,
+                onload: function () {
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
         function deleteItem(id) {
             $.ajax({
                 url: "/Business/PurchaseDelete",
@@ -66,6 +86,23 @@
                 }
             });
         }
+        function onActionColRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+            if (record.IfExamine) {
+                if (record.IfExamine == "true") {
+                    var s = ' <a class="Edit_Button" href="javascript:viewItem(\'' + uid + '\')" >查看</a>'
+                         + ' <a class="Edit_Button" href="javascript:viewItem(\'' + uid + '\')" >打印</a>';
+                    return s;
+                }
+            }
+
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            return s;
+        }
     </script>
 }
 <div class="mini-splitter" style="width: 100%; height: 100%;">
@@ -86,7 +123,7 @@
                     <tr>
                         <td style="width: 100%;">
                             <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
-                            <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
+                            @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>*@
                             <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
                                 筛选</a> <span class="separator"></span>
                         </td>
@@ -120,7 +157,7 @@
                     预计到货日期</div>
                 <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
                     审核</div>
-                <div name="action" width="30" headeralign="center" align="center" renderer="onActionRenderer"
+                <div name="action" width="30" headeralign="center" align="center" renderer="onActionColRenderer"
                     cellstyle="padding:0;">
                     管理</div>
             </div>

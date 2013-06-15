@@ -21,6 +21,7 @@ namespace TEWorkFlow.Application.Service.Business
         [Transaction]
         public string Create(PcPurchaseDetail entity)
         {
+            entity.AddTime = DateTime.Now;
             return EntityRepository.Save(entity);
         }
 

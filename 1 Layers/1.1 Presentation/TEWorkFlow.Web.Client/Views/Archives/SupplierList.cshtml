@@ -70,6 +70,27 @@
                 }
             });
         }
+        function exame(obj, id, old) {
+            $.ajax({
+                url: "/Archives/SupplierExame/" + id,
+                success: function (j) {
+                    if (j == true) {
+                        if (old == true) {
+                            $(obj).css("color", "red").text("否");
+                        }
+                        else {
+                            $(obj).css("color", "green").text("是");
+                        }
+                    }
+                    else {
+                        alert("失败")
+                    }
+                },
+                error: function () {
+                    alert("失败")
+                }
+            });
+        }
     </script>
 }
 <div id="datagrid1" class="mini-datagrid" url="/Archives/SearchSupplierArchiveList"

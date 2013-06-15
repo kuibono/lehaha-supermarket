@@ -1,12 +1,183 @@
 ﻿@{
     ViewBag.Title = "采购管理";
-    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+    Layout = null;
 }
 @model TEWorkFlow.Domain.Business.PcPurchaseManage
-@section script
-{
-    <style type="text/css">
-    </style>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>采购管理</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" method="post">
+    <input name="Id" class="mini-hidden" value="@Model.Id" />
+    <div style="padding-left: 11px; padding-bottom: 5px;">
+        
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 80px;">
+            采购单号:
+        </td>
+        <td style="width: 170px;" colspan="3">
+            <input name="PcNumber" value="@Model.Id" class="mini-textbox"  enabled="false"/>
+        </td>
+        <td style="width: 60px;">
+            供货商:
+        </td>
+        <td style="width: 170px;">
+            <input id="EnCode" name="EnCode" value="@Model.EnCode" enabled="false" class="mini-hidden" required="true"/>
+            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" enabled="false" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            门店:
+        </td>
+        <td style="width: 170px;">
+            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
+        </td>
+        <td style="width: 60px;">
+            采购类型:
+        </td>
+        <td style="width: 170px;">
+            <input name="PcType" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PcType" value="@Model.PcType"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
+        </td>
+        <td style="width: 60px;">
+            采购日期:
+        </td>
+        <td style="width: 170px;">
+            <input name="PurchaseDate" value="@Model.PurchaseDate" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;">
+            是否审核:
+        </td>
+        <td align="left" style="padding-left: 2px;">
+            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
+            </div>
+        </td>
+        <td style="width: 60px;">
+            采购形式:
+        </td>
+        <td style="width: 170px;">
+            <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 300px;" idfield="Id"
+    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
+    showpager="false" ondrawsummarycell="onDrawSummaryCell" showSummaryRow="true">
+    <div property="columns">
+        <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
+            产品 
+            <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupWidth="400"
+                valuefield="Id" url="/Archives/GetAllGoodsArchive" onvaluechanged="onValueChanged">
+                <div property="columns">
+                    <div header="条形码" field="GoodsBarCode">
+                    </div>
+                    <div header="店内码" field="Id" width="30">
+                    </div>
+                    <div header="名称" field="GoodsName">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div field="PurchaseQty" width="70" headeralign="center" align="center" allowsort="true">
+            数量
+            <input property="editor" class="mini-spinner" style="width: 100%;" required="true"
+                minvalue="1" maxvalue="5000" />
+        </div>
+        <div field="PurchasePrice" width="60" headeralign="center" align="center" allowsort="true"
+            datatype="currency" currencyunit="￥">
+            单价
+        </div>
+        <div field="PurchaseMoney" width="60" headeralign="center" align="center" allowsort="true"
+            datatype="currency" currencyunit="￥">
+            金额
+        </div>
+        <div field="GoodsBarCode" width="80" headeralign="center" align="center" allowsort="true">
+            条码
+        </div>
+        <div type="checkboxcolumn" field="IsFree" headeralign="center">
+            是否赠品</div>
+        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
+            cellstyle="padding:0;">
+            操作</div>
+    </div>
+</div>
+
+    </div>
+    <div style="text-align: center; padding: 0 10px 10px 10px;">
+        <a class="mini-button" onclick="onOk" style="width: 60px; margin-right: 20px;">确定</a>&nbsp;
+        <a class="mini-button" onclick="onCancel" style="width: 60px;margin-right: 20px;">取消</a>&nbsp;
+        <a class="mini-button" onclick="newRow" style="width: 60px;">增加</a>
+    </div>
+    </form>
+    <script type="text/javascript">
+        var entityId = "201306072049304346697";
+        mini.parse();
+
+        var form = new mini.Form("form1");
+
+        function GetData() {
+            var o = form.getData();
+            return o;
+        }
+        function CloseWindow(action) {
+            if (action == "close" && form.isChanged()) {
+                if (confirm("数据被修改了，是否先保存？")) {
+                    return false;
+                }
+            }
+            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+            else window.close();
+        }
+        function onOk(e) {
+            SaveData();
+        }
+        function onCancel(e) {
+            CloseWindow("cancel");
+        }
+        function onDrawSummaryCell(e) {
+            var result = e.result;
+            var grid = e.sender;
+            if (e.field == "GoodsCode") {
+                e.cellHtml = "数量："+grid.totalCount;
+            }
+            if (e.field == "PurchaseQty") {
+                try{
+                    var sum = 0;
+                    for (var i = 0; i < result.data.length; i++) {
+                        sum += parseInt(result.data[i].PurchaseQty);
+                    }
+                    e.cellHtml = "总数：" + sum;
+                }
+                catch(e){}
+            }
+            if (e.field == "PurchasePrice") {
+                e.cellHtml = "";
+            }
+            if (e.field == "PurchaseMoney") {
+                try {
+                    var sum = 0;
+                    for (var i = 0; i < result.data.length; i++) {
+                        sum += parseInt(result.data[i].PurchaseMoney);
+                    }
+                    e.cellHtml = "总额：￥" + sum;
+                }
+                catch (e) { }
+            }
+        }
+    </script>
+    
     <script type="text/javascript">
         $(function () {
             $(".mini-textbox").each(function () {
@@ -28,8 +199,7 @@
             var uid = record._uid;
             var rowIndex = e.rowIndex;
 
-            var s = '<a class="New_Button" href="javascript:newRow()">增加</a>&nbsp;'
-                    + ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>&nbsp;'
                     + ' <a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">删除</a>';
 
             if (grid.isEditingRow(record)) {
@@ -46,15 +216,17 @@
                 grid.cancelEdit();
             }
             var row = {};
-            grid.addRow(row, 0);
+            grid.addRow(row, grid.totalCount);
 
             grid.cancelEdit();
             grid.beginEditRow(row);
             //$(".mini-grid-newRow input.mini-buttonedit-input").eq(0).click();
             setTimeout(function () {
-                $(".mini-grid-newRow input.mini-buttonedit-input").eq(0).focus();
+                var num = $(".mini-grid-newRow input.mini-buttonedit-input").eq(0)
+                num.focus();
+                window.scrollTo(0, 99999);
             }, 200);
-            
+
         }
         function editRow(row_uid) {
             if (grid.isEditing()) {
@@ -90,7 +262,7 @@
             }
         }
 
-        function updateRow(row_uid,addnew) {
+        function updateRow(row_uid, addnew) {
             var row = grid.getRowByUID(row_uid);
             if (grid.isValid() == false) {
                 return false;
@@ -115,11 +287,6 @@
                 type: "post",
                 success: function (text) {
                     grid.load("", newRow);
-                    //                    if (addnew && addnew == true) {
-                    //                        addnew();
-                    //                    } else {
-                    //                        grid.reload();
-                    //                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.responseText);
@@ -128,8 +295,8 @@
 
         }
         var issaving = false;
-        
-        
+
+
         function SaveData() {
 
             var form = new mini.Form("form1");
@@ -213,7 +380,7 @@
                 if (grid.isEditing()) {
                     //grid.commitEdit();
                     if (grid.getChanges().length > 0) {//&& grid.getChanges()[0].GoodsCode != undefined
-                        updateRow("",true);
+                        updateRow("", true);
                     }
                 }
                 else {
@@ -236,156 +403,11 @@
             }
         };
         function onValueChanged(e) {
-            $(".mini-grid-newRow input.mini-buttonedit-input").eq(1).focus();
+            var num = $(".mini-grid-newRow input.mini-buttonedit-input").eq(1);
+            num.focus();
+            document.getElementById(num.prop("id")).setSelectionRange(0, num.val().length);
         }
     </script>
-}
-<table class="edittable" border="1" cellpadding="0" cellspacing="0">
-    <tr>
-        <td style="width: 80px;">
-            采购单号:
-        </td>
-        <td style="width: 170px;">
-            <input name="PcNumber" value="@Model.Id" class="mini-textbox"  enabled="false"/>
-        </td>
-        <td style="width: 60px;">
-            供货商:
-        </td>
-        <td style="width: 170px;">
-            <input id="EnCode" name="EnCode" value="@Model.EnCode" enabled="false" class="mini-hidden" required="true"/>
-            <input name="SupCode" value="@Model.SupCode" text="@Model.SupCode" readonly="readonly" class="mini-autocomplete" require="true" valueField="SupName" displayField="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged"  required="true"/>
-        </td>
-        <td style="width: 60px;">
-            采购形式:
-        </td>
-        <td style="width: 170px;">
-            <input name="PcForm" value="@Model.PcForm" class="mini-textbox"/>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 60px;">
-            门店:
-        </td>
-        <td style="width: 170px;">
-            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
-        </td>
-        <td style="width: 60px;">
-            采购类型:
-        </td>
-        <td style="width: 170px;">
-            <input name="PcType" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PcType" value="@Model.PcType"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
-        </td>
-        <td style="width: 60px;">
-            采购日期:
-        </td>
-        <td style="width: 170px;">
-            <input name="PurchaseDate" value="@Model.PurchaseDate" class="mini-datepicker"/>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 60px;">
-            预计到货日期:
-        </td>
-        <td style="width: 170px;">
-            <input name="ExpectArriveDate" value="@Model.ExpectArriveDate" class="mini-datepicker"/>
-        </td>
-        <td style="width: 60px;">
-            是否验收:
-        </td>
-        <td align="left" style="padding-left: 2px;">
-            <div name="IfCheck" class="mini-checkbox" checked="@Model.IfCheck" text="验收">
-            </div>
-        </td>
-        <td style="width: 60px;">
-            验收日期:
-        </td>
-        <td style="width: 170px;">
-            <input name="CheckDate" value="@Model.CheckDate" class="mini-datepicker"/>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 60px;">
-            创建时间:
-        </td>
-        <td style="width: 170px;">
-            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker"/>
-        </td>
-        <td style="width: 60px;">
-            操作员:
-        </td>
-        <td style="width: 170px;">
-            @* <input name="Operator" value="@Model.Operator" class="mini-textbox"/>*@
-            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
-        </td>
-        <td style="width: 60px;">
-            @*审核人:*@
-        </td>
-        <td style="width: 170px;">
-            @*<input name="Assessor" value="@Model.Assessor" class="mini-textbox"/>*@ @*<input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>*@
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 60px;">
-            是否审核:
-        </td>
-        <td align="left" style="padding-left: 2px;">
-            @*<input name="IfExamine" value="@Model.IfExamine" class="mini-textbox"/>*@
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
-            </div>
-        </td>
-        <td style="width: 60px;">
-            开始时间:
-        </td>
-        <td style="width: 170px;">
-            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
-        </td>
-        <td style="width: 60px;">
-            结束时间:
-        </td>
-        <td style="width: 170px;">
-            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker"/>
-        </td>
-    </tr>
-</table>
-<div id="datagrid1" class="mini-datagrid" style="width: 100%; height: 250px;" idfield="Id"
-    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
-    showpager="false">
-    <div property="columns">
-        <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
-            产品 @*<input property="editor" class="mini-buttonedit" onbuttonclick="onGoodsCodeButtonEdit"
-                style="width: 100%;" required="true" />*@
-            <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupWidth="400"
-                valuefield="Id" url="/Archives/GetAllGoodsArchive" onvaluechanged="onValueChanged">
-                <div property="columns">
-                    <div header="条形码" field="GoodsBarCode">
-                    </div>
-                    <div header="店内码" field="Id" width="30">
-                    </div>
-                    <div header="名称" field="GoodsName">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div field="PurchaseQty" width="60" headeralign="center" align="center" allowsort="true">
-            数量
-            <input property="editor" class="mini-spinner" style="width: 100%;" required="true"
-                minvalue="1" maxvalue="5000" />
-        </div>
-        <div field="PurchasePrice" width="60" headeralign="center" align="center" allowsort="true"
-            datatype="currency" currencyunit="￥">
-            单价
-        </div>
-        <div field="PurchaseMoney" width="60" headeralign="center" align="center" allowsort="true"
-            datatype="currency" currencyunit="￥">
-            金额
-        </div>
-        <div field="GoodsBarCode" width="80" headeralign="center" align="center" allowsort="true">
-            条码
-        </div>
-        <div type="checkboxcolumn" field="IsFree" headeralign="center">
-            是否赠品</div>
-        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
-            cellstyle="padding:0;">
-            操作</div>
-    </div>
-</div>
+
+</body>
+</html>

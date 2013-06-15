@@ -149,13 +149,13 @@
             <input name="GoodsSubName" value="@Model.GoodsSubName" class="mini-textbox"/>
         </td>
         <td>
-            拼音码:
+            拼音数字码:
         </td>
         <td>
             <input name="PyCode" value="@Model.PyCode" class="mini-textbox"/>
         </td>
     </tr>
-    <tr>
+@*    <tr>
         <td>
             商品状态:
         </td>
@@ -254,14 +254,14 @@
         <td>
             <input name="UnderCounterCode" value="@Model.UnderCounterCode" class="mini-textbox"/>
         </td>
-    </tr>
+    </tr>*@
     <tr>
-        <td>
+@*        <td>
             核算单位:
         </td>
         <td>
             <input name="CheckUnitCode" value="@Model.CheckUnitCode" class="mini-textbox" />
-        </td>
+        </td>*@
         <td>
             进价:
         </td>
@@ -274,7 +274,7 @@
         <td>
             <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
-    </tr>
+ @*   </tr>
     <tr>
         <td>
             不含税进价:
@@ -334,14 +334,16 @@
         <td>
             <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" />
         </td>
-    </tr>
-    <tr>
+    </tr>*@
+
         <td>
             操作员:
         </td>
         <td>
             <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
+            </tr>
+    <tr>
         <td>
             审核人:
         </td>
@@ -355,26 +357,27 @@
             <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
             </div>
         </td>
-    </tr>
-    <tr>
+
         <td>
             审核时间:
         </td>
         <td>
             <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
         </td>
+            </tr>
+    <tr>
         <td>
             操作时间:
         </td>
         <td>
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" />
         </td>
-        <td>
+@*        <td>
             经营方式:
         </td>
         <td>
             <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
-        </td>
+        </td>*@
     </tr>
     <tr>
         <td>

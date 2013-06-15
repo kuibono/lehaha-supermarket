@@ -79,7 +79,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetPurchaseDetailList(string Id)
         {
-            return Json(PcPurchaseDetailService.GetDetailsByManageId(Id), JsonRequestBehavior.AllowGet);
+            return Json(PcPurchaseDetailService.GetDetailsByManageId(Id).OrderBy(p=>p.AddTime), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SaveGoodsToPurchase(string Id)
@@ -119,6 +119,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             detail.PurchaseMoney = detail.PurchaseQty * detail.SalePrice;
             detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.NontaxPurchasePrice;
 
+            //如果选择赠品，则金额为零
+            if (detail.IsFree)
+            {
+                detail.PurchaseMoney = 0;
+            }
             if (IsAdd)
             {
                 detail.ManageId = Id;

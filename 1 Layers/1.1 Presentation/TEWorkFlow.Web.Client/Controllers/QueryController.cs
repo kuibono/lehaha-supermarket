@@ -42,7 +42,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(PcPurchaseManageService.SearchReportByBranch(dates, datee, branch), JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult SearchSupplierOrder(string supCode, DateTime? dates, DateTime? datee)
+        {
+            return Json(PcPurchaseManageService.SearchReportBySupplier(dates, datee, supCode), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult BranchPurchaseGoods()
         {
             return View();

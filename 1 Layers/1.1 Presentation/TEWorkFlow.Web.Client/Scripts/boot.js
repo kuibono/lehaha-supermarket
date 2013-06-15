@@ -76,6 +76,6 @@ function labelModel(form) {
     }
 }
 function onExamRender(e) {
-    if (e.value == "true") return "<span style='color:green'>是</span>";
-    else return "<span style='color:red'>否</span>";
+    if (e.value == "true") return "<span style='color:green' onclick='exame(this,&#39;" + e.record.Id + "&#39;,true)'>是</span>";
+    else return "<span style='color:red' onclick='exame(this,&#39;" + e.record.Id + "&#39;,false)'>否</span>";
 }

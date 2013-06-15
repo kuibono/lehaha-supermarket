@@ -47,34 +47,11 @@
         </td>
     </tr>
     <tr>
-        <td style="width: 60px">
-            分店类型:
-        </td>
-        <td>
-            <input name="bType" value="@Model.bType" class="mini-textbox" required="true"/>
-            @*<input name="bType" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaClasses" value="@Model.bType"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>*@
-        </td>
-        <td>
-            分店状态:
-        </td>
-        <td>
-            <input name="bState" value="@Model.bState" class="mini-textbox" required="true"/>
-        </td>
         <td>
             所属区域:
         </td>
         <td>
-            @*<input name="AreaCode" value="@Model.AreaCode" class="mini-textbox" required="true"/>*@
             <input name="AreaCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaAreas" value="@Model.AreaCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            所属分类:
-        </td>
-        <td>
-            @*<input name="ClassCode" value="@Model.ClassCode" class="mini-textbox" required="true"/>*@
-            <input name="ClassCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaClasses" value="@Model.ClassCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
         <td>
             负责人:
@@ -114,19 +91,19 @@
             创建时间:
         </td>
         <td>
-            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" required="true"/>
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" required="true"/>
         </td>
         <td>
             操作员:
         </td>
         <td>
-            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..." value="@TEWorkFlow.Web.Client.Common.MyEnv.CurrentEmployee.Id"/>
         </td>
         <td>
             审核人:
         </td>
         <td>
-            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            <input name="Assessor" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/AllUsers" value="@Model.Assessor"  allowInput="false" showNullItem="true" nullItemText="请选择..." value="@TEWorkFlow.Web.Client.Common.MyEnv.CurrentEmployee.Id"/>
         </td>
     </tr>
     <tr>
@@ -141,13 +118,13 @@
             开始时间:
         </td>
         <td>
-            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker" required="true"/>
+            <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker" required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
         </td>
         <td>
             操作时间:
         </td>
         <td>
-            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" required="true"/>
+            <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" required="true" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
         </td>
     </tr>
     <tr>
