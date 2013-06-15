@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Sys;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Sys
 {
@@ -14,6 +15,29 @@ namespace TEWorkFlow.Application.Service.Sys
     {
 
         public IRepositoryGUID<TfDataDownload> EntityRepository { get; set; }
+        public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
+        [Transaction]
+        public void AddDownload(string table, string id)
+        {
+            var branchs = BranchRepository.LinqQuery.ToList();
+            foreach (var branch in branchs)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = branch.Id;
+                d.DownloadKeyvalue = id;
+                d.DownloadTablename = table;
+                EntityRepository.Save(d);
+            }
+
+            EntityRepository.Save(new TfDataDownload
+            {
+                Id = Guid.NewGuid().ToString(),
+                DownloadBranchcode = "0",
+                DownloadKeyvalue = id,
+                DownloadTablename = table
+            });
+        }
 
         [Transaction]
         public string Create(TfDataDownload entity)

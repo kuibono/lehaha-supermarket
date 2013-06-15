@@ -9,6 +9,7 @@ using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Sys;
+using TEWorkFlow.Application.Service.Sys;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -18,7 +19,8 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbSupplierArchives> EntityRepository { get; set; }
         public IRepositoryGUID<FbPaSupType> PaSupTypeRepository { get; set; }
         public IRepositoryGUID<GoodsArchives> GoodsRepository { get; set; }
-        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+        //public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+        public ITfDataDownloadService TfDataDownloadService { get; set; }
 
         [Transaction]
         public string Create(FbSupplierArchives entity)
@@ -27,7 +29,8 @@ namespace TEWorkFlow.Application.Service.Archives
             entity.LoginPass = "111111";
             entity.Id = entity.LoginName;
             string id=EntityRepository.Save(entity);
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_supplier_archives" });
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_supplier_archives" });
+            TfDataDownloadService.AddDownload("fb_supplier_archives", id);
             return id;
         }
 
@@ -50,7 +53,8 @@ namespace TEWorkFlow.Application.Service.Archives
         public void Update(FbSupplierArchives entity)
         {
             EntityRepository.Update(entity);
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_supplier_archives" });
+            TfDataDownloadService.AddDownload("fb_supplier_archives", entity.Id);
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_supplier_archives" });
         }
 
         [Transaction]

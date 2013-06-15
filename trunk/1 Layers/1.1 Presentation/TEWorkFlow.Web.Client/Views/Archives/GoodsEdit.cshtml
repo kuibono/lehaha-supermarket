@@ -175,7 +175,12 @@
             <input name="ArticleNumber" value="@Model.ArticleNumber" class="mini-textbox"/>
         </td>
     </tr>
-    <tr>
+    <tr><td>
+            产地:
+        </td>
+        <td>
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
+        </td>
         <td>
             规格:
         </td>
@@ -372,12 +377,18 @@
         <td>
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" />
         </td>
-@*        <td>
-            经营方式:
+        <td>
+            产地:
         </td>
         <td>
-            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" required="true"/>
-        </td>*@
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
+        </td>
+        <td>
+            规格:
+        </td>
+        <td>
+            <input name="Specification" value="@Model.Specification" class="mini-textbox"/>
+        </td>
     </tr>
     <tr>
         <td>

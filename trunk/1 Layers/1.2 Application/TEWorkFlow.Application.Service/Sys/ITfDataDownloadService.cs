@@ -12,6 +12,8 @@ namespace TEWorkFlow.Application.Service.Sys
 {
     public interface ITfDataDownloadService
     {
+        void AddDownload(string table, string id);
+
         string Create(TfDataDownload entity);
 
         TfDataDownload GetById(string id);
