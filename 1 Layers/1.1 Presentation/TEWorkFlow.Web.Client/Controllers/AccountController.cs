@@ -103,17 +103,173 @@ namespace TEWorkFlow.Web.Client.Controllers
 
             SysmodulecontentService.Create(m1);
 
+            #region 员工菜单
+
+            #region 数据查询
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-search",
+                Id = "em-query",
+                ParentId = "root",
+                Url = "",
+                Windowname = "数据查询",
+                EmployeeVisible = true,
+                Index=1
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "report-supplier-purchase",
+                ParentId = "em-query",
+                Url = "/Report/SupplierPurchase",
+                Windowname = "供货商订单查询统计",
+                Index = 11,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "report-branch-purchase",
+                ParentId = "em-query",
+                Url = "/Report/BranchPurchase",
+                Windowname = "分店订单查询统计",
+                Index = 12,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "report-branch-goods",
+                ParentId = "em-query",
+                Url = "/Query/BranchPurchaseGoods",
+                Windowname = "分店商品统计",
+                Index = 13,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+            #endregion
+
+            #region 档案管理
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-vcard",
+                Id = "archives",
+                ParentId = "root",
+                Url = "",
+                Windowname = "档案管理",
+                EmployeeVisible = true,
+                Index=2
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-vcard-edit",
+                Id = "user_archives",
+                ParentId = "archives",
+                Url = "/Archives/EmployeeList",
+                Windowname = "公司人员档案",
+                Index = 11,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-user-suit",
+                Id = "supplier_archives",
+                ParentId = "archives",
+                Url = "/Archives/SupplierList",
+                Windowname = "供应商档案",
+                Index = 12,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-chart-organisation",
+                Id = "branch_archives",
+                ParentId = "archives",
+                Url = "/Archives/BranchList",
+                Windowname = "链锁店档案",
+                Index = 13,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "goods_archives",
+            //    ParentId = "archives",
+            //    Url = "/Archives/GoodsList",
+            //    Windowname = "商品档案",
+            //    Index = 14,
+            //    EmployeeVisible = true,
+            //    SupplierVisible = false
+            //};
+            //SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "goods_archivestree",
+                ParentId = "archives",
+                Url = "/Archives/GoodsListTree",
+                Windowname = "商品档案",
+                Index = 15,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+            #endregion
+
+            #region 补货管理
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-car",
+                Id = "business-em",
+                ParentId = "root",
+                Url = "",
+                Windowname = "补货管理",
+                EmployeeVisible = true,
+                Index=3
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart-add",
+                Id = "business-supplement",
+                ParentId = "business-em",
+                Url = "/Business/SupplementList",
+                Windowname = "产品补货",
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+            #endregion
+
             #region 系统设置
             m1 = new Sysmodulecontent()
-                     {
-                         Icon = "icon-node",
-                         Id = "system",
-                         ParentId = "root",
-                         Url = "",
-                         Windowname = "系统设置",
-                         EmployeeVisible = true,
-                         SupplierVisible = false
-                     };
+            {
+                Icon = "icon-node",
+                Id = "system",
+                ParentId = "root",
+                Url = "",
+                Windowname = "系统设置",
+                EmployeeVisible = true,
+                Index=4
+            };
             SysmodulecontentService.Create(m1);
 
             //m1 = new Sysmodulecontent()
@@ -199,86 +355,38 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
-            #endregion
-
-            #region 档案管理
             m1 = new Sysmodulecontent()
             {
-                Icon = "icon-vcard",
-                Id = "archives",
-                ParentId = "root",
-                Url = "",
-                Windowname = "档案管理",
+                Icon = "icon-cog-edit",
+                Id = "bussiness-setting",
+                ParentId = "system",
+                Url = "/Account/BaseSetting/",
+                Windowname = "业务设置",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                OpenInNewWindow = true
             };
             SysmodulecontentService.Create(m1);
-
             m1 = new Sysmodulecontent()
             {
-                Icon = "icon-vcard-edit",
-                Id = "user_archives",
-                ParentId = "archives",
-                Url = "/Archives/EmployeeList",
-                Windowname = "公司人员档案",
-                Index = 11,
+                Icon = "icon-edit",
+                Id = "websystem-setting",
+                ParentId = "system",
+                Url = "/Account/SysSetting/",
+                Windowname = "系统设置",
                 EmployeeVisible = true,
-                SupplierVisible = false
-            };
-            SysmodulecontentService.Create(m1);
-
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-user-suit",
-                Id = "supplier_archives",
-                ParentId = "archives",
-                Url = "/Archives/SupplierList",
-                Windowname = "供应商档案",
-                Index = 12,
-                EmployeeVisible = true,
-                SupplierVisible = false
-            };
-            SysmodulecontentService.Create(m1);
-
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-chart-organisation",
-                Id = "branch_archives",
-                ParentId = "archives",
-                Url = "/Archives/BranchList",
-                Windowname = "链锁店档案",
-                Index = 13,
-                EmployeeVisible = true,
-                SupplierVisible = false
-            };
-            SysmodulecontentService.Create(m1);
-
-            //m1 = new Sysmodulecontent()
-            //{
-            //    Icon = "icon-cart",
-            //    Id = "goods_archives",
-            //    ParentId = "archives",
-            //    Url = "/Archives/GoodsList",
-            //    Windowname = "商品档案",
-            //    Index = 14,
-            //    EmployeeVisible = true,
-            //    SupplierVisible = false
-            //};
-            //SysmodulecontentService.Create(m1);
-
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart",
-                Id = "goods_archivestree",
-                ParentId = "archives",
-                Url = "/Archives/GoodsListTree",
-                Windowname = "商品档案",
-                Index = 15,
-                EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                OpenInNewWindow = true
             };
             SysmodulecontentService.Create(m1);
             #endregion
+
+            #endregion
+
+
+            
+
+            
 
             #region 业务管理
             m1 = new Sysmodulecontent()
@@ -288,7 +396,6 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "root",
                 Url = "",
                 Windowname = "业务管理",
-                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -300,7 +407,6 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/PurchaseList",
                 Windowname = "超市订单",
-                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -312,22 +418,21 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "business",
                 Url = "/Business/ReturnList",
                 Windowname = "产品退货",
-                EmployeeVisible = false,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart-add",
-                Id = "business-supplement",
-                ParentId = "business",
-                Url = "/Business/SupplementList",
-                Windowname = "产品补货",
-                EmployeeVisible = true,
-                SupplierVisible = false
-            };
-            SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart-add",
+            //    Id = "business-supplement",
+            //    ParentId = "business",
+            //    Url = "/Business/SupplementList",
+            //    Windowname = "产品补货",
+            //    EmployeeVisible = true,
+            //    SupplierVisible = false
+            //};
+            //SysmodulecontentService.Create(m1);
 
             m1 = new Sysmodulecontent()
             {
@@ -351,7 +456,6 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "root",
                 Url = "",
                 Windowname = "数据查询",
-                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -364,7 +468,6 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Query/PurchaseQuery",
                 Windowname = "超市订单",
                 Index = 21,
-                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -377,7 +480,6 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Query/BranchPurchaseOrder",
                 Windowname = "分店订货单据",
                 Index = 21,
-                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -390,23 +492,22 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Query/BranchPurchaseGoods",
                 Windowname = "分店订货商品",
                 Index = 22,
-                EmployeeVisible = true,
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart",
-                Id = "query-branch-order-supplier",
-                ParentId = "query",
-                Url = "/Query/BranchPurchaseSupplier",
-                Windowname = "分店供货商订货",
-                Index = 23,
-                EmployeeVisible = true,
-                SupplierVisible = true
-            };
-            SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart",
+            //    Id = "query-branch-order-supplier",
+            //    ParentId = "query",
+            //    Url = "/Query/BranchPurchaseSupplier",
+            //    Windowname = "分店供货商订货",
+            //    Index = 23,
+            //    EmployeeVisible = true,
+            //    SupplierVisible = true
+            //};
+            //SysmodulecontentService.Create(m1);
 
             
             

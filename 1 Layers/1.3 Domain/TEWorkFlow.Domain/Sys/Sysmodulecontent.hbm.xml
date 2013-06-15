@@ -12,6 +12,7 @@
     <property name="Index" column="row_index" type="int" />
     <property name="EmployeeVisible" column="employee_visible" type="bool" />
     <property name="SupplierVisible" column="supplier_visible" type="bool" />
+    <property name="OpenInNewWindow" column="open_in_new_window" type="bool" />
   </class>
 </hibernate-mapping>
 

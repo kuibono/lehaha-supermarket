@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="FbGoodsArchivesSupplier" table="fb_goods_archives_supplier" lazy="true" >
+    <id name="Id" type="string" column="sys_guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="GoodsCode" column="goods_code" type="string" />
+    <property name="SupCode" column="sup_code" type="string" />
+    <property name="SupName" column="sup_name" type="string" />
+    <property name="PyCode" column="py_code" type="string" />
+    <property name="OpCode" column="op_code" type="string" />
+    <property name="PoolRate" column="pool_rate" type="decimal" />
+    <property name="OfferMode" column="offer_mode" type="string" />
+    <property name="OfferMin" column="offer_min" type="decimal" />
+    <property name="InputTax" column="input_tax" type="decimal" />
+    <property name="PurchasePrice" column="purchase_price" type="decimal" />
+    <property name="NontaxPurchasePrice" column="nontax_purchase_price" type="decimal" />
+    <property name="IfMainSupplier" column="if_main_supplier" type="string" />
+    <property name="IfExamine" column="if_examine" type="string" />
+  </class>
+</hibernate-mapping>

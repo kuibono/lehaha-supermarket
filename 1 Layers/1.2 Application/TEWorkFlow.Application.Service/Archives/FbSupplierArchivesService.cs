@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Domain.Sys;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -17,13 +18,17 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbSupplierArchives> EntityRepository { get; set; }
         public IRepositoryGUID<FbPaSupType> PaSupTypeRepository { get; set; }
         public IRepositoryGUID<GoodsArchives> GoodsRepository { get; set; }
+        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+
         [Transaction]
         public string Create(FbSupplierArchives entity)
         {
             entity.LoginName = GenerateLoginName();
             entity.LoginPass = "111111";
             entity.Id = entity.LoginName;
-            return EntityRepository.Save(entity);
+            string id=EntityRepository.Save(entity);
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_supplier_archives" });
+            return id;
         }
 
         [Transaction]
@@ -45,6 +50,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public void Update(FbSupplierArchives entity)
         {
             EntityRepository.Update(entity);
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_supplier_archives" });
         }
 
         [Transaction]

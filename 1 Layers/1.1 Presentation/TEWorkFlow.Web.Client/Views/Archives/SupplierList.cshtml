@@ -91,6 +91,21 @@
                 }
             });
         }
+        function onNormalActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+//            if (record.IfExamine) {
+//                if (record.IfExamine == "true") {
+//                    return "";
+//                }
+//            }
+
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            return s;
+        }
     </script>
 }
 <div id="datagrid1" class="mini-datagrid" url="/Archives/SearchSupplierArchiveList"
@@ -125,7 +140,7 @@
             邮箱</div>
         <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
             审核</div>
-        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+        <div name="action" width="120" headeralign="center" align="center" renderer="onNormalActionRenderer"
             cellstyle="padding:0;">
             管理</div>
     </div>

@@ -76,6 +76,12 @@
   <object id="FbPaBaseSetRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.FbPaBaseSet>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="SysPostRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPost>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="TfDataDownloadRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.TfDataDownload>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -103,6 +109,7 @@
     <property name="EntityRepository" ref="FbSupplierArchivesRepository"/>
     <property name="PaSupTypeRepository" ref="FbPaSupTypeRepository"/>
     <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="FbPaSupTypeService" type="TEWorkFlow.Application.Service.Category.FbPaSupTypeService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaSupTypeRepository"/>
@@ -126,22 +133,27 @@
     <property name="GlRepository" ref="FbPaGoodsGlRepository"/>
     <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="FbPaGoodsGlService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGlService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGlRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="FbPaGoodsGmService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGmService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGmRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="FbPaGoodsGsService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGsService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGsRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
+    <property name="DataDownloadRepository" ref="TfDataDownloadRepository"/>
   </object>
   <object id="PcPurchaseManageService" type="TEWorkFlow.Application.Service.Business.PcPurchaseManageService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcPurchaseManageRepository"/>
@@ -183,5 +195,11 @@
   </object>
   <object id="FbPaBaseSetService" type="TEWorkFlow.Application.Service.Sys.FbPaBaseSetService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaBaseSetRepository"/>
+  </object>
+  <object id="SysPostService" type="TEWorkFlow.Application.Service.Sys.SysPostService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="SysPostRepository"/>
+  </object>
+  <object id="TfDataDownloadService" type="TEWorkFlow.Application.Service.Sys.TfDataDownloadService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="TfDataDownloadRepository"/>
   </object>
 </objects>

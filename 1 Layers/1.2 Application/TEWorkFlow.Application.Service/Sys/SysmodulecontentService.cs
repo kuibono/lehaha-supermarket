@@ -64,7 +64,8 @@ namespace TEWorkFlow.Application.Service.Sys
                                    iconCls = entity.Icon,
                                    pid=entity.ParentId,
                                    text = entity.Windowname,
-                                   url = entity.Url
+                                   url = entity.Url,
+                                   newwindow=entity.OpenInNewWindow
                                });
             }
             return result;

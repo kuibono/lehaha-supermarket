@@ -16,5 +16,7 @@ namespace TEWorkFlow.Dto
         public string iconCls { get; set; }
 
         public string url { get; set; }
+
+        public bool newwindow { get; set; }
     }
 }
