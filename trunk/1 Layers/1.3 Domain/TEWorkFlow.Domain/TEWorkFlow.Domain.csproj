@@ -43,6 +43,7 @@
     <Compile Include="Archives\BsBranchArchives.cs" />
     <Compile Include="Archives\BsPaBranchWarehouse.cs" />
     <Compile Include="Archives\Ememployeearchive.cs" />
+    <Compile Include="Archives\FbGoodsArchivesSupplier.cs" />
     <Compile Include="Archives\FbSupplierArchives.cs" />
     <Compile Include="Archives\GoodsArchives.cs" />
     <Compile Include="Archives\OpPaWarehouse.cs" />
@@ -67,6 +68,8 @@
     <Compile Include="Sys\SysLoginPower.cs" />
     <Compile Include="Sys\Sysmodulecontent.cs" />
     <Compile Include="Sys\SysPaDepartment.cs" />
+    <Compile Include="Sys\SysPost.cs" />
+    <Compile Include="Sys\TfDataDownload.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Core\NSH.Core.csproj">
@@ -145,6 +148,13 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sys\FbPaBaseSet.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sys\SysPost.hbm.xml" />
+    <EmbeddedResource Include="Sys\TfDataDownload.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Archives\FbGoodsArchivesSupplier.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

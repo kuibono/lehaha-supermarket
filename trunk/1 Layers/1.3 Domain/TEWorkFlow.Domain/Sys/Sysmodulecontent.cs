@@ -19,6 +19,8 @@ namespace TEWorkFlow.Domain.Sys
 
         public virtual bool SupplierVisible { get; set; }
 
+        public virtual bool OpenInNewWindow { get; set; }
+
         protected override void Validate()
         {
         }

@@ -96,10 +96,14 @@
     <Compile Include="Sys\ISysLoginPowerService.cs" />
     <Compile Include="Sys\ISysmodulecontentService.cs" />
     <Compile Include="Sys\ISysPaDepartmentService.cs" />
+    <Compile Include="Sys\ISysPostService.cs" />
+    <Compile Include="Sys\ITfDataDownloadService.cs" />
     <Compile Include="Sys\SysEnterpriseArchivesService.cs" />
     <Compile Include="Sys\SysLoginPowerService.cs" />
     <Compile Include="Sys\SysmodulecontentService.cs" />
     <Compile Include="Sys\SysPaDepartmentService.cs" />
+    <Compile Include="Sys\SysPostService.cs" />
+    <Compile Include="Sys\TfDataDownloadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.3 Domain\TEWorkFlow.Domain\TEWorkFlow.Domain.csproj">

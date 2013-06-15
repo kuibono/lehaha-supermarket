@@ -83,7 +83,7 @@
                 <div property="columns">
                     <div header="条形码" field="GoodsBarCode">
                     </div>
-                    <div header="店内码" field="Id" width="30">
+                    <div header="拼音码" field="PyCode">
                     </div>
                     <div header="名称" field="GoodsName">
                     </div>
@@ -122,7 +122,7 @@
     </div>
     </form>
     <script type="text/javascript">
-        var entityId = "201306072049304346697";
+        var entityId = "@Model.Id";
         mini.parse();
 
         var form = new mini.Form("form1");

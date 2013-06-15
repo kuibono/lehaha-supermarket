@@ -10,6 +10,7 @@ using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Application.Service.Sys;
 using NSH.VSTO;
+using TEWorkFlow.Domain.Sys;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -23,11 +24,18 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
+        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
 
         [Transaction]
         public string Create(GoodsArchives entity)
         {
-            return EntityRepository.Save(entity);
+            if (string.IsNullOrEmpty(entity.GoodsBarCode))
+            {
+                entity.GoodsBarCode = GenerateBarCode();
+            }
+            string id = EntityRepository.Save(entity);
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_goods_archives" });
+            return id;
         }
 
         [Transaction]
@@ -59,6 +67,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             entity.OperatorDate = DateTime.Now;
             EntityRepository.Update(entity);
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 
         [Transaction]
@@ -403,6 +412,32 @@ namespace TEWorkFlow.Application.Service.Archives
         public string GenarateId(GoodsArchives entity)
         {
             return entity.GbCode + entity.GmCode + entity.GsCode + entity.GlCode + entity.GoodsSubCode;
+        }
+
+        public string GenerateBarCode()
+        {
+            string b = Genarate12BarCode();
+            int c1 = (iint(1, b) + iint(3, b) + iint(5, b) + iint(7, b) + iint(9, b) + iint(11, b))*3;
+            int c2 = iint(0, b) + iint(2, b) + iint(4, b) + iint(6, b) + iint(8, b) + iint(10, b);
+            int c3 =10- (c1 + c2) % 10;
+            return b + c3.ToString();
+        }
+
+        private int iint(int index, string str)
+        {
+            return Convert.ToInt32(str[index]);
+        }
+        protected string Genarate12BarCode()
+        {
+            var barcode = "200" + "0000" + _string.GetRandomNumber(10000, 99999);
+            if(EntityRepository.LinqQuery.Any(p=>p.BackupCode==barcode))
+            {
+                return Genarate12BarCode();
+            }
+            else
+            {
+                return barcode;
+            }
         }
     }
 }

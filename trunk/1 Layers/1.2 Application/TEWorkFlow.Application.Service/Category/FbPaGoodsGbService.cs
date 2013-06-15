@@ -9,6 +9,7 @@ using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Application.Service.Sys;
 using NSH.VSTO;
+using TEWorkFlow.Domain.Sys;
 namespace TEWorkFlow.Application.Service.Category
 {
     public class FbPaGoodsGbService : IFbPaGoodsGbService
@@ -16,10 +17,13 @@ namespace TEWorkFlow.Application.Service.Category
 
         public IRepositoryGUID<FbPaGoodsGb> EntityRepository { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
+        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
         [Transaction]
         public string Create(FbPaGoodsGb entity)
         {
-            return EntityRepository.Save(entity);
+            string id = EntityRepository.Save(entity);
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_pa_goods_gb" });
+            return id;
         }
 
         [Transaction]
@@ -64,6 +68,7 @@ namespace TEWorkFlow.Application.Service.Category
             {
                 EntityRepository.Update(entity);
             }
+            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_pa_goods_gb" });
         }
 
 
