@@ -309,7 +309,7 @@ namespace TEWorkFlow.Application.Service.Business
         }
 
 
-        public SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode, int pageSize = 20, int pageIndex = 1)
+        public SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode,string bCode, int pageSize = 20, int pageIndex = 1)
         {
             var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
             if (dateS == null || dateE == null)
@@ -325,6 +325,10 @@ namespace TEWorkFlow.Application.Service.Business
                         && l.PurchaseDate <= dateE
                         && l.EnCode == SupCode
                     select l;
+            }
+            if (string.IsNullOrEmpty(bCode))
+            {
+                q = from l in q where l.bCode == bCode select l;
             }
             int count = q.Count();
 
@@ -352,7 +356,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         }
 
-        public SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
+        public SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, string SupCode, int pageSize = 20, int pageIndex = 1)
         {
             var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
             if (dateS == null || dateE == null)
@@ -369,7 +373,10 @@ namespace TEWorkFlow.Application.Service.Business
                         && l.bCode == BranchId
                     select l;
             }
-
+            if (string.IsNullOrEmpty(SupCode))
+            {
+                q = from l in q where l.SupCode == SupCode select l;
+            }
             var manages = q.ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 
@@ -423,7 +430,10 @@ namespace TEWorkFlow.Application.Service.Business
                         && l.bCode == BranchId
                     select l;
             }
-
+            //if (string.IsNullOrEmpty(SupCode))
+            //{
+            //    q = from l in q where l.SupCode == SupCode select l;
+            //}
             var manages = q.ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 

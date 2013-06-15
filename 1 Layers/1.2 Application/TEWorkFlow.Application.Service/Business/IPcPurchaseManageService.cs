@@ -42,9 +42,9 @@ namespace TEWorkFlow.Application.Service.Business
 
         SearchResult<PcPurchaseManage> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1);
 
-        SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode, int pageSize = 20, int pageIndex = 1);
+        SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode, string bCode, int pageSize = 20, int pageIndex = 1);
 
-        SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1);
+        SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId,string SupCode, int pageSize = 20, int pageIndex = 1);
 
         SearchResult<PurchaseSupplierResult> SearchForPurchaseSupllier(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
 
