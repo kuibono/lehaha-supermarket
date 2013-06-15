@@ -24,7 +24,8 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
-        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+        //public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+        public ITfDataDownloadService TfDataDownloadService { get; set; }
 
         [Transaction]
         public string Create(GoodsArchives entity)
@@ -34,7 +35,8 @@ namespace TEWorkFlow.Application.Service.Archives
                 entity.GoodsBarCode = GenerateBarCode();
             }
             string id = EntityRepository.Save(entity);
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_goods_archives" });
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_goods_archives" });
+            TfDataDownloadService.AddDownload("fb_goods_archives", id);
             return id;
         }
 
@@ -67,7 +69,8 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             entity.OperatorDate = DateTime.Now;
             EntityRepository.Update(entity);
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
+            TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 
         [Transaction]

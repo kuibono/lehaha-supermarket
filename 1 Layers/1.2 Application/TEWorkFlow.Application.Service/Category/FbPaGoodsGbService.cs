@@ -17,12 +17,13 @@ namespace TEWorkFlow.Application.Service.Category
 
         public IRepositoryGUID<FbPaGoodsGb> EntityRepository { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
-        public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
+        public ITfDataDownloadService TfDataDownloadService { get; set; }
         [Transaction]
         public string Create(FbPaGoodsGb entity)
         {
             string id = EntityRepository.Save(entity);
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_pa_goods_gb" });
+            TfDataDownloadService.AddDownload("fb_pa_goods_gb", id);
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_pa_goods_gb" });
             return id;
         }
 
@@ -68,7 +69,8 @@ namespace TEWorkFlow.Application.Service.Category
             {
                 EntityRepository.Update(entity);
             }
-            DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_pa_goods_gb" });
+            TfDataDownloadService.AddDownload("fb_pa_goods_gb", entity.Id);
+            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_pa_goods_gb" });
         }
 
 
