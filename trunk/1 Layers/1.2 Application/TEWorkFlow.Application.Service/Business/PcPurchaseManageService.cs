@@ -308,6 +308,49 @@ namespace TEWorkFlow.Application.Service.Business
 
         }
 
+
+        public SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            if (dateS == null || dateE == null)
+            {
+                q = from l in q
+                    where l.EnCode == SupCode
+                    select l;
+            }
+            if (dateS <= dateE && string.IsNullOrEmpty(SupCode) == false)
+            {
+                q = from l in q
+                    where l.PurchaseDate >= dateS
+                        && l.PurchaseDate <= dateE
+                        && l.EnCode == SupCode
+                    select l;
+            }
+            int count = q.Count();
+
+            var result = q.ToList();
+            for (int i = 0; i < result.Count; i++)
+            {
+                var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
+                result[i].detailCount = statics.Count();
+                result[i].count = Convert.ToInt32(statics.Sum(p => p.PurchaseQty));
+                result[i].amount = statics.Sum(p => p.PurchaseMoney);
+            }
+
+            var sta = new
+            {
+                count = result.Count,
+                detailCount = result.Sum(p => p.detailCount),
+                goodscount = result.Sum(p => p.count),
+                amount = result.Sum(p => p.amount)
+            };
+
+            var searchResult = result.ToSearchResult(count);
+            searchResult.Statistics = sta;
+            return searchResult;
+
+        }
+
         public SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
         {
             var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;

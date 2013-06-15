@@ -100,6 +100,8 @@ namespace TEWorkFlow.Domain.Business
 
         public virtual bool IsFree { get; set; }
 
+        public virtual DateTime AddTime { get; set; }
+
 
         public virtual string GoodsName { get; set; }
 

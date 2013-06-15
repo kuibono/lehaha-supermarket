@@ -328,6 +328,19 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-goods",
+                ParentId = "business",
+                Url = "/Query/GoodsArchiveList",
+                Windowname = "产品管理",
+                Index = 24,
+                EmployeeVisible = false,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
             #endregion
 
             #region 数据查询
@@ -395,18 +408,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart",
-                Id = "query-goods",
-                ParentId = "query",
-                Url = "/Query/GoodsArchiveList",
-                Windowname = "产品查询",
-                Index = 24,
-                EmployeeVisible = false,
-                SupplierVisible = true
-            };
-            SysmodulecontentService.Create(m1);
+            
             
             #endregion
 

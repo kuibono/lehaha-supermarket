@@ -97,6 +97,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View(model);
         }
 
+        public JsonResult SupplierExame(string id)
+        {
+            FbSupplierArchives entity = FbSupplierArchivesService.GetById(id);
+            if (entity.HaveId)
+            {
+                entity.IfExamine = entity.IfExamine=="true"?"false":"true";
+                FbSupplierArchivesService.Update(entity);
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult SupplierDelete(List<string> ids)
         {
             FbSupplierArchivesService.Delete(ids);
@@ -218,6 +230,19 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
+
+        public JsonResult GoodsExame(string id)
+        {
+            GoodsArchives entity = GoodsArchivesService.GetById(id);
+            if (entity.HaveId)
+            {
+                entity.IfExamine = entity.IfExamine == "true" ? "false" : "true";
+                GoodsArchivesService.Update(entity);
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult SearchGoodsArchiveList(SearchDtoBase<GoodsArchives> c, GoodsArchives s)
         {
             if (string.IsNullOrEmpty(Request["key"]) == false)
