@@ -20,6 +20,7 @@
             </h1>
             <div style="position: absolute; top: 18px; right: 10px;">
                 <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow" plain="true">修改密码</a> 
+                <a class="mini-button mini-button-iconTop" iconcls="icon-bell" onclick="showBlank" plain="true">公告</a>
                 @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin&&false)
                 {
                 <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow" plain="true">业务设置</a> 
@@ -43,7 +44,7 @@
                 <div showcollapsebutton="false" style="noborder">
                     <!--Tabs-->
                     <div id="mainTabs" class="mini-tabs " activeindex="0" style="width: 100%; height: 100%;" plain="false">
-                        <div title="首页" url="/Test/Blank">
+                        <div title="公告" url="/Test/Blank" id="tab_blank" iconCls="icon-bell">
                         </div>
                     </div>
                 </div>
@@ -94,6 +95,12 @@
         function onClick(e) {
             var text = this.getText();
             alert(text);
+        }
+        function showBlank(e) {
+            var tabs = mini.get("mainTabs");
+            var tab = tabs.getTab(0);
+            tabs.activeTab(tab);
+            tabs.reloadTab(tab);
         }
 
         function showSettingWindow(e) {

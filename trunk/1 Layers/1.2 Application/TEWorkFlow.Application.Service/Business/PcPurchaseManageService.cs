@@ -344,9 +344,10 @@ namespace TEWorkFlow.Application.Service.Business
                 goodscount = result.Sum(p => p.count),
                 amount = result.Sum(p => p.amount)
             };
-
+            FillBranchName(result);
             var searchResult = result.ToSearchResult(count);
             searchResult.Statistics = sta;
+            //FillBranchName(result);
             return searchResult;
 
         }

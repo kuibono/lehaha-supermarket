@@ -136,8 +136,8 @@
             </div>
         </div>
         <div id="datagrid1" class="mini-datagrid" url="/Business/SearchPurchaseList" style="width: 100%;
-            height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
-            multiselect="true">
+            height: 95%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
+            multiselect="true" showPager="true">
             <div property="columns">
                 <div type="indexcolumn" width="30">
                 </div>
@@ -145,8 +145,7 @@
                 </div>
                 <div field="SupCode" headeralign="center" align="center" width="60">
                     供货商</div>
-                <div field="PcForm" headeralign="center" align="center" width="60">
-                    采购形式</div>
+                
                 <div field="bName" headeralign="center" align="center" width="60">
                     门店名称</div>
                 <div field="PcType" headeralign="center" align="center" width="60">
@@ -155,6 +154,8 @@
                     采购日期</div>
                 <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     预计到货日期</div>
+                <div field="amount" headeralign="center" align="center" width="60" dataType="currency" currencyUnit="￥">
+                    价格</div>
                 <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
                     审核</div>
                 <div name="action" width="30" headeralign="center" align="center" renderer="onActionColRenderer"

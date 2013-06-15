@@ -20,5 +20,9 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
+        public ActionResult BranchPurchase()
+        {
+            return View();
+        }
     }
 }
