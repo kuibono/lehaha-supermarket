@@ -183,9 +183,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(BsBranchArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchAllranches(string key)
+        public JsonResult SearchAllranches(string id)
         {
-            return Json(BsBranchArchivesService.Search(key), JsonRequestBehavior.AllowGet);
+            return Json(BsBranchArchivesService.Search(id), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult BranchEdit(string id)

@@ -18,6 +18,8 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         private ISysLoginPowerService SysLoginPowerService { get; set; }
         private ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
+        private ISysPostService SysPostService { get; set; }
+
         public ActionResult Index()
         {
             var setting = SysEnterpriseArchivesService.Get();
@@ -78,6 +80,11 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult Blank()
         {
             return View();
+        }
+
+        public JsonResult GetAllPosts()
+        {
+            return Json(SysPostService.GetAll().OrderByDescending(p => p.PostTime), JsonRequestBehavior.AllowGet);
         }
     }
 }
