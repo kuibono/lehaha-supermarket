@@ -621,6 +621,7 @@
     <Content Include="Scripts\miniui\themes\icons\add.gif" />
     <Content Include="Scripts\miniui\themes\icons\addfolder.gif" />
     <Content Include="Scripts\miniui\themes\icons\addnew.gif" />
+    <Content Include="Scripts\miniui\themes\icons\bell.png" />
     <Content Include="Scripts\miniui\themes\icons\brick.png" />
     <Content Include="Scripts\miniui\themes\icons\bricks.png" />
     <Content Include="Scripts\miniui\themes\icons\cancel.gif" />
