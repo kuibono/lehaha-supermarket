@@ -292,7 +292,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/SupTypeList",
                 Windowname = "行业管理",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index=41
             };
             SysmodulecontentService.Create(m1);
 
@@ -304,7 +305,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/PaClassList",
                 Windowname = "分店类型",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index = 42
             };
             SysmodulecontentService.Create(m1);
 
@@ -316,7 +318,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/EmPaPoliticsList",
                 Windowname = "员工政治面貌",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index = 43
             };
             SysmodulecontentService.Create(m1);
 
@@ -328,7 +331,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/BsPaAreaList",
                 Windowname = "区域管理",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index = 44
             };
             SysmodulecontentService.Create(m1);
             m1 = new Sysmodulecontent()
@@ -339,7 +343,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/NationList",
                 Windowname = "员工民族",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index = 45
             };
             SysmodulecontentService.Create(m1);
 
@@ -351,7 +356,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Category/ClassList",
                 Windowname = "商品分类",
                 EmployeeVisible = true,
-                SupplierVisible = false
+                SupplierVisible = false,
+                Index = 46
             };
             SysmodulecontentService.Create(m1);
 
@@ -364,7 +370,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Windowname = "业务设置",
                 EmployeeVisible = true,
                 SupplierVisible = false,
-                OpenInNewWindow = true
+                OpenInNewWindow = true,
+                Index = 47
             };
             SysmodulecontentService.Create(m1);
             m1 = new Sysmodulecontent()
@@ -376,7 +383,22 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Windowname = "系统设置",
                 EmployeeVisible = true,
                 SupplierVisible = false,
-                OpenInNewWindow = true
+                OpenInNewWindow = true,
+                Index = 48
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-bell",
+                Id = "system-postlist",
+                ParentId = "system",
+                Url = "/Test/PostList/",
+                Windowname = "公告管理",
+                EmployeeVisible = true,
+                SupplierVisible = false,
+                OpenInNewWindow = false,
+                Index = 48
             };
             SysmodulecontentService.Create(m1);
             #endregion

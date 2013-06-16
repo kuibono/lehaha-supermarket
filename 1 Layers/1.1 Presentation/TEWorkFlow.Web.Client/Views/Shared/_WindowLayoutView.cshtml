@@ -40,11 +40,13 @@
             else window.close();
         }
         function onOk(e) {
-            $(".mini-grid-border").removeClass("mini-grid-border").addClass("mini-grid-border_tmp");
-            $("td").removeProp("style");
-            $(".mini-grid-body").css("overflow","hidden");
+            //$(".mini-grid-border").removeClass("mini-grid-border").addClass("mini-grid-border_tmp");
+            //$("td").removeProp("style");
+            $(".mini-grid-body").css("overflow", "hidden");
+            $("#qr").show();
             $("#printArea").printArea();
-            $(".mini-grid-border_tmp").removeClass("mini-grid-border_tmp").addClass("mini-grid-border")
+            //$(".mini-grid-border_tmp").removeClass("mini-grid-border_tmp").addClass("mini-grid-border");
+            $("#qr").hide();
         }
         function onCancel(e) {
             CloseWindow("cancel");

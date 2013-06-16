@@ -178,8 +178,11 @@
         
     </script>
 }
-<h1 style="text-align:center">采购单</h1>
-<table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:100%">
+<h1 style="text-align:center">采购单
+<img src="http://chart.googleapis.com/chart?cht=qr&chs=30x30&choe=UTF-8&chld=L|4&chl=@Model.Id" id="qr" style="display:none;float:right;" />
+</h1>
+
+<table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:95%">
     <tr>
         <td>
             采购单号:
@@ -221,16 +224,14 @@
         </td>
     </tr>
 </table>
-<div id="datagrid1" class="mini-datagrid" style="width: 100%; min-height: 200px;" idfield="Id"
+<div id="datagrid1" class="mini-datagrid" style="width: 95%; min-height: 200px;" idfield="Id"
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false">
     <div property="columns">
         <div field="GoodsName" headeralign="center">
             产品
         </div>
-        <div field="Id" headeralign="center"  headeralign="center" align="center">
-            内码
-        </div>
+        
         <div field="Specification" headeralign="center"  headeralign="center" align="center">
             规格
         </div>
