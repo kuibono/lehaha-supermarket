@@ -373,9 +373,9 @@ namespace TEWorkFlow.Application.Service.Business
                         && l.bCode == BranchId
                     select l;
             }
-            if (string.IsNullOrEmpty(SupCode))
+            if (string.IsNullOrEmpty(SupCode)==false)
             {
-                q = from l in q where l.SupCode == SupCode select l;
+                q = from l in q where l.EnCode == SupCode select l;
             }
             var manages = q.ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
@@ -393,7 +393,7 @@ namespace TEWorkFlow.Application.Service.Business
                 Amount = p.Sum(z => z.PurchaseMoney),
                 GoodsCode = p.Key,
                 GoodsBarCode = p.First().GoodsBarCode,
-                OrderQty = p.Sum(z => z.OrderQty),
+                OrderQty = p.Sum(z => z.PurchaseQty),
                 PurchasePrice = p.First().PurchasePrice,
                 GoodsName = goods.Where(z => z.Id == p.Key).First().GoodsName,
                 SupName = manages.Where(z => z.Id == p.First().ManageId).First().SupCode
