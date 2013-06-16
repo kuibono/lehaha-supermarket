@@ -161,6 +161,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 e.Id = row["Id"].ToString();
             }
+            if (string.IsNullOrEmpty(e.Id))
+            {
+                e.Id = Guid.NewGuid().ToString();
+            }
             e.GbName = row["GbName"].ToString();
             FbPaGoodsGbService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
@@ -185,6 +189,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             if (row["Id"] != null)
             {
                 e.Id = row["Id"].ToString();
+            }
+            if (string.IsNullOrEmpty(e.Id))
+            {
+                e.Id = Guid.NewGuid().ToString();
             }
             e.GmName = row["GmName"].ToString();
             e.GbCode = row["GbCode"].ToString();
@@ -211,6 +219,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 e.Id = row["Id"].ToString();
             }
+            if (string.IsNullOrEmpty(e.Id))
+            {
+                e.Id = Guid.NewGuid().ToString();
+            }
             e.GsName = row["GsName"].ToString();
             e.GmCode = row["GmCode"].ToString();
             FbPaGoodsGsService.Save(e);
@@ -236,6 +248,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             if (row["Id"] != null)
             {
                 e.Id = row["Id"].ToString();
+            }
+            if (string.IsNullOrEmpty(e.Id))
+            {
+                e.Id = Guid.NewGuid().ToString();
             }
             e.GlName = row["GlName"].ToString();
             e.GsCode = row["GsCode"].ToString();

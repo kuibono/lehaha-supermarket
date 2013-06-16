@@ -30,6 +30,7 @@ namespace NSH.Repository
 
         public virtual void Update(TEntity entity)
         {
+            Session.Clear();
             HibernateTemplate.Update(entity);
         }
 
