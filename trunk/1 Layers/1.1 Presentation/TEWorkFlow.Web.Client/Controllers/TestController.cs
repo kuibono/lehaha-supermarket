@@ -82,9 +82,49 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View();
         }
 
-        public JsonResult GetAllPosts()
+        public JsonResult GetAllPosts(string id)
         {
-            return Json(SysPostService.GetAll().OrderByDescending(p => p.PostTime), JsonRequestBehavior.AllowGet);
+            //id 是关键词
+            var result=SysPostService.GetAll().OrderByDescending(p => p.PostTime).ToList();
+            if (string.IsNullOrEmpty(id)==false)
+            {
+                result = result.Where(p => p.Title.Contains(id)).ToList();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult PostList()
+        {
+            return View();
+        }
+        public ActionResult PostDelete(List<string> ids)
+        {
+            SysPostService.Delete(ids);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult PostEdit(string id)
+        {
+            SysPost p = new SysPost();
+            p.PostUser = Common.MyEnv.CurrentEmployee.Emname;
+            p.PostTime = DateTime.Now;
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                p = SysPostService.GetById(id);
+            }
+            return View(p);
+        }
+        public JsonResult SavePost(SysPost s)
+        {
+            if (s.HaveId)
+            {
+                SysPostService.Update(s);
+            }
+            else
+            {
+                s.Id = Guid.NewGuid().ToString();
+                SysPostService.Create(s);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

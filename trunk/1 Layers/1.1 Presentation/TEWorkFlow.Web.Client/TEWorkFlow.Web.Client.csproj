@@ -870,6 +870,8 @@
     <Content Include="Views\Test\Blank.cshtml" />
     <Content Include="Views\Report\SupplierPurchase.cshtml" />
     <Content Include="Views\Report\BranchPurchase.cshtml" />
+    <Content Include="Views\Test\PostList.cshtml" />
+    <Content Include="Views\Test\PostEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

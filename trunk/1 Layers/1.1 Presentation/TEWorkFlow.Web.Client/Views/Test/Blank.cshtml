@@ -23,10 +23,6 @@
                 <div field="Title" width="120" headerAlign="center">标题</div>    
                 <div field="PostTime" headerAlign="center" dateformat="yyyy-MM-dd HH:mm:ss" width="120px">时间</div> 
                 <div field="PostUser" headerAlign="center">发布者</div> 
-                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
-                {
-                    <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer" cellstyle="padding:0;">管理</div>
-                }
             </div>
         </div> 
 
@@ -38,7 +34,7 @@
         function rowclick(sender, record) {
             //alert(sender.record.Title);
             mini.showMessageBox({
-                width: 350,
+                width: 450,
                 title: sender.record.Title,
                 buttons: ["ok"],
                 html: sender.record.PostContent,
