@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="FbGoodsSupplierRelation" table="fb_goods_supplier_relation" lazy="true" >
+    <id name="Id" type="string" column="sys_id" >
+      <generator class="assigned" />
+    </id>
+    <property name="bCode" column="b_code" type="string" />
+    <property name="SupCode" column="sup_code" type="string" />
+    <property name="IfEnable" column="if_enable" type="bool" />
+  </class>
+</hibernate-mapping>

@@ -243,6 +243,8 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string BackupCode { get; set; }
 
+        public virtual string IfNew { get; set; }
+
 
         public virtual string GbName { get; set; }
 

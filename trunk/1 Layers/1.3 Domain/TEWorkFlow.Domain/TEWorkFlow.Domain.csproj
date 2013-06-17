@@ -44,6 +44,7 @@
     <Compile Include="Archives\BsPaBranchWarehouse.cs" />
     <Compile Include="Archives\Ememployeearchive.cs" />
     <Compile Include="Archives\FbGoodsArchivesSupplier.cs" />
+    <Compile Include="Archives\FbGoodsSupplierRelation.cs" />
     <Compile Include="Archives\FbSupplierArchives.cs" />
     <Compile Include="Archives\GoodsArchives.cs" />
     <Compile Include="Archives\OpPaWarehouse.cs" />
@@ -155,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Archives\FbGoodsArchivesSupplier.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Archives\FbGoodsSupplierRelation.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
