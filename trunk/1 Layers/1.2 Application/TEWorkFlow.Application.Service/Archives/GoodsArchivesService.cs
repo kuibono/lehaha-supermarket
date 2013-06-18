@@ -95,7 +95,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 bar.IfExamine = "true";
                 bar.IfMainBar = "true";
                 bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
-                GoodsArchivesBarRepository.SaveOrUpdate(bar);
+                GoodsArchivesBarRepository.Save(bar);
             }
             #endregion
 

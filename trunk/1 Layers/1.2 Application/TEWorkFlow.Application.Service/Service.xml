@@ -143,6 +143,8 @@
     <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
     <property name="FbPaBaseSetService" ref="FbPaBaseSetService"/>
     <property name="TfDataDownloadService" ref="TfDataDownloadService"/>
+    <property name="GoodsArchivesBarRepository" ref="FbGoodsArchivesBarRepository"/>
+    <property name="GoodsArchivesSupplierRepository" ref="FbGoodsArchivesSupplierRepository"/>
   </object>
   <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>
@@ -220,7 +222,5 @@
   </object>
   <object id="FbGoodsArchivesSupplierService" type="TEWorkFlow.Application.Service.Archives.FbGoodsArchivesSupplierService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbGoodsArchivesSupplierRepository"/>
-    <property name="GoodsArchivesBarRepository" ref="FbGoodsArchivesBarRepository"/>
-    <property name="GoodsArchivesSupplierRepository" ref="FbGoodsArchivesSupplierRepository"/>
   </object>
 </objects>
