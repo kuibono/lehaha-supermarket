@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="FbGoodsArchivesBar" table="fb_goods_archives_bar" lazy="true" >
+    <id name="Id" type="string" column="goods_bar_code" >
+      <generator class="assigned" />
+    </id>
+    <property name="GoodsCode" column="goods_code" type="string" />
+    <property name="GoodsBarName" column="goods_bar_name" type="string" />
+    <property name="PackUnitCode" column="pack_unit_code" type="string" />
+    <property name="PackCoef" column="pack_coef" type="decimal" />
+    <property name="QtyType" column="qty_type" type="string" />
+    <property name="PriceType" column="price_type" type="string" />
+    <property name="SalePrice" column="sale_price" type="decimal" />
+    <property name="VipPrice" column="vip_price" type="decimal" />
+    <property name="TradePrice" column="trade_price" type="decimal" />
+    <property name="PushRate" column="push_rate" type="decimal" />
+    <property name="IfMainBar" column="if_main_bar" type="string" />
+    <property name="IfExamine" column="if_examine" type="string" />
+  </class>
+</hibernate-mapping>
