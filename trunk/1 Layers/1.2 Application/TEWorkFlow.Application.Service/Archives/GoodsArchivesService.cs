@@ -48,12 +48,16 @@ namespace TEWorkFlow.Application.Service.Archives
             bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
             GoodsArchivesBarRepository.SaveOrUpdate(bar);
 
-            //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-            //sup.GoodsCode = id;
-            //sup.Id = Guid.NewGuid().ToString();
-            //sup.IfExamine = "true";
-            //sup.IfMainSupplier = "true";
-            //sup.
+            FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+            sup.GoodsCode = id;
+            sup.Id = Guid.NewGuid().ToString();
+            sup.IfExamine = "true";
+            sup.IfMainSupplier = "true";
+            sup.PyCode = entity.PyCode;
+            sup.SupCode = entity.SupCode;
+            sup.SupName = entity.SupName;
+            GoodsArchivesSupplierRepository.Save(sup);
+
             return id;
         }
 
@@ -92,6 +96,21 @@ namespace TEWorkFlow.Application.Service.Archives
                 bar.IfMainBar = "true";
                 bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
                 GoodsArchivesBarRepository.SaveOrUpdate(bar);
+            }
+            #endregion
+
+            #region 
+            if (oldEntity.SupCode != entity.SupCode)
+            {
+                FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+                sup.GoodsCode = entity.Id;
+                sup.Id = Guid.NewGuid().ToString();
+                sup.IfExamine = "true";
+                sup.IfMainSupplier = "true";
+                sup.PyCode = entity.PyCode;
+                sup.SupCode = entity.SupCode;
+                sup.SupName = entity.SupName;
+                GoodsArchivesSupplierRepository.Save(sup);
             }
             #endregion
 
