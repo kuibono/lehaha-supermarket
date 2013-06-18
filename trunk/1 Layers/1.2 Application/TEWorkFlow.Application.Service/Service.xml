@@ -220,5 +220,7 @@
   </object>
   <object id="FbGoodsArchivesSupplierService" type="TEWorkFlow.Application.Service.Archives.FbGoodsArchivesSupplierService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbGoodsArchivesSupplierRepository"/>
+    <property name="GoodsArchivesBarRepository" ref="FbGoodsArchivesBarRepository"/>
+    <property name="GoodsArchivesSupplierRepository" ref="FbGoodsArchivesSupplierRepository"/>
   </object>
 </objects>

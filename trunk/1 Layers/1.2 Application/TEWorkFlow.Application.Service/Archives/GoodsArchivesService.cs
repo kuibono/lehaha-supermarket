@@ -24,6 +24,8 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
         public IFbPaBaseSetService FbPaBaseSetService { get; set; }
+        public IRepositoryGUID<FbGoodsArchivesBar> GoodsArchivesBarRepository { get; set; }
+        public IRepositoryGUID<FbGoodsArchivesSupplier> GoodsArchivesSupplierRepository { get; set; }
         //public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
         public ITfDataDownloadService TfDataDownloadService { get; set; }
 
@@ -35,8 +37,23 @@ namespace TEWorkFlow.Application.Service.Archives
                 entity.GoodsBarCode = GenerateBarCode();
             }
             string id = EntityRepository.Save(entity);
-            //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_goods_archives" });
             TfDataDownloadService.AddDownload("fb_goods_archives", id);
+
+
+            FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
+            bar.Id = entity.GoodsBarCode;
+            bar.GoodsCode = id;
+            bar.IfExamine = "true";
+            bar.IfMainBar = "true";
+            bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
+            GoodsArchivesBarRepository.SaveOrUpdate(bar);
+
+            //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+            //sup.GoodsCode = id;
+            //sup.Id = Guid.NewGuid().ToString();
+            //sup.IfExamine = "true";
+            //sup.IfMainSupplier = "true";
+            //sup.
             return id;
         }
 
@@ -59,6 +76,25 @@ namespace TEWorkFlow.Application.Service.Archives
         public void Update(GoodsArchives entity)
         {
             var oldEntity = EntityRepository.Get(entity.Id);
+
+            #region 条码发生变化后，更新条码表
+            if (oldEntity.GoodsBarCode != entity.GoodsBarCode)
+            {
+                var oldBarCode = GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
+                if (oldBarCode != null)
+                {
+                    GoodsArchivesBarRepository.Delete(oldBarCode);
+                }
+                FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
+                bar.Id = entity.GoodsBarCode;
+                bar.GoodsCode = entity.Id;
+                bar.IfExamine = "true";
+                bar.IfMainBar = "true";
+                bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
+                GoodsArchivesBarRepository.SaveOrUpdate(bar);
+            }
+            #endregion
+
             if (entity.PurchasePrice != oldEntity.PurchasePrice)
             {
                 if (string.IsNullOrEmpty(entity.PriceHistory)==false)
