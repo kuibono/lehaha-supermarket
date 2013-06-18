@@ -17,10 +17,6 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string GoodsCode { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual string GoodsBarCode { get; set; }
 
         /// <summary>
         /// 

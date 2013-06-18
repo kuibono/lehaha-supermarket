@@ -72,10 +72,6 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string IfExamine { get; set; }
 
-        /// <summary>
-        /// 系统标识
-        /// </summary>
-        public virtual string SysGuid { get; set; }
 
         protected override void Validate()
         {
