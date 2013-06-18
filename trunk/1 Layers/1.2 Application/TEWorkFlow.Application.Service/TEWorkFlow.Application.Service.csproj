@@ -52,10 +52,12 @@
     <Compile Include="AppService.cs" />
     <Compile Include="Archives\BsBranchArchivesService.cs" />
     <Compile Include="Archives\EmemployeearchiveService.cs" />
+    <Compile Include="Archives\FbGoodsSupplierRelationService.cs" />
     <Compile Include="Archives\FbSupplierArchivesService.cs" />
     <Compile Include="Archives\GoodsArchivesService.cs" />
     <Compile Include="Archives\IBsBranchArchivesService.cs" />
     <Compile Include="Archives\IEmemployeearchiveService.cs" />
+    <Compile Include="Archives\IFbGoodsSupplierRelationService.cs" />
     <Compile Include="Archives\IGoodsArchivesService.cs" />
     <Compile Include="Archives\IFbSupplierArchivesService.cs" />
     <Compile Include="Business\IPcPurchaseDetailService.cs" />
