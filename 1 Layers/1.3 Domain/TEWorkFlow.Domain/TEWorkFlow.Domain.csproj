@@ -162,7 +162,7 @@
     <EmbeddedResource Include="Archives\FbGoodsSupplierRelation.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Archives\FbGoodsArchivesBar.hbm.xml" />
+    <EmbeddedResource Include="Archives\FbGoodsArchivesBar.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
