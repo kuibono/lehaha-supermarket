@@ -275,6 +275,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult GoodsEdit(string id)
         {
             GoodsArchives entity = new GoodsArchives();
+            entity.IfNew = "true";
             if (string.IsNullOrEmpty(id) == false)
             {
                 entity = GoodsArchivesService.GetById(id);

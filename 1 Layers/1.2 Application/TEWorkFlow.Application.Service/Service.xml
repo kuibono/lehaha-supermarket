@@ -82,6 +82,9 @@
   <object id="TfDataDownloadRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.TfDataDownload>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="FbGoodsSupplierRelationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.FbGoodsSupplierRelation>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -202,5 +205,8 @@
   <object id="TfDataDownloadService" type="TEWorkFlow.Application.Service.Sys.TfDataDownloadService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="TfDataDownloadRepository"/>
     <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
+  </object>
+  <object id="FbGoodsSupplierRelationService" type="TEWorkFlow.Application.Service.Archives.FbGoodsSupplierRelationService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbGoodsSupplierRelationRepository"/>
   </object>
 </objects>
