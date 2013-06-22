@@ -145,6 +145,8 @@
     <property name="TfDataDownloadService" ref="TfDataDownloadService"/>
     <property name="GoodsArchivesBarRepository" ref="FbGoodsArchivesBarRepository"/>
     <property name="GoodsArchivesSupplierRepository" ref="FbGoodsArchivesSupplierRepository"/>
+    <property name="FbGoodsArchivesBarService" ref="FbGoodsArchivesBarService"/>
+    <property name="FbGoodsArchivesSupplierService" ref="FbGoodsArchivesSupplierService"/>
   </object>
   <object id="FbPaGoodsGbService" type="TEWorkFlow.Application.Service.Category.FbPaGoodsGbService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbPaGoodsGbRepository"/>

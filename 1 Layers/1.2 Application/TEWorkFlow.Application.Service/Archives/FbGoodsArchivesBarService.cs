@@ -39,7 +39,7 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public void Update(FbGoodsArchivesBar entity)
         {
-            EntityRepository.Update(entity);
+            EntityRepository.SaveOrUpdate(entity);
         }
 
         [Transaction]
