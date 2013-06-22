@@ -29,6 +29,10 @@ namespace TEWorkFlow.Application.Service.Archives
         //public IRepositoryGUID<TfDataDownload> DataDownloadRepository { get; set; }
         public ITfDataDownloadService TfDataDownloadService { get; set; }
 
+        public IFbGoodsArchivesBarService FbGoodsArchivesBarService { get; set; }
+
+        public IFbGoodsArchivesSupplierService FbGoodsArchivesSupplierService { get; set; }
+
         [Transaction]
         public string Create(GoodsArchives entity)
         {
@@ -46,7 +50,8 @@ namespace TEWorkFlow.Application.Service.Archives
             bar.IfExamine = "true";
             bar.IfMainBar = "true";
             bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
-            GoodsArchivesBarRepository.SaveOrUpdate(bar);
+            //GoodsArchivesBarRepository.SaveOrUpdate(bar);
+            FbGoodsArchivesBarService.Create(bar);
 
             FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
             sup.GoodsCode = id;
@@ -56,8 +61,8 @@ namespace TEWorkFlow.Application.Service.Archives
             sup.PyCode = entity.PyCode;
             sup.SupCode = entity.SupCode;
             sup.SupName = entity.SupName;
-            GoodsArchivesSupplierRepository.Save(sup);
-
+            //GoodsArchivesSupplierRepository.Save(sup);
+            FbGoodsArchivesSupplierService.Create(sup);
             return id;
         }
 
@@ -95,7 +100,8 @@ namespace TEWorkFlow.Application.Service.Archives
                 bar.IfExamine = "true";
                 bar.IfMainBar = "true";
                 bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
-                GoodsArchivesBarRepository.Save(bar);
+                //GoodsArchivesBarRepository.Save(bar);
+                FbGoodsArchivesBarService.Update(bar);
             }
             #endregion
 
@@ -109,8 +115,9 @@ namespace TEWorkFlow.Application.Service.Archives
                 sup.IfMainSupplier = "true";
                 sup.PyCode = entity.PyCode;
                 sup.SupCode = entity.SupCode;
-                sup.SupName = entity.SupName;
-                GoodsArchivesSupplierRepository.Save(sup);
+                sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
+                //GoodsArchivesSupplierRepository.Save(sup);
+                FbGoodsArchivesSupplierService.Update(sup);
             }
             #endregion
 

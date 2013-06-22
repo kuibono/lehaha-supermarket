@@ -308,5 +308,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         #endregion
 
+        public ActionResult SupplierBranchRelationManagement()
+        {
+            return View();
+        }
+
     }
 }
