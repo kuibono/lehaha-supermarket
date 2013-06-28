@@ -91,6 +91,9 @@
   <object id="FbGoodsArchivesSupplierRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.FbGoodsArchivesSupplier>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="FbSupplierBranchRelationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.FbSupplierBranchRelation>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -224,5 +227,10 @@
   </object>
   <object id="FbGoodsArchivesSupplierService" type="TEWorkFlow.Application.Service.Archives.FbGoodsArchivesSupplierService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbGoodsArchivesSupplierRepository"/>
+  </object>
+  <object id="FbSupplierBranchRelationService" type="TEWorkFlow.Application.Service.Archives.FbSupplierBranchRelationService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="FbSupplierBranchRelationRepository"/>
+    <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
+    <property name="BsBranchArchivesRepository" ref="BsBranchArchivesRepository"/>
   </object>
 </objects>

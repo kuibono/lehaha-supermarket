@@ -308,10 +308,33 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         #endregion
 
+
+        #region 供货商分店关系管理
+
+        public IFbSupplierBranchRelationService FbSupplierBranchRelationService { get; set; }
+
         public ActionResult SupplierBranchRelationManagement()
         {
             return View();
         }
+        public ActionResult BranchSupplierRelationManagement()
+        {
+            return View();
+        }
+        public JsonResult GetRelationsBySupCode(string id)
+        {
+            return Json(FbSupplierBranchRelationService.GetAllRelationBySupplierCode(id), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetRelationsByBCode(string id)
+        {
+            return Json(FbSupplierBranchRelationService.GetAllRelationByBranchCode(id), JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult SetSupplierBranchRelationValue(string bCode, string supCode, bool value)
+        {
+            FbSupplierBranchRelationService.SetValue(bCode, supCode, value);
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

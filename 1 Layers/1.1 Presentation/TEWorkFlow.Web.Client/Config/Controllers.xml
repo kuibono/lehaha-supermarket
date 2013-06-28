@@ -22,6 +22,7 @@
     <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
     <property name="BsBranchArchivesService" ref="BsBranchArchivesService" />
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
+    <property name="FbSupplierBranchRelationService" ref="FbSupplierBranchRelationService" />
   </object>
 
   <object type="TEWorkFlow.Web.Client.Controllers.CategoryController, TEWorkFlow.Web.Client" singleton="false" >

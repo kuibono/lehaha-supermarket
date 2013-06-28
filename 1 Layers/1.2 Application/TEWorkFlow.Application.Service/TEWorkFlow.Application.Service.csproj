@@ -56,12 +56,14 @@
     <Compile Include="Archives\FbGoodsArchivesSupplierService.cs" />
     <Compile Include="Archives\FbGoodsSupplierRelationService.cs" />
     <Compile Include="Archives\FbSupplierArchivesService.cs" />
+    <Compile Include="Archives\FbSupplierBranchRelationService.cs" />
     <Compile Include="Archives\GoodsArchivesService.cs" />
     <Compile Include="Archives\IBsBranchArchivesService.cs" />
     <Compile Include="Archives\IEmemployeearchiveService.cs" />
     <Compile Include="Archives\IFbGoodsArchivesBarService.cs" />
     <Compile Include="Archives\IFbGoodsArchivesSupplierService.cs" />
     <Compile Include="Archives\IFbGoodsSupplierRelationService.cs" />
+    <Compile Include="Archives\IFbSupplierBranchRelationService.cs" />
     <Compile Include="Archives\IGoodsArchivesService.cs" />
     <Compile Include="Archives\IFbSupplierArchivesService.cs" />
     <Compile Include="Business\IPcPurchaseDetailService.cs" />
