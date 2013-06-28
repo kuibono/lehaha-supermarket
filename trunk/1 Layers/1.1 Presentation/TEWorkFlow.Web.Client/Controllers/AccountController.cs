@@ -232,6 +232,31 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupplierVisible = false
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-chart-organisation",
+                Id = "SupplierBranchRelationManagement",
+                ParentId = "archives",
+                Url = "/Archives/SupplierBranchRelationManagement",
+                Windowname = "供货商分店关系管理",
+                Index = 16,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-chart-organisation",
+                Id = "BranchSupplierRelationManagement",
+                ParentId = "archives",
+                Url = "/Archives/BranchSupplierRelationManagement",
+                Windowname = "分店供货商关系管理",
+                Index = 16,
+                EmployeeVisible = true,
+                SupplierVisible = false
+            };
+            SysmodulecontentService.Create(m1);
             #endregion
 
             #region 补货管理

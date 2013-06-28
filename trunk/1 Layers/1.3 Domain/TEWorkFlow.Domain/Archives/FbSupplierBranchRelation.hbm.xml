@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Archives">
+  <class name="FbSupplierBranchRelation" table="fb_supplier_branch_relation" lazy="true" >
+    <id name="Id" type="string" column="Id" >
+      <generator class="assigned" />
+    </id>
+    <property name="SupCode" column="sup_code" type="string" />
+    <property name="SupName" column="sup_name" type="string" />
+    <property name="bCode" column="b_code" type="string" />
+    <property name="bName" column="b_name" type="string" />
+    <property name="Available" column="available" type="bool" />
+  </class>
+</hibernate-mapping>
