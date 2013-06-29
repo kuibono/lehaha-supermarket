@@ -123,6 +123,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
             if (entity.PurchasePrice != oldEntity.PurchasePrice)
             {
+                if (entity.PriceHistory == null)
+                    entity.PriceHistory = "";
                 if (string.IsNullOrEmpty(entity.PriceHistory)==false)
                 {
                     entity.PriceHistory += ",";
@@ -207,6 +209,39 @@ namespace TEWorkFlow.Application.Service.Archives
         public SearchResult<GoodsArchives> Search(SearchDtoBase<GoodsArchives> c)
         {
             var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(c.key)==false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(c.key)
+                    || l.GoodsBarCode.Contains(c.key)
+                    || l.GoodsSubCode.Contains(c.key)
+                    || l.GbCode.Contains(c.key)
+                    || l.GmCode.Contains(c.key)
+                    || l.GsCode.Contains(c.key)
+                    || l.GlCode.Contains(c.key)
+                    || l.GoodsType.Contains(c.key)
+                    || l.CheckMode.Contains(c.key)
+                    || l.SupCode.Contains(c.key)
+                    || l.OpCode.Contains(c.key)
+                    || l.GoodsName.Contains(c.key)
+                    || l.GoodsSubName.Contains(c.key)
+                    || l.PyCode.Contains(c.key)
+                    || l.GoodsState.Contains(c.key)
+                    || l.ProducingArea.Contains(c.key)
+                    || l.ArticleNumber.Contains(c.key)
+                    || l.Specification.Contains(c.key)
+                    || l.ShelfLife.Contains(c.key)
+                    || l.PackUnitCode.Contains(c.key)
+                    || l.OfferMode.Contains(c.key)
+                    || l.UnderFloorCode.Contains(c.key)
+                    || l.UnderCounterCode.Contains(c.key)
+                    || l.CheckUnitCode.Contains(c.key)
+                    || l.Operator.Contains(c.key)
+                    || l.Assessor.Contains(c.key)
+                    || l.IfExamine.Contains(c.key)
+                    select l;
+            }
             if (c.entity != null)
             {
                 if (string.IsNullOrEmpty(c.entity.GoodsBarCode) == false)

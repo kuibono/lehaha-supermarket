@@ -268,7 +268,7 @@
         tree.on("nodeselect", function (e) {
             if (e.isLeaf) {
                 grid.columns[6].visible = false;
-                grid.load({ SupCode: e.node.Id });
+                search();
             } else {
                 grid.setData([]);
                 grid.setTotalCount(0);
@@ -290,10 +290,19 @@
             win.hide();
         }
         function search() {
-            grid.load({
-                "key": mini.get("#Id").value,
-                "IfExamine": mini.get("#ifexame").value
-            });
+            if (tree.getSelectedNode() != undefined) {
+                grid.load({
+                    "SupCode":tree.getSelectedNode().Id,
+                    "key": mini.get("#Id").value,
+                    "IfExamine": mini.get("#ifexame").value
+                });
+            }
+            else {
+                grid.load({
+                    "key": mini.get("#Id").value,
+                    "IfExamine": mini.get("#ifexame").value
+                });
+            }
         }
         function editRow(id) {
             var winTitle = "商品档案:";
@@ -301,8 +310,12 @@
                 winTitle += grid.getSelected().SupName + " " + grid.getSelected().SupTel;
             }
             catch (e) { }
+            var eUrl = "/Archives/GoodsEdit/" + id;
+            if (tree.getSelectedNode() != undefined) {
+                eUrl += "?SupCode=" + tree.getSelectedNode().Id;
+            }
             mini.open({
-                url: "/Archives/GoodsEdit/" + id,
+                url: eUrl,
                 title: winTitle,
                 iconCls: "icon-user",
                 allowResize: false,
@@ -335,7 +348,7 @@
             var record = e.record;
             var uid = record.Id;
             var rowIndex = e.rowIndex;
-            return "<a href='javascript:viewHistory(\"" + e.PriceHistory + "\")'>查看</a>"
+            return "<a href='javascript:viewHistory(\"" + e.record.PriceHistory + "\")'>查看</a>"
         }
         function viewHistory(text) {
             var table = "<table class='mini-grid-table' border='1' cellpadding='0' cellspacing='0' style='border-color:gray;border:#d2d2d2 1px solid;'>";
@@ -355,7 +368,7 @@
             table += "</table>";
 
             mini.showMessageBox({
-                width: 250,
+                width: 350,
                 title: "历史价格",
                 buttons: ["ok"],
                 //message: "自定义Html",

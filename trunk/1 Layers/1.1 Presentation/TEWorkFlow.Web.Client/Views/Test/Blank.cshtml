@@ -37,7 +37,7 @@
                 width: 450,
                 title: sender.record.Title,
                 buttons: ["ok"],
-                html: sender.record.PostContent,
+                html: sender.record.PostContent.replace(/\n/g, '<br/>'),
                 showModal: false,
                 callback: function (action) {
                     //alert(action);

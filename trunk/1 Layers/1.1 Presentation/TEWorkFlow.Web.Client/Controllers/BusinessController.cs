@@ -117,7 +117,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
             //计算金额
             detail.PurchaseMoney = detail.PurchaseQty * detail.SalePrice;
-            detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.NontaxPurchasePrice;
+            detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.PurchasePrice;
 
             //如果选择赠品，则金额为零
             if (detail.IsFree)
@@ -331,6 +331,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                 model.bCode = bcode;
             }
             model.Id = Guid.NewGuid().ToString();
+            model.CreateDate = DateTime.Now;
+            model.Operator = Common.MyEnv.CurrentEmployee.Id;
 
             if (string.IsNullOrEmpty(id) == false)
             {
