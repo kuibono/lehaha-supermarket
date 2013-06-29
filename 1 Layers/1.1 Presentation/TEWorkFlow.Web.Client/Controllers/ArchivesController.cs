@@ -179,6 +179,10 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchBranchArchiveList(SearchDtoBase<BsBranchArchives> c, BsBranchArchives s)
         {
+            if (string.IsNullOrEmpty(Request["key"]) == false)
+            {
+                return Json(BsBranchArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            }
             c.entity = s;
             return Json(BsBranchArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
@@ -245,10 +249,10 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchGoodsArchiveList(SearchDtoBase<GoodsArchives> c, GoodsArchives s)
         {
-            if (string.IsNullOrEmpty(Request["key"]) == false)
-            {
-                return Json(GoodsArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
-            }
+            //if (string.IsNullOrEmpty(Request["key"]) == false)
+            //{
+            //    return Json(GoodsArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
+            //}
 
             c.entity = s;
             if (Common.MyEnv.IsSupplierLogin)
@@ -276,6 +280,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             GoodsArchives entity = new GoodsArchives();
             entity.IfNew = "true";
+            if (Request["SupCode"] != null)
+            {
+                entity.SupCode = Request["SupCode"].ToString();
+            }
             if (string.IsNullOrEmpty(id) == false)
             {
                 entity = GoodsArchivesService.GetById(id);

@@ -46,6 +46,8 @@ namespace TEWorkFlow.Dto
 
         public string sortOrder { get; set; }
 
+        public string key { get; set; }
+
         public T entity { get; set; }
     }
 

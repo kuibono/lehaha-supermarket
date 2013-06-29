@@ -326,7 +326,7 @@ namespace TEWorkFlow.Application.Service.Business
                         && l.EnCode == SupCode
                     select l;
             }
-            if (string.IsNullOrEmpty(bCode))
+            if (string.IsNullOrEmpty(bCode)==false)
             {
                 q = from l in q where l.bCode == bCode select l;
             }

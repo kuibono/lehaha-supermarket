@@ -405,7 +405,8 @@
         function onValueChanged(e) {
             var num = $(".mini-grid-newRow input.mini-buttonedit-input").eq(1);
             num.focus();
-            document.getElementById(num.prop("id")).setSelectionRange(0, num.val().length);
+            $(num).select();
+            //document.getElementById(num.prop("id")).setSelectionRange(0, num.val().length);
         }
     </script>
 

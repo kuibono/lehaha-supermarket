@@ -458,16 +458,16 @@ namespace TEWorkFlow.Web.Client.Controllers
             };
             SysmodulecontentService.Create(m1);
 
-            m1 = new Sysmodulecontent()
-            {
-                Icon = "icon-cart-delete",
-                Id = "business-return",
-                ParentId = "business",
-                Url = "/Business/ReturnList",
-                Windowname = "产品退货",
-                SupplierVisible = true
-            };
-            SysmodulecontentService.Create(m1);
+            //m1 = new Sysmodulecontent()
+            //{
+            //    Icon = "icon-cart-delete",
+            //    Id = "business-return",
+            //    ParentId = "business",
+            //    Url = "/Business/ReturnList",
+            //    Windowname = "产品退货",
+            //    SupplierVisible = true
+            //};
+            //SysmodulecontentService.Create(m1);
 
             //m1 = new Sysmodulecontent()
             //{
