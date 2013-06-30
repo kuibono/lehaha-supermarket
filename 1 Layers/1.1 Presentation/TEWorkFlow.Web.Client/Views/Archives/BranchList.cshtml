@@ -55,16 +55,50 @@
                 }
             });
         }
+//        function deleteItem(id) {
+//            $.ajax({
+//                url: "/Archives/BranchDelete",
+//                data: { ids: id },
+//                success: function (text) {
+//                    grid.reload();
+//                },
+//                error: function () {
+//                }
+//            });
+//        }
         function deleteItem(id) {
             $.ajax({
                 url: "/Archives/BranchDelete",
                 data: { ids: id },
-                success: function (text) {
-                    grid.reload();
+                dataType: "json",
+                success: function (j) {
+                    if (j == false) {
+                        if (confirm("将要删除的分店存在采购数据，删除后将影响整个系统运行，是否确认删除？") == true) {
+                            $.ajax({
+                                url: "/Archives/BranchDelete",
+                                data: { ids: id, confirm: "true" },
+                                dataType: "json",
+                                success: function (r) {
+                                    grid.reload();
+                                }
+                            });
+                        }
+                    }
+
                 },
                 error: function () {
                 }
             });
+        }
+        function onBranchActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            return s;
         }
     </script>
 }

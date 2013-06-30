@@ -94,6 +94,9 @@
   <object id="FbSupplierBranchRelationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Archives.FbSupplierBranchRelation>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="SysPostSupplierRelationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPostSupplierRelation>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -214,6 +217,8 @@
   </object>
   <object id="SysPostService" type="TEWorkFlow.Application.Service.Sys.SysPostService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysPostRepository"/>
+    <property name="SysPostSupplierRelationRepository" ref="SysPostSupplierRelationRepository"/>
+    <property name="FbSupplierArchivesRepository" ref="FbSupplierArchivesRepository"/>
   </object>
   <object id="TfDataDownloadService" type="TEWorkFlow.Application.Service.Sys.TfDataDownloadService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="TfDataDownloadRepository"/>
@@ -232,5 +237,8 @@
     <property name="EntityRepository" ref="FbSupplierBranchRelationRepository"/>
     <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
     <property name="BsBranchArchivesRepository" ref="BsBranchArchivesRepository"/>
+  </object>
+  <object id="SysPostSupplierRelationService" type="TEWorkFlow.Application.Service.Sys.SysPostSupplierRelationService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="SysPostSupplierRelationRepository"/>
   </object>
 </objects>

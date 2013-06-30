@@ -84,8 +84,16 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetAllPosts(string id)
         {
+            IList<SysPost> result = new List<SysPost>();
             //id 是关键词
-            var result=SysPostService.GetAll().OrderByDescending(p => p.PostTime).ToList();
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                result = SysPostService.GetAll(Common.MyEnv.CurrentSupplier.Id).OrderByDescending(p => p.PostTime).ToList();
+            }
+            else
+            {
+                result = SysPostService.GetAll(null).OrderByDescending(p => p.PostTime).ToList();
+            }
             if (string.IsNullOrEmpty(id)==false)
             {
                 result = result.Where(p => p.Title.Contains(id)).ToList();
@@ -125,6 +133,19 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SysPostService.Create(s);
             }
             return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult PostReaded(string id)
+        {
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                SysPostService.SetPostReaded(id, Common.MyEnv.CurrentSupplier.Id);
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

@@ -16,7 +16,9 @@ namespace TEWorkFlow.Application.Service.Sys
 
         SysPost GetById(string id);
 
-        IList<SysPost> GetAll();
+        IList<SysPost> GetAll(string supCode);
+
+        void SetPostReaded(string id, string supCode);
 
         void Update(SysPost entity);
 

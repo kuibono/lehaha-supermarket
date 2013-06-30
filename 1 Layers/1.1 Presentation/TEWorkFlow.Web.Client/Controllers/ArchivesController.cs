@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TEWorkFlow.Application.Service.Archives;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Application.Service.Business;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -13,6 +14,8 @@ namespace TEWorkFlow.Web.Client.Controllers
     {
         //
         // GET: /Archives/
+
+        public IPcPurchaseManageService PcPurchaseManageService { get; set; }
 
         public ActionResult Index()
         {
@@ -65,6 +68,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult EmployeeDelete(List<string> ids)
         {
+            
             EmemployeearchiveService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -111,6 +115,10 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult SupplierDelete(List<string> ids)
         {
+            if(Request["confirm"]==null && PcPurchaseManageService.IsSupplierHavePurchase(ids.First()))
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
             FbSupplierArchivesService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -218,6 +226,10 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult BranchDelete(List<string> ids)
         {
+            if (Request["confirm"] == null && PcPurchaseManageService.IsBranchHavePurchase(ids.First()))
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
             BsBranchArchivesService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -306,6 +318,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public ActionResult GoodsDelete(List<string> ids)
         {
+            if (Request["confirm"] == null && PcPurchaseManageService.IsGoodsHavePurchase(ids.First()))
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
             GoodsArchivesService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
