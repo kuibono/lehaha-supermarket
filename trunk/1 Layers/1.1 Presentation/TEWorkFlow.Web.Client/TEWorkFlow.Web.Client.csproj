@@ -758,6 +758,8 @@
     <Content Include="Styles\controls.css" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\demo.css" />
+    <Content Include="Styles\email_go.png" />
+    <Content Include="Styles\email_open.png" />
     <Content Include="Styles\header.gif" />
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\Site.css" />

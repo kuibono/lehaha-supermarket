@@ -20,6 +20,7 @@
             sizeList="[5,10,20,50]" pageSize="20" onrowclick="rowclick" showPager="false">
             <div property="columns">
                 <div type="indexcolumn" ></div>
+                <div name="sstatus" width="20" align="center" headerAlign="center" renderer="onStatusRenderer">状态</div>    
                 <div field="Title" width="120" headerAlign="center">标题</div>    
                 <div field="PostTime" headerAlign="center" dateformat="yyyy-MM-dd HH:mm:ss" width="120px">时间</div> 
                 <div field="PostUser" headerAlign="center">发布者</div> 
@@ -40,7 +41,14 @@
                 html: sender.record.PostContent.replace(/\n/g, '<br/>'),
                 showModal: false,
                 callback: function (action) {
-                    //alert(action);
+                    $.ajax({
+                        url: "/Test/PostReaded/" + sender.record.Id,
+                        dataType: "json",
+                        success: function(){ 
+                        },
+                        error: function () {
+                        }
+                        });
                 }
             });
         }
@@ -56,6 +64,16 @@
             var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             return s;
+        }
+        function onStatusRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            if (record.Readed == true) {
+                return "<img src='/Styles/email_open.png' alt='已读'/>"
+            }
+            else {
+                return "<img src='/Styles/email_go.png' alt='未读'/>"
+            }
         }
     </script>
 </body>

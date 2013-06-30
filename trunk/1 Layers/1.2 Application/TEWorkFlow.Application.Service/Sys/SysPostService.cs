@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Sys;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Sys
 {
@@ -14,11 +15,26 @@ namespace TEWorkFlow.Application.Service.Sys
     {
 
         public IRepositoryGUID<SysPost> EntityRepository { get; set; }
+        public IRepositoryGUID<SysPostSupplierRelation> SysPostSupplierRelationRepository { get; set; }
+        public IRepositoryGUID<FbSupplierArchives> FbSupplierArchivesRepository { get; set; }
 
         [Transaction]
         public string Create(SysPost entity)
         {
-            return EntityRepository.Save(entity);
+            var allSuppliers = FbSupplierArchivesRepository.LinqQuery.ToList();
+            string id=EntityRepository.Save(entity);
+
+            foreach (FbSupplierArchives sup in allSuppliers)
+            {
+                SysPostSupplierRelation relation = new SysPostSupplierRelation();
+                relation.Id = Guid.NewGuid().ToString();
+                relation.PostId = id;
+                relation.Readed = false;
+                relation.ReadTime = new DateTime(2000, 1, 1);
+                relation.SupCode = sup.Id;
+                SysPostSupplierRelationRepository.Save(relation);
+            }
+            return id;
         }
 
         [Transaction]
@@ -28,11 +44,45 @@ namespace TEWorkFlow.Application.Service.Sys
         }
 
         [Transaction]
-        public IList<SysPost> GetAll()
+        public IList<SysPost> GetAll(string supCode)
         {
             var result = EntityRepository.LinqQuery.ToList();
 
+            if (string.IsNullOrEmpty(supCode)==false)
+            {
+                var allRelation = SysPostSupplierRelationRepository.LinqQuery.Where(p => p.SupCode == supCode).ToList();
+                foreach (SysPost post in result)
+                {
+                    var relation = allRelation.Where(p => p.PostId == post.Id).FirstOrDefault();
+                    if (relation != null)
+                    {
+                        post.Readed = relation.Readed;
+                    }
+                }
+            }
             return result;
+        }
+        [Transaction]
+        public void SetPostReaded(string id, string supCode)
+        {
+            SysPostSupplierRelation relation = SysPostSupplierRelationRepository.LinqQuery.Where(p => p.PostId == id && p.SupCode == supCode).FirstOrDefault();
+            if (relation == null)
+            {
+                relation = new SysPostSupplierRelation();
+                relation.Id = Guid.NewGuid().ToString();
+                relation.PostId = id;
+                relation.Readed = true;
+                relation.ReadTime = DateTime.Now;
+                relation.SupCode = supCode;
+                SysPostSupplierRelationRepository.Save(relation);
+            }
+            else
+            {
+                relation.ReadTime = DateTime.Now;
+                relation.Readed = true;
+                SysPostSupplierRelationRepository.Update(relation);
+            }
+
         }
 
 

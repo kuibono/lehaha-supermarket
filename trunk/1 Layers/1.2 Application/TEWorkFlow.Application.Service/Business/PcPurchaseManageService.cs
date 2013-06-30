@@ -501,6 +501,21 @@ namespace TEWorkFlow.Application.Service.Business
                 Delete(each);
             }
         }
+
+        public bool IsGoodsHavePurchase(string goodCode)
+        {
+            return PurchaseDetailRepository.LinqQuery.Any(p => p.GoodsCode == goodCode);
+        }
+
+        public bool IsSupplierHavePurchase(string supCode)
+        {
+            return EntityRepository.LinqQuery.Any(p => p.EnCode == supCode);
+        }
+
+        public bool IsBranchHavePurchase(string bCode)
+        {
+            return EntityRepository.LinqQuery.Any(p => p.bCode == bCode);
+        }
     }
 }
 

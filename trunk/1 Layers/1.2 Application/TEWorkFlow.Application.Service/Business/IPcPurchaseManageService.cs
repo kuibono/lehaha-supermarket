@@ -51,5 +51,11 @@ namespace TEWorkFlow.Application.Service.Business
         IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);
+
+        bool IsGoodsHavePurchase(string goodCode);
+
+        bool IsSupplierHavePurchase(string supCode);
+
+        bool IsBranchHavePurchase(string bCode);
     }
 }
