@@ -97,3 +97,7 @@ table
 {
     border-color:Gray;
 }
+.mini-textarea
+{
+    display:block !important;
+}
