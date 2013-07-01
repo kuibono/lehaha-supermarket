@@ -74,133 +74,134 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            mini.parse();
+    </div>
+    <script type="text/javascript">
+        mini.parse();
 
 
-            var grid = mini.get("datagrid1");
+        var grid = mini.get("datagrid1");
 
 
-            grid.load();
-            //对"createtime"字段，进行降级排序
-            grid.sortBy("Id", "desc");
+        grid.load();
+        //对"createtime"字段，进行降级排序
+        grid.sortBy("Id", "desc");
 
 
-            $("#key").bind("keydown", function (e) {
-                if (e.keyCode == 13) {
-                    search();
+        $("#key").bind("keydown", function (e) {
+            if (e.keyCode == 13) {
+                search();
+            }
+        });
+
+
+
+        function onActionRenderer(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+
+            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+            + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            return s;
+        }
+
+
+
+        function remove() {
+            var rows = grid.getSelecteds();
+            if (rows.length > 0) {
+                if (confirm("确定删除选中记录？")) {
+                    var ids = [];
+                    for (var i = 0, l = rows.length; i < l; i++) {
+                        var r = rows[i];
+                        ids.push(r.Id);
+                    }
+                    var id = ids.join(',');
+                    grid.loading("操作中，请稍后......");
+                    deleteItem(id);
+                }
+            } else {
+                alert("请选中一条记录");
+            }
+        }
+        var tree = mini.get("tree1");
+        tree.on("nodeselect", function (e) {
+            if (e.isLeaf) {
+                search();
+            } else {
+                grid.setData([]);
+                grid.setTotalCount(0);
+            }
+        });
+
+        function doSearch() {
+            grid.load({
+                //EnCode: tree.getSelectedNode().Id,
+                dateS: mini.get("dateS").getValue(),
+                dateE: mini.get("dateE").getValue()
+            });
+            //            if (tree.getSelectedNode()) {
+            //                grid.load({
+            //                    //EnCode: tree.getSelectedNode().Id,
+            //                    dateS: mini.get("dateS").getValue(),
+            //                    dateE: mini.get("dateE").getValue()
+            //                });
+            //            }
+            //            else {
+            //                grid.setData([]);
+            //                grid.setTotalCount(0);
+            //            }
+        }
+
+        function showSearchWindow() {
+            var win = mini.get("searchWindow");
+            win.show();
+        }
+        function advSearch() {
+            var frm = new mini.Form("frmAdv");
+            grid.load(frm.getData(true));
+            var win = mini.get("searchWindow");
+            win.hide();
+        }
+        function search() {
+            grid.load({
+                //EnCode: tree.getSelectedNode().Id,
+                dateS: mini.get("dateS").getFormValue(),
+                dateE: mini.get("dateE").getFormValue()
+            });
+        }
+        function onActionRenderer2(e) {
+            var grid = e.sender;
+            var record = e.record;
+            var uid = record.Id;
+            var rowIndex = e.rowIndex;
+
+            var s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>';
+            return s;
+        }
+        function viewRow(id) {
+            mini.open({
+                url: "/Query/PurchaseView/" + id + "?readonly=true",
+                title: "采购查看",
+                iconCls: "icon-cart",
+                allowResize: false,
+                width: 700,
+                height: 480,
+                onload: function () {
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
                 }
             });
-
-
-
-            function onActionRenderer(e) {
-                var grid = e.sender;
-                var record = e.record;
-                var uid = record.Id;
-                var rowIndex = e.rowIndex;
-
-                var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
-                + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
-                return s;
-            }
-
-
-
-            function remove() {
-                var rows = grid.getSelecteds();
-                if (rows.length > 0) {
-                    if (confirm("确定删除选中记录？")) {
-                        var ids = [];
-                        for (var i = 0, l = rows.length; i < l; i++) {
-                            var r = rows[i];
-                            ids.push(r.Id);
-                        }
-                        var id = ids.join(',');
-                        grid.loading("操作中，请稍后......");
-                        deleteItem(id);
-                    }
-                } else {
-                    alert("请选中一条记录");
-                }
-            }
-            var tree = mini.get("tree1");
-            tree.on("nodeselect", function (e) {
-                if (e.isLeaf) {
-                    search();
-                } else {
-                    grid.setData([]);
-                    grid.setTotalCount(0);
-                }
-            });
-
-            function doSearch() {
-                grid.load({
-                    //EnCode: tree.getSelectedNode().Id,
-                    dateS: mini.get("dateS").getValue(),
-                    dateE: mini.get("dateE").getValue()
-                });
-                //            if (tree.getSelectedNode()) {
-                //                grid.load({
-                //                    //EnCode: tree.getSelectedNode().Id,
-                //                    dateS: mini.get("dateS").getValue(),
-                //                    dateE: mini.get("dateE").getValue()
-                //                });
-                //            }
-                //            else {
-                //                grid.setData([]);
-                //                grid.setTotalCount(0);
-                //            }
-            }
-
-            function showSearchWindow() {
-                var win = mini.get("searchWindow");
-                win.show();
-            }
-            function advSearch() {
-                var frm = new mini.Form("frmAdv");
-                grid.load(frm.getData(true));
-                var win = mini.get("searchWindow");
-                win.hide();
-            }
-            function search() {
-                grid.load({
-                    //EnCode: tree.getSelectedNode().Id,
-                    dateS: mini.get("dateS").getFormValue(),
-                    dateE: mini.get("dateE").getFormValue()
-                });
-            }
-            function onActionRenderer2(e) {
-                var grid = e.sender;
-                var record = e.record;
-                var uid = record.Id;
-                var rowIndex = e.rowIndex;
-
-                var s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>';
-                return s;
-            }
-            function viewRow(id) {
-                mini.open({
-                    url: "/Query/PurchaseView/" + id + "?readonly=true",
-                    title: "采购查看",
-                    iconCls: "icon-cart",
-                    allowResize: false,
-                    width: 700,
-                    height: 480,
-                    onload: function () {
-                    },
-                    ondestroy: function (action) {
-
-                        grid.reload();
-                    }
-                });
-            }
-            function print() {
-                var oldHeight = $("#printArea .mini-grid-body").first().height();
-                $("#printArea .mini-grid-body").first().height(($("#printArea tr").size() - 7) * 23)
-                $("#printArea").printArea();
-                $("#printArea .mini-grid-body").first().height(oldHeight);
-            }
-        </script>
+        }
+        function print() {
+            var oldHeight = $("#printArea .mini-grid-body").first().height();
+            $("#printArea .mini-grid-body").first().height(($("#printArea tr").size() - 7) * 23)
+            $("#printArea").printArea();
+            $("#printArea .mini-grid-body").first().height(oldHeight);
+        }
+    </script>
 </body>
 </html>
