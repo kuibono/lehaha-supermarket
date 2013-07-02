@@ -192,7 +192,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             if (string.IsNullOrEmpty(e.Id))
             {
-                e.Id = Guid.NewGuid().ToString();
+                e.Id = "";
             }
             e.GmName = row["GmName"].ToString();
             e.GbCode = row["GbCode"].ToString();
@@ -221,7 +221,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             if (string.IsNullOrEmpty(e.Id))
             {
-                e.Id = Guid.NewGuid().ToString();
+                e.Id = null;
             }
             e.GsName = row["GsName"].ToString();
             e.GmCode = row["GmCode"].ToString();
@@ -251,7 +251,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             if (string.IsNullOrEmpty(e.Id))
             {
-                e.Id = Guid.NewGuid().ToString();
+                e.Id = null;
             }
             e.GlName = row["GlName"].ToString();
             e.GsCode = row["GsCode"].ToString();
