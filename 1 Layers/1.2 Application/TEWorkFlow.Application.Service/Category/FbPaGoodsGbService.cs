@@ -21,6 +21,7 @@ namespace TEWorkFlow.Application.Service.Category
         [Transaction]
         public string Create(FbPaGoodsGb entity)
         {
+            entity.Id = GenarateId();
             string id = EntityRepository.Save(entity);
             TfDataDownloadService.AddDownload("fb_pa_goods_gb", id);
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_pa_goods_gb" });
@@ -129,13 +130,11 @@ namespace TEWorkFlow.Application.Service.Category
         public string GenarateId()
         {
             var setting = FbPaBaseSetService.Get();
-            var q = from l in EntityRepository.LinqQuery orderby l.Id descending select l;
-            int maxId = 0;
-            if (q.Count() > 0)
+            var allGbs = (from l in EntityRepository.LinqQuery select l).ToList();
+            int maxId = allGbs.Select(p => Convert.ToInt32(p.Id.Right(setting.GoodsGbLen.ToInt32()))).OrderByDescending(p => p).FirstOrDefault();
+            if (maxId <= 0)
             {
-
-                var item = q.First();
-                maxId = item.Id.ToInt32();
+                maxId = 0;
             }
             return (maxId + 1).ToString().FillByStrings('0', setting.GoodsGbLen.ToInt32());
         }

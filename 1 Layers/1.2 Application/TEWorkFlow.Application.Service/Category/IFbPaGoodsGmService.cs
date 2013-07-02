@@ -41,6 +41,6 @@ namespace TEWorkFlow.Application.Service.Category
 
         void Delete(IList<string> ids);
 
-        string GenarateId();
+        string GenarateId(string gbCode);
     }
 }
