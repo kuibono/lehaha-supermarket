@@ -163,7 +163,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             if (string.IsNullOrEmpty(e.Id))
             {
-                e.Id = Guid.NewGuid().ToString();
+                e.Id = null;
             }
             e.GbName = row["GbName"].ToString();
             FbPaGoodsGbService.Save(e);

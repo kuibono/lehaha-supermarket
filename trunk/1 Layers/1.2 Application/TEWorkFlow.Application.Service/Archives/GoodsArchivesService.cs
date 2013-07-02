@@ -511,7 +511,27 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public string GenarateId(GoodsArchives entity)
         {
-            return entity.GbCode + entity.GmCode + entity.GsCode + entity.GlCode + entity.GoodsSubCode;
+            string clsCode = "";
+            switch (FbPaBaseSetService.Get().GoodsClassLevel.ToInt32())
+            {
+                case 1:
+                    clsCode = entity.GbCode;
+                    break;
+                case 2:
+                    clsCode = entity.GmCode;
+                    break;
+                case 3:
+                    clsCode = entity.GsCode;
+                    break;
+                case 4:
+                    clsCode = entity.GlCode;
+                    break;
+                default:
+                    clsCode = "";
+                    break;
+            }
+
+            return clsCode + entity.GoodsSubCode;
         }
 
         public string GenerateBarCode()

@@ -1509,5 +1509,15 @@ namespace NSH.VSTO
             return random.Next(min, max);
         }
         #endregion
+
+
+        public static string Right(this string str,int length)
+        {
+            if (str.Length <= length)
+            {
+                return str;
+            }
+            return str.Substring(str.Length - length, str.Length-1);
+        }
     }
 }

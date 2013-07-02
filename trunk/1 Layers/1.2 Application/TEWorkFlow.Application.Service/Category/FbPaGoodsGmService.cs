@@ -48,7 +48,7 @@ namespace TEWorkFlow.Application.Service.Category
             if (string.IsNullOrEmpty(entity.Id))
             {
                 add = true;
-                entity.Id = GenarateId();
+                entity.Id = GenarateId(entity.GbCode);
             }
             else
             {
@@ -144,18 +144,27 @@ namespace TEWorkFlow.Application.Service.Category
         }
 
         [Transaction]
-        public string GenarateId()
+        public string GenarateId(string gbCode)
         {
             var setting = FbPaBaseSetService.Get();
-            var q = from l in EntityRepository.LinqQuery orderby l.Id descending select l;
-            int maxId = 0;
-            if (q.Count() > 0)
+            var allGbs = (from l in EntityRepository.LinqQuery select l).ToList();
+            int maxId = allGbs.Select(p => Convert.ToInt32(p.Id.Right(setting.GoodsGmLen.ToInt32()))).OrderByDescending(p => p).FirstOrDefault();
+            if (maxId <= 0)
             {
-
-                var item = q.First();
-                maxId = item.Id.ToInt32();
+                maxId = 0;
             }
-            return (maxId + 1).ToString().FillByStrings('0', setting.GoodsGmLen.ToInt32());
+            return gbCode+(maxId + 1).ToString().FillByStrings('0', setting.GoodsGbLen.ToInt32());
+
+            //var setting = FbPaBaseSetService.Get();
+            //var q = from l in EntityRepository.LinqQuery orderby l.Id descending select l;
+            //int maxId = 0;
+            //if (q.Count() > 0)
+            //{
+
+            //    var item = q.First();
+            //    maxId = item.Id.ToInt32();
+            //}
+            //return (maxId + 1).ToString().FillByStrings('0', setting.GoodsGmLen.ToInt32());
         }
     }
 }
