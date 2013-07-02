@@ -1517,7 +1517,7 @@ namespace NSH.VSTO
             {
                 return str;
             }
-            return str.Substring(str.Length - length, str.Length-1);
+            return str.Substring(str.Length - length, length);
         }
     }
 }
