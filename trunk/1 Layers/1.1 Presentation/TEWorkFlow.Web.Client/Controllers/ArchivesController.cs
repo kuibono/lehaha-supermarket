@@ -292,6 +292,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             GoodsArchives entity = new GoodsArchives();
             entity.IfNew = "true";
+            entity.CreateDate = DateTime.Now;
+            entity.Operator = Common.MyEnv.CurrentEmployee.Id;
+            entity.Assessor = Common.MyEnv.CurrentEmployee.Id;
+            entity.OperatorDate = DateTime.Now;
             if (Request["SupCode"] != null)
             {
                 entity.SupCode = Request["SupCode"].ToString();

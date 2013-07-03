@@ -245,6 +245,8 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string IfNew { get; set; }
 
+        public virtual string IfSyncSale { get; set; }
+
 
         public virtual string GbName { get; set; }
 
