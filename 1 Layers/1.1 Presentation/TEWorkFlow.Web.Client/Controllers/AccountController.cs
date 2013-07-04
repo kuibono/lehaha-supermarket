@@ -153,6 +153,18 @@ namespace TEWorkFlow.Web.Client.Controllers
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "report-branch-goods-retail",
+                ParentId = "em-query",
+                Url = "/Report/BranchRetail/",
+                Windowname = "分店销售数据统计",
+                Index = 14,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
             #endregion
 
             #region 档案管理

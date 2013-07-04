@@ -6,6 +6,7 @@ using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Application.Service.Archives;
 using Spring.Context;
 using Spring.Context.Support;
+using TEWorkFlow.Application.Service.Sys;
 
 namespace TEWorkFlow.Web.Client.Common
 {
@@ -87,7 +88,10 @@ namespace TEWorkFlow.Web.Client.Common
         {
             return (IFbSupplierArchivesService)_applicationContext.GetObject("FbSupplierArchivesService");
         }
-
+        public static IFbPaBaseSetService GetFbPaBaseSetService()
+        {
+            return (IFbPaBaseSetService)_applicationContext.GetObject("FbPaBaseSetService");
+        }
         #endregion
     }
 

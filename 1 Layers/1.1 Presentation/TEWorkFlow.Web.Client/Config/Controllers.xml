@@ -54,5 +54,6 @@
   <object type="TEWorkFlow.Web.Client.Controllers.QueryController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
+    <property name="RtRetailManageService" ref="RtRetailManageService" />
   </object>
 </objects>

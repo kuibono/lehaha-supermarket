@@ -72,12 +72,16 @@
     <Compile Include="Business\IPcReturnManageService.cs" />
     <Compile Include="Business\IPcSupplementDetailService.cs" />
     <Compile Include="Business\IPcSupplementManageService.cs" />
+    <Compile Include="Business\IRtRetailDetailService.cs" />
+    <Compile Include="Business\IRtRetailManageService.cs" />
     <Compile Include="Business\PcPurchaseDetailService.cs" />
     <Compile Include="Business\PcPurchaseManageService.cs" />
     <Compile Include="Business\PcReturnDetailService.cs" />
     <Compile Include="Business\PcReturnManageService.cs" />
     <Compile Include="Business\PcSupplementDetailService.cs" />
     <Compile Include="Business\PcSupplementManageService.cs" />
+    <Compile Include="Business\RtRetailDetailService.cs" />
+    <Compile Include="Business\RtRetailManageService.cs" />
     <Compile Include="Category\BsPaAreaService.cs" />
     <Compile Include="Category\BsPaClassService.cs" />
     <Compile Include="Category\EmPaPoliticsService.cs" />

@@ -17,6 +17,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
         public IGoodsArchivesService GoodsArchivesService { get; set; }
+        public IRtRetailManageService RtRetailManageService{ get; set; }
         public ActionResult PurchaseQuery()
         {
             return View();
@@ -50,6 +51,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return Json(PcPurchaseManageService.SearchReportBySupplier(dates, datee, supCode,bCode), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult SearchBranchRetail(string bCode, DateTime? dates, DateTime? datee)
+        {
+            return Json(RtRetailManageService.SearchReportBySupplier(dates, datee, bCode), JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult BranchPurchaseGoods()
         {
             return View();

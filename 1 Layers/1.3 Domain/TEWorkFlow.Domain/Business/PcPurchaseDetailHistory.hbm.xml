@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Business">
+  <class name="PcPurchaseDetailHistory" table="pc_purchase_detail_history" lazy="true" >
+    <id name="Id" type="string" column="sys_guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="ManageId" column="pc_number" type="string" />
+    <property name="GoodsCode" column="goods_code" type="string" />
+    <property name="GoodsBarCode" column="goods_bar_code" type="string" />
+    <property name="Specification" column="specification" type="string" />
+    <property name="PackUnitCode" column="pack_unit_code" type="string" />
+    <property name="OfferMin" column="offer_min" type="decimal" />
+    <property name="StockQty" column="stock_qty" type="decimal" />
+    <property name="OrderQty" column="order_qty" type="decimal" />
+    <property name="PackQty" column="pack_qty" type="decimal" />
+    <property name="PackCoef" column="pack_coef" type="decimal" />
+    <property name="PurchaseQty" column="purchase_qty" type="decimal" />
+    <property name="PutinQty" column="putin_qty" type="decimal" />
+    <property name="SalePrice" column="sale_price" type="decimal" />
+    <property name="PurchasePrice" column="purchase_price" type="decimal" />
+    <property name="NontaxPurchasePrice" column="nontax_purchase_price" type="decimal" />
+    <property name="PurchaseMoney" column="purchase_money" type="decimal" />
+    <property name="NontaxPurchaseMoney" column="nontax_purchase_money" type="decimal" />
+    <property name="ProduceDate" column="produce_date" type="System.DateTime" />
+    <property name="IsFree" column="Is_free" type="bool" />
+    <property name="AddTime" column="add_time" type="System.DateTime" />
+  </class>
+</hibernate-mapping>

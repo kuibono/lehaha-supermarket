@@ -876,6 +876,7 @@
     <Content Include="Views\Test\PostEdit.cshtml" />
     <Content Include="Views\Archives\SupplierBranchRelationManagement.cshtml" />
     <Content Include="Views\Archives\BranchSupplierRelationManagement.cshtml" />
+    <Content Include="Views\Report\BranchRetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

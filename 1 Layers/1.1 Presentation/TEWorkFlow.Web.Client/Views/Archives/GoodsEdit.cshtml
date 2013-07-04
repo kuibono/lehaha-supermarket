@@ -6,6 +6,7 @@
 @section script
 {
     <script type="text/javascript">
+        var clsGrade = @TEWorkFlow.Web.Client.Common.MyEnv.GetFbPaBaseSetService().Get().GoodsClassLevel;
         mini.parse();
 
 
@@ -36,7 +37,22 @@
         var GmCode = mini.get("GmCode");
         var GsCode = mini.get("GsCode");
         var GlCode = mini.get("GlCode");
-
+        if (clsGrade < 4) {
+            GlCode.disable();
+            GlCode.required = false;
+        }
+        if (clsGrade < 3) {
+            GsCode.disable();
+            GsCode.required = false;
+        }
+        if (clsGrade < 2) {
+            GmCode.disable();
+            GmCode.required = false;
+        }
+        if (clsGrade < 1) {
+            GbCode.disable();
+            GbCode.required = false;
+        }
         function onGbCodeChanged() {
             var id = GbCode.getValue();
             var url = "/Category/GetFbPaGoodsGm/" + id

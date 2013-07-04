@@ -97,6 +97,12 @@
   <object id="SysPostSupplierRelationRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPostSupplierRelation>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="RtRetailManageRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.RtRetailManage>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="RtRetailDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.RtRetailDetail>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -240,5 +246,12 @@
   </object>
   <object id="SysPostSupplierRelationService" type="TEWorkFlow.Application.Service.Sys.SysPostSupplierRelationService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysPostSupplierRelationRepository"/>
+  </object>
+  <object id="RtRetailManageService" type="TEWorkFlow.Application.Service.Business.RtRetailManageService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="RtRetailManageRepository"/>
+    <property name="RtRetailDetailRepository" ref="RtRetailDetailRepository"/>
+  </object>
+  <object id="RtRetailDetailService" type="TEWorkFlow.Application.Service.Business.RtRetailDetailService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="RtRetailDetailRepository"/>
   </object>
 </objects>

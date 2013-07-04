@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Business">
+  <class name="RtRetailDetail" table="rt_retail_detail" lazy="true" >
+    <id name="Id" type="string" column="sys_guid" >
+      <generator class="assigned" />
+    </id>
+    <property name="SaFlowNumber" column="sa_flow_number" type="decimal" />
+    <property name="RtNumber" column="rt_number" type="string" />
+    <property name="sNumber" column="s_number" type="string" />
+    <property name="RtDate" column="rt_date" type="System.DateTime" />
+    <property name="RtType" column="rt_type" type="string" />
+    <property name="WhCode" column="wh_code" type="string" />
+    <property name="bCode" column="b_code" type="string" />
+    <property name="Posid" column="posid" type="string" />
+    <property name="GoodsCode" column="goods_code" type="string" />
+    <property name="GoodsBarCode" column="goods_bar_code" type="string" />
+    <property name="SalePrice" column="sale_price" type="decimal" />
+    <property name="RealPrice" column="real_price" type="decimal" />
+    <property name="SaleQty" column="sale_qty" type="decimal" />
+    <property name="SaleMoney" column="sale_money" type="decimal" />
+    <property name="DiscountMoney" column="discount_money" type="decimal" />
+    <property name="PurchaseQty" column="purchase_qty" type="decimal" />
+    <property name="pSalePrice" column="p_sale_price" type="decimal" />
+    <property name="pSaleMoney" column="p_sale_money" type="decimal" />
+    <property name="pDiscountMoney" column="p_discount_money" type="decimal" />
+    <property name="Cashier" column="cashier" type="string" />
+    <property name="Salesman" column="salesman" type="string" />
+    <property name="UnderCounterCode" column="under_counter_code" type="string" />
+    <property name="PoolRate" column="pool_rate" type="decimal" />
+    <property name="ShiftDate" column="shift_date" type="System.DateTime" />
+    <property name="IfPromotion" column="if_promotion" type="string" />
+    <property name="OwnerType" column="owner_type" type="string" />
+  </class>
+</hibernate-mapping>
