@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TEWorkFlow.Domain" namespace="TEWorkFlow.Domain.Business">
+  <class name="RtRetailManage" table="rt_retail_manage" lazy="true" >
+    <id name="Id" type="string" column="rt_number" >
+      <generator class="assigned" />
+    </id>
+    <property name="SaFlowNumber" column="sa_flow_number" type="decimal" />
+    <property name="RtDate" column="rt_date" type="System.DateTime" />
+    <property name="RtType" column="rt_type" type="string" />
+    <property name="WhCode" column="wh_code" type="string" />
+    <property name="bCode" column="b_code" type="string" />
+    <property name="Posid" column="posid" type="string" />
+    <property name="SaleQty" column="sale_qty" type="decimal" />
+    <property name="SaleMoney" column="sale_money" type="decimal" />
+    <property name="DiscountMoney" column="discount_money" type="decimal" />
+    <property name="CardNumber" column="card_number" type="string" />
+    <property name="Cashier" column="cashier" type="string" />
+    <property name="CashierHigher" column="cashier_higher" type="string" />
+    <property name="Salesman" column="salesman" type="string" />
+    <property name="UnderCounterCode" column="under_counter_code" type="string" />
+    <property name="ShiftDate" column="shift_date" type="System.DateTime" />
+    <property name="ReturnNumber" column="return_number" type="string" />
+    <property name="Comment" column="comment" type="string" />
+    <property name="SysGuid" column="sys_guid" type="string" />
+  </class>
+</hibernate-mapping>

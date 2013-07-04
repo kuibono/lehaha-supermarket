@@ -51,11 +51,15 @@
     <Compile Include="Archives\GoodsArchives.cs" />
     <Compile Include="Archives\OpPaWarehouse.cs" />
     <Compile Include="Business\PcPurchaseDetail.cs" />
+    <Compile Include="Business\PcPurchaseDetailHistory.cs" />
     <Compile Include="Business\PcPurchaseManage.cs" />
+    <Compile Include="Business\PcPurchaseManageHistory.cs" />
     <Compile Include="Business\PcReturnDetail.cs" />
     <Compile Include="Business\PcReturnManage.cs" />
     <Compile Include="Business\PcSupplementDetail.cs" />
     <Compile Include="Business\PcSupplementManage.cs" />
+    <Compile Include="Business\RtRetailDetail.cs" />
+    <Compile Include="Business\RtRetailManage.cs" />
     <Compile Include="Category\BsPaArea.cs" />
     <Compile Include="Category\BsPaClass.cs" />
     <Compile Include="Category\EmPaPolitics.cs" />
@@ -114,7 +118,9 @@
     <EmbeddedResource Include="Category\BsPaArea.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Archives\GoodsArchives.hbm.xml" />
+    <EmbeddedResource Include="Archives\GoodsArchives.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Category\FbPaGoodsGb.hbm.xml">
@@ -173,6 +179,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sys\SysPostSupplierRelation.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Business\RtRetailDetail.hbm.xml" />
+    <EmbeddedResource Include="Business\RtRetailManage.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Business\PcPurchaseDetailHistory.hbm.xml" />
+    <EmbeddedResource Include="Business\PcPurchaseManageHistory.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
