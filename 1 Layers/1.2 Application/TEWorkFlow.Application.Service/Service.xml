@@ -55,6 +55,12 @@
   <object id="PcPurchaseDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseDetail>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="PcPurchaseManageHistoryRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseManageHistory>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="PcPurchaseDetailHistoryRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.PcPurchaseDetailHistory>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <object id="SysPaDepartmentRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPaDepartment>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -189,11 +195,24 @@
     <property name="PurchaseDetailRepository" ref="PcPurchaseDetailRepository"/>
     <property name="GoodsArchivesRepository" ref="GoodsArchivesRepository"/>
   </object>
+  <object id="PcPurchaseManageHistoryService" type="TEWorkFlow.Application.Service.Business.PcPurchaseManageHistoryService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcPurchaseManageHistoryRepository"/>
+    <property name="DetailRepository" ref="PcPurchaseDetailRepository"/>
+    <property name="DepartmentRepository" ref="SysPaDepartmentRepository"/>
+    <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
+    <property name="EmemployeearchiveService" ref="EmemployeearchiveService"/>
+    <property name="PurchaseDetailRepository" ref="PcPurchaseDetailRepository"/>
+    <property name="GoodsArchivesRepository" ref="GoodsArchivesRepository"/>
+  </object>
   <object id="SysPaDepartmentService" type="TEWorkFlow.Application.Service.Sys.SysPaDepartmentService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysPaDepartmentRepository"/>
   </object>
   <object id="PcPurchaseDetailService" type="TEWorkFlow.Application.Service.Business.PcPurchaseDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcPurchaseDetailRepository"/>
+    <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
+  </object>
+  <object id="PcPurchaseDetailHistoryService" type="TEWorkFlow.Application.Service.Business.PcPurchaseDetailHistoryService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="PcPurchaseDetailHistoryRepository"/>
     <property name="GoodsRepository" ref="GoodsArchivesRepository"/>
   </object>
   <object id="PcReturnManageService" type="TEWorkFlow.Application.Service.Business.PcReturnManageService, TEWorkFlow.Application.Service">
