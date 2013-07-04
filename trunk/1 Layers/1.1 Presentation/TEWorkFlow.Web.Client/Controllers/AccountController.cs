@@ -133,11 +133,23 @@ namespace TEWorkFlow.Web.Client.Controllers
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-cart",
+                Id = "report-supplier-purchase-history",
+                ParentId = "em-query",
+                Url = "/Report/SupplierPurchaseHistory",
+                Windowname = "供货商历史订单查询",
+                Index = 12,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
                 Id = "report-branch-purchase",
                 ParentId = "em-query",
                 Url = "/Report/BranchPurchase",
                 Windowname = "分店订单查询统计",
-                Index = 12,
+                Index = 13,
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -149,7 +161,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "em-query",
                 Url = "/Query/BranchPurchaseGoods",
                 Windowname = "分店商品统计",
-                Index = 13,
+                Index = 14,
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -161,7 +173,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "em-query",
                 Url = "/Report/BranchRetail/",
                 Windowname = "分店销售数据统计",
-                Index = 14,
+                Index = 15,
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);

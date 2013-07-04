@@ -18,6 +18,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
         public IGoodsArchivesService GoodsArchivesService { get; set; }
         public IRtRetailManageService RtRetailManageService{ get; set; }
+        public IPcPurchaseManageHistoryService PcPurchaseManageHistoryService { get; set; }
         public ActionResult PurchaseQuery()
         {
             return View();
@@ -50,6 +51,14 @@ namespace TEWorkFlow.Web.Client.Controllers
                 supCode = Common.MyEnv.CurrentSupplier.Id;
             }
             return Json(PcPurchaseManageService.SearchReportBySupplier(dates, datee, supCode,bCode), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchSupplierHistoryOrder(string supCode, string bCode, DateTime? dates, DateTime? datee)
+        {
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                supCode = Common.MyEnv.CurrentSupplier.Id;
+            }
+            return Json(PcPurchaseManageHistoryService.SearchReportBySupplier(dates, datee, supCode, bCode), JsonRequestBehavior.AllowGet);
         }
         public JsonResult SearchBranchRetail(string bCode, DateTime? dates, DateTime? datee)
         {
