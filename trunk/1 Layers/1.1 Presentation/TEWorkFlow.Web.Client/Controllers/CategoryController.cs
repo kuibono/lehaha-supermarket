@@ -12,6 +12,7 @@ using TEWorkFlow.Web.Client.Common;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
+    [UserAuthorizeAttribute]
     public class CategoryController : Controller
     {
         //

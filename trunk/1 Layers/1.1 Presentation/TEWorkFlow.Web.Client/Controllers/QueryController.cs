@@ -7,9 +7,11 @@ using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Application.Service.Business;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Application.Service.Archives;
+using TEWorkFlow.Web.Client.Common;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
+    [UserAuthorizeAttribute]
     public class QueryController : Controller
     {
         //

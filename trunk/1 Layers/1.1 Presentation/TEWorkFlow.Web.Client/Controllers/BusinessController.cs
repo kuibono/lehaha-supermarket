@@ -13,6 +13,7 @@ using System.Collections;
 using NSH.VSTO;
 namespace TEWorkFlow.Web.Client.Controllers
 {
+    [UserAuthorizeAttribute]
     public class BusinessController : Controller
     {
         //
