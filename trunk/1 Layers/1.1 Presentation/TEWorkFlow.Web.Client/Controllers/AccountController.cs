@@ -157,11 +157,23 @@ namespace TEWorkFlow.Web.Client.Controllers
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-cart",
+                Id = "report-branch-purchase-history",
+                ParentId = "em-query",
+                Url = "/Report/BranchPurchaseHistory",
+                Windowname = "分店历史订单查询",
+                Index = 14,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
                 Id = "report-branch-goods",
                 ParentId = "em-query",
                 Url = "/Query/BranchPurchaseGoods",
                 Windowname = "分店商品统计",
-                Index = 14,
+                Index = 15,
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -173,7 +185,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ParentId = "em-query",
                 Url = "/Report/BranchRetail/",
                 Windowname = "分店销售数据统计",
-                Index = 15,
+                Index = 16,
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
@@ -546,11 +558,23 @@ namespace TEWorkFlow.Web.Client.Controllers
             m1 = new Sysmodulecontent()
             {
                 Icon = "icon-cart",
+                Id = "report-branch-purchase-sup-history",
+                ParentId = "em-query",
+                Url = "/Report/BranchPurchaseHistory",
+                Windowname = "分店历史订单查询",
+                Index = 32,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
                 Id = "report-branch-goods-sup",
                 ParentId = "query",
                 Url = "/Query/BranchPurchaseGoods",
                 Windowname = "分店商品统计",
-                Index = 32,
+                Index = 33,
                 SupplierVisible = true,
                 EmployeeVisible = false
             };

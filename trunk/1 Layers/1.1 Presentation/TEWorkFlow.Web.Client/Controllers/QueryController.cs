@@ -35,6 +35,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View(model);
         }
 
+        public ActionResult PurchaseHistoryView(string id)
+        {
+            PcPurchaseManageHistory model = new PcPurchaseManageHistory();
+            model.Id = Guid.NewGuid().ToString();
+
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                model = PcPurchaseManageHistoryService.GetById(id);
+            }
+            return View(model);
+        }
+
         public ActionResult BranchPurchaseOrder()
         {
             return View();
