@@ -17,7 +17,7 @@ namespace TEWorkFlow.Application.Service.Business
     {
 
         public IRepositoryGUID<PcPurchaseManageHistory> EntityRepository { get; set; }
-        public IRepositoryGUID<PcPurchaseDetail> DetailRepository { get; set; }
+        public IRepositoryGUID<PcPurchaseDetailHistory> DetailHistoryRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment> DepartmentRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
         public IRepositoryGUID<PcPurchaseDetail> PurchaseDetailRepository { get; set; }
@@ -151,10 +151,10 @@ namespace TEWorkFlow.Application.Service.Business
             EntityRepository.Delete(entity);
 
             //删除下面的明细
-            var details = DetailRepository.LinqQuery.Where(p => p.ManageId == entity.Id);
+            var details = DetailHistoryRepository.LinqQuery.Where(p => p.ManageId == entity.Id);
             foreach (var detail in details)
             {
-                DetailRepository.Delete(detail);
+                DetailHistoryRepository.Delete(detail);
             }
         }
 
