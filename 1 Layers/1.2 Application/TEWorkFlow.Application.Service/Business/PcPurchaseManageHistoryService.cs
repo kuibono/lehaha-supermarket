@@ -20,7 +20,7 @@ namespace TEWorkFlow.Application.Service.Business
         public IRepositoryGUID<PcPurchaseDetailHistory> DetailHistoryRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment> DepartmentRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
-        public IRepositoryGUID<PcPurchaseDetail> PurchaseDetailRepository { get; set; }
+        //public IRepositoryGUID<PcPurchaseDetail> PurchaseDetailRepository { get; set; }
         public IRepositoryGUID<GoodsArchives> GoodsArchivesRepository { get; set; }
         public IEmemployeearchiveService EmemployeearchiveService { get; set; }
         [Transaction]
@@ -124,7 +124,7 @@ namespace TEWorkFlow.Application.Service.Business
             if (entity == null)
                 return;
 
-            var amount = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == entity.Id).Sum(p => p.PurchaseMoney);
+            var amount = DetailHistoryRepository.LinqQuery.Where(p => p.ManageId == entity.Id).Sum(p => p.PurchaseMoney);
             entity.amount = amount;
 
             EntityRepository.Update(entity);
@@ -288,7 +288,7 @@ namespace TEWorkFlow.Application.Service.Business
             var result = q.ToList();
             for (int i = 0; i < result.Count; i++)
             {
-                var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
+                var statics = DetailHistoryRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
                 result[i].detailCount = statics.Count();
                 result[i].count = Convert.ToInt32(statics.Sum(p => p.PurchaseQty));
                 result[i].amount = statics.Sum(p => p.PurchaseMoney);
@@ -312,19 +312,16 @@ namespace TEWorkFlow.Application.Service.Business
         public SearchResult<PcPurchaseManageHistory> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode,string bCode, int pageSize = 20, int pageIndex = 1)
         {
             var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
-            if (dateS == null || dateE == null)
-            {
-                q = from l in q
-                    where l.EnCode == SupCode
-                    select l;
-            }
-            if (dateS <= dateE && string.IsNullOrEmpty(SupCode) == false)
+            if (dateS <= dateE )
             {
                 q = from l in q
                     where l.PurchaseDate >= dateS
                         && l.PurchaseDate <= dateE
-                        && l.EnCode == SupCode
                     select l;
+            }
+            if( string.IsNullOrEmpty(SupCode) == false)
+            {
+                q = from l in q where l.EnCode == SupCode select l;
             }
             if (string.IsNullOrEmpty(bCode)==false)
             {
@@ -335,7 +332,7 @@ namespace TEWorkFlow.Application.Service.Business
             var result = q.ToList();
             for (int i = 0; i < result.Count; i++)
             {
-                var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
+                var statics = DetailHistoryRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
                 result[i].detailCount = statics.Count();
                 result[i].count = Convert.ToInt32(statics.Sum(p => p.PurchaseQty));
                 result[i].amount = statics.Sum(p => p.PurchaseMoney);
@@ -380,7 +377,7 @@ namespace TEWorkFlow.Application.Service.Business
             var manages = q.ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 
-            var details = (from l in PurchaseDetailRepository.LinqQuery
+            var details = (from l in DetailHistoryRepository.LinqQuery
                            where
                                manageIds.Contains(l.ManageId)
                            select l).ToList();
@@ -437,7 +434,7 @@ namespace TEWorkFlow.Application.Service.Business
             var manages = q.ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 
-            var details = (from l in PurchaseDetailRepository.LinqQuery
+            var details = (from l in DetailHistoryRepository.LinqQuery
                            where
                                manageIds.Contains(l.ManageId)
                            select l).ToList();
@@ -504,7 +501,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public bool IsGoodsHavePurchase(string goodCode)
         {
-            return PurchaseDetailRepository.LinqQuery.Any(p => p.GoodsCode == goodCode);
+            return DetailHistoryRepository.LinqQuery.Any(p => p.GoodsCode == goodCode);
         }
 
         public bool IsSupplierHavePurchase(string supCode)

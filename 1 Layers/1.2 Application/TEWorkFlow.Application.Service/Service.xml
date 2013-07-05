@@ -201,7 +201,7 @@
     <property name="DepartmentRepository" ref="SysPaDepartmentRepository"/>
     <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
     <property name="EmemployeearchiveService" ref="EmemployeearchiveService"/>
-    <property name="PurchaseDetailRepository" ref="PcPurchaseDetailRepository"/>
+    <!--<property name="PurchaseDetailRepository" ref="PcPurchaseDetailRepository"/>-->
     <property name="GoodsArchivesRepository" ref="GoodsArchivesRepository"/>
   </object>
   <object id="SysPaDepartmentService" type="TEWorkFlow.Application.Service.Sys.SysPaDepartmentService, TEWorkFlow.Application.Service">
