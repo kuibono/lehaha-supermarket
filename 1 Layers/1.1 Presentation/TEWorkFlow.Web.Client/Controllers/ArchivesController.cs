@@ -7,9 +7,11 @@ using TEWorkFlow.Application.Service.Archives;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Application.Service.Business;
+using TEWorkFlow.Web.Client.Common;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
+    [UserAuthorizeAttribute]
     public class ArchivesController : Controller
     {
         //
