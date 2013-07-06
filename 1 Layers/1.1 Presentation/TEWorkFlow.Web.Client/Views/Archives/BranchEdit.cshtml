@@ -37,7 +37,7 @@
             名称:
         </td>
         <td colspan="3">
-            <input name="bName" value="@Model.bName" class="mini-textbox" required="true"  style="width:304px;"/>
+            <input name="bName" value="@Model.bName" class="mini-textbox" required="true"  style="width:334px;"/>
         </td>
         <td>
             拼音码:
@@ -136,10 +136,22 @@
             </div>
         </td>
         <td>
+            上传销售记录:
+        </td>
+        <td>
+            <div name="IfSyncSale" class="mini-checkbox" checked="@Model.IfSyncSale" readOnly="false" text="上传分店销售记录">
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+        
+    </tr>
+    <tr>
+        <td>
             备注:
         </td>
-        <td colspan="3">
-            <input name="Remark" value="@Model.Remark" class="mini-textarea"  style="width:316px;"/>
+        <td colspan="5">
+            <input name="Remark" value="@Model.Remark" class="mini-textarea"  style="width:530px;"/>
         </td>
     </tr>
 </table>

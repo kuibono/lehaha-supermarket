@@ -70,6 +70,7 @@
     <Compile Include="Category\FbPaSupType.cs" />
     <Compile Include="Category\Nation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetailPurchaseCompare.cs" />
     <Compile Include="Sys\FbPaBaseSet.cs" />
     <Compile Include="Sys\SysEnterpriseArchives.cs" />
     <Compile Include="Sys\SysLoginPower.cs" />
@@ -187,6 +188,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Business\PcPurchaseDetailHistory.hbm.xml" />
     <EmbeddedResource Include="Business\PcPurchaseManageHistory.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RetailPurchaseCompare.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

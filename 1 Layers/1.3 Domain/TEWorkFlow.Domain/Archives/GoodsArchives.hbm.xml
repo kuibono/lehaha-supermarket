@@ -54,7 +54,7 @@
     <property name="PriceHistory" column="price_history" type="string" />
     <property name="BackupCode" column="backup_code" type="string" />
     <property name="IfNew" column="if_new" type="string" />
-    <property name="IfSyncSale" column="if_sync_sale" type="string" />
+   
   </class>
 </hibernate-mapping>
 

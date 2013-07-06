@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using NSH.Core.Domain.Specifications;
+using NHibernate;
 namespace NSH.Core.Domain
 {
     public interface IRepositoryGUID<TEntity> where TEntity : IAggregateRootGUID
@@ -73,5 +74,9 @@ namespace NSH.Core.Domain
         IList<TEntity> GetList(Action<Orderable<TEntity>> order);
 
         IList<TEntity> GetList(ISpecification<TEntity> specification, Action<Orderable<TEntity>> order);
+
+        IList<TEntity> Exec(string sql);
+
+        ISession GetSession();
     }
 }

@@ -56,7 +56,8 @@
                     前缀类别:
                 </td>
                 <td style="width: 140px;">
-                    <input name="GoodsPrefix" value="@Model.GoodsPrefix" class="mini-textbox" required="true"/>
+                    @*<input name="GoodsPrefix" value="@Model.GoodsPrefix" class="mini-textbox" required="true"/>*@
+                    <input name="GoodsPrefix" value="@Model.GoodsPrefix" id="GoodsPrefix" class="mini-combobox" textField="text" valueField="id" url="/Category/PrefixType/" showNullItem="true"  required="true" />
                 </td>
                 <td style="width: 60px;">
                     供货商流水码位数:

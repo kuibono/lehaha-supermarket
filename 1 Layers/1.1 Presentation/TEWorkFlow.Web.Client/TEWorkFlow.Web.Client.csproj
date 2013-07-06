@@ -880,6 +880,7 @@
     <Content Include="Views\Report\SupplierPurchaseHistory.cshtml" />
     <Content Include="Views\Report\BranchPurchaseHistory.cshtml" />
     <Content Include="Views\Query\PurchaseHistoryView.cshtml" />
+    <Content Include="Views\Query\RetailView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -58,6 +58,7 @@ namespace TEWorkFlow.Application.Service.Business
             {
                 EntityRepository.Update(entity);
             }
+            UpdatePurchaseAmount(entity.Id);
         }
         [Transaction]
         public PcPurchaseManage GetById(string id)
@@ -143,6 +144,7 @@ namespace TEWorkFlow.Application.Service.Business
         public void Update(PcPurchaseManage entity)
         {
             EntityRepository.Update(entity);
+            UpdatePurchaseAmount(entity.Id);
         }
 
         [Transaction]

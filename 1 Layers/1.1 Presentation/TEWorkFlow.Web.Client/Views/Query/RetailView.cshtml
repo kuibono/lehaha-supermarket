@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_WindowLayoutView.cshtml";
 }
 
-@model TEWorkFlow.Domain.Business.PcPurchaseManage
+@model TEWorkFlow.Domain.Business.RtRetailManage
 @section script
 {
     <script type="text/javascript" src="~/Scripts/jquery.PrintArea.js"></script>
@@ -185,7 +185,7 @@
 <table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:95%">
     <tr>
         <td>
-            采购单号:
+            单号:
         </td>
         <td align="left">
             @Model.Id
@@ -224,7 +224,7 @@
         </td>
     </tr>
 </table>
-<div id="datagrid1" class="mini-datagrid" style="width: 95%; height: 300px;" idfield="Id"
+<div id="datagrid1" class="mini-datagrid" style="width: 95%; min-height: 200px;" idfield="Id"
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false" showSummaryRow="true">
     <div property="columns">

@@ -178,6 +178,8 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string IfSend { get; set; }
 
+        public virtual string IfSyncSale { get; set; }
+
 
         public virtual string ClassName { get; set; }
         public virtual string AreaName { get; set; }
