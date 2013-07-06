@@ -563,7 +563,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "/Report/BranchPurchaseHistory",
                 Windowname = "分店历史订单查询",
                 Index = 32,
-                EmployeeVisible = true
+                SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
 

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TEWorkFlow.Web.Client.Common;
+using TEWorkFlow.Application.Service.Report;
+using TEWorkFlow.Domain;
+using TEWorkFlow.Dto;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -12,6 +15,8 @@ namespace TEWorkFlow.Web.Client.Controllers
     {
         //
         // GET: /Report/
+
+        public IReportSevice ReportSevice { get; set; }
 
         public ActionResult Index()
         {
@@ -38,5 +43,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return View();
         }
+
+        
     }
 }

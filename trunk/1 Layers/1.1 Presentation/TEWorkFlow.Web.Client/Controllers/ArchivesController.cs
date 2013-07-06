@@ -137,7 +137,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchAllSuppliers(string id)
         {
-            return Json(FbSupplierArchivesService.Search(id), JsonRequestBehavior.AllowGet);
+            return Json(FbSupplierArchivesService.Search(id,10000), JsonRequestBehavior.AllowGet);
         }
         public JsonResult SearchAllSuppliersWithGoodsCount(string id)
         {
@@ -278,15 +278,16 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetAllGoodsArchive(string id)
         {
+            SearchDtoBase<GoodsArchives> c = new SearchDtoBase<GoodsArchives>();
+            c.pageSize = 5;
+            c.pageIndex = 1;
             if (string.IsNullOrEmpty(id))
             {
-                id = Request["key"];
+                c.key = Request["key"];
             }
-            var result=GoodsArchivesService.Search(id);
-            if (Common.MyEnv.IsSupplierLogin)
-            {
-                result = result.Where(p => p.SupCode == Common.MyEnv.CurrentSupplier.Id).ToList();
-            }
+            
+            
+            var result=GoodsArchivesService.Search(c).data;
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

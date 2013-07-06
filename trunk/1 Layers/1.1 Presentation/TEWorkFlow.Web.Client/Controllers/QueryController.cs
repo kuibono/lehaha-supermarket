@@ -37,6 +37,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View(model);
         }
 
+        public ActionResult RetailView(string id)
+        {
+            PcPurchaseManage model = new PcPurchaseManage();
+            model.Id = Guid.NewGuid().ToString();
+
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                model = PcPurchaseManageService.GetById(id);
+            }
+            return View(model);
+        }
+
         public ActionResult PurchaseHistoryView(string id)
         {
             PcPurchaseManageHistory model = new PcPurchaseManageHistory();

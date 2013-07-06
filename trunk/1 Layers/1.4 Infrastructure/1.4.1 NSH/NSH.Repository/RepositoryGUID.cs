@@ -9,6 +9,7 @@ using Spring.Data.NHibernate.Generic.Support;
 using Spring.Transaction.Interceptor;
 using NSH.Core.Domain;
 using NSH.Core.DataPage;
+using NHibernate;
 namespace NSH.Repository
 {
     public class RepositoryGUID<TEntity> : HibernateDaoSupport, IRepositoryGUID<TEntity> where TEntity : IAggregateRootGUID
@@ -82,6 +83,17 @@ namespace NSH.Repository
             var orderable = new Orderable<TEntity>(LinqQuery);
             order(orderable);
             return orderable.Queryable.ToList();
+        }
+
+        public virtual IList<TEntity> Exec(string sql)
+        {
+            //return Session.CreateSQLQuery(sql).List<TEntity>();
+            return HibernateTemplate.SessionFactory.GetCurrentSession().CreateSQLQuery(sql).List<TEntity>();
+        }
+
+        public virtual ISession GetSession()
+        {
+            return HibernateTemplate.SessionFactory.GetCurrentSession();
         }
     }
 }

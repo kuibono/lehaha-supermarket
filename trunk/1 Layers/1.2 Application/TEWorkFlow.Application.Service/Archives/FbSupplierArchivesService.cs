@@ -238,7 +238,7 @@ namespace TEWorkFlow.Application.Service.Archives
         }
 
         [Transaction]
-        public IList<FbSupplierArchives> SearchWithGoodsCount(string key, int pageSize = 20, int pageIndex = 1)
+        public IList<FbSupplierArchives> SearchWithGoodsCount(string key, int pageSize = 10000, int pageIndex = 1)
         {
             var goods = GoodsRepository.LinqQuery.ToList();
 

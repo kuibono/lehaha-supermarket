@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="TEWorkFlow.Domain.RetailPurchaseCompare, TEWorkFlow.Domain">
+    <id name="Id" type="String" >
+      <generator class="native" />
+    </id>
+    <property name="bCode" type="String" />
+    <property name="GoodsCode" type="String" />
+    <property name="GoodsName" type="String"/>
+    <property name="BarCode" type="String"/>
+    <property name="RetailCount" type="decimal"/>
+    <property name="RetailMoney" type="decimal"/>
+    <property name="PurchaseCount" type="decimal"/>
+    <property name="PurchaseMoney" type="decimal"/>
+  </class>
+</hibernate-mapping>

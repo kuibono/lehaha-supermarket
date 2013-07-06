@@ -109,6 +109,9 @@
   <object id="RtRetailDetailRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Business.RtRetailDetail>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="RetailPurchaseCompareRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.RetailPurchaseCompare>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!--Service-->
   <object id="AppService" type="TEWorkFlow.Application.Service.AppService, TEWorkFlow.Application.Service">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -272,5 +275,8 @@
   </object>
   <object id="RtRetailDetailService" type="TEWorkFlow.Application.Service.Business.RtRetailDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="RtRetailDetailRepository"/>
+  </object>
+  <object id="ReportSevice" type="TEWorkFlow.Application.Service.Report.ReportSevice, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="RetailPurchaseCompareRepository"/>
   </object>
 </objects>

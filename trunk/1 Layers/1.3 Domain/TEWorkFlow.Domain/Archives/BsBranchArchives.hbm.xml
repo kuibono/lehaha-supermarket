@@ -39,5 +39,6 @@
     <property name="OperatorDate" column="operator_date" type="System.DateTime" not-null="false"/>
     <property name="Remark" column="remark" type="string" />
     <property name="IfSend" column="if_send" type="string" />
+    <property name="IfSyncSale" column="if_sync_sale" type="string" />
   </class>
 </hibernate-mapping>

@@ -11,6 +11,7 @@ using TEWorkFlow.Application.Service.Archives;
 using TEWorkFlow.Web.Client.Common;
 using System.Collections;
 using NSH.VSTO;
+using System.EnterpriseServices;
 namespace TEWorkFlow.Web.Client.Controllers
 {
     [UserAuthorizeAttribute]
@@ -85,7 +86,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveGoodsToPurchase(string Id)
         {
-
+            
             //ArrayList datas = (ArrayList)(Request["data"].JsonDecode());
             Hashtable row = (Hashtable)(Request["data"].JsonDecode()); // (Hashtable)datas[0];
             bool IsAdd = row["_state"].ToString() == "added";
@@ -117,7 +118,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             detail.ProduceDate = row["ProduceDate"].ToNullAbleDateTime();
 
             //计算金额
-            detail.PurchaseMoney = detail.PurchaseQty * detail.SalePrice;
+            detail.PurchaseMoney = detail.PurchaseQty * detail.PurchasePrice;
             detail.NontaxPurchaseMoney = detail.PurchaseQty * detail.PurchasePrice;
 
             //如果选择赠品，则金额为零

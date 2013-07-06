@@ -209,6 +209,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public SearchResult<GoodsArchives> Search(SearchDtoBase<GoodsArchives> c)
         {
             var q = EntityRepository.LinqQuery;
+
             if (string.IsNullOrEmpty(c.key)==false)
             {
                 q = from l in q

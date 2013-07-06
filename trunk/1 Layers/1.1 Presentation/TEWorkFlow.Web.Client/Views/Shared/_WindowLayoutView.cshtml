@@ -44,9 +44,11 @@
             //$("td").removeProp("style");
             $(".mini-grid-body").css("overflow", "hidden");
             $("#qr").show();
+            $(".mini-grid-cell").css("font-size", "13px")
             $("#printArea").printArea();
             //$(".mini-grid-border_tmp").removeClass("mini-grid-border_tmp").addClass("mini-grid-border");
             $("#qr").hide();
+            $(".mini-grid-cell").css("font-size", "9pt")
         }
         function onCancel(e) {
             CloseWindow("cancel");

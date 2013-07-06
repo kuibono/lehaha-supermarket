@@ -315,6 +315,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             return null;
         }
 
+
         public ActionResult IniNations()
         {
             NationService.Create(new Nation() {Id="1",Name = "汉"});
@@ -389,6 +390,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             items.Add(new item() { id = "赠品订货", text = "赠品订货" });
             return Json(items, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult PrefixType()
+        {
+            List<item> items = new List<item>();
+            items.Add(new item() { id = "大类", text = "大类" });
+            items.Add(new item() { id = "中类", text = "中类" });
+            items.Add(new item() { id = "小类", text = "小类" });
+            items.Add(new item() { id = "细类", text = "细类" });
+            items.Add(new item() { id = "无", text = "无" });
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+
 
         public JsonResult Politics()
         {
