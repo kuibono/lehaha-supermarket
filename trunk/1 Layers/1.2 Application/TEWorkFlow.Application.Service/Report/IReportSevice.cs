@@ -9,6 +9,6 @@ namespace TEWorkFlow.Application.Service.Report
 {
     public interface IReportSevice
     {
-        IList<RetailPurchaseCompare> GetRetailPurchaseCompareList(DateTime dateS, DateTime dateE, SearchDtoBase<RetailPurchaseCompare> c);
+        SearchResult<RetailPurchaseCompare> GetRetailPurchaseCompareList(DateTime dateS, DateTime dateE, SearchDtoBase<RetailPurchaseCompare> c);
     }
 }

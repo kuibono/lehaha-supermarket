@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
+using TEWorkFlow.Domain.Archives;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -14,7 +15,7 @@ namespace TEWorkFlow.Application.Service.Business
     {
 
         public IRepositoryGUID<RtRetailDetail> EntityRepository { get; set; }
-
+        public IRepositoryGUID<GoodsArchives> GoodsRepository { get; set; }
         [Transaction]
         public string Create(RtRetailDetail entity)
         {
@@ -220,6 +221,35 @@ namespace TEWorkFlow.Application.Service.Business
             {
                 Delete(each);
             }
+        }
+        private void FillGoodsName(IList<RtRetailDetail> details, List<GoodsArchives> goods = null)
+        {
+            if (goods == null)
+            {
+                goods = GoodsRepository.LinqQuery.ToList();
+            }
+            for (int i = 0; i < details.Count; i++)
+            {
+                string goodsId = details[i].GoodsCode;
+                string goodsName = goods.Where(p => p.Id == goodsId).Count() > 0 ? goods.Where(p => p.Id == goodsId).First().GoodsName : "";
+
+                details[i].GoodsName = goodsName;
+            }
+        }
+
+        [Transaction]
+        public IList<RtRetailDetail> GetDetailsByManageId(string manageId)
+        {
+            var q = from l in EntityRepository.LinqQuery where l.RtNumber == manageId select l;
+            if (q.Count() == 0)
+            {
+                return new List<RtRetailDetail>();
+            }
+            var result = (from l in EntityRepository.LinqQuery where l.RtNumber == manageId select l).ToList();
+            var goodsIds = result.Select(p => p.GoodsCode).ToArray();
+            var goods = GoodsRepository.LinqQuery.Where(p => goodsIds.Contains(p.Id)).ToList();
+            FillGoodsName(result, goods);
+            return result;
         }
     }
 }

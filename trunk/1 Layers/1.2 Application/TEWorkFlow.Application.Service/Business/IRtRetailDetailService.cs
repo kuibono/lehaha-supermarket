@@ -38,5 +38,7 @@ namespace TEWorkFlow.Application.Service.Business
         IList<RtRetailDetail> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);
+
+        IList<RtRetailDetail> GetDetailsByManageId(string manageId);
     }
 }

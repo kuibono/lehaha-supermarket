@@ -8,6 +8,9 @@ using TEWorkFlow.Application.Service.Business;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Application.Service.Archives;
 using TEWorkFlow.Web.Client.Common;
+using TEWorkFlow.Application.Service.Report;
+using TEWorkFlow.Dto;
+using TEWorkFlow.Domain;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -21,6 +24,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public IGoodsArchivesService GoodsArchivesService { get; set; }
         public IRtRetailManageService RtRetailManageService{ get; set; }
         public IPcPurchaseManageHistoryService PcPurchaseManageHistoryService { get; set; }
+        public IReportSevice ReportSevice { get; set; }
         public ActionResult PurchaseQuery()
         {
             return View();
@@ -39,12 +43,12 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult RetailView(string id)
         {
-            PcPurchaseManage model = new PcPurchaseManage();
+            RtRetailManage model = new RtRetailManage();
             model.Id = Guid.NewGuid().ToString();
 
             if (string.IsNullOrEmpty(id) == false)
             {
-                model = PcPurchaseManageService.GetById(id);
+                model = RtRetailManageService.GetById(id);
             }
             return View(model);
         }
@@ -103,6 +107,17 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupCode = Common.MyEnv.CurrentSupplier.Id;
             }
             return Json(PcPurchaseManageService.SearchForPurchaseGoods(dates, datee, branch, SupCode), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchBrachSalePurchaseCompare(DateTime? dates, DateTime? datee, SearchDtoBase<RetailPurchaseCompare> s, RetailPurchaseCompare c)
+        {
+            if (dates.HasValue==false || datee.HasValue==false)
+            {
+                dates = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-01"));
+                datee = Convert.ToDateTime(DateTime.Now.AddMonths(1).ToString("yyyy-MM-01")).AddDays(-1);
+            }
+            s.entity = c;
+            return Json(ReportSevice.GetRetailPurchaseCompareList(dates.Value, datee.Value, s), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult BranchPurchaseSupplier()

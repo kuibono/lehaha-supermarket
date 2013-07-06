@@ -441,5 +441,16 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
 
         #endregion
+
+        #region 销售
+        public IRtRetailManageService RtRetailManageService { get; set; }
+        public IRtRetailDetailService RtRetailDetailService { get; set; }
+
+        public JsonResult GetRetailDetailList(string Id)
+        {
+            return Json(RtRetailDetailService.GetDetailsByManageId(Id).OrderBy(p => p.RtDate), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
     }
 }
