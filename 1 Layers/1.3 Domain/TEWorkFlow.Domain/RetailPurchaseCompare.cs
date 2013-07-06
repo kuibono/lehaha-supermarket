@@ -10,6 +10,8 @@ namespace TEWorkFlow.Domain
     {
         public virtual string bCode { get; set; }
 
+        public virtual string bName { get; set; }
+
         public virtual string GoodsCode { get; set; }
 
         public virtual string GoodsName { get; set; }

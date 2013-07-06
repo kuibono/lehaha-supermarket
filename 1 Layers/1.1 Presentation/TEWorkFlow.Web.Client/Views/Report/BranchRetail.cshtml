@@ -51,22 +51,18 @@
                         <div type="indexcolumn" width="30">
                         </div>
                         
-                        <div field="SupCode" headeralign="center" align="center" width="60">
-                            供货商</div>
-                        <div field="bName" headeralign="center" align="center" width="60">
-                            分店</div>
-                        <div field="PcType" headeralign="center" align="center" width="60">
-                            采购类型</div>
-                        <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                            采购日期</div>
-                        <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                            预计到货日期</div>
-                        <div field="detailCount" headeralign="center" align="center" width="80" summaryType="sum">
-                            产品种类</div>
-                        <div field="count" headeralign="center" align="center" width="80" summaryType="sum">
-                            产品数量</div>
-                        <div field="amount" headeralign="center" align="center" width="80" summaryType="sum" dataType="currency" currencyUnit="￥">
-                            总额</div>
+                        <div field="Id" headeralign="center" align="center" width="60">
+                            销售单号</div>
+                        <div field="RtDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
+                            销售时间</div>
+                        <div field="RtType" headeralign="center" align="center" width="60">
+                            销售方式</div>
+                        <div field="SaleQty" headeralign="center" align="center" width="60" summaryType="sum">
+                            数量</div>
+                        <div field="SaleMoney" headeralign="center" align="center" width="60" summaryType="sum">
+                            销售金额</div>
+                        <div field="DiscountMoney" headeralign="center" align="center" width="80" summaryType="sum">
+                            折扣金额</div>
                         <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer2"
                             cellstyle="padding:0;">
                             管理</div>
@@ -181,7 +177,7 @@
         }
         function viewRow(id) {
             mini.open({
-                url: "/Query/PurchaseView/" + id + "?readonly=true",
+                url: "/Query/RetailView/" + id + "?readonly=true",
                 title: "销售查看",
                 iconCls: "icon-cart",
                 allowResize: false,

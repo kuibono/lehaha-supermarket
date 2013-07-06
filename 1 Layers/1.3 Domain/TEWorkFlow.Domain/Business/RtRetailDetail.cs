@@ -143,6 +143,7 @@ namespace TEWorkFlow.Domain.Business
         public virtual string OwnerType { get; set; }
 
 
+        public virtual string GoodsName { get; set; }
         protected override void Validate()
         {
         }

@@ -5,6 +5,7 @@
       <generator class="native" />
     </id>
     <property name="bCode" type="String" />
+    <property name="bName" type="String" />
     <property name="GoodsCode" type="String" />
     <property name="GoodsName" type="String"/>
     <property name="BarCode" type="String"/>

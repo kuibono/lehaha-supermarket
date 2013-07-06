@@ -248,7 +248,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Id = "branch_archives",
                 ParentId = "archives",
                 Url = "/Archives/BranchList",
-                Windowname = "链锁店档案",
+                Windowname = "连锁店档案",
                 Index = 13,
                 EmployeeVisible = true,
                 SupplierVisible = false
