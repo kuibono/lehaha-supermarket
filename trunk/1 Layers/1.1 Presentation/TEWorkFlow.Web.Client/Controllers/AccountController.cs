@@ -189,6 +189,18 @@ namespace TEWorkFlow.Web.Client.Controllers
                 EmployeeVisible = true
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "report-branch-purchase-retail-compare",
+                ParentId = "em-query",
+                Url = "/Report/BranchPurchaseRetailCompare/",
+                Windowname = "分店采购销售对比",
+                Index = 17,
+                EmployeeVisible = true
+            };
+            SysmodulecontentService.Create(m1);
             #endregion
 
             #region 档案管理
@@ -559,7 +571,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 Icon = "icon-cart",
                 Id = "report-branch-purchase-sup-history",
-                ParentId = "em-query",
+                ParentId = "query",
                 Url = "/Report/BranchPurchaseHistory",
                 Windowname = "分店历史订单查询",
                 Index = 32,
