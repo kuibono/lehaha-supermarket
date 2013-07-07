@@ -12,6 +12,10 @@ namespace TEWorkFlow.Domain
 
         public virtual string bName { get; set; }
 
+        public virtual string SupCode { get; set; }
+
+        public virtual string SupName { get; set; }
+
         public virtual string GoodsCode { get; set; }
 
         public virtual string GoodsName { get; set; }
@@ -25,6 +29,10 @@ namespace TEWorkFlow.Domain
         public virtual decimal PurchaseCount { get; set; }
 
         public virtual decimal PurchaseMoney { get; set; }
+
+        public virtual decimal CountCompare { get; set; }
+
+        public virtual decimal MoneyCompare { get; set; }
 
         protected override void Validate()
         {

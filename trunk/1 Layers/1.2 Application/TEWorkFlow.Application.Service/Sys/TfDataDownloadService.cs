@@ -19,7 +19,7 @@ namespace TEWorkFlow.Application.Service.Sys
         [Transaction]
         public void AddDownload(string table, string id)
         {
-            var branchs = BranchRepository.LinqQuery.ToList();
+            var branchs = BranchRepository.LinqQuery.Where(p=>p.IfSend=="true").ToList();
             foreach (var branch in branchs)
             {
                 TfDataDownload d = new TfDataDownload();

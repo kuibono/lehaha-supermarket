@@ -7,6 +7,7 @@ using NSH.Core.Domain.Specifications;
 using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Archives;
+using TEWorkFlow.Application.Service.Sys;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -16,6 +17,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<FbSupplierBranchRelation> EntityRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> SupplierRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BsBranchArchivesRepository { get; set; }
+        public ITfDataDownloadService TfDataDownloadService { get; set; }
 
         [Transaction]
         public IList<FbSupplierBranchRelation> GetAllRelationBySupplierCode(string supCode)
@@ -83,12 +85,14 @@ namespace TEWorkFlow.Application.Service.Archives
                 relation.SupCode = supCode;
                 relation.SupName = sup.SupName;
                 EntityRepository.Save(relation);
+                TfDataDownloadService.AddDownload("fb_supplier_branch_relation", relation.Id);
             }
             else
             {
                 FbSupplierBranchRelation relation = EntityRepository.LinqQuery.Where(p => p.SupCode == supCode && p.bCode == bCode).First();
                 relation.Available = value;
                 EntityRepository.Update(relation);
+                TfDataDownloadService.AddDownload("fb_supplier_branch_relation", relation.Id);
             }
         }
 

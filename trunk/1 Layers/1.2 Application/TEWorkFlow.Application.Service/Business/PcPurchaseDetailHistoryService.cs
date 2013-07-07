@@ -70,10 +70,25 @@ namespace TEWorkFlow.Application.Service.Business
                 return new List<PcPurchaseDetailHistory>();
             }
             var result= (from l in EntityRepository.LinqQuery where l.ManageId == manageId select l).ToList();
-            FillGoodsName(result);
+            var goodsIds = result.Select(p => p.GoodsCode).ToArray();
+            var goods = GoodsRepository.LinqQuery.Where(p => goodsIds.Contains(p.Id)).ToList();
+            FillGoodsName(result, goods);
             return result;
         }
+        private void FillGoodsName(IList<PcPurchaseDetailHistory> details, List<GoodsArchives> goods = null)
+        {
+            if (goods == null)
+            {
+                goods = GoodsRepository.LinqQuery.ToList();
+            }
+            for (int i = 0; i < details.Count; i++)
+            {
+                string goodsId = details[i].GoodsCode;
+                string goodsName = goods.Where(p => p.Id == goodsId).Count() > 0 ? goods.Where(p => p.Id == goodsId).First().GoodsName : "";
 
+                details[i].GoodsName = goodsName;
+            }
+        }
         private void FillGoodsName(IList<PcPurchaseDetailHistory> details)
         {
             var goods = GoodsRepository.LinqQuery.ToList();

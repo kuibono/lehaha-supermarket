@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_WindowLayoutView.cshtml";
 }
 
-@model TEWorkFlow.Domain.Business.PcPurchaseManage
+@model TEWorkFlow.Domain.Business.PcPurchaseManageHistory
 @section script
 {
     <script type="text/javascript" src="~/Scripts/jquery.PrintArea.js"></script>
@@ -11,7 +11,7 @@
         mini.parse();
         labelModel(new mini.Form("form1"));
         var grid = mini.get('datagrid1');
-        grid.url = "/Business/GetPurchaseDetailList/" + entityId;
+        grid.url = "/Business/GetPurchaseDetailHistoryList/" + entityId;
         grid.reload();
 
 
@@ -225,7 +225,7 @@
     </tr>
 </table>
 <div id="datagrid1" class="mini-datagrid" style="width: 95%; min-height: 200px;" idfield="Id"
-    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
+    emptytext="数据为空" showemptytext="true"
     showpager="false" showSummaryRow="true">
     <div property="columns">
         <div field="GoodsName" headeralign="center">

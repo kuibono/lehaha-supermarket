@@ -386,8 +386,8 @@ namespace TEWorkFlow.Application.Service.Business
                            where
                                manageIds.Contains(l.ManageId)
                            select l).ToList();
-
-            var goods = GoodsArchivesRepository.LinqQuery.ToList();
+            var detailGoodsIds=details.Select(p=>p.GoodsCode).ToList().ToArray();
+            var goods = GoodsArchivesRepository.LinqQuery.Where(p => detailGoodsIds.Contains(p.Id)).ToList();
 
             var result = details.GroupBy(p => p.GoodsCode).Select(p => new PurchaseGoodsResult
             {

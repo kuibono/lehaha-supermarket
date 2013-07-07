@@ -265,6 +265,7 @@
     <property name="EntityRepository" ref="FbSupplierBranchRelationRepository"/>
     <property name="SupplierRepository" ref="FbSupplierArchivesRepository"/>
     <property name="BsBranchArchivesRepository" ref="BsBranchArchivesRepository"/>
+    <property name="TfDataDownloadService" ref="TfDataDownloadService"/>
   </object>
   <object id="SysPostSupplierRelationService" type="TEWorkFlow.Application.Service.Sys.SysPostSupplierRelationService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="SysPostSupplierRelationRepository"/>
