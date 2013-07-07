@@ -25,7 +25,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         #region 采购
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
         public IPcPurchaseDetailService PcPurchaseDetailService { get; set; }
-
+        public IPcPurchaseDetailHistoryService PcPurchaseDetailHistoryService { get; set; }
 
         public ActionResult PurchaseList()
         {
@@ -82,6 +82,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         public JsonResult GetPurchaseDetailList(string Id)
         {
             return Json(PcPurchaseDetailService.GetDetailsByManageId(Id).OrderBy(p=>p.AddTime), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetPurchaseDetailHistoryList(string Id)
+        {
+            return Json(PcPurchaseDetailHistoryService.GetDetailsByManageId(Id).OrderBy(p => p.AddTime), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SaveGoodsToPurchase(string Id)

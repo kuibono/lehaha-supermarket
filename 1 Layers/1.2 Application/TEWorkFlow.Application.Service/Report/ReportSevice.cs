@@ -23,23 +23,31 @@ select
 	row_number() over(order by m.b_code) as '{RetailPurchaseCompare.Id}',
 	m.b_code as '{RetailPurchaseCompare.bCode}',
 	m.b_name as '{RetailPurchaseCompare.bName}',
+	m.sup_code AS '{RetailPurchaseCompare.SupCode}',
+	m.sup_name AS '{RetailPurchaseCompare.SupName}',
 	m.goods_code as '{RetailPurchaseCompare.GoodsCode}',
 	m.goods_bar_code as '{RetailPurchaseCompare.BarCode}',
 	m.goods_name as '{RetailPurchaseCompare.GoodsName}',
 	isnull(p.amount,0)  as '{RetailPurchaseCompare.PurchaseMoney}',
 	isnull(r.amount,0)  as '{RetailPurchaseCompare.RetailMoney}',
 	isnull(p.c,0) as '{RetailPurchaseCompare.PurchaseCount}',
-	isnull(r.c,0) as '{RetailPurchaseCompare.RetailCount}'
+	isnull(r.c,0) as '{RetailPurchaseCompare.RetailCount}',
+	isnull(isnull(p.c,0)-isnull(r.c,0),0) as '{RetailPurchaseCompare.CountCompare}',
+	isnull(isnull(p.amount,0)-isnull(r.amount,0),0) as '{RetailPurchaseCompare.MoneyCompare}'
 from (
 	select 
 		b.b_code,
 		b.b_name,
 		g.goods_code,
 		g.goods_bar_code,
-		g.goods_name
+		g.goods_name,
+		g.sup_code,
+		s.sup_name
 	from dbo.bs_branch_archives b
 	left join dbo.fb_goods_archives g
 	on 1=1
+	left join dbo.fb_supplier_archives s
+	on g.sup_code=s.sup_code
 ) m
 
 left join (
@@ -77,6 +85,10 @@ where (r.c>0 or p.c>0)
             if (c.entity != null && string.IsNullOrEmpty(c.entity.GoodsCode) == false)
             {
                 sql += string.Format(" and m.goods_code='{0}' ", c.entity.GoodsCode); ;
+            }
+            if (c.entity != null && string.IsNullOrEmpty(c.entity.SupCode) == false)
+            {
+                sql += string.Format(" and m.sup_code='{0}' ", c.entity.SupCode); ;
             }
             int count = EntityRepository.Session.CreateSQLQuery(sql)
                 .AddEntity("RetailPurchaseCompare", typeof(RetailPurchaseCompare))

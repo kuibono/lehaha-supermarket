@@ -160,7 +160,12 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetAllSupplierArchive(string key)
         {
-            var result = FbSupplierArchivesService.Search(key);
+            int pageSize=20;
+            if (Request["pageSize"] != null)
+            {
+                pageSize = Convert.ToInt32(Request["pageSize"]);
+            }
+            var result = FbSupplierArchivesService.Search(key, pageSize);
             if (Common.MyEnv.IsSupplierLogin)
             {
                 var currentSupplier = Common.MyEnv.CurrentSupplier;

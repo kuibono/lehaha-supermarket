@@ -52,6 +52,7 @@
     <property name="PcSupplementDetailService" ref="PcSupplementDetailService" />
     <property name="RtRetailManageService" ref="RtRetailManageService" />
     <property name="RtRetailDetailService" ref="RtRetailDetailService" />
+    <property name="PcPurchaseDetailHistoryService" ref="PcPurchaseDetailHistoryService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.QueryController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="PcPurchaseManageService" ref="PcPurchaseManageService" />

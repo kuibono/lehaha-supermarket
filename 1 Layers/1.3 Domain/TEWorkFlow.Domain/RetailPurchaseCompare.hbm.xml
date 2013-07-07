@@ -6,6 +6,8 @@
     </id>
     <property name="bCode" type="String" />
     <property name="bName" type="String" />
+    <property name="SupCode" type="String" />
+    <property name="SupName" type="String" />
     <property name="GoodsCode" type="String" />
     <property name="GoodsName" type="String"/>
     <property name="BarCode" type="String"/>
@@ -13,5 +15,7 @@
     <property name="RetailMoney" type="decimal"/>
     <property name="PurchaseCount" type="decimal"/>
     <property name="PurchaseMoney" type="decimal"/>
+    <property name="CountCompare" type="decimal"/>
+    <property name="MoneyCompare" type="decimal"/>
   </class>
 </hibernate-mapping>
