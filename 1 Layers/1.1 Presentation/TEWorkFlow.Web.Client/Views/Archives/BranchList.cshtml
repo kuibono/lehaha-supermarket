@@ -55,17 +55,6 @@
                 }
             });
         }
-//        function deleteItem(id) {
-//            $.ajax({
-//                url: "/Archives/BranchDelete",
-//                data: { ids: id },
-//                success: function (text) {
-//                    grid.reload();
-//                },
-//                error: function () {
-//                }
-//            });
-//        }
         function deleteItem(id) {
             $.ajax({
                 url: "/Archives/BranchDelete",
@@ -99,6 +88,26 @@
             var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             return s;
+        }
+        function exame(obj, itemid, old) {
+            $.ajax({
+                url: "/Archives/BranchExame/" + itemid,
+                success: function (j) {
+                    if (j == true) {
+                        $(obj).css("color", "green").text("是");
+                    }
+                    else {
+                        $(obj).css("color", "red").text("否");
+                    }
+                    $(obj).removeProp("onclick");
+                    $(obj).unbind("click").click(function () {
+                        exame(obj, itemid, !old)
+                    })
+                },
+                error: function () {
+                    alert("失败")
+                }
+            });
         }
     </script>
 }
