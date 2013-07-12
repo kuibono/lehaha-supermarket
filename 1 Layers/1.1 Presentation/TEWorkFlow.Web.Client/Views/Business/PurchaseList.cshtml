@@ -105,7 +105,27 @@
             var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             return s;
-        }
+        }
+        function exame(obj, itemid, old) {
+            $.ajax({
+                url: "/Business/PurchaseExame/" + itemid,
+                success: function (j) {
+                    if (j == true) {
+                        $(obj).css("color", "green").text("是");
+                    }
+                    else {
+                        $(obj).css("color", "red").text("否");
+                    }
+                    $(obj).removeProp("onclick");
+                    $(obj).unbind("click").click(function () {
+                        exame(obj, itemid, !old)
+                    })
+                },
+                error: function () {
+                    alert("失败")
+                }
+            });
+        }
     </script>
 }
 <div class="mini-splitter" style="width: 100%; height: 100%;">

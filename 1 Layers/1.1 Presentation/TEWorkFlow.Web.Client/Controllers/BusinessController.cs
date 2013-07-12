@@ -191,6 +191,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(PcPurchaseManageService.SearchReportByBranch(new DateTime(2013,1,1),new DateTime(2014,1,1),"2740c64d-8dcb-45ef-92cc-57ff24442184"),JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult PurchaseExame(string id)
+        {
+            PcPurchaseManage entity = PcPurchaseManageService.GetById(id);
+            if (entity.HaveId)
+            {
+                entity.IfExamine = "true";
+                PcPurchaseManageService.Update(entity);
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
         #region 退货

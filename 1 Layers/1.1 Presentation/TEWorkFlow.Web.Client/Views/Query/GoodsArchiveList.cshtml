@@ -162,7 +162,7 @@
                     供货商</div>
                 <div field="PurchasePrice" headeralign="center" align="center" width="60">
                     进价</div>
-                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
+                <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onYesNoRender">
                     审核</div>
                 <div field="PriceHistory" headeralign="center" align="center" width="40" renderer="onHistoryRenderer">
                     历史价格</div>
@@ -237,6 +237,7 @@
                 alert("请选中一条记录");
             }
         }
+        
     </script>
     <script type="text/javascript">
         mini.parse();
