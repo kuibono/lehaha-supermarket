@@ -240,6 +240,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             BsBranchArchivesService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult BranchExame(string id)
+        {
+            BsBranchArchives entity = BsBranchArchivesService.GetById(id);
+            if (entity.HaveId)
+            {
+                entity.IfExamine = entity.IfExamine == "true" ? "false" : "true";
+                BsBranchArchivesService.Update(entity);
+                return Json(entity.IfExamine == "true", JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region 商品档案
@@ -261,7 +273,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 entity.IfExamine = entity.IfExamine == "true" ? "false" : "true";
                 GoodsArchivesService.Update(entity);
-                return Json(true, JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine=="true", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
