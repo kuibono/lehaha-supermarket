@@ -94,27 +94,27 @@
                 }
             });
         }
-        function exame(obj, id, old) {
+        function exame(obj, itemid, old) {
             $.ajax({
-                url: "/Archives/SupplierExame/" + id,
+                url: "/Archives/SupplierExame/" + itemid,
                 success: function (j) {
                     if (j == true) {
-                        if (old == true) {
-                            $(obj).css("color", "red").text("否");
-                        }
-                        else {
-                            $(obj).css("color", "green").text("是");
-                        }
+                        $(obj).css("color", "green").text("是");
                     }
                     else {
-                        alert("失败")
+                        $(obj).css("color", "red").text("否");
                     }
+                    $(obj).removeProp("onclick");
+                    $(obj).unbind("click").click(function () {
+                        exame(obj, itemid, !old)
+                    })
                 },
                 error: function () {
                     alert("失败")
                 }
             });
         }
+        
         function onNormalActionRenderer(e) {
             var grid = e.sender;
             var record = e.record;

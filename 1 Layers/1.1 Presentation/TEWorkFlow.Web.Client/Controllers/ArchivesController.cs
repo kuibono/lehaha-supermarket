@@ -110,7 +110,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 entity.IfExamine = entity.IfExamine=="true"?"false":"true";
                 FbSupplierArchivesService.Update(entity);
-                return Json(true, JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine=="true", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
