@@ -183,6 +183,27 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string ClassName { get; set; }
         public virtual string AreaName { get; set; }
+
+        private string _InputBCode;
+        public virtual string InputBCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_InputBCode))
+                {
+                    return Id;
+                }
+                else
+                {
+                    return _InputBCode;
+                }
+            }
+            set
+            {
+                _InputBCode = value;
+            }
+        }
+
         protected override void Validate()
         {
         }

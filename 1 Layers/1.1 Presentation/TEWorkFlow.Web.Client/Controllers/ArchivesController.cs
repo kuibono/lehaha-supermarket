@@ -219,15 +219,24 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveBranchArchive(BsBranchArchives s)
         {
-            if(s.HaveId)
+            if (string.IsNullOrEmpty(s.InputBCode) == false && BsBranchArchivesService.GetById(s.InputBCode) == null)
             {
-                BsBranchArchivesService.Update(s);
+                s.Id = s.InputBCode;
             }
-            else
+            if (string.IsNullOrEmpty(s.Id))
             {
                 s.Id = Guid.NewGuid().ToString();
-                BsBranchArchivesService.Create(s);
             }
+            BsBranchArchivesService.Update(s);
+            //if(s.HaveId)
+            //{
+            //    BsBranchArchivesService.Update(s);
+            //}
+            //else
+            //{
+            //    s.Id = Guid.NewGuid().ToString();
+            //    BsBranchArchivesService.Create(s);
+            //}
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
