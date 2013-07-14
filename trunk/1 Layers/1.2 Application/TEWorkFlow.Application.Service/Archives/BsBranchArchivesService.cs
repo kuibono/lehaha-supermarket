@@ -42,7 +42,7 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public void Update(BsBranchArchives entity)
         {
-            EntityRepository.Update(entity);
+            EntityRepository.SaveOrUpdate(entity);
         }
 
         [Transaction]

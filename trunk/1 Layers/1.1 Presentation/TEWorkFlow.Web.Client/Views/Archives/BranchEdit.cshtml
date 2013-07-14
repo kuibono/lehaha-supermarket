@@ -48,10 +48,10 @@
     </tr>
     <tr>
         <td>
-            所属区域:
+            分店码：
         </td>
         <td>
-            <input name="AreaCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaAreas" value="@Model.AreaCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            <input name="InputBCode" value="@Model.InputBCode" class="mini-textbox"/>
         </td>
         <td>
             负责人:
@@ -142,9 +142,12 @@
             <div name="IfSyncSale" class="mini-checkbox" checked="@Model.IfSyncSale" readOnly="false" text="上传分店销售记录">
             </div>
         </td>
-        <td></td>
-        <td></td>
-        
+        <td>
+            所属区域:
+        </td>
+        <td>
+            <input name="AreaCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaAreas" value="@Model.AreaCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+        </td
     </tr>
     <tr>
         <td>
