@@ -16,6 +16,8 @@ namespace TEWorkFlow.Application.Service.Sys
 
         public IRepositoryGUID<TfDataDownload> EntityRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
+        public IRepositoryGUID<FbSupplierArchives> FbSupplierArchivesRepository { get; set; }
+        public IRepositoryGUID<GoodsArchives> GoodsArchivesRepository { get; set; }
         [Transaction]
         public void AddDownload(string table, string id)
         {
@@ -37,6 +39,35 @@ namespace TEWorkFlow.Application.Service.Sys
                 DownloadKeyvalue = id,
                 DownloadTablename = table
             });
+        }
+
+        public void AddAllArchivesToBranch(string bCode)
+        {
+            var branch = BranchRepository.Get(bCode);
+            if (branch != null || branch.IfSend == "false")
+            {
+                return;
+            }
+            var allGoods = GoodsArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
+            var allSuppliers = FbSupplierArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
+            foreach (var goods in allGoods)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode =bCode;
+                d.DownloadKeyvalue = goods.Id;
+                d.DownloadTablename = "fb_goods_archives_bar";
+                EntityRepository.Save(d);
+            }
+            foreach (var supplier in allSuppliers)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = supplier.Id;
+                d.DownloadTablename = "fb_supplier_archives";
+                EntityRepository.Save(d);
+            }
         }
 
         [Transaction]
