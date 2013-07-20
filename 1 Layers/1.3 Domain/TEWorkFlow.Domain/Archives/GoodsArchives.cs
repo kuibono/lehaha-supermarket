@@ -200,20 +200,67 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string UnderCounterCode { get; set; }
 
+
+        private string _CheckUnitCode = "0";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string CheckUnitCode { get; set; }
+        public virtual string CheckUnitCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_CheckMode))
+                {
+                    return "0";
+                }
+                return _CheckUnitCode;
+            }
+            set
+            {
+                _CheckUnitCode = value;
+            }
+        }
+
+        private decimal? _PurchasePrice = 0;
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? PurchasePrice { get; set; }
+        public virtual decimal? PurchasePrice
+        {
+            get
+            {
+                if (_PurchasePrice.HasValue == false)
+                {
+                    return 0;
+                }
+                return _PurchasePrice;
+            }
+            set
+            {
+                _PurchasePrice = value;
+            }
+        }
+
+        private decimal? _NontaxPurchasePrice = 0;
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? NontaxPurchasePrice { get; set; }
+        public virtual decimal? NontaxPurchasePrice
+        {
+            get
+            {
+                if (_NontaxPurchasePrice.HasValue == false)
+                {
+                    return 0;
+                }
+                return _NontaxPurchasePrice;
+            }
+            set {
+                _NontaxPurchasePrice = value;
+            }
+        }
 
         /// <summary>
         /// 
