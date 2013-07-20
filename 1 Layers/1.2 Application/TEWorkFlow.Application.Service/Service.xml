@@ -254,6 +254,13 @@
     <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
     <property name="GoodsArchivesRepository" ref="GoodsArchivesRepository"/>
     <property name="FbSupplierArchivesRepository" ref="FbSupplierArchivesRepository"/>
+    <property name="GbRepository" ref="FbPaGoodsGbRepository"/>
+    <property name="GmRepository" ref="FbPaGoodsGmRepository"/>
+    <property name="GsRepository" ref="FbPaGoodsGsRepository"/>
+    <property name="GlRepository" ref="FbPaGoodsGlRepository"/>
+    <property name="FbGoodsArchivesBarRepository" ref="FbGoodsArchivesBarRepository"/>
+    <property name="FbGoodsArchivesSupplierRepository" ref="FbGoodsArchivesSupplierRepository"/>
+    <property name="FbPaBaseSetRepository" ref="FbPaBaseSetRepository"/>
   </object>
   <object id="FbGoodsSupplierRelationService" type="TEWorkFlow.Application.Service.Archives.FbGoodsSupplierRelationService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbGoodsSupplierRelationRepository"/>

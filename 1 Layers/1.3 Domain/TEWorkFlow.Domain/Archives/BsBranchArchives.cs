@@ -89,10 +89,23 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string TaxNumber { get; set; }
 
+        private string _OpCode = "0";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string OpCode { get; set; }
+        public virtual string OpCode {
+            get
+            {
+                if(string.IsNullOrEmpty(_OpCode))
+                {
+                    return "0";
+                }
+                return _OpCode;
+            }
+            set{
+                _OpCode = value;
+            }
+        }
 
         /// <summary>
         /// 
