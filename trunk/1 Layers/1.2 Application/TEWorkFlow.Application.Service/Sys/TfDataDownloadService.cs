@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Sys;
 using TEWorkFlow.Domain.Archives;
+using TEWorkFlow.Domain.Category;
 
 namespace TEWorkFlow.Application.Service.Sys
 {
@@ -18,6 +19,13 @@ namespace TEWorkFlow.Application.Service.Sys
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
         public IRepositoryGUID<FbSupplierArchives> FbSupplierArchivesRepository { get; set; }
         public IRepositoryGUID<GoodsArchives> GoodsArchivesRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGb> GbRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGm> GmRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGs> GsRepository { get; set; }
+        public IRepositoryGUID<FbPaGoodsGl> GlRepository { get; set; }
+        public IRepositoryGUID<FbGoodsArchivesBar> FbGoodsArchivesBarRepository { get; set; }
+        public IRepositoryGUID<FbGoodsArchivesSupplier> FbGoodsArchivesSupplierRepository { get; set; }
+        public IRepositoryGUID<FbPaBaseSet> FbPaBaseSetRepository { get; set; }
         [Transaction]
         public void AddDownload(string table, string id)
         {
@@ -49,16 +57,17 @@ namespace TEWorkFlow.Application.Service.Sys
                 return;
             }
             var allGoods = GoodsArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
-            var allSuppliers = FbSupplierArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
             foreach (var goods in allGoods)
             {
                 TfDataDownload d = new TfDataDownload();
                 d.Id = Guid.NewGuid().ToString();
-                d.DownloadBranchcode =bCode;
+                d.DownloadBranchcode = bCode;
                 d.DownloadKeyvalue = goods.Id;
                 d.DownloadTablename = "fb_goods_archives_bar";
                 EntityRepository.Save(d);
             }
+
+            var allSuppliers = FbSupplierArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
             foreach (var supplier in allSuppliers)
             {
                 TfDataDownload d = new TfDataDownload();
@@ -66,6 +75,83 @@ namespace TEWorkFlow.Application.Service.Sys
                 d.DownloadBranchcode = bCode;
                 d.DownloadKeyvalue = supplier.Id;
                 d.DownloadTablename = "fb_supplier_archives";
+                EntityRepository.Save(d);
+            }
+
+            var allGb = GbRepository.LinqQuery.ToList();
+            foreach (FbPaGoodsGb item in allGb)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_pa_goods_gb";
+                EntityRepository.Save(d);
+            }
+
+            var allGm = GmRepository.LinqQuery.ToList();
+            foreach (FbPaGoodsGm item in allGm)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_pa_goods_gm";
+                EntityRepository.Save(d);
+            }
+
+            var allGs = GsRepository.LinqQuery.ToList();
+            foreach (FbPaGoodsGs item in allGs)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_pa_goods_gs";
+                EntityRepository.Save(d);
+            }
+
+            var allGl = GlRepository.LinqQuery.ToList();
+            foreach (FbPaGoodsGl item in allGl)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_pa_goods_gl";
+                EntityRepository.Save(d);
+            }
+
+            var allGoodsBar = FbGoodsArchivesBarRepository.LinqQuery.ToList();
+            foreach (FbGoodsArchivesBar item in allGoodsBar)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_goods_archives_bar";
+                EntityRepository.Save(d);
+            }
+
+            var allGoodsSupplier = FbGoodsArchivesSupplierRepository.LinqQuery.ToList();
+            foreach (FbGoodsArchivesSupplier item in allGoodsSupplier)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_goods_archives_supplier";
+                EntityRepository.Save(d);
+            }
+
+            var allSets = FbPaBaseSetRepository.LinqQuery.ToList();
+            foreach (FbPaBaseSet item in allSets)
+            {
+                TfDataDownload d = new TfDataDownload();
+                d.Id = Guid.NewGuid().ToString();
+                d.DownloadBranchcode = bCode;
+                d.DownloadKeyvalue = item.Id;
+                d.DownloadTablename = "fb_pa_base_set";
                 EntityRepository.Save(d);
             }
         }

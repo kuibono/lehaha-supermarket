@@ -37,25 +37,73 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string GlCode { get; set; }
 
+        private string _GoodsType = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GoodsType { get; set; }
+        public virtual string GoodsType
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_GoodsType))
+                {
+                    return "1";
+                }
+                return _GoodsType;
+            }
+            set
+            {
+                _GoodsType = value;
+            }
+        }
 
+
+        private string _CheckMode = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string CheckMode { get; set; }
+        public virtual string CheckMode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_CheckMode))
+                {
+                    return "1";
+                }
+                return _CheckMode;
+            }
+            set
+            {
+                _CheckMode = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public virtual string SupCode { get; set; }
 
+
+
+        private string _OpCode = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string OpCode { get; set; }
+        public virtual string OpCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_OpCode))
+                {
+                    return "1";
+                }
+                return _OpCode;
+            }
+            set
+            {
+                _OpCode = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -245,7 +293,7 @@ namespace TEWorkFlow.Domain.Archives
 
         public virtual string IfNew { get; set; }
 
-        
+
 
 
         public virtual string GbName { get; set; }
