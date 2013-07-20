@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Dto;
+using TEWorkFlow.Application.Service.Sys;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -17,11 +18,15 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<BsBranchArchives> EntityRepository { get; set; }
         public IRepositoryGUID<BsPaClass> BsPaClassRepository { get; set; }
         public IRepositoryGUID<BsPaArea> BsPaAreaRepository { get; set; }
+        public ITfDataDownloadService TfDataDownloadService { get; set; }
 
         [Transaction]
         public string Create(BsBranchArchives entity)
         {
-            return EntityRepository.Save(entity);
+            var id=EntityRepository.Save(entity);
+            TfDataDownloadService.AddAllArchivesToBranch(id);
+            return id;
+            
         }
 
         [Transaction]

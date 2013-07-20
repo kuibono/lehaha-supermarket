@@ -148,6 +148,7 @@
     <property name="EntityRepository" ref="BsBranchArchivesRepository"/>
     <property name="BsPaClassRepository" ref="BsPaClassRepository"/>
     <property name="BsPaAreaRepository" ref="BsPaAreaRepository"/>
+    <property name="TfDataDownloadService" ref="TfDataDownloadService"/>
   </object>
   <object id="BsPaClassService" type="TEWorkFlow.Application.Service.Category.BsPaClassService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="BsPaClassRepository"/>
@@ -251,6 +252,8 @@
   <object id="TfDataDownloadService" type="TEWorkFlow.Application.Service.Sys.TfDataDownloadService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="TfDataDownloadRepository"/>
     <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
+    <property name="GoodsArchivesRepository" ref="GoodsArchivesRepository"/>
+    <property name="FbSupplierArchivesRepository" ref="FbSupplierArchivesRepository"/>
   </object>
   <object id="FbGoodsSupplierRelationService" type="TEWorkFlow.Application.Service.Archives.FbGoodsSupplierRelationService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="FbGoodsSupplierRelationRepository"/>

@@ -14,6 +14,8 @@ namespace TEWorkFlow.Application.Service.Sys
     {
         void AddDownload(string table, string id);
 
+        void AddAllArchivesToBranch(string bCode);
+
         string Create(TfDataDownload entity);
 
         TfDataDownload GetById(string id);
