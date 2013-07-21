@@ -51,21 +51,26 @@ namespace TEWorkFlow.Application.Service.Sys
 
         public void AddAllArchivesToBranch(string bCode)
         {
+            return;
+
             var branch = BranchRepository.Get(bCode);
-            if (branch != null || branch.IfSend == "false")
+            if (branch == null || branch.IfExamine == "false")
             {
                 return;
             }
-            var allGoods = GoodsArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
-            foreach (var goods in allGoods)
-            {
-                TfDataDownload d = new TfDataDownload();
-                d.Id = Guid.NewGuid().ToString();
-                d.DownloadBranchcode = bCode;
-                d.DownloadKeyvalue = goods.Id;
-                d.DownloadTablename = "fb_goods_archives_bar";
-                EntityRepository.Save(d);
-            }
+            //var allGoods = GoodsArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
+            //foreach (var goods in allGoods)
+            //{
+            //    TfDataDownload d = new TfDataDownload();
+            //    d.Id = Guid.NewGuid().ToString();
+            //    d.DownloadBranchcode = bCode;
+            //    d.DownloadKeyvalue = goods.Id;
+            //    d.DownloadTablename = "fb_goods_archives_bar";
+            //    EntityRepository.Save(d);
+            //}
+            string str_goods = string.Format("INSERT INTO tf_data_download  select convert(char(50),newid()) as download_id, 'fb_goods_archives' as download_tablename, '{0}' as download_branchcode,goods_code as download_keyvalue,null as download_order from fb_goods_archives where if_examine = 'true'",bCode);
+            GoodsArchivesRepository.Session.CreateSQLQuery(str_goods).ExecuteUpdate();
+
 
             var allSuppliers = FbSupplierArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
             foreach (var supplier in allSuppliers)

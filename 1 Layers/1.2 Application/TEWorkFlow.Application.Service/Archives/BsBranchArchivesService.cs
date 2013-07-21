@@ -23,10 +23,10 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public string Create(BsBranchArchives entity)
         {
-            var id=EntityRepository.Save(entity);
+            var id = EntityRepository.Save(entity);
             TfDataDownloadService.AddAllArchivesToBranch(id);
             return id;
-            
+
         }
 
         [Transaction]
@@ -47,7 +47,17 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public void Update(BsBranchArchives entity)
         {
+            bool Exist = true;
+            if (EntityRepository.LinqQuery.Any(p => p.Id == entity.Id) == false)
+            {
+                Exist = false;
+
+            }
             EntityRepository.SaveOrUpdate(entity);
+            if (Exist == false)
+            {
+                TfDataDownloadService.AddAllArchivesToBranch(entity.Id);
+            }
         }
 
         [Transaction]
@@ -71,7 +81,7 @@ namespace TEWorkFlow.Application.Service.Archives
             foreach (BsBranchArchives each in entities)
             {
                 var q = classes.Where(p => p.Id == each.ClassCode);
-                if(q.Count()>0)
+                if (q.Count() > 0)
                 {
                     each.ClassName = q.First().ClassName;
                 }

@@ -219,6 +219,8 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveBranchArchive(BsBranchArchives s)
         {
+            bool Exist = false;
+
             if (string.IsNullOrEmpty(s.InputBCode) == false && BsBranchArchivesService.GetById(s.InputBCode) == null)
             {
                 s.Id = s.InputBCode;

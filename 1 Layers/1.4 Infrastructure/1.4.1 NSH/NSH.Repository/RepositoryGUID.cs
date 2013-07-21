@@ -37,6 +37,7 @@ namespace NSH.Repository
 
         public virtual void SaveOrUpdate(TEntity entity)
         {
+            HibernateTemplate.SessionFactory.GetCurrentSession().Clear();
             HibernateTemplate.SaveOrUpdate(entity);
         }
 
