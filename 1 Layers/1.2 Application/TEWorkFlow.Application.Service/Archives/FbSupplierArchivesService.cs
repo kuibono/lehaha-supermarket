@@ -30,7 +30,10 @@ namespace TEWorkFlow.Application.Service.Archives
             entity.Id = GenerateId();
             string id=EntityRepository.Save(entity);
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_supplier_archives" });
-            TfDataDownloadService.AddDownload("fb_supplier_archives", id);
+            if (entity.IfExamine == "1")
+            {
+                TfDataDownloadService.AddDownload("fb_supplier_archives", id);
+            }
             return id;
         }
 
@@ -53,7 +56,10 @@ namespace TEWorkFlow.Application.Service.Archives
         public void Update(FbSupplierArchives entity)
         {
             EntityRepository.Update(entity);
-            TfDataDownloadService.AddDownload("fb_supplier_archives", entity.Id);
+            if (entity.IfExamine == "1")
+            {
+                TfDataDownloadService.AddDownload("fb_supplier_archives", entity.Id);
+            }
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_supplier_archives" });
         }
 

@@ -41,8 +41,10 @@ namespace TEWorkFlow.Application.Service.Archives
                 entity.GoodsBarCode = GenerateBarCode();
             }
             string id = EntityRepository.Save(entity);
-            TfDataDownloadService.AddDownload("fb_goods_archives", id);
-
+            if (entity.IfExamine == "1")
+            {
+                TfDataDownloadService.AddDownload("fb_goods_archives", id);
+            }
 
             FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
             bar.Id = entity.GoodsBarCode;
@@ -156,7 +158,10 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             entity.OperatorDate = DateTime.Now;
             EntityRepository.Update(entity);
-            TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
+            if (entity.IfExamine == "1")
+            {
+                TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
+            }
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 

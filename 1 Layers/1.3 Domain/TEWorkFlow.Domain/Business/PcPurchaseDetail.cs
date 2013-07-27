@@ -105,6 +105,9 @@ namespace TEWorkFlow.Domain.Business
 
         public virtual string GoodsName { get; set; }
 
+        private bool _IfMoved = false;
+        public virtual bool IfMoved { get { return _IfMoved; } set { _IfMoved = value; } }
+
         protected override void Validate()
         {
         }
