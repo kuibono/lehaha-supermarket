@@ -42,5 +42,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
         string GenerateLoginName();
 
+        string GenerateId();
+
     }
 }

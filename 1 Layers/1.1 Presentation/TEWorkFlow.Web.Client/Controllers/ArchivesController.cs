@@ -62,7 +62,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             else
             {
-                em.Id = Guid.NewGuid().ToString();
+                em.Id = EmemployeearchiveService.GenerateId();
                 EmemployeearchiveService.Create(em);
             }
             return Json(true, JsonRequestBehavior.AllowGet);
@@ -90,7 +90,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             
             FbSupplierArchives model=new FbSupplierArchives()
                                          {
-                                             //Id=Guid.NewGuid() .ToString(),
+                                             //Id=FbSupplierArchivesService.GenerateId(),
                                              CreateDate = DateTime.Now,
                                              ExamineDate = DateTime.Now,
                                              OperatorDate = DateTime.Now                                             
@@ -108,9 +108,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             FbSupplierArchives entity = FbSupplierArchivesService.GetById(id);
             if (entity.HaveId)
             {
-                entity.IfExamine = entity.IfExamine=="true"?"false":"true";
+                entity.IfExamine = entity.IfExamine=="1"?"0":"1";
                 FbSupplierArchivesService.Update(entity);
-                return Json(entity.IfExamine=="true", JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine=="1", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
@@ -257,9 +257,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             BsBranchArchives entity = BsBranchArchivesService.GetById(id);
             if (entity.HaveId)
             {
-                entity.IfExamine = entity.IfExamine == "true" ? "false" : "true";
+                entity.IfExamine = entity.IfExamine == "1" ? "0" : "1";
                 BsBranchArchivesService.Update(entity);
-                return Json(entity.IfExamine == "true", JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine == "1", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
@@ -282,9 +282,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             GoodsArchives entity = GoodsArchivesService.GetById(id);
             if (entity.HaveId)
             {
-                entity.IfExamine = entity.IfExamine == "true" ? "false" : "true";
+                entity.IfExamine = entity.IfExamine == "1" ? "0" : "1";
                 GoodsArchivesService.Update(entity);
-                return Json(entity.IfExamine=="true", JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine=="1", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
@@ -322,7 +322,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public ActionResult GoodsEdit(string id)
         {
             GoodsArchives entity = new GoodsArchives();
-            entity.IfNew = "true";
+            entity.IfNew = "1";
             entity.CreateDate = DateTime.Now;
             entity.Operator = Common.MyEnv.CurrentEmployee.Id;
             entity.Assessor = Common.MyEnv.CurrentEmployee.Id;

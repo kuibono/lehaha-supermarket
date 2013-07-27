@@ -49,7 +49,7 @@
             人员姓名:
         </td>
         <td style="width: 140px;">
-            <input name="Emname" value="@Model.Emname" class="mini-textbox" required="true"/>
+            <input name="Emname" value="@Model.Emname" class="mini-textbox"  maxLength="10" required="true"/>
         </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
             曾用名:
         </td>
         <td style="width: 140px;">
-            <input name="Nameused" value="@Model.Nameused" class="mini-textbox"/>
+            <input name="Nameused" value="@Model.Nameused" maxLength="10" class="mini-textbox"/>
         </td>
         <td>
             出生日期:
@@ -92,7 +92,7 @@
             学历:
         </td>
         <td>
-            <input name="Educationcode" value="@Model.Educationcode" class="mini-textbox"/>
+            <input name="Educationcode" value="@Model.Educationcode" maxLength="10" class="mini-textbox"/>
         </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
             职称:
         </td>
         <td>
-            <input name="Professionaltitlecode" value="@Model.Professionaltitlecode" class="mini-textbox"/>
+            <input name="Professionaltitlecode" value="@Model.Professionaltitlecode" maxLength="10" class="mini-textbox"/>
         </td>
         <td>
             婚否:
@@ -113,7 +113,7 @@
             籍贯:
         </td>
         <td>
-            <input name="Nativeplace" value="@Model.Nativeplace" class="mini-textbox"/>
+            <input name="Nativeplace" value="@Model.Nativeplace" class="mini-textbox" maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -121,7 +121,7 @@
             身份证号:
         </td>
         <td>
-            <input name="Idcard" value="@Model.Idcard" class="mini-textbox"/>
+            <input name="Idcard" value="@Model.Idcard" class="mini-textbox" maxLength="30"/>
         </td>
         <td>
             就职日期:
@@ -141,19 +141,19 @@
             手机:
         </td>
         <td>
-            <input name="Handset" value="@Model.Handset" class="mini-textbox"/>
+            <input name="Handset" value="@Model.Handset" class="mini-textbox" maxLength="20"/>
         </td>
         <td>
             E-mail:
         </td>
         <td>
-            <input name="Email" value="@Model.Email" class="mini-textbox"/>
+            <input name="Email" value="@Model.Email" class="mini-textbox" maxLength="30"/>
         </td>
         <td>
             家庭住址:
         </td>
         <td>
-            <input name="Familyaddress" value="@Model.Familyaddress" class="mini-textbox"/>
+            <input name="Familyaddress" value="@Model.Familyaddress" class="mini-textbox" maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -161,13 +161,13 @@
             邮政编码:
         </td>
         <td>
-            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox"/>
+            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox" maxLength="10"/>
         </td>
         <td>
             毕业院校:
         </td>
         <td>
-            <input name="Graduateacademy" value="@Model.Graduateacademy" class="mini-textbox"/>
+            <input name="Graduateacademy" value="@Model.Graduateacademy" class="mini-textbox" maxLength="20"/>
         </td>
         <td>
             毕业时间:

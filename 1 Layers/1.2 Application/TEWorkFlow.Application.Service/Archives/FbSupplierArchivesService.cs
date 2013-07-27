@@ -27,7 +27,7 @@ namespace TEWorkFlow.Application.Service.Archives
         {
             entity.LoginName = GenerateLoginName();
             entity.LoginPass = "111111";
-            entity.Id = entity.LoginName;
+            entity.Id = GenerateId();
             string id=EntityRepository.Save(entity);
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = id, DownloadTablename = "fb_supplier_archives" });
             TfDataDownloadService.AddDownload("fb_supplier_archives", id);
@@ -302,6 +302,16 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             return result;
         }
+        [Transaction]
+        public string GenerateId()
+        {
+            string result = Genarate4Id();
+            while (EntityRepository.LinqQuery.Any(p => p.Id == result))
+            {
+                result = Genarate4Id();
+            }
+            return result;
+        }
 
         private string GenerateString()
         {
@@ -311,6 +321,12 @@ namespace TEWorkFlow.Application.Service.Archives
             return  random.Next(10001, 99999).ToString();
         }
 
-      
+        private string Genarate4Id()
+        {
+            Guid randSeedGuid = Guid.NewGuid();
+
+            Random random = new Random(BitConverter.ToInt32(randSeedGuid.ToByteArray(), 0));
+            return random.Next(1001, 9999).ToString();
+        }
     }
 }

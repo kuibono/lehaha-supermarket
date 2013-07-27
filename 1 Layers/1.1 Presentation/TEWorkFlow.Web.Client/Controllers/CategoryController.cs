@@ -372,8 +372,8 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             List<item> items = new List<item>();
             items.Add(new item() { id = "", text = "--是否审核--" });
-            items.Add(new item() { id = "true", text = "审核" });
-            items.Add(new item() { id = "false", text = "未审核" });
+            items.Add(new item() { id = "1", text = "审核" });
+            items.Add(new item() { id = "0", text = "未审核" });
             return Json(items, JsonRequestBehavior.AllowGet);
         }
 
