@@ -24,5 +24,6 @@
     <property name="ProduceDate" column="produce_date" type="System.DateTime" />
     <property name="IsFree" column="Is_free" type="bool" />
     <property name="AddTime" column="add_time" type="System.DateTime" />
+    <property name="IfMoved" column="if_moved" type="bool" />
   </class>
 </hibernate-mapping>

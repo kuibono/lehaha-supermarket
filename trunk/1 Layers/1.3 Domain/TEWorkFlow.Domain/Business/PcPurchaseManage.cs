@@ -12,7 +12,7 @@ namespace TEWorkFlow.Domain.Business
     ///</summary>
     public class PcPurchaseManage : EntityGUIDBase, IAggregateRootGUID
     {
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -125,9 +125,12 @@ namespace TEWorkFlow.Domain.Business
 
         public virtual int detailCount { get; set; }
 
-        public virtual int count{get;set;}
+        public virtual int count { get; set; }
 
         public virtual decimal? amount { get; set; }
+
+        private bool _IfMoved = false;
+        public virtual bool IfMoved { get { return _IfMoved; } set { _IfMoved = value; } }
 
         protected override void Validate()
         {
