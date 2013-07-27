@@ -65,10 +65,10 @@ left join (
 	----查询分店下，某段时间内，商品的总金额
 	select goods_code,b_code,sum(amount) as amount,sum(c) as c from (
 		select rd.goods_code,rd.rt_number,rd.amount,rm.b_code,rd.c from 
-		(select goods_code,rt_number,isnull(sum(sale_money),0) as amount,count(0) as c from dbo.pc_return_detail group by goods_code,rt_number) rd
-		left join dbo.pc_return_manage rm
+		(select goods_code,rt_number,isnull(sum(sale_money),0) as amount,count(0) as c from dbo.rt_retail_detail group by goods_code,rt_number) rd
+		left join dbo.rt_retail_manage rm
 		on rd.rt_number=rm.rt_number
-		where rm.operator_date between '@dates' and '@datee'
+		where rm.rt_date between '@dates' and '@datee'
 	) tmp group by goods_code,b_code
 ) r
 on m.goods_code=r.goods_code and m.b_code=r.b_code
