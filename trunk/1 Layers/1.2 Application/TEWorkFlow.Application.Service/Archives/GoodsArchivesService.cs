@@ -47,17 +47,17 @@ namespace TEWorkFlow.Application.Service.Archives
             FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
             bar.Id = entity.GoodsBarCode;
             bar.GoodsCode = id;
-            bar.IfExamine = "true";
-            bar.IfMainBar = "true";
-            bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
+            bar.IfExamine = "1";
+            bar.IfMainBar = "1";
+            bar.SalePrice = entity.SalePrice;
             //GoodsArchivesBarRepository.SaveOrUpdate(bar);
             FbGoodsArchivesBarService.Create(bar);
 
             FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
             sup.GoodsCode = id;
             sup.Id = Guid.NewGuid().ToString();
-            sup.IfExamine = "true";
-            sup.IfMainSupplier = "true";
+            sup.IfExamine = "1";
+            sup.IfMainSupplier = "1";
             sup.PyCode = entity.PyCode;
             sup.SupCode = entity.SupCode;
             sup.SupName = entity.SupName;
@@ -86,6 +86,23 @@ namespace TEWorkFlow.Application.Service.Archives
         {
             var oldEntity = EntityRepository.Get(entity.Id);
 
+            if (entity.GbCode.IsNullOrEmpty())
+            {
+                entity.GbCode = "";
+            }
+            if (entity.GmCode.IsNullOrEmpty())
+            {
+                entity.GmCode = "";
+            }
+            if (entity.GsCode.IsNullOrEmpty())
+            {
+                entity.GsCode = "";
+            }
+            if (entity.GlCode.IsNullOrEmpty())
+            {
+                entity.GlCode = "";
+            }
+
             #region 条码发生变化后，更新条码表
             if (oldEntity.GoodsBarCode != entity.GoodsBarCode)
             {
@@ -97,22 +114,23 @@ namespace TEWorkFlow.Application.Service.Archives
                 FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
                 bar.Id = entity.GoodsBarCode;
                 bar.GoodsCode = entity.Id;
-                bar.IfExamine = "true";
-                bar.IfMainBar = "true";
-                bar.SalePrice = entity.SalePrice == null ? 0 : entity.SalePrice.Value;
+                bar.GoodsBarName = entity.GoodsSubName;
+                bar.IfMainBar = "1";
+                bar.IfExamine = "1";
+                bar.SalePrice = entity.SalePrice;
                 //GoodsArchivesBarRepository.Save(bar);
                 FbGoodsArchivesBarService.Update(bar);
             }
             #endregion
 
-            #region 
+            #region  
             if (oldEntity.SupCode != entity.SupCode)
             {
                 FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
                 sup.GoodsCode = entity.Id;
                 sup.Id = Guid.NewGuid().ToString();
-                sup.IfExamine = "true";
-                sup.IfMainSupplier = "true";
+                sup.IfExamine = "1";
+                sup.IfMainSupplier = "1";
                 sup.PyCode = entity.PyCode;
                 sup.SupCode = entity.SupCode;
                 sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
@@ -120,6 +138,11 @@ namespace TEWorkFlow.Application.Service.Archives
                 FbGoodsArchivesSupplierService.Update(sup);
             }
             #endregion
+
+            //if (entity.ProposePrice != oldEntity.ProposePrice)
+            //{
+                entity.SalePrice = entity.ProposePrice;
+            //}
 
             if (entity.PurchasePrice != oldEntity.PurchasePrice)
             {
@@ -240,7 +263,6 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.CheckUnitCode.Contains(c.key)
                     || l.Operator.Contains(c.key)
                     || l.Assessor.Contains(c.key)
-                    || l.IfExamine.Contains(c.key)
                     select l;
             }
             if (c.entity != null)
@@ -269,22 +291,22 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.GlCode.Contains(c.entity.GlCode));
                 }
-                if (string.IsNullOrEmpty(c.entity.GoodsType) == false)
-                {
-                    q = q.Where(p => p.GoodsType.Contains(c.entity.GoodsType));
-                }
-                if (string.IsNullOrEmpty(c.entity.CheckMode) == false)
-                {
-                    q = q.Where(p => p.CheckMode.Contains(c.entity.CheckMode));
-                }
+                //if (string.IsNullOrEmpty(c.entity.GoodsType) == false)
+                //{
+                //    q = q.Where(p => p.GoodsType.Contains(c.entity.GoodsType));
+                //}
+                //if (string.IsNullOrEmpty(c.entity.CheckMode) == false)
+                //{
+                //    q = q.Where(p => p.CheckMode.Contains(c.entity.CheckMode));
+                //}
                 if (string.IsNullOrEmpty(c.entity.SupCode) == false)
                 {
                     q = q.Where(p => p.SupCode.Contains(c.entity.SupCode));
                 }
-                if (string.IsNullOrEmpty(c.entity.OpCode) == false)
-                {
-                    q = q.Where(p => p.OpCode.Contains(c.entity.OpCode));
-                }
+                //if (string.IsNullOrEmpty(c.entity.OpCode) == false)
+                //{
+                //    q = q.Where(p => p.OpCode.Contains(c.entity.OpCode));
+                //}
                 if (c.entity.PoolRate > 0)
                 {
                     q = q.Where(p => p.PoolRate == c.entity.PoolRate);
@@ -424,10 +446,6 @@ namespace TEWorkFlow.Application.Service.Archives
                 if (string.IsNullOrEmpty(c.entity.Assessor) == false)
                 {
                     q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
-                }
-                if (string.IsNullOrEmpty(c.entity.IfExamine) == false)
-                {
-                    q = q.Where(p => p.IfExamine.Contains(c.entity.IfExamine));
                 }
 
             }

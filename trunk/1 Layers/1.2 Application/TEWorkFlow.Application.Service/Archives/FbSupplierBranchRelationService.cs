@@ -24,7 +24,7 @@ namespace TEWorkFlow.Application.Service.Archives
         {
             FbSupplierArchives sup = SupplierRepository.Get(supCode);
 
-            IList<BsBranchArchives> allBranchs = BsBranchArchivesRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
+            IList<BsBranchArchives> allBranchs = BsBranchArchivesRepository.LinqQuery.Where(p => p.IfExamine == "1").ToList();
             IList<FbSupplierBranchRelation> allRelation = EntityRepository.LinqQuery.Where(p => p.SupCode == supCode).ToList();
             foreach (BsBranchArchives branch in allBranchs)
             {
@@ -49,7 +49,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IList<FbSupplierBranchRelation> GetAllRelationByBranchCode(string bCode)
         {
             BsBranchArchives branch = BsBranchArchivesRepository.Get(bCode);
-            IList<FbSupplierArchives> allSuppliers = SupplierRepository.LinqQuery.Where(p => p.IfExamine == "true").ToList();
+            IList<FbSupplierArchives> allSuppliers = SupplierRepository.LinqQuery.Where(p => p.IfExamine == "1").ToList();
             IList<FbSupplierBranchRelation> allRelation = EntityRepository.LinqQuery.Where(p => p.bCode == bCode).ToList();
             foreach (FbSupplierArchives sup in allSuppliers)
             {

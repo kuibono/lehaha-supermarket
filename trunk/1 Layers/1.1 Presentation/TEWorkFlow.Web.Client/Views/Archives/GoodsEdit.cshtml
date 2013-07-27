@@ -78,18 +78,37 @@
         <td style="width: 120px;">
             <input name="GoodsCode" value="@Model.Id" class="mini-textbox" enabled="false" />
             <input name="PriceHistory" value="@Model.PriceHistory" class="mini-hidden" enabled="false" />
+            <input name="ArticleNumber" value="@Model.ArticleNumber" class="mini-hidden" enabled="false" />
+            <input name="PackUnitCode" value="@Model.PackUnitCode" class="mini-hidden" enabled="false" />
+            <input name="OfferMode" value="@Model.OfferMode" class="mini-hidden" enabled="false" />
+            <input name="PackCoef" value="@Model.PackCoef" class="mini-hidden" enabled="false" />
+            <input name="OfferMin" value="@Model.OfferMin" class="mini-hidden" enabled="false" />
+            <input name="InputTax" value="@Model.InputTax" class="mini-hidden" enabled="false" />
+            <input name="OutputTax" value="@Model.OutputTax" class="mini-hidden" enabled="false" />
+            <input name="StockUpperLimit" value="@Model.StockUpperLimit" class="mini-hidden" enabled="false" />
+            <input name="StockLowerLimit" value="@Model.StockLowerLimit" class="mini-hidden" enabled="false" />
+            <input name="UnderFloorCode" value="@Model.UnderFloorCode" class="mini-hidden" enabled="false" />
+            <input name="UnderCounterCode" value="@Model.UnderCounterCode" class="mini-hidden" enabled="false" />
+            <input name="AvgCost" value="@Model.AvgCost" class="mini-hidden" enabled="false" />
+            <input name="NontaxAvgCost" value="@Model.NontaxAvgCost" class="mini-hidden" enabled="false" />
+            <input name="GrossRate" value="@Model.GrossRate" class="mini-hidden" enabled="false" />
+            <input name="SalePrice" value="@Model.SalePrice" class="mini-hidden" enabled="false" />
+            <input name="VipPrice" value="@Model.VipPrice" class="mini-hidden" enabled="false" />
+            <input name="TradePrice" value="@Model.TradePrice" class="mini-hidden" enabled="false" />
+            <input name="PushRate" value="@Model.PushRate" class="mini-hidden" enabled="false" />
+            <input name="CreateDate" value="@Model.CreateDate" class="mini-hidden" enabled="false" />
         </td>
         <td style="width: 80px;">
             条形码:
         </td>
         <td style="width: 120px;">
-            <input name="GoodsBarCode" value="@Model.GoodsBarCode" class="mini-textbox" required="false"/>
+            <input name="GoodsBarCode" value="@Model.GoodsBarCode" class="mini-textbox" maxLength="20" required="false"/>
         </td>
         <td style="width: 80px;">
             商品简码:
         </td>
         <td style="width: 120px;">
-            <input name="GoodsSubCode" value="@Model.GoodsSubCode" class="mini-textbox" enabled="false"/>
+            <input name="GoodsSubCode" value="@Model.GoodsSubCode" class="mini-textbox" maxLength="20" enabled="false"/>
         </td>
     </tr>
     <tr>
@@ -138,13 +157,13 @@
             商品名称:
         </td>
         <td>
-            <input name="GoodsName" value="@Model.GoodsName" class="mini-textbox" required="true"/>
+            <input name="GoodsName" value="@Model.GoodsName" class="mini-textbox" maxLength="25" required="true"/>
         </td>
         <td>
             商品简称:
         </td>
         <td>
-            <input name="GoodsSubName" value="@Model.GoodsSubName" class="mini-textbox"/>
+            <input name="GoodsSubName" value="@Model.GoodsSubName" class="mini-textbox" maxLength="10"/>
         </td>
         <td>
             拼音数字码:
@@ -356,7 +375,7 @@
             是否审核:
         </td>
         <td>
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
+            <div name="IfExamine" class="mini-checkbox" value="@Model.IfExamine" readOnly="false" text="审核"  trueValue="1" falseValue="0">
             </div>
         </td>
         <td>
@@ -377,13 +396,13 @@
             产地:
         </td>
         <td>
-            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox" maxLength="10"/>
         </td>
         <td>
             规格:
         </td>
         <td>
-            <input name="Specification" value="@Model.Specification" class="mini-textbox"/>
+            <input name="Specification" value="@Model.Specification" class="mini-textbox" maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -399,7 +418,7 @@
             备用码:
         </td>
         <td>
-            <input name="BackupCode" value="@Model.BackupCode" class="mini-textbox"/>
+            <input name="BackupCode" value="@Model.BackupCode" class="mini-textbox" maxLength="20"/>
         </td>
         <td>
         </td>

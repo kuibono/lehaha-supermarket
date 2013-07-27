@@ -108,7 +108,7 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? PoolRate { get; set; }
+        public virtual decimal PoolRate { get; set; }
 
         /// <summary>
         /// 
@@ -125,10 +125,23 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string PyCode { get; set; }
 
+
+        private string _GoodsState = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GoodsState { get; set; }
+        public virtual string GoodsState
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_GoodsState)) { return "1"; }
+                return _GoodsState;
+            }
+            set
+            {
+                _GoodsState = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -150,10 +163,23 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string ShelfLife { get; set; }
 
+        private string _PackUnitCode = "01";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string PackUnitCode { get; set; }
+        public virtual string PackUnitCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_PackUnitCode))
+                    return "01";
+                return _PackUnitCode;
+            }
+            set
+            {
+                _PackUnitCode = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -163,32 +189,32 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? PackCoef { get; set; }
+        public virtual decimal PackCoef { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? OfferMin { get; set; }
+        public virtual decimal OfferMin { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? InputTax { get; set; }
+        public virtual decimal InputTax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? OutputTax { get; set; }
+        public virtual decimal OutputTax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? StockUpperLimit { get; set; }
+        public virtual decimal StockUpperLimit { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? StockLowerLimit { get; set; }
+        public virtual decimal StockLowerLimit { get; set; }
 
         /// <summary>
         /// 
@@ -257,7 +283,8 @@ namespace TEWorkFlow.Domain.Archives
                 }
                 return _NontaxPurchasePrice;
             }
-            set {
+            set
+            {
                 _NontaxPurchasePrice = value;
             }
         }
@@ -265,37 +292,37 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? AvgCost { get; set; }
+        public virtual decimal AvgCost { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? NontaxAvgCost { get; set; }
+        public virtual decimal NontaxAvgCost { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? GrossRate { get; set; }
+        public virtual decimal GrossRate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? SalePrice { get; set; }
+        public virtual decimal SalePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? VipPrice { get; set; }
+        public virtual decimal VipPrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? TradePrice { get; set; }
+        public virtual decimal TradePrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal? PushRate { get; set; }
+        public virtual decimal PushRate { get; set; }
 
         /// <summary>
         /// 
@@ -332,7 +359,7 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 建议价格
         /// </summary>
-        public virtual decimal? ProposePrice { get; set; }
+        public virtual decimal ProposePrice { get; set; }
 
         public virtual string PriceHistory { get; set; }
 

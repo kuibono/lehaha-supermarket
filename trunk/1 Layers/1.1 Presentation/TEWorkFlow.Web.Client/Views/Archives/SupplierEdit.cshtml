@@ -37,19 +37,19 @@
             登录名:
         </td>
         <td style="width: 140px;">
-            <input name="LoginName" value="@Model.LoginName" class="mini-textbox"  enabled="false"/>
+            <input name="LoginName" value="@Model.LoginName" class="mini-textbox"  maxLength="10" enabled="false"/>
         </td>
         <td style="width: 60px;">
             密码:
         </td>
         <td style="width: 140px;">
-            <input name="LoginPass" value="@Model.LoginPass" class="mini-password" enabled="true"/>
+            <input name="LoginPass" value="@Model.LoginPass" class="mini-password" maxLength="10" enabled="true"/>
         </td>
         <td style="width: 60px;">
             名称:
         </td>
         <td colspan="2">
-            <input name="SupName" value="@Model.SupName" class="mini-textbox" required="true"/>
+            <input name="SupName" value="@Model.SupName" maxLength="100" class="mini-textbox" required="true"/>
         </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
             拼音码:
         </td>
         <td>
-            <input name="PyCode" value="@Model.PyCode" class="mini-textbox" required="true"/>
+            <input name="PyCode" value="@Model.PyCode" maxLength="100" class="mini-textbox" required="true"/>
         </td>
         <td>
             类型:
@@ -69,7 +69,7 @@
             负责人:
         </td>
         <td>
-            <input name="Functionary" value="@Model.Functionary" class="mini-textbox" />
+            <input name="Functionary" value="@Model.Functionary" class="mini-textbox"  maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -77,19 +77,19 @@
             负责人电话:
         </td>
         <td>
-            <input name="FunctionaryPhone" value="@Model.FunctionaryPhone" class="mini-textbox"/>
+            <input name="FunctionaryPhone" value="@Model.FunctionaryPhone" class="mini-textbox" maxLength="20"/>
         </td>
         <td>
             联系人:
         </td>
         <td>
-            <input name="Linkman" value="@Model.Linkman" class="mini-textbox" />
+            <input name="Linkman" value="@Model.Linkman" class="mini-textbox"  maxLength="20"/>
         </td>
         <td>
             联系人电话:
         </td>
         <td>
-            <input name="ContactPhone" value="@Model.ContactPhone" class="mini-textbox" />
+            <input name="ContactPhone" value="@Model.ContactPhone" class="mini-textbox" maxLength="20" />
         </td>
     </tr>
     <tr>
@@ -97,19 +97,19 @@
             联系地址:
         </td>
         <td>
-            <input name="ContactAddress" value="@Model.ContactAddress" class="mini-textbox" />
+            <input name="ContactAddress" value="@Model.ContactAddress" class="mini-textbox"  maxLength="50"/>
         </td>
         <td>
             办公电话:
         </td>
         <td>
-            <input name="OfficePhone" value="@Model.OfficePhone" class="mini-textbox" />
+            <input name="OfficePhone" value="@Model.OfficePhone" class="mini-textbox"  maxLength="20"/>
         </td>
         <td>
             传真:
         </td>
         <td>
-            <input name="FaxPhone" value="@Model.FaxPhone" class="mini-textbox" />
+            <input name="FaxPhone" value="@Model.FaxPhone" class="mini-textbox"  maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -117,19 +117,19 @@
             邮箱:
         </td>
         <td>
-            <input name="eMail" value="@Model.eMail" class="mini-textbox" />
+            <input name="eMail" value="@Model.eMail" class="mini-textbox"  maxLength="50"/>
         </td>
         <td>
             邮政编码:
         </td>
         <td>
-            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox" />
+            <input name="Postalcode" value="@Model.Postalcode" class="mini-textbox"  maxLength="10"/>
         </td>
         <td>
             开户行:
         </td>
         <td>
-            <input name="OpenAccount" value="@Model.OpenAccount" class="mini-textbox" />
+            <input name="OpenAccount" value="@Model.OpenAccount" class="mini-textbox"  maxLength="50"/>
         </td>
     </tr>
     <tr>
@@ -137,19 +137,19 @@
             帐号:
         </td>
         <td>
-            <input name="BankAccount" value="@Model.BankAccount" class="mini-textbox" />
+            <input name="BankAccount" value="@Model.BankAccount" class="mini-textbox"  maxLength="50"/>
         </td>
         <td>
             税号:
         </td>
         <td>
-            <input name="TaxNumber" value="@Model.TaxNumber" class="mini-textbox" />
+            <input name="TaxNumber" value="@Model.TaxNumber" class="mini-textbox" maxLength="50" />
         </td>
         <td>
             经营方式:
         </td>
         <td>
-            <input name="OpCode" value="@Model.OpCode" class="mini-textbox" />
+            <input name="OpCode" value="@Model.OpCode" class="mini-textbox"  maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -157,7 +157,7 @@
             进货凭证:
         </td>
         <td>
-            <input name="StockVoucher" value="@Model.StockVoucher" class="mini-textbox"  />
+            <input name="StockVoucher" value="@Model.StockVoucher" class="mini-textbox"  maxLength="10" />
         </td>
         <td>
             进项税率:
@@ -249,7 +249,7 @@
             是否审核:
         </td>
         <td align="left" style="padding-left: 28px;">
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
+            <div name="IfExamine" class="mini-checkbox" value="@Model.IfExamine" readOnly="false" text="审核" trueValue="1" falseValue="0">
             </div>
         </td>
     </tr>

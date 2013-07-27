@@ -245,7 +245,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "1" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
@@ -270,7 +270,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PcPurchaseManage> SearchReportByBranch(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "1" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
@@ -313,7 +313,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PcPurchaseManage> SearchReportBySupplier(DateTime? dateS, DateTime? dateE, string SupCode,string bCode, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "1" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
@@ -360,7 +360,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PurchaseGoodsResult> SearchForPurchaseGoods(DateTime? dateS, DateTime? dateE, string BranchId, string SupCode, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "1" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q
@@ -417,7 +417,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         public SearchResult<PurchaseSupplierResult> SearchForPurchaseSupllier(DateTime? dateS, DateTime? dateE, string BranchId, int pageSize = 20, int pageIndex = 1)
         {
-            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "true" select l;
+            var q = from l in EntityRepository.LinqQuery where l.IfExamine.ToLower() == "1" select l;
             if (dateS == null || dateE == null)
             {
                 q = from l in q

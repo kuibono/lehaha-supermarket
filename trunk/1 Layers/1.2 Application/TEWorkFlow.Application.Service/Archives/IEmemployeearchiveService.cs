@@ -37,5 +37,7 @@ namespace TEWorkFlow.Application.Service.Archives
         SearchResult<Ememployeearchive> Search(SearchDtoBase<Ememployeearchive> c);
 
         void Delete(IList<string> ids);
+
+        string GenerateId();
     }
 }

@@ -37,13 +37,13 @@
             名称:
         </td>
         <td colspan="3">
-            <input name="bName" value="@Model.bName" class="mini-textbox" required="true"  style="width:334px;"/>
+            <input name="bName" value="@Model.bName" class="mini-textbox" required="true" maxLength="20" style="width:334px;"/>
         </td>
         <td style="width: 80px;">
             拼音码:
         </td>
         <td style="width: 120px;">
-            <input name="PyCode" value="@Model.PyCode" class="mini-textbox" required="true"/>
+            <input name="PyCode" value="@Model.PyCode" class="mini-textbox" required="true" maxLength="100"/>
         </td>
     </tr>
     <tr>
@@ -51,19 +51,19 @@
             分店码：
         </td>
         <td style="width: 120px;">
-            <input name="InputBCode" value="@Model.InputBCode" class="mini-textbox" required="true"/>
+            <input name="InputBCode" value="@Model.InputBCode" class="mini-textbox" maxLength="10" required="true"/>
         </td>
         <td style="width: 80px;">
             负责人:
         </td>
         <td style="width: 120px;">
-            <input name="Functionary" value="@Model.Functionary" class="mini-textbox" required="true"/>
+            <input name="Functionary" value="@Model.Functionary" class="mini-textbox" maxLength="10" required="true"/>
         </td>
         <td>
             负责人电话:
         </td>
         <td>
-            <input name="FunctionaryPhone" value="@Model.FunctionaryPhone" class="mini-textbox" required="true"/>
+            <input name="FunctionaryPhone" value="@Model.FunctionaryPhone" class="mini-textbox"  maxLength="20"required="true"/>
         </td>
     </tr>
     <tr>
@@ -71,19 +71,19 @@
             联系地址:
         </td>
         <td>
-            <input name="ContactAddress" value="@Model.ContactAddress" class="mini-textbox" />
+            <input name="ContactAddress" value="@Model.ContactAddress" class="mini-textbox"  maxLength="50"/>
         </td>
         <td>
             办公电话:
         </td>
         <td>
-            <input name="OfficePhone" value="@Model.OfficePhone" class="mini-textbox"/>
+            <input name="OfficePhone" value="@Model.OfficePhone" class="mini-textbox" maxLength="20"/>
         </td>
         <td>
             传真:
         </td>
         <td>
-            <input name="FaxPhone" value="@Model.FaxPhone" class="mini-textbox" />
+            <input name="FaxPhone" value="@Model.FaxPhone" class="mini-textbox"  maxLength="20"/>
         </td>
     </tr>
     <tr>
@@ -111,7 +111,7 @@
             是否审核:
         </td>
         <td align="left" style="padding-left: 2px;">
-            <div name="IfExamine" class="mini-checkbox" checked="@Model.IfExamine" readOnly="false" text="审核">
+            <div name="IfExamine" class="mini-checkbox" value="@Model.IfExamine" readOnly="false" text="审核" trueValue="1" falseValue="0">
             </div>
         </td>
         <td>

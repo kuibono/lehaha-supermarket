@@ -196,7 +196,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             PcPurchaseManage entity = PcPurchaseManageService.GetById(id);
             if (entity.HaveId)
             {
-                entity.IfExamine = "true";
+                entity.IfExamine = "1";
                 PcPurchaseManageService.Update(entity);
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

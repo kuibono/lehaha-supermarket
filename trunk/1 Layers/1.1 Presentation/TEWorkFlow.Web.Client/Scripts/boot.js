@@ -76,11 +76,11 @@ function labelModel(form) {
     }
 }
 function onExamRender(e) {
-    if (e.value == "true") return "<span style='color:green' onclick='exame(this,&#39;" + e.record.Id + "&#39;,true)'>是</span>";
+    if (e.value == "true" || e.value == "1") return "<span style='color:green' onclick='exame(this,&#39;" + e.record.Id + "&#39;,true)'>是</span>";
     else return "<span style='color:red' onclick='exame(this,&#39;" + e.record.Id + "&#39;,false)'>否</span>";
 }
 function onYesNoRender(e) {
-    if (e.value == "true") return "是";
+    if (e.value == "true" || e.value == "1") return "是";
     else return "否";
 }
 window.onerror = function () { return true; } 
