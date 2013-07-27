@@ -12,7 +12,7 @@ namespace TEWorkFlow.Domain.Archives
     ///</summary>
     public class FbSupplierArchives : EntityGUIDBase, IAggregateRootGUID
     {
-       
+
         /// <summary>
         /// 
         /// </summary>
@@ -88,45 +88,141 @@ namespace TEWorkFlow.Domain.Archives
         /// </summary>
         public virtual string TaxNumber { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual string OpCode { get; set; }
 
+        private string _OpCode = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string StockVoucher { get; set; }
+        public virtual string OpCode
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(_OpCode))
+                {
+                    return "1";
+                }
+                return _OpCode;
+            }
+            set
+            {
+                _OpCode = value;
+            }
+        }
+
+
+        private string _StockVoucher = "增值税发票";
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string StockVoucher
+        {
+            get
+            {
+
+                if (string.IsNullOrEmpty(_StockVoucher))
+                {
+                    return "增值税发票";
+                }
+                return _StockVoucher;
+            }
+            set
+            {
+                _StockVoucher = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public virtual decimal? InputTax { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual string BalanceMode { get; set; }
 
+        private string _BalanceMode = "货到付款";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string PayMode { get; set; }
+        public virtual string BalanceMode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_BalanceMode))
+                {
+                    return "货到付款";
+                }
+                return _BalanceMode;
+            }
+            set
+            {
+                _BalanceMode = value;
+            }
+        }
 
+
+        private string _PayMode = "现金";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string BalancePeriod { get; set; }
+        public virtual string PayMode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_PayMode))
+                {
+                    return "现金";
+                }
+                return _PayMode;
+            }
+            set
+            {
+                _PayMode = value;
+            }
+        }
+
+
+        private string _BalancePeriod = "月结算";
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string BalancePeriod
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_BalancePeriod))
+                {
+                    return "月结算";
+                }
+                return _BalancePeriod;
+            }
+            set
+            {
+                _BalancePeriod = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public virtual decimal? BalanceDay { get; set; }
 
+        private string _OfferMode = "1";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string OfferMode { get; set; }
+        public virtual string OfferMode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_OfferMode))
+                {
+                    return "1";
+                }
+                return _OfferMode;
+            }
+            set
+            {
+                _OfferMode = value;
+            }
+        }
 
         /// <summary>
         /// 
