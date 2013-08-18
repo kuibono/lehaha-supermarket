@@ -975,7 +975,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             if (Common.MyEnv.IsSupplierLogin)
             {
                 Session.Abandon();
-                return RedirectToAction("SLogin", "Account");
+                return RedirectToAction("Login", "Account");
             }
             Session.Abandon();
             return RedirectToAction("Login", "Account");

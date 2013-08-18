@@ -1391,7 +1391,8 @@ background-color: #4b9cd7;
     border-style: solid;
     background-image:none;
     padding: 8px 12px 7px 12px;
-    color:#157fcc
+    color:#157fcc;
+    font-weight:bold;
 }
 .mini-tab-body
 {
