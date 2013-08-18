@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 @model TEWorkFlow.Domain.Sys.SysEnterpriseArchives
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,19 +13,28 @@
 <body>
     <!--Layout-->
     <div id="layout1" class="mini-layout fill">
-        <div class="header" region="north" height="70" showsplit="false" showheader="false">
-            <h1 style="margin: 0; padding: 15px; cursor: default; font-family: 微软雅黑,黑体,宋体;">
-                @Model.TempString
-            </h1>
+        <div class="header" region="north" height="70" showsplit="false" showheader="false" style=" overflow:hidden;">
+            <div style="float:right; min-width:360px;height:100%; background-image:url(/Images/bannerRight.jpg);background-repeat:no-repeat;">
+               
+            </div>
+            <div style="float: left;min-width:209px;height:100%; background-image:url(/Images/bannerLeft.jpg); background-repeat:no-repeat;">
+                <h1 style="margin: 0; padding: 15px;margin-top:10px; cursor: default; font-family: 微软雅黑,黑体,宋体;color:#FFF;">
+                    @Model.TempString
+                </h1>
+            </div>
             <div style="position: absolute; top: 18px; right: 10px;">
-                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow" plain="true">修改密码</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-bell" onclick="showBlank" plain="true">公告</a>
-                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin&&false)
+                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow"
+                    plain="true">修改密码</a> <a class="mini-button mini-button-iconTop" iconcls="icon-bell"
+                        onclick="showBlank" plain="true">公告</a>
+                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin && false)
                 {
-                <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow" plain="true">业务设置</a> 
-                <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="showSettingWindow" plain="true">系统设置</a> 
+                    <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow"
+                        plain="true">业务设置</a> 
+                    <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="showSettingWindow"
+                        plain="true">系统设置</a> 
                 }
-                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onLogOut" plain="true">退出</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onLogOut"
+                    plain="true">退出</a>
             </div>
         </div>
         <div title="south" region="south" showsplit="false" showheader="false" height="30">
@@ -38,13 +46,15 @@
             <div class="mini-splitter fill" borderstyle="border:0;">
                 <div size="180" maxsize="250" minsize="100" showcollapsebutton="true" style="border: 0;">
                     <!--OutlookTree-->
-                    <div id="leftTree" class="mini-outlooktree" url="/Account/GetModules/" onnodeclick="onNodeSelect" textfield="text" idfield="id" parentfield="pid" expandOnLoad="true">
+                    <div id="leftTree" class="mini-outlookmenu" url="/Account/GetModules/" onitemselect="onItemSelect"
+                        textfield="text" idfield="id" parentfield="pid" expandonload="true">
                     </div>
                 </div>
                 <div showcollapsebutton="false" style="noborder">
                     <!--Tabs-->
-                    <div id="mainTabs" class="mini-tabs " activeindex="0" style="width: 100%; height: 100%;" plain="false">
-                        <div title="公告" url="/Test/Blank" id="tab_blank" iconCls="icon-bell">
+                    <div id="mainTabs" class="mini-tabs " activeindex="0" style="width: 100%; height: 100%;"
+                        plain="false">
+                        <div title="公告" url="/Test/Blank" id="tab_blank" iconcls="icon-bell">
                         </div>
                     </div>
                 </div>
@@ -54,7 +64,34 @@
     <script type="text/javascript">
         mini.parse();
         var tree = mini.get("leftTree");
+        function onItemSelect(e) {
+            var tabs = mini.get("mainTabs");
+            var node = e.item;
+            var id = "tab$" + node.id;
+            if (node.newwindow == true) {
+                openWindow(node.url, node.text, node.iconCls);
+                return false;
+            }
+            var tab = tabs.getTab(id);
+            //tabs.removeTab(tab);
+            if (!tab) {
+                tab = {};
+                tab.name = id;
+                tab.title = node.text;
+                tab.iconCls = node.iconCls;
+                tab.showCloseButton = true;
 
+                //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
+                if (node.url) {
+                    tab.url = node.url;
+                }
+                else {
+                    tab.url = mini_JSPath + "../../docs/api/" + node.id + ".html";
+                }
+                tabs.addTab(tab);
+            }
+            tabs.activeTab(tab);
+        }
         function showTab(node) {
             var tabs = mini.get("mainTabs");
             var id = "tab$" + node.id;
@@ -157,7 +194,7 @@
             });
         }
 
-        function openWindow(u,t,i) {
+        function openWindow(u, t, i) {
             mini.open({
                 url: u,
                 title: t,
@@ -176,7 +213,7 @@
         }
 
         function onLogOut(e) {
-            location.href="/Account/Logout/"
+            location.href = "/Account/Logout/"
         }
         function onQuickClick(e) {
             tree.expandPath("datagrid");
