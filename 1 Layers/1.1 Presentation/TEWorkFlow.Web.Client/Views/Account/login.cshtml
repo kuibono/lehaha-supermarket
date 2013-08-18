@@ -1,7 +1,6 @@
 ﻿@using System.Web.Optimization
 @using TEWorkFlow.Web.Client.Models
 @model TEWorkFlow.Web.Client.Models.LoginModel
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,171 +11,79 @@
     <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/reset.css")" />
     <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/controls.css")" />
     <script type="text/javascript" src="@Url.Content("~/Scripts/basic.js")"></script>
-    
-
     <style type="text/css">
-        #login
-        {
-            position: absolute;
-            top: 0;
-            left: 310px;
-            -webkit-border-radius: 0px;
-            -moz-border-radius: 0px;
-            border-radius: 0px;
-        }
-        #float
-        {
-            top: 50%;
-            height: 196px;
-            width: 838px;
-            margin: -154px 0 0 -418px;
-            position: absolute;
-            left: 50%;
-        }
-        #text
-        {
-            padding: 0;
-            position: absolute;
-            left: 0;
-            width: 470px;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: 300;
-            line-height: 22px;
-            color: #EEE;
-            text-align: left;
-            text-shadow: gray 0 1px 2px;
-            filter: Shadow(Color='black', Direction='135', Strength='2')
-        }
-        #text h1
-        {
-            margin-bottom: 3px;
-            font-size: 20px;
-            font-weight: 700;
-            color: white;
-        }
         #bg
         {
-            position: fixed;
-            width: 200%;
-            height: 200%;
-            left: -50%;
-            background-color: #000;
+            margin: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url(/Images/loginBg.jpg);
+            background-repeat:no-repeat;
+            width: 624px;
+            height: 468px;
+            padding-top: 200px;
+            overflow:hidden;
         }
-        #bg img
+        #loginPn
         {
-            display: block;
-            margin: auto;
-            min-width: 50%;
-            min-height: 50%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            width: 395px;
+            height: 219px;
+            margin: 0px auto;
+            position: relative;
+            background-image:url(/Images/loginPanel.png);
+            background-repeat: no-repeat;
         }
-        #footer
+        #loginPn img
         {
-            color: rgba(255, 255, 255, .25);
             position: absolute;
-            bottom: 30px;
-            width: 100%;
-            font-size: 12px;
-            color: white;
-            text-align: center;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            display:none;
         }
-        #footer ul
+        #form
         {
-            list-style-type: none;
-            list-style: none;
-            width: 838px;
-            text-align: center;
-            margin: 0 auto;
-            display: inline-block;
+            position: relative;
         }
-        #footer ul li
+        input
         {
-            list-style: none;
-            margin: 0 6px 0 0;
-            display: inline;
-            float: left;
-            text-shadow: gray 0 1px 2px;
-            filter: Shadow(Color='black', Direction='135', Strength='1',alpha='.25')
+            position: absolute;
+            border: 0px solid transparent;
+            background-color: transparent;
+            width: 120px;
+            z-index: 100;
+            height:17px;
         }
-        #footer ul li a
+        .hide
         {
-            color: #FFF;
-        }
-        #footer ul li a:hover
-        {
-            color: #057ED0;
-        }
-        #sub
-        {
-            color: white;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
-            filter: Shadow(Color='black', Direction='135', Strength='1')
-            background-color: #019AD2;
-            background-repeat: repeat-x;
-            background-image: -khtml-gradient(linear,left top,left bottom,from(#33BCEF),to(#019AD2));
-            background-image: -moz-linear-gradient(#33BCEF,#019AD2);
-            background-image: -ms-linear-gradient(#33BCEF,#019AD2);
-            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#33BCEF),color-stop(100%,#019AD2));
-            background-image: -webkit-linear-gradient(#33BCEF,#019AD2);
-            background-image: -o-linear-gradient(#33BCEF,#019AD2);
-            background-image: linear-gradient(#33BCEF,#019AD2);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bcef',endColorstr='#019ad2',GradientType=0);
-            border-color: #057ED0;
-            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
-            -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+            position: absolute;
+            border: 0px solid transparent !important;
+            background-color: transparent !important;
+            width: 120px;
+            z-index: 100;
+            height:17px;
         }
         #validation
         {
-            display:inline-block;
-            color:#F00;
-            font-weight:bold;
-        }
-        #validation ul
-        {
-            padding:5px;
-        }
-        #login .active
-        {
-            color:#33BCEF;
-            font-weight:bold;
-            font-size:16px;
-        }
-        #login a
-        {
-            color:#999;
-            font-size:14px;
+            color:Red;
+            position: absolute;
+            top: 200px;
         }
     </style>
-    <script type="text/javascript">
-        function setAvtive(v) {
-            if (v == 0) {
-                $("#tbUser0").addClass("active");
-                $("#tbUser1").removeClass("active");
-            }
-            else {
-                $("#tbUser1").addClass("active");
-                $("#tbUser0").removeClass("active");
-            }
-            $("#logintype").val(v);
-        }
-    </script>
 </head>
 <body>
-    <div id="bg">
-        <img src="@Url.Content("~/Images/jp-mountain@2x.jpg")" />
-    </div>
-    <div id="float">
-        <div class="panel" id="login">
-            <a href="SLogin" class="mini-button mini-button-iconTop" iconCls="icon-car" plain="true">供应商登录</a>
-            <a href="ELogin" class="mini-button mini-button-iconTop" iconCls="icon-user" plain="true">管理登录</a>
+    <div id="bg" style="">
+        <div id="loginPn">
+            <img src="/Images/loginPanel.png" />
+            <form method="post" action="/Account/Login">
+            <input type="hidden" id="logintype" name="logintype" value="1" />
+            <input class="hide" name="UserName" type="text" style="left: 133px; top: 92px; " />
+            <input class="hide" name="Password" type="password" style="left: 133px; top: 127px;" />
+            <input class="hide" type="submit" value="" style="left: 87px; top: 172px; width: 62px;" />
+            <input class="hide" type="reset" value="" style="left: 227px; top: 172px; width: 62px;" />
+            </form>
+            <div id="validation">@Html.ValidationSummary(true, "")</div>
         </div>
     </div>
-    
-    
 </body>
 </html>

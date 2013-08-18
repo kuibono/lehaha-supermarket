@@ -45,7 +45,8 @@ body
 }
 .header
 {
-    background: url(header.gif) repeat-x 0 -1px;
+    /*background: url(header.gif) repeat-x 0 -1px;*/
+    background-color:#133b93;
 }
 .fill
 {
