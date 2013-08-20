@@ -71,7 +71,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             BsPaArea e = new BsPaArea();
             Hashtable row = (Hashtable)(Request["data"].JsonDecode());
-            e.Id = row["Id"].ToString();
+            e.Id = row["Id"] == null ? "" : row["Id"].ToString();
             e.AreaName = row["AreaName"].ToString();
             BsPaAreaService.Save(e);
             return Json(true, JsonRequestBehavior.AllowGet);
@@ -307,7 +307,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult IniPolitics()
         {
-            EmPaPoliticsService.Create(new EmPaPolitics() {Id = "1", Name = "共产党员"});
+            EmPaPoliticsService.Create(new EmPaPolitics() { Id = "1", Name = "共产党员" });
             EmPaPoliticsService.Create(new EmPaPolitics() { Id = "2", Name = "共青团员" });
             EmPaPoliticsService.Create(new EmPaPolitics() { Id = "3", Name = "民主党派" });
             EmPaPoliticsService.Create(new EmPaPolitics() { Id = "4", Name = "无党派民主人士" });
@@ -318,7 +318,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult IniNations()
         {
-            NationService.Create(new Nation() {Id="1",Name = "汉"});
+            NationService.Create(new Nation() { Id = "1", Name = "汉" });
             NationService.Create(new Nation() { Id = "2", Name = "蒙古" });
             NationService.Create(new Nation() { Id = "3", Name = "朝鲜" });
             NationService.Create(new Nation() { Id = "4", Name = "回" });
@@ -328,7 +328,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public ActionResult IniPaSupTypes()
         {
-            FbPaSupTypeService.Create(new FbPaSupType() {Id = "1", SupTypeName = "制造业"});
+            FbPaSupTypeService.Create(new FbPaSupType() { Id = "1", SupTypeName = "制造业" });
             FbPaSupTypeService.Create(new FbPaSupType() { Id = "2", SupTypeName = "食品副食" });
             FbPaSupTypeService.Create(new FbPaSupType() { Id = "3", SupTypeName = "服装" });
             FbPaSupTypeService.Create(new FbPaSupType() { Id = "4", SupTypeName = "烟酒" });
@@ -417,7 +417,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult PaSupTypes()
         {
-            var result=FbPaSupTypeService.GetAll().Select(p => new { id = p.Id, text = p.SupTypeName }).ToList();
+            var result = FbPaSupTypeService.GetAll().Select(p => new { id = p.Id, text = p.SupTypeName }).ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

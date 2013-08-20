@@ -49,7 +49,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IList<FbSupplierBranchRelation> GetAllRelationByBranchCode(string bCode)
         {
             BsBranchArchives branch = BsBranchArchivesRepository.Get(bCode);
-            IList<FbSupplierArchives> allSuppliers = SupplierRepository.LinqQuery.Where(p => p.IfExamine == "1").ToList();
+            IList<FbSupplierArchives> allSuppliers = SupplierRepository.LinqQuery.Where(p => p.IfExamine == "1" || p.IfExamine == "true").ToList();
             IList<FbSupplierBranchRelation> allRelation = EntityRepository.LinqQuery.Where(p => p.bCode == bCode).ToList();
             foreach (FbSupplierArchives sup in allSuppliers)
             {

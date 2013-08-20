@@ -909,17 +909,17 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ModelState.AddModelError("", "密码不能为空");
                 return View(model);
             }
-            if (String.IsNullOrWhiteSpace(model.VCode))
-            {
-                ModelState.AddModelError("", "验证码不能为空");
-                return View(model);
-            }
-            if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
-            {
-                ModelState.AddModelError("", "验证码错误");
-                Session.Remove("SafeCode");
-                return View(model);
-            }
+            //if (String.IsNullOrWhiteSpace(model.VCode))
+            //{
+            //    ModelState.AddModelError("", "验证码不能为空");
+            //    return View(model);
+            //}
+            //if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
+            //{
+            //    ModelState.AddModelError("", "验证码错误");
+            //    Session.Remove("SafeCode");
+            //    return View(model);
+            //}
             Session.Remove("SafeCode");//删除验证码Session 防止机器登录
 
 

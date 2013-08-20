@@ -1,4 +1,4 @@
-﻿@using System.Web.Optimization
+﻿@*@using System.Web.Optimization
 @using TEWorkFlow.Web.Client.Models
 @model TEWorkFlow.Web.Client.Models.LoginModel
 
@@ -225,5 +225,120 @@
         </ul>
     </div>
     
+</body>
+</html>
+*@
+@using System.Web.Optimization
+@using TEWorkFlow.Web.Client.Models
+@model TEWorkFlow.Web.Client.Models.LoginModel
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>系统登录</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+    <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/reset.css")" />
+    <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/controls.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/basic.js")"></script>
+    <style type="text/css">
+        #bg
+        {
+            margin-left: auto;
+            margin-right: auto;
+            /*background-image: url(/Images/loginBg.jpg);
+            background-repeat:no-repeat;*/
+            width: 624px;
+            height: 468px;
+            padding-top: 200px;
+            overflow:hidden;
+        }
+        #bg1
+        {
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            z-index:0;
+        }        #bg1 img
+        {
+            display: block;
+            margin: auto;
+            height:100%;
+            width:100%;
+            /*min-width: 50%;
+            min-height: 50%;*/
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #loginPn
+        {
+            width: 371px;
+            height: 198px;
+            margin: 0px auto;
+            position: relative;
+            background-image:url(/Images/loginPanel.png);
+            background-repeat: no-repeat;
+            -webkit-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
+            -moz-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
+            box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
+        }
+        #loginPn img
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            display:none;
+        }
+        #form
+        {
+            position: relative;
+        }
+        input
+        {
+            position: absolute;
+            border: 0px solid transparent;
+            background-color: transparent;
+            width: 120px;
+            z-index: 100;
+            height:17px;
+        }
+        .hide
+        {
+            position: absolute;
+            border: 0px solid transparent !important;
+            background-color: transparent !important;
+            width: 120px;
+            z-index: 100;
+            height:17px;
+        }
+        #validation
+        {
+            color:Red;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bg1">
+        <img src="/Images/loginBg.jpg" />
+    </div>
+    <div id="bg" style="">
+        <div id="loginPn">
+            <img src="/Images/loginPanel.png" />
+            <form method="post" action="">
+            <input type="hidden" id="logintype" name="logintype" value="0" />
+            <input class="hide" name="UserName" type="text" style="left: 120px; top: 82px; " />
+            <input class="hide" name="Password" type="password" style="left: 120px; top: 117px;" />
+            <input class="hide" type="submit" value="" style="left: 77px; top: 165px; width: 62px; cursor:hand;" />
+            <input class="hide" type="reset" value="" style="left: 217px; top: 165px; width: 62px; cursor:hand;" />
+            </form>
+            <div id="validation">@Html.ValidationSummary(true, "")</div>
+        </div>
+    </div>
 </body>
 </html>

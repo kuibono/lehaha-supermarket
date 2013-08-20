@@ -40,13 +40,13 @@ namespace TEWorkFlow.Application.Service.Sys
                 EntityRepository.Save(d);
             }
 
-            EntityRepository.Save(new TfDataDownload
-            {
-                Id = Guid.NewGuid().ToString(),
-                DownloadBranchcode = "0",
-                DownloadKeyvalue = id,
-                DownloadTablename = table
-            });
+            //EntityRepository.Save(new TfDataDownload
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    DownloadBranchcode = "0",
+            //    DownloadKeyvalue = id,
+            //    DownloadTablename = table
+            //});
         }
 
         public void AddAllArchivesToBranch(string bCode)
