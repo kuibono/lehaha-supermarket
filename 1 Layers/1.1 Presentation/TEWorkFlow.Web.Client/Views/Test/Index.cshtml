@@ -47,7 +47,7 @@
             <div class="mini-splitter fill" borderstyle="border:0;">
                 <div size="180" maxsize="250" minsize="100" showcollapsebutton="true" style="border: 0;">
                     <!--OutlookTree-->
-                    <div id="leftTree" class="mini-outlookmenu" url="/Account/GetModules/" onitemselect="onItemSelect"
+                    <div id="leftTree" class="mini-outlookmenu" url="/Account/GetModules/" onitemclick="onItemSelect"
                         textfield="text" idfield="id" parentfield="pid" expandonload="true">
                     </div>
                 </div>
@@ -129,6 +129,7 @@
                 showTab(node);
             }
         }
+
 
         function onClick(e) {
             var text = this.getText();
