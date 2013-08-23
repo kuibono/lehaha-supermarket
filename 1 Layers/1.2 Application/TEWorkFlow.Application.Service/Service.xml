@@ -233,6 +233,7 @@
     <property name="DetailRepository" ref="PcSupplementDetailRepository"/>
     <property name="DepartmentRepository" ref="SysPaDepartmentRepository"/>
     <property name="BranchRepository" ref="BsBranchArchivesRepository"/>
+    <property name="FbSupplierRepository" ref="FbSupplierArchivesRepository"/>
   </object>
   <object id="PcSupplementDetailService" type="TEWorkFlow.Application.Service.Business.PcSupplementDetailService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="PcSupplementDetailRepository"/>

@@ -19,6 +19,7 @@ namespace TEWorkFlow.Application.Service.Business
         public IRepositoryGUID<PcSupplementDetail> DetailRepository { get; set; }
         public IRepositoryGUID<SysPaDepartment> DepartmentRepository { get; set; }
         public IRepositoryGUID<BsBranchArchives> BranchRepository { get; set; }
+        public IRepositoryGUID<FbSupplierArchives> FbSupplierRepository { get; set; }
         [Transaction]
         public string Create(PcSupplementManage entity)
         {
@@ -54,6 +55,17 @@ namespace TEWorkFlow.Application.Service.Business
                 string id = manages[i].bCode;
                 string name = branchs.Where(p => p.Id == id).Count() > 0 ? branchs.Where(p => p.Id == id).First().bName : "";
                 manages[i].bName = name;
+            }
+        }
+
+        private void FillSupName(IList<PcSupplementManage> manages)
+        {
+            var sups = FbSupplierRepository.LinqQuery.ToList();
+            for (int i = 0; i < manages.Count; i++)
+            {
+                string id = manages[i].EnCode;
+                string name = sups.Where(p => p.Id == id).Count() > 0 ? sups.Where(p => p.Id == id).First().SupName : "";
+                manages[i].SupCode = name;
             }
         }
         private void FillDepartmentName(PcSupplementManage manage)
@@ -200,8 +212,10 @@ namespace TEWorkFlow.Application.Service.Business
 
             q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
-            FillDepartmentName(result);
+            //FillDepartmentName(result);
+            FillSupName(result);
             FillBranchName(result);
+            
             return result.ToSearchResult(count);
         }
 
