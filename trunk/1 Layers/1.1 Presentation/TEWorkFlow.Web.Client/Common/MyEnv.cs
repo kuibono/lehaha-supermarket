@@ -35,14 +35,40 @@ namespace TEWorkFlow.Web.Client.Common
         {
             get
             {
-                return CurentUserType == 0;
+                HttpCookie cookie = HttpContext.Current.Request.Cookies["userType"];
+                if (cookie == null || cookie.Value==null)
+                {
+                    return false;
+                }
+                string value = cookie.Value.ToString();
+                if (value == "0")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
         public static bool IsSupplierLogin
         {
             get
             {
-                return CurentUserType == 1;
+                HttpCookie cookie = HttpContext.Current.Request.Cookies["userType"];
+                if (cookie == null || cookie.Value == null)
+                {
+                    return false;
+                }
+                string value = cookie.Value.ToString();
+                if (value == "0")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -97,7 +123,7 @@ namespace TEWorkFlow.Web.Client.Common
 
     //public class Env
     //{
-        
+
     //    public static int CurentUserType
     //    {
     //        get

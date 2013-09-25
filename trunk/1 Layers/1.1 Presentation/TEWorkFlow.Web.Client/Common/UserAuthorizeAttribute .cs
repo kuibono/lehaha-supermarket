@@ -13,7 +13,15 @@ namespace TEWorkFlow.Web.Client.Common
             var session = filterContext.HttpContext.Session;
             if (session == null || session[AuthorizeSettings.SessionUserType] == null)
             {
-                filterContext.Result = new RedirectResult("~/Account/Login");
+                string url = "/Account/Login";
+                if (Common.MyEnv.IsEmployeeLogin)
+                {
+                    url = "/Account/ELogin";
+                }
+                filterContext.HttpContext.Response.Clear();
+                filterContext.HttpContext.Response.Write("<script type='text/javascript'>top.location.href='" + url + "';</script>");
+                filterContext.HttpContext.Response.End();
+                //filterContext.Result = new RedirectResult("~/Account/Login");
             }
             //if (session != null)
             //{

@@ -349,10 +349,10 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.ShelfLife.Contains(c.entity.ShelfLife));
                 }
-                if (string.IsNullOrEmpty(c.entity.PackUnitCode) == false)
-                {
-                    q = q.Where(p => p.PackUnitCode.Contains(c.entity.PackUnitCode));
-                }
+                //if (string.IsNullOrEmpty(c.entity.PackUnitCode) == false)
+                //{
+                //    q = q.Where(p => p.PackUnitCode.Contains(c.entity.PackUnitCode));
+                //}
                 if (string.IsNullOrEmpty(c.entity.OfferMode) == false)
                 {
                     q = q.Where(p => p.OfferMode.Contains(c.entity.OfferMode));
@@ -460,6 +460,12 @@ namespace TEWorkFlow.Application.Service.Archives
             var result = q.ToList();
             FillClassName(result);
             FillSupInfo(result);
+            result.ForEach(p => {
+                if (p.SupTel == null)
+                {
+                    p.SupTel = "";
+                }
+            });
             return result.ToSearchResult(count);
         }
 
