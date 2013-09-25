@@ -114,7 +114,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "",
                 Windowname = "数据查询",
                 EmployeeVisible = true,
-                Index=1
+                Index = 1
             };
             SysmodulecontentService.Create(m1);
 
@@ -212,7 +212,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "",
                 Windowname = "档案管理",
                 EmployeeVisible = true,
-                Index=2
+                Index = 2
             };
             SysmodulecontentService.Create(m1);
 
@@ -316,7 +316,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "",
                 Windowname = "补货管理",
                 EmployeeVisible = true,
-                Index=3
+                Index = 3
             };
             SysmodulecontentService.Create(m1);
 
@@ -341,7 +341,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Url = "",
                 Windowname = "系统设置",
                 EmployeeVisible = true,
-                Index=4
+                Index = 4
             };
             SysmodulecontentService.Create(m1);
 
@@ -366,7 +366,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Windowname = "行业管理",
                 EmployeeVisible = true,
                 SupplierVisible = false,
-                Index=41
+                Index = 41
             };
             SysmodulecontentService.Create(m1);
 
@@ -479,9 +479,9 @@ namespace TEWorkFlow.Web.Client.Controllers
             #endregion
 
 
-            
 
-            
+
+
 
             #region 业务管理
             m1 = new Sysmodulecontent()
@@ -563,7 +563,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Windowname = "分店订单查询统计",
                 Index = 31,
                 SupplierVisible = true,
-                EmployeeVisible=false
+                EmployeeVisible = false
             };
             SysmodulecontentService.Create(m1);
 
@@ -641,8 +641,8 @@ namespace TEWorkFlow.Web.Client.Controllers
             //};
             //SysmodulecontentService.Create(m1);
 
-            
-            
+
+
             #endregion
 
             return null;
@@ -751,6 +751,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
+                SetUserType(false);
                 return RedirectToAction("Index", "Test");
             }
             else
@@ -884,6 +885,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
+                SetUserType(false);
                 return RedirectToAction("Index", "Test");
             }
             else
@@ -939,6 +941,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
+                SetUserType(false);
                 return RedirectToAction("Index", "Test");
             }
             else
@@ -967,18 +970,62 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult LogOut()
         {
-            if (Common.MyEnv.IsEmployeeLogin)
+            if (IsEmployee())
             {
                 Session.Abandon();
                 return RedirectToAction("ELogin", "Account");
             }
-            if (Common.MyEnv.IsSupplierLogin)
+            if (IsSupplier())
             {
                 Session.Abandon();
                 return RedirectToAction("Login", "Account");
             }
             Session.Abandon();
             return RedirectToAction("Login", "Account");
+        }
+
+        public void SetUserType(bool isEmployee)
+        {
+            HttpCookie cookie = new HttpCookie("userType");
+            cookie.Value = isEmployee ? "0" : "1";
+            cookie.Expires = DateTime.Now.AddMonths(1);
+            cookie.Path = "/";
+            HttpContext.Response.SetCookie(cookie);
+        }
+        public bool IsEmployee()
+        {
+            HttpCookie cookie = Request.Cookies["userType"];
+            if (cookie == null || cookie.Value == null)
+            {
+                return false;
+            }
+            string value = cookie.Value.ToString();
+            if (value == "0")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool IsSupplier()
+        {
+            HttpCookie cookie = Request.Cookies["userType"];
+            if (cookie == null || cookie.Value==null)
+            {
+                return false;
+            }
+            string value = cookie.Value.ToString();
+            if (value == "0")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public ActionResult BaseSetting()
@@ -1000,7 +1047,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult ChangePassword(string old,string newpass,string confirmpass)
+        public JsonResult ChangePassword(string old, string newpass, string confirmpass)
         {
             if (Common.MyEnv.IsEmployeeLogin == false && Common.MyEnv.IsSupplierLogin == false)
             {
