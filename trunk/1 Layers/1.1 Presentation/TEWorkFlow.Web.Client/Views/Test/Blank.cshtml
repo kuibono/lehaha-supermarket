@@ -38,17 +38,18 @@
                 width: 450,
                 title: sender.record.Title,
                 buttons: ["ok"],
-                html: sender.record.PostContent.replace(/\n/g, '<br/>'),
+                html: sender.record.PostContent.replace(/\n/g, '<br/>').replace(/[ ]/g, "&nbsp;"),
                 showModal: false,
                 callback: function (action) {
                     $.ajax({
                         url: "/Test/PostReaded/" + sender.record.Id,
                         dataType: "json",
-                        success: function(){ 
+                        success: function () {
+                            location.href = location.href;
                         },
                         error: function () {
-                        }
-                        });
+                        }
+                    });
                 }
             });
         }

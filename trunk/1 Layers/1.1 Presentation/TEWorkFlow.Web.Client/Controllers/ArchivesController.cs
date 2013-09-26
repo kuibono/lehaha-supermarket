@@ -28,7 +28,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public IEmemployeearchiveService EmemployeearchiveService { get; set; }
 
-        
+
 
         public ActionResult EmployeeList()
         {
@@ -36,19 +36,19 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public ActionResult EmployeeEdit(string id)
         {
-            Ememployeearchive em=new Ememployeearchive()
+            Ememployeearchive em = new Ememployeearchive()
                                      {
                                          Birthday = DateTime.Now.AddYears(-20),
                                          Accededay = DateTime.Now,
                                          Graduateday = DateTime.Now
                                      };
-            if(!string.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(id))
             {
                 em = EmemployeearchiveService.GetById(id);
             }
             return View(em);
         }
-        public JsonResult SearchEmployeeArchiveList(SearchDtoBase<Ememployeearchive> c,Ememployeearchive s)
+        public JsonResult SearchEmployeeArchiveList(SearchDtoBase<Ememployeearchive> c, Ememployeearchive s)
         {
             c.entity = s;
             return Json(EmemployeearchiveService.Search(c), JsonRequestBehavior.AllowGet);
@@ -56,7 +56,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveEmployeeArchive(Ememployeearchive em)
         {
-            if(em.HaveId)
+            if (em.HaveId)
             {
                 EmemployeearchiveService.Update(em);
             }
@@ -70,7 +70,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult EmployeeDelete(List<string> ids)
         {
-            
+
             EmemployeearchiveService.Delete(ids);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -86,17 +86,17 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public ActionResult SupplierEdit(string id)
         {
-           // string loginName=FbSupplierArchivesService.GenerateLoginName();
-            
-            FbSupplierArchives model=new FbSupplierArchives()
+            // string loginName=FbSupplierArchivesService.GenerateLoginName();
+
+            FbSupplierArchives model = new FbSupplierArchives()
                                          {
                                              //Id=FbSupplierArchivesService.GenerateId(),
                                              CreateDate = DateTime.Now,
                                              ExamineDate = DateTime.Now,
-                                             OperatorDate = DateTime.Now                                             
+                                             OperatorDate = DateTime.Now
                                          };
 
-            if(string.IsNullOrEmpty(id)==false)
+            if (string.IsNullOrEmpty(id) == false)
             {
                 model = FbSupplierArchivesService.GetById(id);
             }
@@ -108,16 +108,16 @@ namespace TEWorkFlow.Web.Client.Controllers
             FbSupplierArchives entity = FbSupplierArchivesService.GetById(id);
             if (entity.HaveId)
             {
-                entity.IfExamine = entity.IfExamine=="1"?"0":"1";
+                entity.IfExamine = entity.IfExamine == "1" ? "0" : "1";
                 FbSupplierArchivesService.Update(entity);
-                return Json(entity.IfExamine=="1", JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine == "1", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SupplierDelete(List<string> ids)
         {
-            if(Request["confirm"]==null && PcPurchaseManageService.IsSupplierHavePurchase(ids.First()))
+            if (Request["confirm"] == null && PcPurchaseManageService.IsSupplierHavePurchase(ids.First()))
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
@@ -137,7 +137,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchAllSuppliers(string id)
         {
-            return Json(FbSupplierArchivesService.Search(id,10000), JsonRequestBehavior.AllowGet);
+            return Json(FbSupplierArchivesService.Search(id, 10000), JsonRequestBehavior.AllowGet);
         }
         public JsonResult SearchAllSuppliersWithGoodsCount(string id)
         {
@@ -146,7 +146,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SaveSupplierArchive(FbSupplierArchives s)
         {
-            if(s.HaveId)
+            if (s.HaveId)
             {
                 FbSupplierArchivesService.Update(s);
             }
@@ -160,7 +160,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult GetAllSupplierArchive(string key)
         {
-            int pageSize=20;
+            int pageSize = 20;
             if (Request["pageSize"] != null)
             {
                 pageSize = Convert.ToInt32(Request["pageSize"]);
@@ -194,8 +194,12 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchBranchArchiveList(SearchDtoBase<BsBranchArchives> c, BsBranchArchives s)
         {
-            if (string.IsNullOrEmpty(Request["key"]) == false)
+            if (Request["key"] == null||string.IsNullOrEmpty(Request["key"]) == false)
             {
+                if (Common.MyEnv.IsSupplierLogin)
+                {
+                    return Json(BsBranchArchivesService.Search(Request["key"], Common.MyEnv.CurrentSupplier.Id), JsonRequestBehavior.AllowGet);
+                }
                 return Json(BsBranchArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
@@ -209,8 +213,17 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult BranchEdit(string id)
         {
-            BsBranchArchives entity=new BsBranchArchives();
-            if(string.IsNullOrEmpty(id)==false)
+            BsBranchArchives entity = new BsBranchArchives();
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                entity = BsBranchArchivesService.GetById(id);
+            }
+            return View(entity);
+        }
+        public ActionResult BranchView(string id)
+        {
+            BsBranchArchives entity = new BsBranchArchives();
+            if (string.IsNullOrEmpty(id) == false)
             {
                 entity = BsBranchArchivesService.GetById(id);
             }
@@ -284,7 +297,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 entity.IfExamine = entity.IfExamine == "1" ? "0" : "1";
                 GoodsArchivesService.Update(entity);
-                return Json(entity.IfExamine=="1", JsonRequestBehavior.AllowGet);
+                return Json(entity.IfExamine == "1", JsonRequestBehavior.AllowGet);
             }
             return Json(false, JsonRequestBehavior.AllowGet);
         }
@@ -322,9 +335,9 @@ namespace TEWorkFlow.Web.Client.Controllers
                 c.entity.SupCode = Common.MyEnv.CurrentSupplier.Id;
                 //result = result.Where(p => p.SupCode == Common.MyEnv.CurrentSupplier.Id).ToList();
             }
-            
-            var result=GoodsArchivesService.Search(c).data;
-            
+
+            var result = GoodsArchivesService.Search(c).data;
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

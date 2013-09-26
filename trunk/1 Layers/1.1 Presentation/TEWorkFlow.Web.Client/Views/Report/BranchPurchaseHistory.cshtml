@@ -36,8 +36,8 @@
                                     <span class="separator"></span>
                                 </td>
                                 <td style="white-space: nowrap;">
-                                    <input id="dateS" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-01")" emptytext="开始时间" />
-                                    ~<input id="dateE" class="mini-datepicker" value="@Convert.ToDateTime(DateTime.Now.AddMonths(1).ToString("yyyy-MM-01")).AddDays(-1).ToString("yyyy-MM-dd")" emptytext="结束时间" />
+                                    <input id="dateS" class="mini-datepicker" value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-01")" emptytext="开始时间" />
+                                    ~<input id="dateE" class="mini-datepicker" value="@Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-01")).AddDays(-1).ToString("yyyy-MM-dd")" emptytext="结束时间" />
                                     <a class="mini-button" onclick="search()">查询</a>
                                 </td>
                             </tr>

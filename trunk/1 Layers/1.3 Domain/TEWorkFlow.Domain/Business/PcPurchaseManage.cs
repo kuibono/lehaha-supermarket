@@ -38,10 +38,11 @@ namespace TEWorkFlow.Domain.Business
         /// </summary>
         public virtual string bCode { get; set; }
 
+        private string _PcType = "普通订货";
         /// <summary>
         /// 
         /// </summary>
-        public virtual string PcType { get; set; }
+        public virtual string PcType { get{ return _PcType;} set{_PcType=value;} }
 
         /// <summary>
         /// 
