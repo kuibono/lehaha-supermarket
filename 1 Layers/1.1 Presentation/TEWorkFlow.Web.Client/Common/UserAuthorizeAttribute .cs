@@ -14,7 +14,7 @@ namespace TEWorkFlow.Web.Client.Common
             if (session == null || session[AuthorizeSettings.SessionUserType] == null)
             {
                 string url = "/Account/Login";
-                if (Common.MyEnv.IsEmployeeLogin)
+                if (Common.MyEnv.IsHistoryEmloyee)
                 {
                     url = "/Account/ELogin";
                 }

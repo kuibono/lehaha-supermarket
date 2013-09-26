@@ -215,9 +215,14 @@
             var record = e.record;
             var uid = record.Id;
             var rowIndex = e.rowIndex;
-
-            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+            var s = "";
+            if (record.IfExamine == "0") {
+                s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            }
+            else {
+                s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>'
+            }
             return s;
         }
 
@@ -331,6 +336,34 @@
                 }
             });
         }
+        function viewRow(id) {
+            var winTitle = "商品档案:";
+            try {
+                winTitle += grid.getSelected().SupName + " " + grid.getSelected().SupTel;
+            }
+            catch (e) { }
+            var eUrl = "/Query/ViewGoods/" + id;
+            if (tree.getSelectedNode() != undefined) {
+                eUrl += "?SupCode=" + tree.getSelectedNode().Id;
+            }
+            mini.open({
+                url: eUrl,
+                title: winTitle,
+                iconCls: "icon-user",
+                allowResize: false,
+                width: 700,
+                height: 370,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
         function deleteItem(id) {
             $.ajax({
                 url: "/Archives/GoodsDelete",
@@ -369,7 +402,7 @@
             table += "</tr>";
             var rows = text.split(",");
             for (var i = 0; i < rows.length; i++) {
-                if (rows[i].split("|")[0] == "undefined" || rows[i].split("|")[0] == "") {
+                if (rows[i].split("|")[0] == "undefined" || rows[i].split("|")[0] == "null") {
                     break;
                 }
                 table += "<tr>";
@@ -380,7 +413,7 @@
             table += "</table>";
 
             mini.showMessageBox({
-                width: 350,
+                width: 250,
                 title: "历史价格",
                 buttons: ["ok"],
                 //message: "自定义Html",
@@ -390,7 +423,7 @@
                     //alert(action);
                 }
             });
-        }
+        }
     </script>
 </body>
 </html>

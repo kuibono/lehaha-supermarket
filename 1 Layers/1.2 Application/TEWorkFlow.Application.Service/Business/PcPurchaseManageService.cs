@@ -171,7 +171,7 @@ namespace TEWorkFlow.Application.Service.Business
 
 
         [Transaction]
-        public SearchResult<PcPurchaseManage> Search(string SupplierId,SearchDtoBase<PcPurchaseManage> c)
+        public SearchResult<PcPurchaseManage> Search(string SupplierId, SearchDtoBase<PcPurchaseManage> c, DateTime? dates, DateTime? dateE)
         {
             var q = EntityRepository.LinqQuery.Where(p=>p.EnCode==SupplierId);
             if (c.entity != null)
@@ -198,7 +198,7 @@ namespace TEWorkFlow.Application.Service.Business
                 }
                 if (string.IsNullOrEmpty(c.entity.bCode) == false)
                 {
-                    q = q.Where(p => p.bCode.Contains(c.entity.bCode));
+                    q = q.Where(p => p.bCode.Equals(c.entity.bCode));
                 }
                 if (string.IsNullOrEmpty(c.entity.PcType) == false)
                 {
@@ -234,14 +234,19 @@ namespace TEWorkFlow.Application.Service.Business
                 }
 
             }
+            if (dateE != null && dates != null)
+            {
+                q = q.Where(p => p.PurchaseDate < dateE && p.PurchaseDate > dates);
+            }
             int count = q.Count();
 
-            q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
+            q = q.Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
             FillBranchName(result);
             return result.ToSearchResult(count);
         }
+
 
         public SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1)
         {

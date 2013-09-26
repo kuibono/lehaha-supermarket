@@ -970,12 +970,12 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult LogOut()
         {
-            if (IsEmployee())
+            if (Common.MyEnv.IsHistoryEmloyee)
             {
                 Session.Abandon();
                 return RedirectToAction("ELogin", "Account");
             }
-            if (IsSupplier())
+            if (Common.MyEnv.IsHistorySupplier)
             {
                 Session.Abandon();
                 return RedirectToAction("Login", "Account");
@@ -991,41 +991,6 @@ namespace TEWorkFlow.Web.Client.Controllers
             cookie.Expires = DateTime.Now.AddMonths(1);
             cookie.Path = "/";
             HttpContext.Response.SetCookie(cookie);
-        }
-        public bool IsEmployee()
-        {
-            HttpCookie cookie = Request.Cookies["userType"];
-            if (cookie == null || cookie.Value == null)
-            {
-                return false;
-            }
-            string value = cookie.Value.ToString();
-            if (value == "0")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public bool IsSupplier()
-        {
-            HttpCookie cookie = Request.Cookies["userType"];
-            if (cookie == null || cookie.Value==null)
-            {
-                return false;
-            }
-            string value = cookie.Value.ToString();
-            if (value == "0")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public ActionResult BaseSetting()

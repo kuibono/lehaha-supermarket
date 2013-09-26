@@ -35,7 +35,9 @@
         }
         function search() {
             grid.load({
-                "key": mini.get("#key").value
+                "key": mini.get("#key").value,
+                dates: mini.get("dateS").getFormValue(),
+                datee: mini.get("dateE").getFormValue()
             });
         }
         function editRow(id) {
@@ -132,6 +134,7 @@
     <div size="240" showcollapsebutton="true">
         <div class="mini-toolbar" style="padding: 2px; border-top: 0; border-left: 0; border-right: 0;">
             <input class="mini-textbox" id="treekey" style="width: 150px;" />
+            
             <a class="mini-button" iconcls="icon-search" plain="true" onclick="treesearch">查找</a>
         </div>
         <div class="mini-fit">
@@ -147,11 +150,13 @@
                     <tr>
                         <td style="width: 100%;">
                             <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
-                            @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>*@
+                            @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
                             <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
-                                筛选</a> <span class="separator"></span>
+                                筛选</a> <span class="separator"></span>*@
                         </td>
                         <td style="white-space: nowrap;">
+                            <input id="dateS" class="mini-datepicker" value="@DateTime.Now.ToString("yyyy-MM-01")" emptytext="开始时间" />
+                            ~<input id="dateE" class="mini-datepicker" value="@Convert.ToDateTime(DateTime.Now.AddMonths(1).ToString("yyyy-MM-01")).AddDays(-1).ToString("yyyy-MM-dd")" emptytext="结束时间" />
                             <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
                             <a class="mini-button" onclick="search()">查询</a>
                         </td>
@@ -167,16 +172,19 @@
                 </div>
                 <div type="checkcolumn" width="30">
                 </div>
+                <div field="Id" headeralign="center" align="center" width="60">
+                    单号</div>
+                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
+                {
                 <div field="SupCode" headeralign="center" align="center" width="60">
                     供货商</div>
+                }
                 <div field="bName" headeralign="center" align="center" width="60">
                     门店名称</div>
                 <div field="PcType" headeralign="center" align="center" width="60">
                     采购类型</div>
                 <div field="PurchaseDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     采购日期</div>
-                <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                    预计到货日期</div>
                 <div field="amount" headeralign="center" align="center" width="60" datatype="currency"
                     currencyunit="￥">
                     价格</div>

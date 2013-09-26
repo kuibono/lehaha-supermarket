@@ -31,12 +31,12 @@ namespace TEWorkFlow.Web.Client.Common
             }
         }
 
-        public static bool IsEmployeeLogin
+        public static bool IsHistoryEmloyee
         {
             get
             {
                 HttpCookie cookie = HttpContext.Current.Request.Cookies["userType"];
-                if (cookie == null || cookie.Value==null)
+                if (cookie == null || cookie.Value == null)
                 {
                     return false;
                 }
@@ -51,7 +51,7 @@ namespace TEWorkFlow.Web.Client.Common
                 }
             }
         }
-        public static bool IsSupplierLogin
+        public static bool IsHistorySupplier
         {
             get
             {
@@ -69,6 +69,21 @@ namespace TEWorkFlow.Web.Client.Common
                 {
                     return false;
                 }
+            }
+        }
+
+        public static bool IsEmployeeLogin
+        {
+            get
+            {
+                return CurentUserType == 0;
+            }
+        }
+        public static bool IsSupplierLogin
+        {
+            get
+            {
+                return CurentUserType == 1;
             }
         }
 
