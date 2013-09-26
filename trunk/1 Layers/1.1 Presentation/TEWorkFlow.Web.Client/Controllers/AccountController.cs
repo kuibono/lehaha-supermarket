@@ -987,7 +987,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public void SetUserType(bool isEmployee)
         {
             HttpCookie cookie = new HttpCookie("userType");
-            cookie.Value = isEmployee ? "0" : "1";
+            cookie.Value = isEmployee ? "1" : "0";
             cookie.Expires = DateTime.Now.AddMonths(1);
             cookie.Path = "/";
             HttpContext.Response.SetCookie(cookie);

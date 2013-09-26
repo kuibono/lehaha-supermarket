@@ -313,9 +313,18 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 c.key = Request["key"];
             }
-            
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                if (c.entity == null)
+                {
+                    c.entity = new GoodsArchives();
+                }
+                c.entity.SupCode = Common.MyEnv.CurrentSupplier.Id;
+                //result = result.Where(p => p.SupCode == Common.MyEnv.CurrentSupplier.Id).ToList();
+            }
             
             var result=GoodsArchivesService.Search(c).data;
+            
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
