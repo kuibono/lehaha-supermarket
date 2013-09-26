@@ -37,6 +37,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
         IList<BsBranchArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
 
+        IList<BsBranchArchives> Search(string key, string supCode, int pageSize = 20, int pageIndex = 1);
+
         void Delete(IList<string> ids);
     }
 }

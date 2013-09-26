@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "分店档案";
+    Layout = "~/Views/Shared/_WindowLayout.cshtml";
+}
+@model TEWorkFlow.Domain.Archives.BsBranchArchives
+@section script
+{
+    <script type="text/javascript">
+        function SaveData() {
+            CloseWindow();
+        }
+    </script>
+}
+<style type="text/css">
+table.edittable td
+{
+    text-align:left;
+}
+</style>
+<table class="edittable" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 70px;">
+            名称:
+        </td>
+        <td colspan="3">
+            @Model.bName
+        </td>
+        <td style="width: 80px;">
+            拼音码:
+        </td>
+        <td style="width: 120px;">
+            @Model.PyCode
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 80px;">
+            分店码：
+        </td>
+        <td style="width: 120px;">
+            @Model.InputBCode
+        </td>
+        <td style="width: 80px;">
+            负责人:
+        </td>
+        <td style="width: 120px;">
+            @Model.Functionary
+        </td>
+        <td>
+            负责人电话:
+        </td>
+        <td>
+           @Model.FunctionaryPhone
+        </td>
+    </tr>
+    <tr>
+        <td>
+            联系地址:
+        </td>
+        <td>
+            @Model.ContactAddress
+        </td>
+        <td>
+            办公电话:
+        </td>
+        <td>
+            @Model.OfficePhone
+        </td>
+        <td>
+            传真:
+        </td>
+        <td>
+            @Model.FaxPhone
+        </td>
+    </tr>
+    <tr>
+        <td>
+            备注:
+        </td>
+        <td colspan="5">
+        <div style="height:120px; overflow-y:scroll">
+           @Model.Remark
+        </div>
+         
+        </td>
+    </tr>
+</table>

@@ -51,7 +51,7 @@
                 iconCls: "icon-cart",
                 allowResize: false,
                 width: 760,
-                height: 480,
+                height: 500,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -71,7 +71,7 @@
                 iconCls: "icon-cart",
                 allowResize: false,
                 width: 700,
-                height: 480,
+                height: 500,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -97,7 +97,7 @@
             var uid = record.Id;
             var rowIndex = e.rowIndex;
             if (record.IfExamine) {
-                if (record.IfExamine == "true") {
+                if (record.IfExamine == "true" || record.IfExamine == "1") {
                     var s = ' <a class="Edit_Button" href="javascript:viewItem(\'' + uid + '\')" >查看</a>'
                          + ' <a class="Edit_Button" href="javascript:viewItem(\'' + uid + '\')" >打印</a>';
                     return s;
@@ -172,7 +172,7 @@
                 </div>
                 <div type="checkcolumn" width="30">
                 </div>
-                <div field="Id" headeralign="center" align="center" width="60">
+                <div field="Id" headeralign="center" align="center" width="100">
                     单号</div>
                 @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
                 {

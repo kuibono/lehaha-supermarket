@@ -541,6 +541,19 @@ namespace TEWorkFlow.Web.Client.Controllers
                 SupplierVisible = true
             };
             SysmodulecontentService.Create(m1);
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-cart",
+                Id = "query-supplier_branch",
+                ParentId = "business",
+                Url = "/Archives/BranchList",
+                Windowname = "分店查看",
+                Index = 25,
+                EmployeeVisible = false,
+                SupplierVisible = true
+            };
+            SysmodulecontentService.Create(m1);
+
             #endregion
 
             #region 数据查询

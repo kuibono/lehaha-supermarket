@@ -18,15 +18,17 @@
             <div style="float:right; min-width:360px;width:360px;height:100%; background-image:url(/Images/bannerRight.jpg);background-repeat:no-repeat;">
                
             </div>
-            <div style="float: left;min-width:209px;width:500px;height:100%; background-image:url(/Images/bannerLeft.jpg); background-repeat:no-repeat;">
+            <div style="float: left;min-width:209px;width:500px;height:100%; /*background-image:url(/Images/bannerLeft.jpg);*/ background-repeat:no-repeat;">
                 <h1 style="margin: 0; padding: 15px;margin-top:10px; cursor: default; font-family: 微软雅黑,黑体,宋体;color:#FFF;">
                     @Model.TempString
                 </h1>
             </div>
             <div style="position: absolute; top: 18px; right: 10px;">
-                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow"
-                    plain="true">修改密码</a> <a class="mini-button mini-button-iconTop" iconcls="icon-bell"
+                
+                <a class="mini-button mini-button-iconTop" iconcls="icon-bell"
                         onclick="showBlank" plain="true">公告</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow"
+                    plain="true">修改密码</a> 
                 @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin && false)
                 {
                     <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow"
@@ -65,6 +67,7 @@
     <script type="text/javascript">
         mini.parse();
         var tree = mini.get("leftTree");
+
         function onItemSelect(e) {
             var tabs = mini.get("mainTabs");
             var node = e.item;
@@ -90,6 +93,9 @@
                     tab.url = mini_JSPath + "../../docs/api/" + node.id + ".html";
                 }
                 tabs.addTab(tab);
+            }
+            else {
+                tabs.reloadTab(tab);
             }
             tabs.activeTab(tab);
         }

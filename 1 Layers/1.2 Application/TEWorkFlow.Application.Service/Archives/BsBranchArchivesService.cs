@@ -19,7 +19,7 @@ namespace TEWorkFlow.Application.Service.Archives
         public IRepositoryGUID<BsPaClass> BsPaClassRepository { get; set; }
         public IRepositoryGUID<BsPaArea> BsPaAreaRepository { get; set; }
         public ITfDataDownloadService TfDataDownloadService { get; set; }
-
+        public IRepositoryGUID<FbSupplierBranchRelation> SupplierBranchRepository { get; set; }
         [Transaction]
         public string Create(BsBranchArchives entity)
         {
@@ -280,6 +280,57 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             }
+            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var result = q.ToList();
+            return result.ToList();
+        }
+
+        [Transaction]
+        public IList<BsBranchArchives> Search(string key,string supCode, int pageSize = 20, int pageIndex = 1)
+        {
+            var q = EntityRepository.LinqQuery;
+            if (string.IsNullOrEmpty(key) == false)
+            {
+                q = from l in q
+                    where
+                    l.Id.Contains(key)
+                    || l.bName.Contains(key)
+                    || l.PyCode.Contains(key)
+                    || l.bType.Contains(key)
+                    || l.bState.Contains(key)
+                    || l.AreaCode.Contains(key)
+                    || l.ClassCode.Contains(key)
+                    || l.Functionary.Contains(key)
+                    || l.FunctionaryPhone.Contains(key)
+                    || l.ContactAddress.Contains(key)
+                    || l.OfficePhone.Contains(key)
+                    || l.FaxPhone.Contains(key)
+                    || l.eMail.Contains(key)
+                    || l.Postalcode.Contains(key)
+                    || l.OpenAccount.Contains(key)
+                    || l.BankAccount.Contains(key)
+                    || l.TaxNumber.Contains(key)
+                    || l.OpCode.Contains(key)
+                    || l.StockVoucher.Contains(key)
+                    || l.BalanceMode.Contains(key)
+                    || l.PayMode.Contains(key)
+                    || l.BalancePeriod.Contains(key)
+                    || l.SupplyPriceType.Contains(key)
+                    || l.WhCode.Contains(key)
+                    || l.Operator.Contains(key)
+                    || l.Assessor.Contains(key)
+                    || l.IfExamine.Contains(key)
+                    select l;
+
+
+            }
+            if (string.IsNullOrEmpty(supCode) == false)
+            {
+                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available==true).ToList().Select(p=>p.bCode).ToArray();
+                q = q.Where(p => bcodes.Contains(p.Id));
+                q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
+            }
+            
             q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             return result.ToList();

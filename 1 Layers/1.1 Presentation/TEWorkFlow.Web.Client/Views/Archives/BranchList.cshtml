@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_ListLayout.cshtml";
 }
 @section toolbar{
+    <input type="hidden" id="isEmployeeLogin" value="@TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin.ToString().ToLower()" />
     <table style="width: 100%;">
         <tr>
             <td style="width: 100%;">
@@ -55,6 +56,22 @@
                 }
             });
         }
+        function viewRow(id) {
+            mini.open({
+                url: "/Archives/BranchView/" + id,
+                title: "分店管理",
+                iconCls: "icon-user",
+                allowResize: false,
+                width: 630,
+                height: 300,
+                onload: function () {
+                },
+                ondestroy: function (action) {
+
+                    grid.reload();
+                }
+            });
+        }
         function deleteItem(id) {
             $.ajax({
                 url: "/Archives/BranchDelete",
@@ -86,9 +103,15 @@
             var record = e.record;
             var uid = record.Id;
             var rowIndex = e.rowIndex;
+            var s = "";
+            var isEmployeeLogin = $("#isEmployeeLogin").val();
+            if (isEmployeeLogin == "true") {
+                s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
+                    + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
+            } else {
+                s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>'
+            }
 
-            var s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
-                + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             return s;
         }
         function exame(obj, itemid, old) {
@@ -137,9 +160,12 @@
             办公电话</div>
         <div field="FaxPhone" headeralign="center" align="center" width="60">
             传真</div>
+        @if(TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
+        {
         <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
             审核</div>
-        <div name="action" width="120" headeralign="center" align="center" renderer="onNoExamActionRenderer"
+        }
+        <div name="action" width="120" headeralign="center" align="center" renderer="onBranchActionRenderer"
             cellstyle="padding:0;">
             管理</div>
     </div>

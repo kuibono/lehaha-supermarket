@@ -314,7 +314,13 @@
                 cache: false,
                 success: function (text) {
                     issaving = false;
-                    CloseWindow("save");
+                    //CloseWindow("save");
+                    if (o.IfExamine == "1") {
+                        location.href = "/Query/PurchaseView/" + o.PcNumber;
+                    }
+                    else {
+                        grid.reload();
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.responseText + "err");
