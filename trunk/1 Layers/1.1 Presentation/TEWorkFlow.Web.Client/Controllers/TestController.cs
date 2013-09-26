@@ -25,7 +25,15 @@ namespace TEWorkFlow.Web.Client.Controllers
             var setting = SysEnterpriseArchivesService.Get();
             if (Common.MyEnv.IsSupplierLogin)
             {
-                setting.TempString = Common.MyEnv.CurrentSupplier.SupName;
+                try
+                {
+
+                    setting.TempString = Common.MyEnv.CurrentSupplier.SupName;
+                }
+                catch
+                {
+                    setting.TempString = setting.EnName;
+                }
             }
             else
             {
@@ -39,11 +47,11 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View();
         }
 
-        public ActionResult LoginPowerList(SearchDtoBase<SysLoginPower> c,SysLoginPower s)
+        public ActionResult LoginPowerList(SearchDtoBase<SysLoginPower> c, SysLoginPower s)
         {
             //var q =SysLoginPowerService.GetList()
             c.entity = s;
-            
+
 
             return Json(SysLoginPowerService.Search(c), JsonRequestBehavior.AllowGet);
         }
@@ -56,8 +64,8 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult Edit(string id)
         {
-            SysLoginPower lp=new SysLoginPower();
-            if(id!=null&&id.Length>0)
+            SysLoginPower lp = new SysLoginPower();
+            if (id != null && id.Length > 0)
             {
                 lp = SysLoginPowerService.GetById(id);
             }
@@ -66,7 +74,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public ActionResult Save(SysLoginPower sp)
         {
-            if(sp.HaveId)
+            if (sp.HaveId)
             {
                 SysLoginPowerService.Update(sp);
             }
@@ -94,7 +102,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 result = SysPostService.GetAll(null).OrderByDescending(p => p.PostTime).ToList();
             }
-            if (string.IsNullOrEmpty(id)==false)
+            if (string.IsNullOrEmpty(id) == false)
             {
                 result = result.Where(p => p.Title.Contains(id)).ToList();
             }

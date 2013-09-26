@@ -36,7 +36,7 @@ namespace TEWorkFlow.Application.Service.Business
 
         void UpdatePurchaseAmount(string id);
 
-        SearchResult<PcPurchaseManage> Search(string SupplierId, SearchDtoBase<PcPurchaseManage> c);
+        SearchResult<PcPurchaseManage> Search(string SupplierId, SearchDtoBase<PcPurchaseManage> c,DateTime? dates,DateTime? dateE);
 
         SearchResult<PcPurchaseManage> Search(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
 
@@ -49,6 +49,8 @@ namespace TEWorkFlow.Application.Service.Business
         SearchResult<PurchaseSupplierResult> SearchForPurchaseSupllier(DateTime? dateS, DateTime? dateE, string Encode, int pageSize = 20, int pageIndex = 1);
 
         IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1);
+
+        //IList<PcPurchaseManage> Search(string key, int pageSize = 20, int pageIndex = 1,DateTime dateS=DateTime.Now.Date,DateTime dateE=DateTime.Now.AddDays(1).Date);
 
         void Delete(IList<string> ids);
 

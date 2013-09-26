@@ -122,7 +122,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             int count = q.Count();
 
-            q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
+            q = q.Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             return result.ToSearchResult(count);
         }

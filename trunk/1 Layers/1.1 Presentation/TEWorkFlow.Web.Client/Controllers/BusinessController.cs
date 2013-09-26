@@ -64,14 +64,14 @@ namespace TEWorkFlow.Web.Client.Controllers
             return View(model);
         }
 
-        public JsonResult SearchPurchaseList(SearchDtoBase<PcPurchaseManage> c, PcPurchaseManage s)
+        public JsonResult SearchPurchaseList(SearchDtoBase<PcPurchaseManage> c, PcPurchaseManage s,DateTime? dates,DateTime? datee)
         {
             if (string.IsNullOrEmpty(Request["key"]) == false)
             {
                 return Json(PcPurchaseManageService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
-            return Json(PcPurchaseManageService.Search(Common.MyEnv.CurrentSupplier.Id,c), JsonRequestBehavior.AllowGet);
+            return Json(PcPurchaseManageService.Search(Common.MyEnv.CurrentSupplier.Id,c,dates,datee), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult SearchAllPurchaseList(string key)

@@ -8,14 +8,14 @@ namespace TEWorkFlow.Dto
 {
     public class SearchDtoBase<T>
     {
-        private int _pageindex = 1;
+        private int _pageindex = 0;
         public int pageIndex
         {
             get
             {
-                if (_pageindex <= 0)
+                if (_pageindex < 0)
                 {
-                    return 1;
+                    return 0;
                 }
                 return _pageindex;
             }

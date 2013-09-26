@@ -210,7 +210,7 @@ namespace TEWorkFlow.Application.Service.Business
             }
             int count = q.Count();
 
-            q = q.Skip((c.pageIndex - 1) * c.pageSize).Take(c.pageSize);
+            q = q.Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             //FillDepartmentName(result);
             FillSupName(result);
