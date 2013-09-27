@@ -8,6 +8,7 @@ using TEWorkFlow.Domain.Archives;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Application.Service.Business;
 using TEWorkFlow.Web.Client.Common;
+using NSH.Core.Domain;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -194,7 +195,7 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchBranchArchiveList(SearchDtoBase<BsBranchArchives> c, BsBranchArchives s)
         {
-            if (Request["key"] == null||string.IsNullOrEmpty(Request["key"]) == false)
+            if (Request["key"] == null || string.IsNullOrEmpty(Request["key"]) == false)
             {
                 if (Common.MyEnv.IsSupplierLogin)
                 {
@@ -281,6 +282,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         #region 商品档案
 
         public IGoodsArchivesService GoodsArchivesService { get; set; }
+        public IRepositoryGUID<GoodsArchives> GoodsArchivesRepository { get; set; }
         public ActionResult GoodsList()
         {
             return View();
@@ -317,6 +319,30 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(GoodsArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAllGoodsArchiveAutoComplete(string id)
+        {
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                string key = id;
+                if (string.IsNullOrEmpty(key))
+                {
+                    key = Request["key"];
+                }
+                string supcode = Common.MyEnv.CurrentSupplier.Id;
+                var result = GoodsArchivesRepository.LinqQuery.Where(p => p.SupCode == supcode).Where(p => p.GoodsBarCode.Contains(key)
+                    || p.PyCode.Contains(key)
+                    || p.GoodsName.Contains(key)
+                    ).Select(p => new
+                    {
+                        p.Id,
+                        p.GoodsBarCode,
+                        p.PyCode,
+                        p.GoodsName
+                    });
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetAllGoodsArchive(string id)
         {
             SearchDtoBase<GoodsArchives> c = new SearchDtoBase<GoodsArchives>();
