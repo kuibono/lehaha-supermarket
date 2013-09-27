@@ -79,7 +79,7 @@
         <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
             产品 
             <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupWidth="400"
-                valuefield="Id" url="/Archives/GetAllGoodsArchive" onvaluechanged="onValueChanged">
+                valuefield="Id" url="/Archives/GetAllGoodsArchiveAutoComplete" onvaluechanged="onValueChanged">
                 <div property="columns">
                     <div header="条形码" field="GoodsBarCode">
                     </div>
@@ -89,6 +89,7 @@
                     </div>
                 </div>
             </div>
+            @*<input property="editor" class="mini-combobox" style="width:150px;" textField="GoodsName" valueField="Id" showNullItem="true" allowInput="true" onenter="alert('enter')"/>*@
         </div>
         <div field="PurchaseQty" width="70" headeralign="center" align="center" allowsort="true">
             数量
@@ -387,6 +388,7 @@
                     //grid.commitEdit();
                     if (grid.getChanges().length > 0) {//&& grid.getChanges()[0].GoodsCode != undefined
                         updateRow("", true);
+                    } else {
                     }
                 }
                 else {
