@@ -7,13 +7,19 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 100%;">
+                @if(TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
+                {
                 <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
                 @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>*@
                 <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
                     筛选</a> <span class="separator"></span>
+                }
             </td>
             <td style="white-space: nowrap;">
+                @if(TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin)
+                {
                 <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" onvaluechanged="search()" />
+                }
                 <input id="bName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>
@@ -35,10 +41,16 @@
             win.hide();
         }
         function search() {
-            grid.load({
-                "key": mini.get("#bName").value,
-                "IfExamine": mini.get("#ifexame").value
-            });
+            if (mini.get("#ifexame") == undefined) {
+                grid.load({
+                    "key": mini.get("#bName").value
+                });
+            } else {
+                grid.load({
+                    "key": mini.get("#bName").value,
+                    "IfExamine": mini.get("#ifexame").value
+                });
+            }
         }
         function editRow(id) {
             mini.open({
@@ -109,7 +121,7 @@
                 s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
                     + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             } else {
-                s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>'
+                //s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>'
             }
 
             return s;
@@ -164,10 +176,11 @@
         {
         <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
             审核</div>
-        }
         <div name="action" width="120" headeralign="center" align="center" renderer="onBranchActionRenderer"
             cellstyle="padding:0;">
             管理</div>
+        }
+        
     </div>
 </div>
 <div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 300px;"
