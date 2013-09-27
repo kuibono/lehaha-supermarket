@@ -456,7 +456,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             int count = q.Count();
 
-            q = q.Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
+            q = q.OrderByDescending(p => p.OperatorDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillSupInfo(result);
@@ -507,7 +507,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             }
-            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p=>p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillSupInfo(result);
             return result.ToList();

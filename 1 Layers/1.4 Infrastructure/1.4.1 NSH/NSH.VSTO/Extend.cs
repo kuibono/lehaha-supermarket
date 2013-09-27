@@ -97,5 +97,42 @@ namespace NSH.VSTO
             return sb.ToString();
         }
 
+        #region 缓存LIST<>
+        /// <summary>
+        /// 缓存LIST<>
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static List<TResult> AsCache<TResult>(this IQueryable<TResult> dt) where TResult : class, new()
+        {
+            string catch_Name = "LIST_" + typeof(TResult).ToString();
+
+            if (Cache.GetCache(catch_Name) == null)
+            {
+                Cache.SetCache(catch_Name, dt.ToList(), 30);
+            }
+            return (List<TResult>)Cache.GetCache(catch_Name);
+        }
+        public static void ClearListCache<TResult>(this TResult dt) where TResult : class, new()
+        {
+            string catch_Name = "LIST_" + typeof(TResult).ToString();
+            Cache.Clear(catch_Name);
+        }
+
+
+
+        public static List<TResult> AsCache<TResult>(this IQueryable<TResult> dt, string Key) where TResult : class, new()
+        {
+            string catch_Name = Key;
+
+            if (Cache.GetCache(catch_Name) == null)
+            {
+               Cache.SetCache(catch_Name, dt.ToList());
+            }
+            return (List<TResult>)Cache.GetCache(catch_Name);
+        }
+        #endregion
+
     }
 }

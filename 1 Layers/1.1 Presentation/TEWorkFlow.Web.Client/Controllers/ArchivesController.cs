@@ -9,7 +9,7 @@ using TEWorkFlow.Dto;
 using TEWorkFlow.Application.Service.Business;
 using TEWorkFlow.Web.Client.Common;
 using NSH.Core.Domain;
-
+using NSH.VSTO;
 namespace TEWorkFlow.Web.Client.Controllers
 {
     [UserAuthorizeAttribute]
@@ -323,13 +323,15 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             if (Common.MyEnv.IsSupplierLogin)
             {
+                string supcode = Common.MyEnv.CurrentSupplier.Id;
+                var allGoods = GoodsArchivesRepository.LinqQuery.Where(p => p.SupCode == supcode && (p.IfExamine == "1" || p.IfExamine == "true")).AsCache(supcode);
                 string key = id;
                 if (string.IsNullOrEmpty(key))
                 {
                     key = Request["key"];
                 }
-                string supcode = Common.MyEnv.CurrentSupplier.Id;
-                var result = GoodsArchivesRepository.LinqQuery.Where(p => p.SupCode == supcode).Where(p => p.GoodsBarCode.Contains(key)
+
+                var result = allGoods.Where(p => p.GoodsBarCode.Contains(key)
                     || p.PyCode.Contains(key)
                     || p.GoodsName.Contains(key)
                     ).Select(p => new

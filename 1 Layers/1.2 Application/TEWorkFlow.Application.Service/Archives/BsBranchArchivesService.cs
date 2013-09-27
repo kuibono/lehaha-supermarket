@@ -234,7 +234,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             int count = q.Count();
 
-            q = q.Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
+            q = q.OrderByDescending(p=>p.OperatorDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillAreaName(result);
@@ -280,7 +280,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             }
-            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             return result.ToList();
         }
@@ -330,9 +330,11 @@ namespace TEWorkFlow.Application.Service.Archives
                 q = q.Where(p => bcodes.Contains(p.Id));
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }
-            
-            q = q.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
+            FillClassName(result);
+            FillAreaName(result);
             return result.ToList();
         }
 
