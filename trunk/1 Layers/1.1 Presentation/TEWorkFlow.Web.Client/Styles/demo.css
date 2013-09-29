@@ -73,6 +73,7 @@ table.edittable tr
 table.edittable tr td
 {
     padding: 1px;
+    border: solid 1px #EEE;
 }
 table.edittable input
 {

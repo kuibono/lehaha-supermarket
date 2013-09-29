@@ -10,6 +10,7 @@ using TEWorkFlow.Application.Service.Business;
 using TEWorkFlow.Web.Client.Common;
 using NSH.Core.Domain;
 using NSH.VSTO;
+using TEWorkFlow.Application.Service.Sys;
 namespace TEWorkFlow.Web.Client.Controllers
 {
     [UserAuthorizeAttribute]
@@ -204,6 +205,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 return Json(BsBranchArchivesService.Search(Request["key"]), JsonRequestBehavior.AllowGet);
             }
             c.entity = s;
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                return Json(BsBranchArchivesService.Search(c, Common.MyEnv.CurrentSupplier.Id), JsonRequestBehavior.AllowGet);
+            }
             return Json(BsBranchArchivesService.Search(c), JsonRequestBehavior.AllowGet);
         }
 
@@ -253,6 +258,13 @@ namespace TEWorkFlow.Web.Client.Controllers
             //    s.Id = Guid.NewGuid().ToString();
             //    BsBranchArchivesService.Create(s);
             //}
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        ITfDataDownloadService TfDataDownloadService { get; set; }
+        public JsonResult AddAllArchivesToBranch(string id)//id 是 supcode
+        {
+            TfDataDownloadService.AddAllArchivesToBranch(id);
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 

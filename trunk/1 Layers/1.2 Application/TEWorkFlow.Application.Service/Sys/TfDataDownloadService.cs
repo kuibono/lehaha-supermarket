@@ -48,7 +48,7 @@ namespace TEWorkFlow.Application.Service.Sys
             //    DownloadTablename = table
             //});
         }
-
+        [Transaction]
         public void AddAllArchivesToBranch(string bCode)
         {
             //return;
