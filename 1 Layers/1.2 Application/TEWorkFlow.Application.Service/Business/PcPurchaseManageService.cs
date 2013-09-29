@@ -339,7 +339,7 @@ namespace TEWorkFlow.Application.Service.Business
             }
             int count = q.Count();
 
-            var result = q.OrderByDescending(p=>p.PurchaseDate).OrderByDescending(p => p.PurchaseDate).ToList();
+            var result = q.OrderByDescending(p=>p.PurchaseDate).ToList();
             for (int i = 0; i < result.Count; i++)
             {
                 var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
