@@ -551,6 +551,7 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public string GenarateId(GoodsArchives entity)
         {
+            var allId = EntityRepository.LinqQuery.Select(p => p.Id).ToList();
             string clsCode = "";
             switch (FbPaBaseSetService.Get().GoodsClassLevel.ToInt32())
             {
@@ -572,7 +573,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
 
             string result = clsCode + entity.GoodsSubCode;
-            while (EntityRepository.LinqQuery.Any(p => p.Id == result))
+            while (allId.Any(p => p == result))
             {
                 result = (result.ToInt32() + 1).ToString().FillByStrings('0', 8);
             }
