@@ -60,6 +60,8 @@ namespace TEWorkFlow.Application.Service.Archives
             }
         }
 
+
+
         [Transaction]
         public void Delete(BsBranchArchives entity)
         {
@@ -101,7 +103,7 @@ namespace TEWorkFlow.Application.Service.Archives
         }
 
         [Transaction]
-        public SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c)
+        public SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c, string supCode = "")
         {
             var q = EntityRepository.LinqQuery;
             if (c.entity != null)
@@ -232,9 +234,15 @@ namespace TEWorkFlow.Application.Service.Archives
                 }
 
             }
-            int count = q.Count();
 
-            q = q.OrderByDescending(p=>p.OperatorDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
+            if (string.IsNullOrEmpty(supCode) == false)
+            {
+                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
+                q = q.Where(p => bcodes.Contains(p.Id));
+                q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
+            }
+            int count = q.Count();
+            q = q.OrderByDescending(p => p.OperatorDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillAreaName(result);
@@ -282,11 +290,13 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
+            FillClassName(result);
+            FillAreaName(result);
             return result.ToList();
         }
 
         [Transaction]
-        public IList<BsBranchArchives> Search(string key,string supCode, int pageSize = 20, int pageIndex = 1)
+        public IList<BsBranchArchives> Search(string key, string supCode, int pageSize = 20, int pageIndex = 1)
         {
             var q = EntityRepository.LinqQuery;
             if (string.IsNullOrEmpty(key) == false)
@@ -326,7 +336,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             if (string.IsNullOrEmpty(supCode) == false)
             {
-                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available==true).ToList().Select(p=>p.bCode).ToArray();
+                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
                 q = q.Where(p => bcodes.Contains(p.Id));
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }

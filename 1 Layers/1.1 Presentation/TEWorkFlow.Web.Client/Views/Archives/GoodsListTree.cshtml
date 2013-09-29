@@ -165,24 +165,25 @@
                         </div>
                         <div type="checkcolumn" width="30">
                         </div>
+                        <div name="SupName" field="SupName" headeralign="center" align="center" width="60">
+                            供货商</div>
                         <div field="Id" headeralign="center" align="center" width="60">
                             店内码</div>
                         <div field="GoodsName" headeralign="center" align="center" width="60">
                             名称</div>
-                        <div field="GoodsSubCode" headeralign="center" align="center" width="60">
-                            简码</div>
-                        <div field="GoodsBarCode" headeralign="center" align="center" width="60">
-                            条形码</div>
-                        <div name="SupName" field="SupName" headeralign="center" align="center" width="60">
-                            供货商</div>
-                        <div field="PurchasePrice" headeralign="center" align="center" width="60" dataType="currency" currencyUnit="￥">
-                            进价</div>
-                        <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">审核</div>
-                        <div field="PriceHistory" headeralign="center" align="center" width="40"  renderer="onHistoryRenderer">
-                            历史价格</div>
                         <div field="Specification" headeralign="center" align="center" width="40">
                             规格</div>
-                        <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
+                        <div field="PyCode" headeralign="center" align="center" width="60">
+                            拼音数字码</div>
+                        <div field="GoodsBarCode" headeralign="center" align="center" width="60">
+                            条形码</div>
+                        
+                        <div field="PurchasePrice" headeralign="center" align="center" width="50" dataType="currency" currencyUnit="￥">
+                            进价</div>
+                        <div field="PriceHistory" headeralign="center" align="center" width="40"  renderer="onHistoryRenderer">
+                            历史价格</div>
+                        <div field="IfExamine" headeralign="center" align="center" width="30" renderer="onExamRender">审核</div>
+                        <div name="action" width="60" headeralign="center" align="center" renderer="onActionRenderer"
                             cellstyle="padding:0;">
                             管理</div>
                     </div>
@@ -221,7 +222,7 @@
                 + ' <a class="Delete_Button" href="javascript:if(confirm(\'确定要删除这条记录吗？\')){deleteItem(\'' + uid + '\')}">删除</a>';
             }
             else {
-                s = ' <a class="Edit_Button" href="javascript:viewRow(\'' + uid + '\')" >查看</a>'
+                s = ' <a class="Edit_Button" href="javascript:editRow(\'' + uid + '\')" >编辑</a>'
             }
             return s;
         }
@@ -396,7 +397,7 @@
             return "<a href='javascript:viewHistory(\"" + e.record.PriceHistory + "\")'>查看</a>"
         }
         function viewHistory(text) {
-            var table = "<table class='mini-grid-table' border='1' cellpadding='0' cellspacing='0' style='border-color:gray;border:#d2d2d2 1px solid;'>";
+            var table = "<table class='mini-grid-table' border='1' cellpadding='0' cellspacing='0' style='border-color:gray;border:#d2d2d2 1px solid;border-collapse: collapse;'>";
             table += "<tr>";
             table += "<td>价格</td><td>时间</td>";
             table += "</tr>";

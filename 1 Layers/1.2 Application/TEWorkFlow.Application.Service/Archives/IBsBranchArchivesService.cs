@@ -33,7 +33,7 @@ namespace TEWorkFlow.Application.Service.Archives
         void Delete(IEnumerable<BsBranchArchives> entitys);
 
 
-        SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c);
+        SearchResult<BsBranchArchives> Search(SearchDtoBase<BsBranchArchives> c, string supCode = "");
 
         IList<BsBranchArchives> Search(string key, int pageSize = 20, int pageIndex = 1);
 

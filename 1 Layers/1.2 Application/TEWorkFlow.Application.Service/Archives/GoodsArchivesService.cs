@@ -125,7 +125,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             #endregion
 
-            #region  
+            #region
             if (oldEntity.SupCode != entity.SupCode)
             {
                 FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
@@ -143,14 +143,14 @@ namespace TEWorkFlow.Application.Service.Archives
 
             //if (entity.ProposePrice != oldEntity.ProposePrice)
             //{
-                entity.SalePrice = entity.ProposePrice;
+            entity.SalePrice = entity.ProposePrice;
             //}
 
             if (entity.PurchasePrice != oldEntity.PurchasePrice)
             {
                 if (entity.PriceHistory == null)
                     entity.PriceHistory = "";
-                if (string.IsNullOrEmpty(entity.PriceHistory)==false)
+                if (string.IsNullOrEmpty(entity.PriceHistory) == false)
                 {
                     entity.PriceHistory += ",";
                 }
@@ -238,7 +238,7 @@ namespace TEWorkFlow.Application.Service.Archives
         {
             var q = EntityRepository.LinqQuery;
 
-            if (string.IsNullOrEmpty(c.key)==false)
+            if (string.IsNullOrEmpty(c.key) == false)
             {
                 q = from l in q
                     where
@@ -452,6 +452,10 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
                 }
+                if (string.IsNullOrEmpty(c.entity.IfExamine) == false)
+                {
+                    q = q.Where(p => p.IfExamine == c.entity.IfExamine);
+                }
 
             }
             int count = q.Count();
@@ -460,7 +464,8 @@ namespace TEWorkFlow.Application.Service.Archives
             var result = q.ToList();
             FillClassName(result);
             FillSupInfo(result);
-            result.ForEach(p => {
+            result.ForEach(p =>
+            {
                 if (p.SupTel == null)
                 {
                     p.SupTel = "";
@@ -507,7 +512,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             }
-            q = q.OrderByDescending(p=>p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillSupInfo(result);
             return result.ToList();
@@ -535,6 +540,11 @@ namespace TEWorkFlow.Application.Service.Archives
                 var item = q.First();
                 maxId = item.GoodsSubCode.ToInt32(0);
             }
+            string result = (maxId + 1).ToString().FillByStrings('0', setting.GoodsLen.ToInt32());
+            while (EntityRepository.LinqQuery.Any(p => p.GoodsSubCode == result))
+            {
+                result = (result.ToInt32() + 1).ToString().FillByStrings('0', setting.GoodsLen.ToInt32());
+            }
             return (maxId + 1).ToString().FillByStrings('0', setting.GoodsLen.ToInt32());
         }
 
@@ -561,15 +571,20 @@ namespace TEWorkFlow.Application.Service.Archives
                     break;
             }
 
-            return clsCode + entity.GoodsSubCode;
+            string result = clsCode + entity.GoodsSubCode;
+            while (EntityRepository.LinqQuery.Any(p => p.Id == result))
+            {
+                result = (result.ToInt32() + 1).ToString().FillByStrings('0', 8);
+            }
+            return result;
         }
 
         public string GenerateBarCode()
         {
             string b = Genarate12BarCode();
-            int c1 = (iint(1, b) + iint(3, b) + iint(5, b) + iint(7, b) + iint(9, b) + iint(11, b))*3;
+            int c1 = (iint(1, b) + iint(3, b) + iint(5, b) + iint(7, b) + iint(9, b) + iint(11, b)) * 3;
             int c2 = iint(0, b) + iint(2, b) + iint(4, b) + iint(6, b) + iint(8, b) + iint(10, b);
-            int c3 =10- (c1 + c2) % 10;
+            int c3 = 10 - (c1 + c2) % 10;
             return b + c3.ToString();
         }
 
@@ -580,7 +595,7 @@ namespace TEWorkFlow.Application.Service.Archives
         protected string Genarate12BarCode()
         {
             var barcode = "200" + "0000" + _string.GetRandomNumber(10000, 99999);
-            if(EntityRepository.LinqQuery.Any(p=>p.BackupCode==barcode))
+            if (EntityRepository.LinqQuery.Any(p => p.BackupCode == barcode))
             {
                 return Genarate12BarCode();
             }

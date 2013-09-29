@@ -75,7 +75,7 @@
             <input name="GsCode" value="@Model.GsCode" id="GsCode" class="mini-combobox" textField="text" valueField="id" onvaluechanged="onGsCodeChanged" url="/Category/GetFbPaGoodsGs/" showNullItem="true"  />
         </td>
     </tr>
-    <tr>
+    <tr style="display: none">
         <td>
             细类:
         </td>
@@ -103,16 +103,16 @@
             <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
         <td>
-            备用码:
+            规格:
         </td>
         <td>
-            <input name="BackupCode" value="@Model.BackupCode" class="mini-textbox"/>
+            <input name="Specification" value="@Model.Specification" class="mini-textbox"/>
         </td>
         <td>
-            扣率:
+            操作员:
         </td>
         <td>
-            <input name="PoolRate" value="@Model.PoolRate" class="mini-spinner" decimalPlaces="2"/>
+            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="" url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
         </td>
     </tr>
     <tr>
@@ -135,9 +135,7 @@
             <input name="PyCode" value="@Model.PyCode" class="mini-textbox"/>
         </td>
     </tr>
-
     <tr>
-
         <td>
             进价:
         </td>
@@ -151,12 +149,12 @@
             <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
         <td>
-            操作员:
+            产地:
         </td>
         <td>
-            <input name="Operator" class="mini-combobox"  textField="text" valueField="id" emptyText="" url="/Category/AllUsers" value="@Model.Operator"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>
+            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             审核人:
@@ -170,17 +168,16 @@
         <td>
             @if (Model.IfExamine == "1")
             {
-            <span>审核</span>
+                <span>审核</span>
             }
         </td>
-
         <td>
             审核时间:
         </td>
         <td>
             <input name="ExamineDate" value="@Model.ExamineDate" class="mini-datepicker"/>
         </td>
-            </tr>
+    </tr>
     <tr>
         <td>
             操作时间:
@@ -188,18 +185,7 @@
         <td>
             <input name="OperatorDate" value="@Model.OperatorDate" class="mini-datepicker" />
         </td>
-        <td>
-            产地:
-        </td>
-        <td>
-            <input name="ProducingArea" value="@Model.ProducingArea" class="mini-textbox"/>
-        </td>
-        <td>
-            规格:
-        </td>
-        <td>
-            <input name="Specification" value="@Model.Specification" class="mini-textbox"/>
-        </td>
+        <td colspan="4"></td>
     </tr>
     <tr>
         <td>

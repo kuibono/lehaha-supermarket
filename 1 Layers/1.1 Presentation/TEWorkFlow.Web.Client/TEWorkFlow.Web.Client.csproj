@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <EmbeddedResource Include="Config\Controllers.xml" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\activate.gif" />
     <Content Include="Images\ajax-loader.gif" />

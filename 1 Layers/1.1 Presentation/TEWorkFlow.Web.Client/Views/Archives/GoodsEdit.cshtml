@@ -143,7 +143,7 @@
             供货商:
         </td>
         <td>
-            <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
+            <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive/?pageSize=999999" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td>
             扣率:
@@ -374,7 +374,7 @@
         <td>
             是否审核:
         </td>
-        <td>
+        <td align="left" style="text-align:left">
             <div name="IfExamine" class="mini-checkbox" value="@Model.IfExamine" readOnly="false" text="审核"  trueValue="1" falseValue="0">
             </div>
         </td>

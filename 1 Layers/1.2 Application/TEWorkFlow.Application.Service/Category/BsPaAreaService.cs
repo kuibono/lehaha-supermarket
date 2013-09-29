@@ -42,7 +42,7 @@ namespace TEWorkFlow.Application.Service.Category
             if (string.IsNullOrEmpty(entity.Id))
             {
                 add = true;
-                entity.Id = Guid.NewGuid().ToString();
+                entity.Id = GenerateId();
             }
             else
             {
@@ -121,6 +121,20 @@ namespace TEWorkFlow.Application.Service.Category
             {
                 Delete(each);
             }
+        }
+
+        private string GenerateId()
+        {
+            var allItems = EntityRepository.LinqQuery.ToList();
+
+            int id = 1;
+            string str_id = id.ToString();
+            while (allItems.Any(p => p.Id == str_id))
+            {
+                id++;
+                str_id = id.ToString();
+            }
+            return str_id;
         }
     }
 }
