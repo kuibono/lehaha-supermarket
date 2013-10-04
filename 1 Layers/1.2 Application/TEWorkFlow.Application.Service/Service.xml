@@ -85,6 +85,9 @@
   <object id="SysPostRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.SysPost>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="BranchPostRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.BranchPost>, NSH.Repository">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <object id="TfDataDownloadRepository" type="NSH.Repository.RepositoryGUID&lt;TEWorkFlow.Domain.Sys.TfDataDownload>, NSH.Repository">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -250,6 +253,11 @@
     <property name="EntityRepository" ref="SysPostRepository"/>
     <property name="SysPostSupplierRelationRepository" ref="SysPostSupplierRelationRepository"/>
     <property name="FbSupplierArchivesRepository" ref="FbSupplierArchivesRepository"/>
+  </object>
+  <object id="BranchPostService" type="TEWorkFlow.Application.Service.Sys.BranchPostService, TEWorkFlow.Application.Service">
+    <property name="EntityRepository" ref="BranchPostRepository"/>
+    <property name="FbSupplierArchivesRepository" ref="FbSupplierArchivesRepository"/>
+    <property name="TfDataDownloadService" ref="TfDataDownloadService"/>
   </object>
   <object id="TfDataDownloadService" type="TEWorkFlow.Application.Service.Sys.TfDataDownloadService, TEWorkFlow.Application.Service">
     <property name="EntityRepository" ref="TfDataDownloadRepository"/>

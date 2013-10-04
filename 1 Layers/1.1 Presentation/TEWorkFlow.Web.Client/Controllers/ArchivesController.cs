@@ -233,6 +233,10 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 entity = BsBranchArchivesService.GetById(id);
             }
+            if (string.IsNullOrEmpty(entity.SyncPassword))
+            {
+                entity.SyncPassword = DateTime.Now.ToString("ssfff");
+            }
             return View(entity);
         }
         public ActionResult BranchView(string id)

@@ -79,6 +79,7 @@
     <Compile Include="Sys\SysPost.cs" />
     <Compile Include="Sys\SysPostSupplierRelation.cs" />
     <Compile Include="Sys\TfDataDownload.cs" />
+    <Compile Include="Sys\BranchPost.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.Core\NSH.Core.csproj">
@@ -191,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RetailPurchaseCompare.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sys\BranchPost.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

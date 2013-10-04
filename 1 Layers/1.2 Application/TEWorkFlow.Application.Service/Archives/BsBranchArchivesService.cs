@@ -246,8 +246,8 @@ namespace TEWorkFlow.Application.Service.Archives
 
             if (string.IsNullOrEmpty(supCode) == false)
             {
-                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
-                q = q.Where(p => bcodes.Contains(p.Id));
+                //var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
+                //q = q.Where(p => bcodes.Contains(p.Id));
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }
             int count = q.Count();
@@ -345,8 +345,8 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             if (string.IsNullOrEmpty(supCode) == false)
             {
-                var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
-                q = q.Where(p => bcodes.Contains(p.Id));
+                //var bcodes = SupplierBranchRepository.LinqQuery.Where(p => p.SupCode == supCode && p.Available == true).ToList().Select(p => p.bCode).ToArray();
+                //q = q.Where(p => bcodes.Contains(p.Id));
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }
 

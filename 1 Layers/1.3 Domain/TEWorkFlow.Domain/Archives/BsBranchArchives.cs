@@ -217,6 +217,8 @@ namespace TEWorkFlow.Domain.Archives
             }
         }
 
+        public virtual string SyncPassword { get; set; }
+
         protected override void Validate()
         {
         }

@@ -40,5 +40,6 @@
     <property name="Remark" column="remark" type="string" />
     <property name="IfSend" column="if_send" type="string" />
     <property name="IfSyncSale" column="if_sync_sale" type="string" />
+    <property name="SyncPassword" column="sync_password" type="string" />
   </class>
 </hibernate-mapping>

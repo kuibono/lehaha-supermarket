@@ -124,6 +124,8 @@
     <Compile Include="Sys\SysPostService.cs" />
     <Compile Include="Sys\SysPostSupplierRelationService.cs" />
     <Compile Include="Sys\TfDataDownloadService.cs" />
+    <Compile Include="Sys\BranchPostService.cs" />
+    <Compile Include="Sys\IBranchPostService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\1.3 Domain\TEWorkFlow.Domain\TEWorkFlow.Domain.csproj">

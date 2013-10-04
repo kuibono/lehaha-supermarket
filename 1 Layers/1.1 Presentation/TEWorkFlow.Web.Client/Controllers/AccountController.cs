@@ -16,6 +16,9 @@ using TEWorkFlow.Application.Service.Sys;
 using NSH.VSTO;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Application.Service.Archives;
+using System.Data;
+using System.Configuration;
+using System.Threading;
 
 namespace TEWorkFlow.Web.Client.Controllers
 {
@@ -474,6 +477,20 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Index = 48
             };
             SysmodulecontentService.Create(m1);
+
+            m1 = new Sysmodulecontent()
+            {
+                Icon = "icon-bell",
+                Id = "system-branchpostlist",
+                ParentId = "system",
+                Url = "/Test/BranchPostList/",
+                Windowname = "分店通知",
+                EmployeeVisible = true,
+                SupplierVisible = false,
+                OpenInNewWindow = false,
+                Index = 49
+            };
+            SysmodulecontentService.Create(m1);
             #endregion
 
             #endregion
@@ -687,6 +704,32 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 return Json("", JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public JsonResult ReIniAllSupplierLoginNameAndPassword()
+        {
+            string connstr = ConfigurationManager.AppSettings["connectionString"];
+            SqlHelper Helper = new SqlHelper(connstr);
+            DataTable allSupplier = Helper.ExecuteDataTable(CommandType.Text, "select sup_code from fb_supplier_archives where sup_code!='0001'");
+
+            List<int> existName = new List<int>();
+
+            for (int i = 0; i < allSupplier.Rows.Count; i++)
+            {
+                int name = Convert.ToInt32(DateTime.Now.ToString("fff") + (DateTime.Now.Second + i).ToString());
+
+                while (existName.Any(p => p == name) || name < 9999 || name > 99999)
+                {
+                    Thread.Sleep(DateTime.Now.Millisecond);
+                    name = Convert.ToInt32(DateTime.Now.ToString("fff") + (DateTime.Now.Second + i).ToString());
+                }
+                Helper = new SqlHelper(connstr);
+                string str_sql = string.Format("update fb_supplier_archives set  login_name='{0}', login_pass='{1}' where sup_code={2}", name, "888888", allSupplier.Rows[i]["sup_code"].ToString());
+                Helper.ExecuteNonQuery(CommandType.Text, str_sql);
+                Thread.Sleep(13);
+            }
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Login()
