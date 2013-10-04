@@ -33,7 +33,14 @@
             分店码：
         </td>
         <td style="width: 120px;">
-            <input name="InputBCode" value="@Model.InputBCode" class="mini-textbox" maxLength="10" required="true"/>
+            @if (string.IsNullOrEmpty(Model.Id)==false)
+            {
+                <input name="InputBCode" id="InputBCode" value="@Model.InputBCode" class="mini-textbox" maxLength="10" required="false" enabled="false" />
+            }
+            else
+            {
+                <input name="InputBCode" id="InputBCode" value="@Model.InputBCode" class="mini-textbox" maxLength="10" required="true" />
+            }
         </td>
         <td style="width: 80px;">
             负责人:
@@ -150,6 +157,10 @@
     <script type="text/javascript">
         var entityId = "@Model.Id";
         mini.parse();
+
+        if (entityId == "") {
+            new mini.TextBox("InputBCode").enabled = false;
+        }
 
         var form = new mini.Form("form1");
 

@@ -24,8 +24,12 @@
                 url: "/Archives/SaveGoodsArchive",
                 data: o,
                 cache: false,
-                success: function (text) {
-                    CloseWindow("save");
+                success: function (json) {
+                    if(json.IsSuccess==true){
+                        CloseWindow("save");
+                    }else{
+                        alert(json.Message);
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.responseText);
@@ -138,7 +142,6 @@
         <td>
             <input name="GlCode" value="@Model.GlCode" id="GlCode" class="mini-combobox" textField="text" valueField="id" url="/Category/GetFbPaGoodsGl/" showNullItem="true"  required="true" />
         </td>
-        
         <td>
             供货商:
         </td>
@@ -374,7 +377,7 @@
         <td>
             是否审核:
         </td>
-        <td align="left" style="text-align:left">
+        <td align="left" style="text-align: left">
             <div name="IfExamine" class="mini-checkbox" value="@Model.IfExamine" readOnly="false" text="审核"  trueValue="1" falseValue="0">
             </div>
         </td>
@@ -413,7 +416,6 @@
             <div name="IfNew" class="mini-checkbox" checked="@Model.IfNew" readOnly="false" text="新品">
             </div>
         </td>
-        
         <td>
             备用码:
         </td>
@@ -422,13 +424,14 @@
         </td>
         <td>
         </td>
-        <td></td>
+        <td>
+        </td>
     </tr>
     <tr>
         <td>
             备注:
         </td>
-        <td colspan="5" style="width:548px;">
+        <td colspan="5" style="width: 548px;">
             <input name="Remark" value="@Model.Remark" class="mini-textarea"  maxLength="250" style="width:548px;"/>
         </td>
     </tr>
