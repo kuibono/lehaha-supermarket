@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TEWorkFlow.Web.Client.Models
 {
-    public class Result
+    public class cResult
     {
         public bool Success { get; set; }
 

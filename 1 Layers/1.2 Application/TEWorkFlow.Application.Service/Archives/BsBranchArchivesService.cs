@@ -234,6 +234,15 @@ namespace TEWorkFlow.Application.Service.Archives
                 }
 
             }
+            if (string.IsNullOrEmpty(c.key) == false)
+            {
+                q = q.Where(p => p.bName.Contains(c.key)
+                    || p.PyCode.Contains(c.key)
+                    || p.Id == c.key
+                    || p.Functionary.Contains(c.key)
+                    || p.FunctionaryPhone.Contains(c.key)
+                    || p.OfficePhone.Contains(c.key));
+            }
 
             if (string.IsNullOrEmpty(supCode) == false)
             {
@@ -242,7 +251,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }
             int count = q.Count();
-            q = q.OrderByDescending(p => p.OperatorDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
+            q = q.OrderByDescending(p => p.Id).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillAreaName(result);
@@ -288,7 +297,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             }
-            q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p => p.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillAreaName(result);
@@ -341,7 +350,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 q = q.Where(p => p.IfExamine == "true" || p.IfExamine == "1");
             }
 
-            q = q.OrderByDescending(p => p.OperatorDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p => p.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillClassName(result);
             FillAreaName(result);

@@ -196,6 +196,15 @@ namespace TEWorkFlow.Web.Client.Controllers
 
         public JsonResult SearchBranchArchiveList(SearchDtoBase<BsBranchArchives> c, BsBranchArchives s)
         {
+            if (c != null && s != null)
+            {
+                c.entity = s;
+                if (Common.MyEnv.IsSupplierLogin)
+                {
+                    return Json(BsBranchArchivesService.Search(c, Common.MyEnv.CurrentSupplier.Id), JsonRequestBehavior.AllowGet);
+                }
+                return Json(BsBranchArchivesService.Search(c), JsonRequestBehavior.AllowGet);
+            }
             if (Request["key"] == null || string.IsNullOrEmpty(Request["key"]) == false)
             {
                 if (Common.MyEnv.IsSupplierLogin)
@@ -401,17 +410,19 @@ namespace TEWorkFlow.Web.Client.Controllers
         }
         public JsonResult SaveGoodsArchive(GoodsArchives s)
         {
+            Result result = new Result();
+
             if (s.HaveId)
             {
-                GoodsArchivesService.Update(s);
+                result = GoodsArchivesService.Update(s);
             }
             else
             {
                 s.GoodsSubCode = GoodsArchivesService.GenarateGbCode();
                 s.Id = GoodsArchivesService.GenarateId(s);
-                GoodsArchivesService.Create(s);
+                result = GoodsArchivesService.Create(s);
             }
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GoodsDelete(List<string> ids)
         {

@@ -12,13 +12,13 @@ namespace TEWorkFlow.Application.Service.Archives
 {
     public interface IGoodsArchivesService
     {
-        string Create(GoodsArchives entity);
+        Result Create(GoodsArchives entity);
 
         GoodsArchives GetById(string id);
 
         IList<GoodsArchives> GetAll();
 
-        void Update(GoodsArchives entity);
+        Result Update(GoodsArchives entity);
 
         /// <summary>
         /// 删除指定GoodsArchives

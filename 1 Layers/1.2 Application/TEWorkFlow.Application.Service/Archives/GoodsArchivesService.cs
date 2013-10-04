@@ -34,11 +34,25 @@ namespace TEWorkFlow.Application.Service.Archives
         public IFbGoodsArchivesSupplierService FbGoodsArchivesSupplierService { get; set; }
 
         [Transaction]
-        public string Create(GoodsArchives entity)
+        public Result Create(GoodsArchives entity)
         {
+            Result r = new Result();
+            r.IsSuccess = true;
+
+
             if (string.IsNullOrEmpty(entity.GoodsBarCode))
             {
                 entity.GoodsBarCode = GenerateBarCode();
+            }
+            else
+            {
+                //验证条码是否否存在
+                if (EntityRepository.LinqQuery.Any(p => p.GoodsBarCode == entity.GoodsBarCode))
+                {
+                    r.IsSuccess = false;
+                    r.Message = "输入的条形码不唯一，请重新输入";
+                    return r;
+                }
             }
             string id = EntityRepository.Save(entity);
             if (entity.IfExamine == "1")
@@ -65,7 +79,8 @@ namespace TEWorkFlow.Application.Service.Archives
             sup.SupName = entity.SupName;
             //GoodsArchivesSupplierRepository.Save(sup);
             FbGoodsArchivesSupplierService.Create(sup);
-            return id;
+            r.Str = id;
+            return r;
         }
 
         [Transaction]
@@ -84,8 +99,18 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
         [Transaction]
-        public void Update(GoodsArchives entity)
+        public Result Update(GoodsArchives entity)
         {
+            entity.OperatorDate = DateTime.Now;
+            Result r = new Result();
+            r.IsSuccess = true;
+            //验证条码是否否存在
+            if (EntityRepository.LinqQuery.Any(p => p.GoodsBarCode == entity.GoodsBarCode && p.Id != entity.Id))
+            {
+                r.IsSuccess = false;
+                r.Message = "输入的条形码不唯一，请重新输入";
+                return r;
+            }
             var oldEntity = EntityRepository.Get(entity.Id);
 
             if (entity.GbCode.IsNullOrEmpty())
@@ -162,6 +187,7 @@ namespace TEWorkFlow.Application.Service.Archives
             {
                 TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
             }
+            return r;
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 
