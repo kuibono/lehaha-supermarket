@@ -20,6 +20,7 @@
                 {
                 <input id="ifexame" class="mini-combobox" textField="text" valueField="id" value="" url="/Category/ExameItems" nullItemText="--是否审核--" emptyText="--是否审核--" onvaluechanged="search()" />
                 }
+                <input id="AreaCode" name="AreaCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择地区..." url="/Category/PaAreas"  allowInput="false" showNullItem="true" nullItemText="请选择地区..."/>
                 <input id="bName" class="mini-textbox" emptytext="请输入名称" style="width: 150px;" onenter="onKeyEnter" />
                 <a class="mini-button" onclick="search()">查询</a>
             </td>
@@ -41,16 +42,23 @@
             win.hide();
         }
         function search() {
-            if (mini.get("#ifexame") == undefined) {
-                grid.load({
-                    "key": mini.get("#bName").value
-                });
-            } else {
-                grid.load({
-                    "key": mini.get("#bName").value,
-                    "IfExamine": mini.get("#ifexame").value
-                });
+            var ifexamine = "";
+            var key = "";
+            var areaCode = "";
+            if (mini.get("#ifexame") != undefined) {
+                ifexamine = mini.get("#ifexame").value;
             }
+            if (mini.get("#bName") != undefined) {
+                key = mini.get("#bName").value;
+            }
+            if (mini.get("#AreaCode") != undefined) {
+                areaCode = mini.get("#AreaCode").getValue();
+            }
+            grid.load({
+                "key": mini.get("#bName").value,
+                "IfExamine": ifexamine,
+                "AreaCode":areaCode
+            });
         }
         function editRow(id) {
             mini.open({
@@ -59,7 +67,7 @@
                 iconCls: "icon-user",
                 allowResize: false,
                 width: 630,
-                height: 300,
+                height: 330,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -75,7 +83,7 @@
                 iconCls: "icon-user",
                 allowResize: false,
                 width: 630,
-                height: 300,
+                height: 330,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -182,98 +190,4 @@
         }
         
     </div>
-</div>
-<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 300px;"
-    iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
-    showmodal="false" allowresize="false" allowdrag="true">
-    <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
-        <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
-            筛选</a>
-    </div>
-    <form id="frmAdv">
-    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
-        <tr>
-            <td style="width: 70px;">
-                名称:
-            </td>
-            <td colspan="2">
-                <input name="bName"  class="mini-textbox" width="188"/>
-            </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                拼音码:
-            </td>
-            <td>
-                <input name="PyCode" class="mini-textbox"/>
-            </td>
-            <td style="width: 60px">
-                分店类型:
-            </td>
-            <td>
-                <input name="bType" class="mini-textbox"/>
-                @*<input name="bType" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaClasses" value="@Model.bType"  allowInput="false" showNullItem="true" nullItemText="请选择..."/>*@
-            </td>
-        </tr>
-        <tr>
-            <td>
-                所属区域:
-            </td>
-            <td>
-                @*<input name="AreaCode" value="@Model.AreaCode" class="mini-textbox"/>*@
-                <input name="AreaCode" class="mini-combobox"  textField="text" valueField="id" emptyText="请选择..." url="/Category/PaAreas" allowInput="false" showNullItem="true" nullItemText="请选择..."/>
-            </td>
-            <td>
-                负责人:
-            </td>
-            <td>
-                <input name="Functionary" class="mini-textbox" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                负责人电话:
-            </td>
-            <td>
-                <input name="FunctionaryPhone" class="mini-textbox"/>
-            </td>
-            <td>
-                联系地址:
-            </td>
-            <td>
-                <input name="ContactAddress" class="mini-textbox" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                办公电话:
-            </td>
-            <td>
-                <input name="OfficePhone" class="mini-textbox"/>
-            </td>
-            <td>
-                传真:
-            </td>
-            <td>
-                <input name="FaxPhone" class="mini-textbox" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                邮箱:
-            </td>
-            <td>
-                <input name="eMail" class="mini-textbox" />
-            </td>
-            <td>
-                邮政编码:
-            </td>
-            <td>
-                <input name="Postalcode" class="mini-textbox" />
-            </td>
-        </tr>
-    </table>
-    </form>
 </div>

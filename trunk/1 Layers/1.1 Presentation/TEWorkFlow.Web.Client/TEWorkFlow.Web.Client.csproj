@@ -1084,6 +1084,8 @@
     <Content Include="Views\Query\RetailView.cshtml" />
     <Content Include="Views\Report\BranchPurchaseRetailCompare.cshtml" />
     <Content Include="Views\Archives\BranchView.cshtml" />
+    <Content Include="Views\Test\BranchPostList.cshtml" />
+    <Content Include="Views\Test\BranchPostEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

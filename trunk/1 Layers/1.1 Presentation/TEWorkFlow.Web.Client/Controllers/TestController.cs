@@ -19,7 +19,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         private ISysLoginPowerService SysLoginPowerService { get; set; }
         private ISysEnterpriseArchivesService SysEnterpriseArchivesService { get; set; }
         private ISysPostService SysPostService { get; set; }
-
+        private IBranchPostService BranchPostService { get; set; }
         public ActionResult Index()
         {
             var setting = SysEnterpriseArchivesService.Get();
@@ -109,7 +109,30 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAllBranchPosts(string id)
+        {
+            IList<BranchPost> result = new List<BranchPost>();
+            //id 是关键词
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                result = BranchPostService.GetAll(Common.MyEnv.CurrentSupplier.Id).OrderByDescending(p => p.PostTime).ToList();
+            }
+            else
+            {
+                result = BranchPostService.GetAll(null).OrderByDescending(p => p.PostTime).ToList();
+            }
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                result = result.Where(p => p.Title.Contains(id)).ToList();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult PostList()
+        {
+            return View();
+        }
+        public ActionResult BranchPostList()
         {
             return View();
         }
@@ -129,6 +152,19 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             return View(p);
         }
+
+        public ActionResult BranchPostEdit(string id)
+        {
+            BranchPost p = new BranchPost();
+            p.PostUser = Common.MyEnv.CurrentEmployee.Emname;
+            p.PostTime = DateTime.Now;
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                p = BranchPostService.GetById(id);
+            }
+            return View(p);
+        }
+
         public JsonResult SavePost(SysPost s)
         {
             if (s.HaveId)
@@ -143,6 +179,19 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult SaveBranchPost(BranchPost s)
+        {
+            if (s.HaveId)
+            {
+                BranchPostService.Update(s);
+            }
+            else
+            {
+                s.Id = Guid.NewGuid().ToString();
+                BranchPostService.Create(s);
+            }
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult PostReaded(string id)
         {
             if (Common.MyEnv.IsSupplierLogin)
