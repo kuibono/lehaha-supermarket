@@ -355,6 +355,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 {
                     key = Request["key"];
                 }
+                if (key == null)
+                {
+                    key = "";
+                }
 
                 var result = allGoods.Where(p => p.GoodsBarCode.Contains(key)
                     || p.PyCode.Contains(key)
@@ -364,7 +368,8 @@ namespace TEWorkFlow.Web.Client.Controllers
                         p.Id,
                         p.GoodsBarCode,
                         p.PyCode,
-                        p.GoodsName
+                        p.GoodsName,
+                        displayText = p.GoodsBarCode + " " + p.PyCode.FillByStrings(' ', 15) + p.GoodsName
                     });
                 return Json(result, JsonRequestBehavior.AllowGet);
             }

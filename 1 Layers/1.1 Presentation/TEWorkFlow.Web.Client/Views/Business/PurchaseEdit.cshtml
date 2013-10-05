@@ -78,8 +78,8 @@
     <div property="columns">
         <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
             产品 
-            <div property="editor" class="mini-autocomplete" textfield="GoodsName" popupWidth="400"
-                valuefield="Id" url="/Archives/GetAllGoodsArchiveAutoComplete" onvaluechanged="onValueChanged">
+            <div property="editor" class="mini-combobox" textField="displayText" popupWidth="400"
+                valuefield="Id" url="/Archives/GetAllGoodsArchiveAutoComplete" onvaluechanged="onValueChanged" allowInput="true">
                 <div property="columns">
                     <div header="条形码" field="GoodsBarCode">
                     </div>
