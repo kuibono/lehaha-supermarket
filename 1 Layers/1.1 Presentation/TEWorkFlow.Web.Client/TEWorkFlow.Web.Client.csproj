@@ -196,17 +196,27 @@
     <Content Include="Images\Ajax\loading.gif" />
     <Content Include="Images\bannerLeft.jpg" />
     <Content Include="Images\bannerRight.jpg" />
+    <Content Include="Images\bt_bg_log.jpg" />
     <Content Include="Images\calculator_edit.png" />
     <Content Include="Images\checkpoint.png" />
     <Content Include="Images\database.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\delete_16x16.gif" />
     <Content Include="Images\folder_explore.png" />
+    <Content Include="Images\GetAdvertisementForLogin.jpg" />
     <Content Include="Images\jp-mountain%402x.jpg" />
     <Content Include="Images\loginBg.jpg" />
     <Content Include="Images\loginPanel.gif" />
     <Content Include="Images\loginPanel.png" />
+    <Content Include="Images\login_bg.jpg" />
+    <Content Include="Images\login_boxm.jpg" />
+    <Content Include="Images\login_boxtop.jpg" />
+    <Content Include="Images\login_rig.jpg" />
+    <Content Include="Images\login_tishi.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\logo_admin.jpg" />
+    <Content Include="Images\logo_pweb.jpg" />
+    <Content Include="Images\logo_supplier.jpg" />
     <Content Include="Images\note_edit.png" />
     <Content Include="Images\page_delete.png" />
     <Content Include="Images\step.png" />
@@ -249,6 +259,8 @@
     <Content Include="Images\ShowCustomPropertiesPage.png" />
     <Content Include="Images\tabicons.png" />
     <Content Include="Images\TableDrawTable.png" />
+    <Content Include="Images\tag.jpg" />
+    <Content Include="Images\tagdq.jpg" />
     <Content Include="Images\TiffViewer\roateleft.png" />
     <Content Include="Images\TiffViewer\roateright.png" />
     <Content Include="Images\tools-sprites-trans.gif" />
@@ -963,6 +975,7 @@
     <Content Include="Styles\email_go.png" />
     <Content Include="Styles\email_open.png" />
     <Content Include="Styles\header.gif" />
+    <Content Include="Styles\login.css" />
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config">
@@ -1086,6 +1099,7 @@
     <Content Include="Views\Archives\BranchView.cshtml" />
     <Content Include="Views\Test\BranchPostList.cshtml" />
     <Content Include="Views\Test\BranchPostEdit.cshtml" />
+    <Content Include="Views\Account\副本 ELogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

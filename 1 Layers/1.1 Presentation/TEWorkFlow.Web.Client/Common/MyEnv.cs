@@ -41,13 +41,13 @@ namespace TEWorkFlow.Web.Client.Common
                     return false;
                 }
                 string value = cookie.Value.ToString();
-                if (value == "0")
+                if (value == "e")
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace TEWorkFlow.Web.Client.Common
                     return false;
                 }
                 string value = cookie.Value.ToString();
-                if (value == "0")
+                if (value == "s")
                 {
                     return true;
                 }
