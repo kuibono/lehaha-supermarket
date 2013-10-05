@@ -134,5 +134,20 @@ namespace NSH.VSTO
         }
         #endregion
 
+        #region 产生特定范围内的随机数字
+        /// <summary>
+        /// 产生特定范围内的随机数字
+        /// </summary>
+        /// <param name="min">下限</param>
+        /// <param name="max">上线</param>
+        /// <returns></returns>
+        public static int GetRandomNumber(int min, int max)
+        {
+            Guid randSeedGuid = Guid.NewGuid();
+
+            Random random = new Random(BitConverter.ToInt32(randSeedGuid.ToByteArray(), 0));
+            return random.Next(min, max);
+        }
+        #endregion
     }
 }

@@ -1,0 +1,190 @@
+﻿@charset "utf-8";
+/* CSS Document */
+html{margin:0px; padding:0px;}
+body{font-family:Arial, "宋体"; font-size:12px; color: #333333; text-align:center; }
+*{ margin:0px; padding:0px; font-family:Arial, "宋体"; font-size:12px;}
+p{line-height:1.5em; }
+ul li{ margin:0px; padding:0px; list-style-type:none;}
+img{ border:0px; vertical-align:middle;}
+a{color:#333333; text-decoration: none;}
+a:hover{ text-decoration:underline;}
+a {outline: none}
+a:link,a:visited,a:hover,a:active {blr:expression(this.onFocus=this.blur())}
+td{font-family:Arial, "宋体"; font-size:12px; line-height:25px;}
+.clear{ clear:both;}
+.red{ color:#FD6C03;}
+.blue{ color:#40A0BA;}
+.gray{ color:#9E9C9D; text-decoration:underline;}
+
+
+body{ background:url(../images/login_bg.jpg);}
+.backgiound{
+	background:url(../images/login_boxm.jpg) repeat-y;
+	width:823px;
+	margin:0px auto;
+	position: relative;
+}
+.box_top{ background:url(../images/login_boxtop.jpg) no-repeat top;}
+.box_bott{ background:url(../images/login_boxbott.jpg) no-repeat bottom;}
+.help{ text-align:right; padding:5px 10px 0px 0px; height:17px;}
+.help a{ color:#114c61; line-height:17px;}
+
+.logo{ background:url(../images/logo_admin.jpg) no-repeat 62px 5px; height:60px;}
+.logo2{ background:url(../images/logo_pweb_yz.jpg) no-repeat 62px 5px; height:60px;}
+.datang{ background:url(../images/datang.jpg) no-repeat 659px bottom; height:100%;}
+.logincon{
+	padding:0px 6px 18px 6px;
+	position:relative;
+	text-align:left;
+}
+.riglink{
+	position:absolute;
+	right:16px;
+	top:23px;
+}
+.riglink ul li{ float:left; display:block; height:17px;}
+.riglink ul li a{ display:block; background:url(../images/login_rig.jpg) no-repeat; width:77px; line-height:17px; text-align: center; color:#004056;}
+#tag{
+	height:28px;
+	z-index:6;
+	padding-left: 55px;
+}
+#tag ul li{ float:left; display: block;height:28px; margin-right:2px;}
+#tag ul li a{ float:left; background:url(../images/tag.jpg) no-repeat; width:71px;  line-height:28px; color:#FFF; font-weight:bold; font-family:'黑体'; text-align:center;}
+#tag ul li a:hover{ text-decoration:none;}
+#tag ul li.dq a{ background:url(../images/tagdq.jpg) no-repeat; color:#0F4C61; position:relative; bottom:-1px;z-index:6;}
+#tag ul li.dqqy a{ background:url(../images/tag_qy.jpg) no-repeat; width:100px;height:30px; color:#0F4C61; position:relative; font-size:14px; bottom:0px;z-index:6;}
+.tagcon{
+	background:#CCF1F9 url(../images/tagconbgx.jpg)  repeat-x top;
+	border:#64C3D9 solid 1px;
+	border-top:0px;
+	width:320px;
+	position: relative;
+	left:55px;
+	z-index:5;
+	_height:235px;
+}
+.tagconbott{width:328px; background:url(../images/tagconbgbott.png) no-repeat; height:8px; position:absolute; bottom:-8px;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src="images/tagconbgbott.png");_background:none;
+}
+.tagconrig{  background:url(../images/tagconbgrig.png) repeat-y; 	position:absolute; 
+	right:-7px; 
+	top:0px; 
+	width:6px;
+	height:100%;
+	_height:235px;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src="images/tagconbgrig2.png");_background:none;
+	}
+
+#tag1con,#tag2con,#tag3con{
+	padding:15px 13px 0px;
+	display:none;
+	position: relative;
+	z-index:7;
+	}
+.submitButton {
+	background:#fff url(../images/bt_bg_log.jpg);
+	color: #FFFFFF;
+	cursor: hand;
+	text-align: center;
+	width: 101px;
+	height: 35px;
+	line-height:30px;
+	border:0px;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	float: left;
+}	
+#yuliu{
+	display:none;
+	background:#FEFFFD url(../images/yuliubg.jpg) repeat-x bottom;
+	border:#3594B0 solid 1px;
+	line-height:25px;
+	padding:0px 5px;
+	position: absolute;
+	left:250px;
+	top: 20px;
+	width:50%;
+	z-index:7;
+}
+#yuliu span.sj{ background:url(../images/yuliubgsj.jpg) no-repeat; width:12px; height:13px; display:block; position:absolute;left: -11px;
+	top: 5px;}
+#yuliu span.title{ color:#003F58;}
+
+.inputTxt{ width:155px; height:20px; line-height:20px; border:#61C4D7 solid 1px;}
+.logtitle{ color:#1E596B; text-align:right; font-weight: bold; line-height:35px;}
+.zhuce{ float:left;}
+.zhuce a{	line-height:35px;}
+.xiazai{ padding:10px;}
+
+.qianyue{ 
+	background:url(../images/qinayuebg.png) no-repeat; 
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src="zh_CN/tzcb/Style1/images/qinayuebg.png");
+	_background:none;
+	width:237px; 
+	height:185px; 
+	position:absolute;	
+	left:470px;
+	z-index:5; 
+	top:40px;
+	padding:25px 20px;
+	}
+.qianyue h3{ color:#fc7d00; font:18px "微软雅黑"; font-size:18px; text-align:center; font-weight:bold;}
+.qianyue table{ margin-top:15px;}
+.qianyue table th{ font:'黑体' 14px;}
+
+.tuiguang{
+	height:234px;
+	width:812px;
+	position: absolute;
+	right:6px;
+	z-index:1;
+	top:40px;
+	overflow: hidden;
+}
+.tishi{
+	background:url(../images/login_tishi.jpg) no-repeat 4px top;
+	text-align:left;
+	margin-top: 55px;
+	position: relative;
+	color:#777;
+}
+.dianhua{padding:30px 230px 25px 37px;
+}
+.footbar{ text-align:center; line-height:25px;}
+
+/*- 软键盘开始 -*/
+
+.keylogo{ background: url(../images/keylogo.jpg) no-repeat 10px center; height:25px; padding-left:35px; line-height:25px;}
+.keylogo .blueb{ color:#013F56; font-size:16px; font-family:'黑体'; font-weight:bold;}
+.keylogo .blue{color:#333;}
+#key{border: gray 1px solid;padding:5px;background:#d1f2f9;}
+
+#login-keyboard1{/*background:#72c9dc;padding:5px;*/display:none; 15; position: absolute; cursor: default; border:#ccc 2px solid;border-top:#efefef;border-left:#efefef; _width:403px;}
+#login-keyboard-numeric1{}
+#login-keyboard-numeric1 table tr td button{
+	width:100%; 
+	padding:0px 7px;
+	line-height:26px;
+	background:url(../images/keybg.jpg) no-repeat center;
+	border:0px;
+	font-family: "Arial Black";
+	cursor: pointer;
+}
+#login-keyboard-numeric1 table tr td input{
+	width:100%; padding:0px 5px; line-height:20px;	cursor: pointer;}
+
+
+#login-keyboard-special1{}
+#login-keyboard-special1 table tr td button{
+	width:30px;padding:0px 5px; text-align:center;line-height:20px;	cursor: pointer;
+}
+#login-keyboard-alpha1{}
+#login-keyboard-alpha1 table tr td button{padding:0px 5px;width:30px; line-height:27px;text-align:center;
+background:url(../images/keybg2.jpg) no-repeat center;		cursor: pointer;	font-family: "Arial Black";
+	border:0px;}
+
+#login-keyboard-controls1{}
+#login-keyboard-controls1 table tr td button{text-align:center;	width:100%;line-height:20px;	cursor: pointer;}
+/*- 软键盘结束 -*/

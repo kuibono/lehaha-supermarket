@@ -2,123 +2,162 @@
 @using TEWorkFlow.Web.Client.Models
 @model TEWorkFlow.Web.Client.Models.LoginModel
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" style="display: block;">
 <head>
-    <title>系统登录</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+    <title>登录</title>
+    <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/login.css")" />
     <script src="~/scripts/boot.js" type="text/javascript"></script>
-    <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/reset.css")" />
-    <link type="text/css" rel="Stylesheet" href="@Url.Content("~/Styles/controls.css")" />
     <script type="text/javascript" src="@Url.Content("~/Scripts/basic.js")"></script>
     <style type="text/css">
-        #bg
+        div.shadow
         {
-            margin-left: auto;
-            margin-right: auto; /*background-image: url(/Images/loginBg.jpg);
-            background-repeat:no-repeat;*/
-            width: 371px;
-            height: 468px;
-            padding-top: 0px;
-            overflow: hidden;
-        }
-        #bg1
-        {
-            position: absolute;
+            margin: 0;
+            pading: 0;
+            z-index: 9999;
+            background-color: #000;
             width: 100%;
-            height: 100%;
-            left: 0;
-            z-index: 0;
-        }
-        #bg1 img
-        {
-            display: block;
-            margin: auto;
-            height: 100%;
-            width: 100%; /*min-width: 50%;
-            min-height: 50%;*/
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        #loginPn
-        {
-            width: 371px;
-            height: 198px;
-            margin: 0px auto;
-            position: relative;
-            background-image: url(/Images/loginPanel.png);
-            background-repeat: no-repeat;
-            -webkit-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
-            -moz-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
-            box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, .4);
-        }
-        #loginPn img
-        {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 2;
+            height: 8000px;
+            filter: alpha(opacity=40);
+            -moz-opacity: 0.4;
+            -khtml-opacity: 0.4;
+            opacity: 0.4;
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            left: -50%;
+            text-align: center;
             display: none;
         }
-        #form
-        {
-            position: relative;
-        }
-        input
+        div.cover
         {
             position: absolute;
-            border: 0px solid transparent;
-            background-color: transparent;
-            width: 120px;
-            z-index: 100;
-            height: 17px;
-        }
-        .hide
-        {
-            position: absolute;
-            border: 0px solid transparent !important;
-            background-color: transparent !important;
-            width: 120px;
-            z-index: 100;
-            height: 17px;
-        }
-        #validation
-        {
-            color: Red;
-            position: absolute;
-            top: 200px;
+            top: 20%;
+            left: 50%;
+            margin-left: -100px;
+            z-index: 99999;
+            text-align: center;
+            color: #FFF;
+            display: none;
         }
     </style>
-</head>
-<body style="border: 1px solid transparent;">
-    <div id="bg1">
-        <img src="/Images/loginBg.jpg" style="display: none" />
-    </div>
-    <table style="margin-top: 150px; margin-left: auto; margin-right: auto">
-        <tr>
-            <td style="vertical-align: top;">
-                <img src="/Images/logo.png" />
-            </td>
-            <td>
-                <div id="bg" style="">
-                    <div id="loginPn">
-                        <img src="/Images/loginPanel.png" />
-                        <form method="post" action="">
-                        <input type="hidden" id="logintype" name="logintype" value="1" />
-                        <input class="hide" name="UserName" type="text" style="left: 120px; top: 82px;" />
-                        <input class="hide" name="Password" type="password" style="left: 120px; top: 117px;" />
-                        <input class="hide" type="submit" value="" style="left: 77px; top: 165px; width: 62px;
-                            cursor: hand;" />
-                        <input class="hide" type="reset" value="" style="left: 217px; top: 165px; width: 62px;
-                            cursor: hand;" />
-                        </form>
-                        <div id="validation">@Html.ValidationSummary(true, "")</div>
+    <body>
+        <form name="form1" method="post">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="backgiound">
+            <div class="box_top">
+                <div class="box_bott">
+                    <div class="help">
+                    </div>
+                    <div class="logo" style="background: url(../images/logo_supplier.jpg) no-repeat 62px 5px;">
+                    </div>
+                    <div style="height: 10px;">
+                    </div>
+                    <div class="logincon">
+                        <div id="tag">
+                            <ul>
+                                <li id="tag1" class="dq"><a href="#">登录</a></li>
+                            </ul>
+                        </div>
+                        <div class="tagcon">
+                            <div id="tag1con" style="display: block;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="24%" class="logtitle">
+                                                用户名：
+                                            </td>
+                                            <td width="53%">
+                                                 <input type="hidden" id="logintype" name="logintype" value="1" />
+                                                <input type="text" id="UserName" name="UserName" class="inputTxt">
+                                            </td>
+                                            <td width="23%">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="logtitle">
+                                                登录密码：
+                                            </td>
+                                            <td>
+                                                <input type="password" id="Password" name="Password" class="inputTxt">
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="logtitle">
+                                                验证码：
+                                            </td>
+                                            <td>
+                                                <input type="text" class="inputTxt" id="VCode" name="VCode" style="width: 75px;" />
+                                                <img id="_tokenImg" name="_tokenImg"  src="@Url.Content("~/Account/vcode")" onclick="this.src='@Url.Content("~/Account/vcode")?'+Math.random()" width="70"
+                                                    height="25">
+                                            </td>
+                                            <td align="left">
+                                                <a href="javascript:void(0)"
+                                                    onclick="document.getElementById('_tokenImg').src='@Url.Content("~/Account/vcode")?'+Math.random()" class="blue">换一张</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="2" align="left">
+                                                <input type="submit" value="登   录" class="submitButton" name="Submit" id="Submit">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div id="validation" style="color:#F00;">@Html.ValidationSummary(true, "")</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="xiazai">
+                            </div>
+                            <div class="tagconbott">
+                            </div>
+                            <div class="tagconrig">
+                            </div>
+                        </div>
+                        <div class="tuiguang">
+                            <img src="/images/GetAdvertisementForLogin.jpg" />
+                        </div>
+                    </div>
+                    <div class="tishi">
+                        <div class="dianhua">
+                            <p>
+                                <b>· </b>妥善保管账号、密码等重要信息。</p>
+                            <p>
+                                <b>· </b>请勿在公共场合登录本系统。</p>
+                            <p>
+                                <b>· </b>如果忘记或丢失账号密码，请及时与工作人员联系找回。</p>
+                        </div>
                     </div>
                 </div>
-            </td>
-        </tr>
-    </table>
-</body>
+            </div>
+        </div>
+        <table width="653" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <div>
+                            <!-- InstanceBeginEditable name="hints" -->
+                            <!-- InstanceEndEditable -->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footbar">
+            ©乐哈哈 版权所有</div>
+    </body>
 </html>

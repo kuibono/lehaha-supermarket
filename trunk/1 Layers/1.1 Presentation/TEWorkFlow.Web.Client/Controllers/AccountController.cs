@@ -716,16 +716,18 @@ namespace TEWorkFlow.Web.Client.Controllers
 
             for (int i = 0; i < allSupplier.Rows.Count; i++)
             {
-                int name = Convert.ToInt32(DateTime.Now.ToString("fff") + (DateTime.Now.Second + i).ToString());
+                int name = NSH.VSTO.Extend.GetRandomNumber(10000,99999);
 
-                while (existName.Any(p => p == name) || name < 9999 || name > 99999)
+                while (existName.Any(p => p == name))
                 {
-                    Thread.Sleep(DateTime.Now.Millisecond);
-                    name = Convert.ToInt32(DateTime.Now.ToString("fff") + (DateTime.Now.Second + i).ToString());
+                    name = NSH.VSTO.Extend.GetRandomNumber(10000, 99999);
                 }
                 Helper = new SqlHelper(connstr);
                 string str_sql = string.Format("update fb_supplier_archives set  login_name='{0}', login_pass='{1}' where sup_code={2}", name, "888888", allSupplier.Rows[i]["sup_code"].ToString());
                 Helper.ExecuteNonQuery(CommandType.Text, str_sql);
+                Response.Buffer = false;
+                Response.Write(name + "<br/>");
+
                 Thread.Sleep(13);
             }
 
@@ -777,18 +779,18 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ModelState.AddModelError("", "密码不能为空");
                 return View(model);
             }
-            //if (String.IsNullOrWhiteSpace(model.VCode))
-            //{
-            //    ModelState.AddModelError("", "验证码不能为空");
-            //    return View(model);
-            //}
-            //if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
-            //{
-            //    ModelState.AddModelError("", "验证码错误");
-            //    Session.Remove("SafeCode");
-            //    return View(model);
-            //}
-            //Session.Remove("SafeCode");//删除验证码Session 防止机器登录
+            if (String.IsNullOrWhiteSpace(model.VCode))
+            {
+                ModelState.AddModelError("", "验证码不能为空");
+                return View(model);
+            }
+            if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
+            {
+                ModelState.AddModelError("", "验证码错误");
+                Session.Remove("SafeCode");
+                return View(model);
+            }
+            Session.Remove("SafeCode");//删除验证码Session 防止机器登录
 
 
             LoginResult result = SysLoginPowerService.CheckUser(model.UserName, model.Password, model.logintype);
@@ -967,17 +969,17 @@ namespace TEWorkFlow.Web.Client.Controllers
                 ModelState.AddModelError("", "密码不能为空");
                 return View(model);
             }
-            //if (String.IsNullOrWhiteSpace(model.VCode))
-            //{
-            //    ModelState.AddModelError("", "验证码不能为空");
-            //    return View(model);
-            //}
-            //if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
-            //{
-            //    ModelState.AddModelError("", "验证码错误");
-            //    Session.Remove("SafeCode");
-            //    return View(model);
-            //}
+            if (String.IsNullOrWhiteSpace(model.VCode))
+            {
+                ModelState.AddModelError("", "验证码不能为空");
+                return View(model);
+            }
+            if (Session["SafeCode"] == null || Session["SafeCode"].ToString() != model.VCode)
+            {
+                ModelState.AddModelError("", "验证码错误");
+                Session.Remove("SafeCode");
+                return View(model);
+            }
             Session.Remove("SafeCode");//删除验证码Session 防止机器登录
 
 
@@ -997,7 +999,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
-                SetUserType(false);
+                SetUserType(true);
                 return RedirectToAction("Index", "Test");
             }
             else
@@ -1043,7 +1045,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         public void SetUserType(bool isEmployee)
         {
             HttpCookie cookie = new HttpCookie("userType");
-            cookie.Value = isEmployee ? "1" : "0";
+            cookie.Value = isEmployee ? "e" : "s";
             cookie.Expires = DateTime.Now.AddMonths(1);
             cookie.Path = "/";
             HttpContext.Response.SetCookie(cookie);
