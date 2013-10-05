@@ -282,7 +282,6 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.GoodsName.Contains(c.key)
                     || l.GoodsSubName.Contains(c.key)
                     || l.PyCode.Contains(c.key)
-                    || l.GoodsState.Contains(c.key)
                     || l.ProducingArea.Contains(c.key)
                     || l.ArticleNumber.Contains(c.key)
                     || l.Specification.Contains(c.key)
@@ -291,7 +290,6 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.OfferMode.Contains(c.key)
                     || l.UnderFloorCode.Contains(c.key)
                     || l.UnderCounterCode.Contains(c.key)
-                    || l.CheckUnitCode.Contains(c.key)
                     || l.Operator.Contains(c.key)
                     || l.Assessor.Contains(c.key)
                     select l;
@@ -355,10 +353,10 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.PyCode.Contains(c.entity.PyCode));
                 }
-                if (string.IsNullOrEmpty(c.entity.GoodsState) == false)
-                {
-                    q = q.Where(p => p.GoodsState.Contains(c.entity.GoodsState));
-                }
+                //if (string.IsNullOrEmpty(c.entity.GoodsState) == false)
+                //{
+                //    q = q.Where(p => p.GoodsState.Contains(c.entity.GoodsState));
+                //}
                 if (string.IsNullOrEmpty(c.entity.ProducingArea) == false)
                 {
                     q = q.Where(p => p.ProducingArea.Contains(c.entity.ProducingArea));
@@ -421,10 +419,10 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.UnderCounterCode.Contains(c.entity.UnderCounterCode));
                 }
-                if (string.IsNullOrEmpty(c.entity.CheckUnitCode) == false)
-                {
-                    q = q.Where(p => p.CheckUnitCode.Contains(c.entity.CheckUnitCode));
-                }
+                //if (string.IsNullOrEmpty(c.entity.CheckUnitCode) == false)
+                //{
+                //    q = q.Where(p => p.CheckUnitCode.Contains(c.entity.CheckUnitCode));
+                //}
                 if (c.entity.PurchasePrice > 0)
                 {
                     q = q.Where(p => p.PurchasePrice == c.entity.PurchasePrice);
@@ -521,7 +519,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.GoodsName.Contains(key)
                     || l.GoodsSubName.Contains(key)
                     || l.PyCode.Contains(key)
-                    || l.GoodsState.Contains(key)
+                    //|| l.GoodsState.Contains(key)
                     || l.ProducingArea.Contains(key)
                     || l.ArticleNumber.Contains(key)
                     || l.Specification.Contains(key)
@@ -530,7 +528,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.OfferMode.Contains(key)
                     || l.UnderFloorCode.Contains(key)
                     || l.UnderCounterCode.Contains(key)
-                    || l.CheckUnitCode.Contains(key)
+                    //|| l.CheckUnitCode.Contains(key)
                     || l.Operator.Contains(key)
                     || l.Assessor.Contains(key)
                     || l.IfExamine.Contains(key)

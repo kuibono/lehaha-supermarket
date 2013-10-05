@@ -710,7 +710,7 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             string connstr = ConfigurationManager.AppSettings["connectionString"];
             SqlHelper Helper = new SqlHelper(connstr);
-            DataTable allSupplier = Helper.ExecuteDataTable(CommandType.Text, "select sup_code from fb_supplier_archives where sup_code!='0001'");
+            DataTable allSupplier = Helper.ExecuteDataTable(CommandType.Text, "select sup_code from fb_supplier_archives");
 
             List<int> existName = new List<int>();
 
