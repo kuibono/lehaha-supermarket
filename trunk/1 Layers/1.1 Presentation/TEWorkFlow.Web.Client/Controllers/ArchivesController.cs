@@ -431,6 +431,10 @@ namespace TEWorkFlow.Web.Client.Controllers
                 s.Id = GoodsArchivesService.GenarateId(s);
                 result = GoodsArchivesService.Create(s);
             }
+            if (string.IsNullOrEmpty(s.SupCode) == false)
+            {
+                Cache.Clear(s.SupCode);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GoodsDelete(List<string> ids)
