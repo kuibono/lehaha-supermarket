@@ -188,3 +188,8 @@ background:url(../images/keybg2.jpg) no-repeat center;		cursor: pointer;	font-fa
 #login-keyboard-controls1{}
 #login-keyboard-controls1 table tr td button{text-align:center;	width:100%;line-height:20px;	cursor: pointer;}
 /*- 软键盘结束 -*/
+
+#_tokenImg
+{
+    display:none;
+}

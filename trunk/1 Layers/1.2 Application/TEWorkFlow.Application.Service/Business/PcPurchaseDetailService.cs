@@ -8,6 +8,7 @@ using Spring.Transaction.Interceptor;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Business;
 using TEWorkFlow.Domain.Archives;
+using NSH.VSTO;
 
 namespace TEWorkFlow.Application.Service.Business
 {
@@ -64,28 +65,30 @@ namespace TEWorkFlow.Application.Service.Business
         [Transaction]
         public IList<PcPurchaseDetail> GetDetailsByManageId(string manageId)
         {
+            //var allGoods = GoodsRepository.LinqQuery.AsCache("_allGoods");
             var q = from l in EntityRepository.LinqQuery where l.ManageId == manageId select l;
             if (q.Count() == 0)
             {
                 return new List<PcPurchaseDetail>();
             }
-            var result= (from l in EntityRepository.LinqQuery where l.ManageId == manageId select l).ToList();
-            var goodsIds = result.Select(p => p.GoodsCode).ToArray();
-            var goods = GoodsRepository.LinqQuery.Where(p => goodsIds.Contains(p.Id)).ToList();
-            FillGoodsName(result,goods);
+            var result = (from l in EntityRepository.LinqQuery where l.ManageId == manageId select l).ToList();
+            //var goodsIds = result.Select(p => p.GoodsCode).ToArray();
+            //var goods = allGoods.Where(p => goodsIds.Contains(p.Id)).ToList();
+            FillGoodsName(result);
             return result;
         }
 
-        private void FillGoodsName(IList<PcPurchaseDetail> details,List<GoodsArchives> goods=null )
+        private void FillGoodsName(IList<PcPurchaseDetail> details)
         {
-            if (goods == null)
-            {
-                goods = GoodsRepository.LinqQuery.ToList();
-            }
+            var goods = GoodsRepository.LinqQuery.Select(p => new StringKeyValuePair { Key = p.Id, Value = p.GoodsName }).AsCache("_allGoodsNames");
+            //if (goods == null)
+            //{
+            //    goods = GoodsRepository.LinqQuery.ToList();
+            //}
             for (int i = 0; i < details.Count; i++)
             {
                 string goodsId = details[i].GoodsCode;
-                string goodsName = goods.Where(p => p.Id == goodsId).Count() > 0 ? goods.Where(p => p.Id == goodsId).First().GoodsName : "";
+                string goodsName = goods.Where(p => p.Key == goodsId).Count() > 0 ? goods.Where(p => p.Key == goodsId).First().Value : "";
 
                 details[i].GoodsName = goodsName;
             }

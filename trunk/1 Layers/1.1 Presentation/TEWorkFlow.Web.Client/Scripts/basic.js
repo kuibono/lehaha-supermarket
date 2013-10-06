@@ -50,8 +50,8 @@
         $(this).width($(this).parent().width() - 20);
         $(this).show();
     });
-
-
+    $("#_tokenImg").prop("src", "/Account/vcode/?" + Math.random());
+    $("#_tokenImg").show();
 })
 function loading(msg) {
     if (msg) {

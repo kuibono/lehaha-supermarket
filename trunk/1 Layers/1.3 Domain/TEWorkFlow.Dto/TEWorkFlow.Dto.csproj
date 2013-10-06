@@ -49,6 +49,7 @@
     <Compile Include="Result.cs" />
     <Compile Include="SearchDtoBase.cs" />
     <Compile Include="SearchResult.cs" />
+    <Compile Include="StringKeyValuePair.cs" />
     <Compile Include="SysTreeNodeDto.cs" />
   </ItemGroup>
   <ItemGroup>
