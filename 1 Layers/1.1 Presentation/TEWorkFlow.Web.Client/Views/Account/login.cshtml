@@ -95,7 +95,7 @@
                                             </td>
                                             <td>
                                                 <input type="text" class="inputTxt" id="VCode" name="VCode" style="width: 75px;" />
-                                                <img id="_tokenImg" name="_tokenImg"  src="@Url.Content("~/Account/vcode")" onclick="this.src='@Url.Content("~/Account/vcode")?'+Math.random()" width="70"
+                                                <img id="_tokenImg" name="_tokenImg"  src="/Account/vcode/?@Url.Encode(DateTime.Now.ToString("yyyyMMddHHmmssfff"))" onclick="this.src='@Url.Content("~/Account/vcode")?'+Math.random()" width="70"
                                                     height="25">
                                             </td>
                                             <td align="left">

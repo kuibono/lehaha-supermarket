@@ -225,6 +225,10 @@ namespace TEWorkFlow.Web.Client.Controllers
         {
             return Json(BsBranchArchivesService.Search(id), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult SearchAllranchesForTree(string id)
+        {
+            return Json(BsBranchArchivesService.Search(id,999999), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult BranchEdit(string id)
         {
