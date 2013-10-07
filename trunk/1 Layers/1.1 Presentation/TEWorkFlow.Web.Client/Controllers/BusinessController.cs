@@ -142,10 +142,12 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
 
             //如果订单不存在，则现在新建一个
-            if (PcPurchaseManageService.GetById(Id) == null || PcPurchaseManageService.GetById(Id).HaveId == false)
+            PcPurchaseManage manage = PcPurchaseManageService.GetById(Id);
+
+            if (manage == null || manage.HaveId == false)
             {
                 //不存在
-                PcPurchaseManage manage = new PcPurchaseManage();
+                manage = new PcPurchaseManage();
                 manage.Id = Id;
                 PcPurchaseManageService.Create(manage);
             }

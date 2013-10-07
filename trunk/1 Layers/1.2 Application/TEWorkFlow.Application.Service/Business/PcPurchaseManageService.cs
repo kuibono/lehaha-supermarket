@@ -240,7 +240,7 @@ namespace TEWorkFlow.Application.Service.Business
             }
             int count = q.Count();
 
-            q = q.OrderByDescending(p => p.PurchaseDate).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
+            q = q.OrderByDescending(p => p.Id).Skip((c.pageIndex) * c.pageSize).Take(c.pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
             FillBranchName(result);
@@ -266,7 +266,7 @@ namespace TEWorkFlow.Application.Service.Business
                     select l;
             }
             int count = q.Count();
-            q = q.OrderByDescending(p=>p.PurchaseDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p=>p.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
             FillBranchName(result);
@@ -292,7 +292,7 @@ namespace TEWorkFlow.Application.Service.Business
             }
             int count = q.Count();
 
-            var result = q.OrderByDescending(p => p.PurchaseDate).ToList();
+            var result = q.OrderByDescending(p => p.Id).ToList();
             for (int i = 0; i < result.Count; i++)
             {
                 var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
@@ -339,7 +339,7 @@ namespace TEWorkFlow.Application.Service.Business
             }
             int count = q.Count();
 
-            var result = q.OrderByDescending(p=>p.PurchaseDate).ToList();
+            var result = q.OrderByDescending(p=>p.Id).ToList();
             for (int i = 0; i < result.Count; i++)
             {
                 var statics = PurchaseDetailRepository.LinqQuery.Where(p => p.ManageId == result[i].Id);
@@ -384,7 +384,7 @@ namespace TEWorkFlow.Application.Service.Business
             {
                 q = from l in q where l.EnCode == SupCode select l;
             }
-            var manages = q.OrderByDescending(p => p.PurchaseDate).ToList();
+            var manages = q.OrderByDescending(p => p.Id).ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 
             var details = (from l in PurchaseDetailRepository.LinqQuery
@@ -441,7 +441,7 @@ namespace TEWorkFlow.Application.Service.Business
             //{
             //    q = from l in q where l.SupCode == SupCode select l;
             //}
-            var manages = q.OrderByDescending(p => p.PurchaseDate).ToList();
+            var manages = q.OrderByDescending(p => p.Id).ToList();
             var manageIds = manages.Select(p => p.Id).ToArray();
 
             var details = (from l in PurchaseDetailRepository.LinqQuery
@@ -492,7 +492,7 @@ namespace TEWorkFlow.Application.Service.Business
 
 
             }
-            q = q.OrderByDescending(p => p.PurchaseDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            q = q.OrderByDescending(p => p.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var result = q.ToList();
             FillDepartmentName(result);
             FillBranchName(result);

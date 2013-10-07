@@ -217,7 +217,7 @@
                 grid.cancelEdit();
             }
             var row = {};
-            grid.addRow(row, grid.totalCount);
+            grid.addRow(row, grid.data.length);
 
             grid.cancelEdit();
             grid.beginEditRow(row);
@@ -269,7 +269,7 @@
                 return false;
             }
             grid.commitEdit();
-            var rowData = grid.getChanges()[0];
+            var rowData = grid.getChanges()[grid.getChanges().length-1];
             if (!rowData) {
                 //没有改动
                 return;
@@ -279,7 +279,7 @@
                 grid.reload();
                 return;
             }
-            grid.loading("保存中，请稍后......");
+            //grid.loading("保存中，请稍后......");
             var json = mini.encode(rowData);
 
             $.ajax({
@@ -287,7 +287,7 @@
                 data: { "data": json },
                 type: "post",
                 success: function (text) {
-                    grid.load("", newRow);
+                    //grid.load("", newRow);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(jqXHR.responseText);
