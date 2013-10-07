@@ -373,7 +373,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                         p.GoodsBarCode,
                         p.PyCode,
                         p.GoodsName,
-                        displayText = p.GoodsBarCode + " " + p.PyCode.FillByStrings(' ', 15) + p.GoodsName
+                        displayText = p.GoodsName+" "+p.GoodsBarCode + "," + p.PyCode
                     });
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
