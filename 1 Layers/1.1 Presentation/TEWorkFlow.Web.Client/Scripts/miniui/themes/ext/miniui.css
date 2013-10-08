@@ -2514,11 +2514,13 @@ a:hover.mini-calendar-menu-year
 }
 
 .mini-listbox-item-hover{	
-	background:#e2ecf7;
+	background:rgb(51,102,255);
+	color:#FFF;
 }
 .mini-listbox-item-selected{	
 	background:#ecedef;
-	color:Black;
+	background:rgb(51,51,153);
+	color:#FFF;
 }
 
 

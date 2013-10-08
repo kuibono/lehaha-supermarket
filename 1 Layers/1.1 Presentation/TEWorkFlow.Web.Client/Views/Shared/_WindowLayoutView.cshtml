@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
     <script src="~/scripts/boot.js" type="text/javascript"></script>
 </head>
-<body>
+<body style="overflow-y: scroll;">
     <form id="form1" method="post">
     <input name="Id" class="mini-hidden" value="@Model.Id" />
     <div style="padding-left: 11px; padding-bottom: 5px;" id="printArea">
@@ -45,7 +45,10 @@
             $(".mini-grid-body").css("overflow", "hidden");
             $("#qr").show();
             $(".mini-grid-cell").css("font-size", "13px")
+            var height = $(".mini-grid-body").first().height();
+            $(".mini-grid-body").css("height", $(".mini-grid-body tr").size() * 23);
             $("#printArea").printArea();
+            $(".mini-grid-body").css("height",height);
             //$(".mini-grid-border_tmp").removeClass("mini-grid-border_tmp").addClass("mini-grid-border");
             $("#qr").hide();
             $(".mini-grid-cell").css("font-size", "9pt")

@@ -101,6 +101,7 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public Result Update(GoodsArchives entity)
         {
+            Cache.Clear(entity.SupCode);
             entity.OperatorDate = DateTime.Now;
             Result r = new Result();
             r.IsSuccess = true;
