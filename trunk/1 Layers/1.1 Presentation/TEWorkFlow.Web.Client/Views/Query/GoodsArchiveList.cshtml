@@ -12,8 +12,8 @@
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 100%;">
-                        <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
-                            筛选</a> <span class="separator"></span>
+                        @*<a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
+                            筛选</a> <span class="separator"></span>*@
                     </td>
                     <td style="white-space: nowrap;">
                         <input id="ifexame" class="mini-combobox" textfield="text" valuefield="id" value=""
@@ -145,7 +145,7 @@
     <div class="mini-fit">
         <div id="datagrid1" class="mini-datagrid" url="/Archives/SearchGoodsArchiveList"
             style="width: 100%; height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]"
-            pagesize="20" multiselect="true">
+            pagesize="20" multiselect="true" onrowclick="rowclick">
             <div property="columns">
                 <div type="indexcolumn" width="30">
                 </div>
@@ -178,7 +178,10 @@
     <script type="text/javascript">
         mini.parse();
 
-
+        function rowclick(e) {
+            //$(e.sender).find(".Edit_Button").first().click();
+            view(e.record.Id);
+        }
         var grid = mini.get("datagrid1");
 
 
@@ -309,6 +312,7 @@
                 }
             });
         }
+        
     </script>
 </body>
 </html>

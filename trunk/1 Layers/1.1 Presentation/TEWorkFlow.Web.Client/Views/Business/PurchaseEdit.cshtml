@@ -39,7 +39,7 @@
             门店:
         </td>
         <td style="width: 170px;">
-            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
+            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranchesForTree" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
         </td>
         <td style="width: 60px;">
             采购类型:
@@ -281,7 +281,7 @@
             }
             //grid.loading("保存中，请稍后......");
             var json = mini.encode(rowData);
-
+            newRow();
             $.ajax({
                 url: "/Business/SaveGoodsToPurchase/" + entityId,
                 data: { "data": json },

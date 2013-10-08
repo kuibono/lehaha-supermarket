@@ -126,7 +126,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 }
                 if (string.IsNullOrEmpty(c.entity.AreaCode) == false)
                 {
-                    q = q.Where(p => p.AreaCode.Contains(c.entity.AreaCode));
+                    q = q.Where(p => p.AreaCode==c.entity.AreaCode);
                 }
                 if (string.IsNullOrEmpty(c.entity.ClassCode) == false)
                 {
@@ -271,7 +271,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.PyCode.Contains(key)
                     || l.bType.Contains(key)
                     || l.bState.Contains(key)
-                    || l.AreaCode.Contains(key)
+                    || l.AreaCode==key
                     || l.ClassCode.Contains(key)
                     || l.Functionary.Contains(key)
                     || l.FunctionaryPhone.Contains(key)
@@ -317,7 +317,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.PyCode.Contains(key)
                     || l.bType.Contains(key)
                     || l.bState.Contains(key)
-                    || l.AreaCode.Contains(key)
+                    || l.AreaCode==key
                     || l.ClassCode.Contains(key)
                     || l.Functionary.Contains(key)
                     || l.FunctionaryPhone.Contains(key)
