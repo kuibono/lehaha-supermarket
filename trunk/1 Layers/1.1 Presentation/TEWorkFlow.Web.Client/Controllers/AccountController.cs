@@ -1004,7 +1004,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "账号或密码错误，请重试");
+                ModelState.AddModelError("", result.Text);
                 return View(model);
             }
 

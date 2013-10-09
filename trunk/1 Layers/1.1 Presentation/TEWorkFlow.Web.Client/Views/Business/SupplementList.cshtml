@@ -51,7 +51,7 @@
                 iconCls: "icon-cart",
                 allowResize: false,
                 width: 660,
-                height: 170,
+                height:300,
                 onload: function () {
                 },
                 ondestroy: function (action) {
@@ -80,7 +80,7 @@
             <a class="mini-button" iconcls="icon-search" plain="true" onclick="treesearch">查找</a>
         </div>
         <div class="mini-fit">
-            <ul id="tree1" class="mini-tree" url="/Archives/SearchAllranches" style="width: 100%;"
+            <ul id="tree1" class="mini-tree" url="/Archives/SearchAllranchesForTree" style="width: 100%;"
                 showtreeicon="true" textfield="bName" idfield="Id" parentfield="pid" resultastree="false">
             </ul>
         </div>
@@ -92,9 +92,7 @@
                     <tr>
                         <td style="width: 100%;">
                             <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
-                            <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
-                            <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
-                                筛选</a> <span class="separator"></span>
+                            <a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a> <span class="separator"></span>
                         </td>
                         <td style="white-space: nowrap;">
                             <input id="key" class="mini-textbox" emptytext="请输入关键词" style="width: 150px;" onenter="onKeyEnter" />
@@ -123,71 +121,15 @@
                 <div field="CreateDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
                     创建时间</div>
 @*                <div field="ExpectArriveDate" headeralign="center" align="center" width="60" dateformat="yyyy-MM-dd">
-                    预计到货日期</div>*@
+                    预计到货日期</div>
                 <div field="IfExamine" headeralign="center" align="center" width="40" renderer="onExamRender">
-                    审核</div>
+                    审核</div>*@
+                <div field="MoneyAmount" headeralign="center" align="center" width="40" >
+                    金额</div>
                 <div name="action" width="120" headeralign="center" align="center" renderer="onActionRenderer"
                     cellstyle="padding:0;">
                     管理</div>
             </div>
         </div>
     </div>
-</div>
-<div id="searchWindow" class="mini-window" title="高级筛选" style="width: 450px; height: 180px;"
-    iconcls="icon-date-magnify" showmaxbutton="true" showtoolbar="true" showfooter="true"
-    showmodal="false" allowresize="false" allowdrag="true">
-    <div property="footer" style="text-align: right; padding: 5px; padding-right: 15px;">
-        <a class="mini-button" iconcls="icon-zoom" onclick="advSearch()" style='vertical-align: middle;'>
-            筛选</a>
-    </div>
-    <form id="frmAdv">
-    <table class="edittable" border="1" cellpadding="0" cellspacing="0">
-        <tr>
-            <td style="width: 60px;">
-                补货单号:
-            </td>
-            <td style="width: 140px;">
-                <input name="Id" class="mini-textbox" />
-            </td>
-            <td style="width: 60px;">
-                供货商:
-            </td>
-            <td style="width: 140px;">
-                <input name="SupCode" class="mini-autocomplete" require="true" valuefield="SupName"
-                    displayfield="SupName" url="/Archives/GetAllSupplierArchive" onvaluechanged="onSupCodeValueChanged" />
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                采购形式:
-            </td>
-            <td style="width: 140px;">
-                <input name="PcForm" class="mini-textbox" />
-            </td>
-            <td style="width: 60px;">
-                门店:
-            </td>
-            <td style="width: 140px;">
-                <input name="bCode" class="mini-combobox" textfield="bName" valuefield="Id" emptytext="请选择..."
-                    url="/Archives/SearchAllranches" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 60px;">
-                采购类型:
-            </td>
-            <td style="width: 140px;">
-                <input name="PcType" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
-                    url="/Category/PcType" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
-            </td>
-            <td style="width: 60px;">
-                采购方式:
-            </td>
-            <td style="width: 140px;">
-                <input name="PcMode" class="mini-combobox" textfield="text" valuefield="id" emptytext="请选择..."
-                    url="/Category/PcMode" allowinput="false" shownullitem="true" nullitemtext="请选择..." />
-            </td>
-        </tr>
-    </table>
-    </form>
 </div>

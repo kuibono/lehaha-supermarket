@@ -76,6 +76,7 @@
     emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
     showpager="false" ondrawsummarycell="onDrawSummaryCell" showSummaryRow="true">
     <div property="columns">
+        <div type="indexcolumn" ></div>
         <div field="GoodsCode" headeralign="center" allowsort="true" displayfield="GoodsName">
             产品 
             <div property="editor" class="mini-combobox" textField="displayText" popupWidth="400"
@@ -91,7 +92,7 @@
             </div>
             @*<input property="editor" class="mini-combobox" style="width:150px;" textField="GoodsName" valueField="Id" showNullItem="true" allowInput="true" onenter="alert('enter')"/>*@
         </div>
-        <div field="PurchaseQty" width="70" headeralign="center" align="center" allowsort="true">
+        <div field="PurchaseQty" width="30" headeralign="center" align="center" allowsort="true">
             数量
             <input property="editor" class="mini-spinner" style="width: 100%;" required="true"
                 minvalue="1" maxvalue="5000" />
@@ -107,9 +108,9 @@
         <div field="GoodsBarCode" width="80" headeralign="center" align="center" allowsort="true">
             条码
         </div>
-        <div type="checkboxcolumn" field="IsFree" headeralign="center">
+        <div type="checkboxcolumn" field="IsFree" headeralign="center" width="50">
             是否赠品</div>
-        <div name="action" width="100" headeralign="center" align="center" renderer="onActionRenderer"
+        <div name="action" width="60" headeralign="center" align="center" renderer="onActionRenderer"
             cellstyle="padding:0;">
             操作</div>
     </div>

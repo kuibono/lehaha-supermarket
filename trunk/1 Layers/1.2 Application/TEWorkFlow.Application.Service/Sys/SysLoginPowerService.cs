@@ -91,6 +91,7 @@ namespace TEWorkFlow.Application.Service.Sys
                 }
                 else
                 {
+                    result.Text = "账号或密码错误，请重试";
                     result.IsSuccess = false;
                 }
             }
@@ -104,10 +105,21 @@ namespace TEWorkFlow.Application.Service.Sys
                 if (q.Count() > 0)
                 {
                     result.Supplier = q.First();
-                    result.IsSuccess = true;
+                    if (result.Supplier.IfExamine != "1" && result.Supplier.IfExamine != "true")
+                    {
+                        result.Supplier = null;
+                        result.IsSuccess = false;
+                        result.Text = "账号已禁用或未审核";
+
+                    }
+                    else
+                    {
+                        result.IsSuccess = true;
+                    }
                 }
                 else
                 {
+                    result.Text = "账号或密码错误，请重试";
                     result.IsSuccess = false;
                 }
 

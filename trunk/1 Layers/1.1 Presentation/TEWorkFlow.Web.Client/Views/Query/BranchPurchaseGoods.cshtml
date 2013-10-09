@@ -156,6 +156,13 @@
                 win.hide();
             }
             function search() {
+                var dates = mini.get("dateS").getValue();
+                var datee = mini.get("dateE").getValue();
+                var days = Math.floor((datee.getTime() - dates.getTime()) / (24 * 3600 * 1000));
+                if (days > 31) {
+                    alert("查询时间跨度不能超过一个月");
+                    return false;
+                }
                 grid.load({
                     branch: tree.getSelectedNode().Id,
                     dates: mini.get("dateS").getFormValue(),
