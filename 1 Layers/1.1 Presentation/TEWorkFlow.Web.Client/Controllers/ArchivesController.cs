@@ -177,6 +177,23 @@ namespace TEWorkFlow.Web.Client.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetAllSupplierArchiveNoPager(string key)
+        {
+            int pageSize = 999999;
+            if (Request["pageSize"] != null)
+            {
+                pageSize = Convert.ToInt32(Request["pageSize"]);
+            }
+            var result = FbSupplierArchivesService.Search(key, pageSize);
+            if (Common.MyEnv.IsSupplierLogin)
+            {
+                var currentSupplier = Common.MyEnv.CurrentSupplier;
+                result = new List<FbSupplierArchives>();
+                result.Add(currentSupplier);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult SupplierSelectWindow()
         {
             return View();

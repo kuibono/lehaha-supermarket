@@ -96,7 +96,7 @@
             供货商:
         </td>
         <td style="width: 240px;">
-            <input name="EnCode" class="mini-combobox"  valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive" displayField="SupName" value="@Model.EnCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"  style="width:100%"/>
+            <input name="EnCode" class="mini-combobox"  valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchiveNoPager" displayField="SupName" value="@Model.EnCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"  style="width:100%"/>
         </td>
     </tr>
     <tr>
@@ -104,7 +104,7 @@
             门店:
         </td>
         <td>
-            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranches" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true" style="width:100%"/>
+            <input name="bCode" class="mini-combobox"  textField="bName" valueField="Id" emptyText="请选择..." url="/Archives/SearchAllranchesForTree" value="@Model.bCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true" style="width:100%"/>
         </td>
 
         <td>

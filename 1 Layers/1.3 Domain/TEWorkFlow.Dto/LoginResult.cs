@@ -13,5 +13,7 @@ namespace TEWorkFlow.Dto
         public Ememployeearchive Employee { get; set; }
 
         public FbSupplierArchives Supplier { get; set; }
+
+        public string Text { get; set; }
     }
 }

@@ -350,7 +350,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 string bcode = Request["bCode"].ToString();
                 model.bCode = bcode;
             }
-            model.Id = Guid.NewGuid().ToString();
+            model.Id = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             model.CreateDate = DateTime.Now;
             model.Operator = Common.MyEnv.CurrentEmployee.Id;
 
