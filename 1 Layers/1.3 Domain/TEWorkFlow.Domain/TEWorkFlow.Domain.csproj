@@ -166,7 +166,9 @@
     <EmbeddedResource Include="Sys\TfDataDownload.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Archives\FbGoodsArchivesSupplier.hbm.xml" />
+    <EmbeddedResource Include="Archives\FbGoodsArchivesSupplier.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Archives\FbGoodsSupplierRelation.hbm.xml" />
