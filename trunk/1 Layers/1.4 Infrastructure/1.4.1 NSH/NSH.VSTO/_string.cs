@@ -1519,5 +1519,15 @@ namespace NSH.VSTO
             }
             return str.Substring(str.Length - length, length);
         }
+
+        public static string GenerateStringID()
+        {
+            long i = 1;
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+            {
+                i *= ((int)b + 1);
+            }
+            return string.Format("{0:x}", i - DateTime.Now.Ticks);
+        }
     }
 }

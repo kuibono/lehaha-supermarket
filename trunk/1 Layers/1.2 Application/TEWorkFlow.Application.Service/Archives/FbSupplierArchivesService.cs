@@ -10,7 +10,7 @@ using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Dto;
 using TEWorkFlow.Domain.Sys;
 using TEWorkFlow.Application.Service.Sys;
-
+using NSH.VSTO;
 namespace TEWorkFlow.Application.Service.Archives
 {
     public class FbSupplierArchivesService : IFbSupplierArchivesService
@@ -40,7 +40,7 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public FbSupplierArchives GetById(string id)
         {
-            return EntityRepository.Get(id);
+            return EntityRepository.LinqQuery.AsCache("_AllSuppliers").Where(p => p.Id == id).FirstOrDefault();
         }
 
         [Transaction]

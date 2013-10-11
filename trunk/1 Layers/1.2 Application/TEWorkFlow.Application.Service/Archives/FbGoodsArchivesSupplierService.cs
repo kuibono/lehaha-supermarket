@@ -166,5 +166,15 @@ namespace TEWorkFlow.Application.Service.Archives
                 Delete(each);
             }
         }
+
+        public IList<FbGoodsArchivesSupplier> GetByGoodsCode(string goodsCode)
+        {
+            return EntityRepository.LinqQuery.Where(p => p.GoodsCode == goodsCode).ToList();
+        }
+
+        public IList<FbGoodsArchivesSupplier> GetBySupCode(string supCode)
+        {
+            return EntityRepository.LinqQuery.Where(p => p.SupCode == supCode).ToList();
+        }
     }
 }

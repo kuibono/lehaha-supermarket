@@ -38,5 +38,9 @@ namespace TEWorkFlow.Application.Service.Archives
         IList<FbGoodsArchivesSupplier> Search(string key, int pageSize = 20, int pageIndex = 1);
 
         void Delete(IList<string> ids);
+
+        IList<FbGoodsArchivesSupplier> GetByGoodsCode(string goodsCode);
+
+        IList<FbGoodsArchivesSupplier> GetBySupCode(string supCode);
     }
 }
