@@ -143,16 +143,22 @@
             <input name="GlCode" value="@Model.GlCode" id="GlCode" class="mini-combobox" textField="text" valueField="id" url="/Category/GetFbPaGoodsGl/" showNullItem="true"  required="true" />
         </td>
         <td>
-            供货商:
-        </td>
-        <td>
-            <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" emptyText="请选择..." url="/Archives/GetAllSupplierArchive/?pageSize=999999" value="@Model.SupCode"  allowInput="false" showNullItem="true" nullItemText="请选择..." required="true"/>
-        </td>
-        <td>
             扣率:
         </td>
         <td>
             <input name="PoolRate" value="@Model.PoolRate" class="mini-spinner" decimalPlaces="2"/>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            供货商:
+        </td>
+        <td colspan="5">
+            <input name="SupCode" class="mini-combobox"  textField="SupName" valueField="Id" multiSelect="true" allowInput="true" emptyText="请选择..." url="/Archives/GetAllSupplierArchive/?pageSize=999999" value="@Model.SupCode" valueFromSelect="true" required="true" style="width:100%" />
         </td>
     </tr>
     <tr>

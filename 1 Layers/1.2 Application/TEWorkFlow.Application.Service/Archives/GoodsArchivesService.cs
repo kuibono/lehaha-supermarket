@@ -11,6 +11,8 @@ using TEWorkFlow.Domain.Category;
 using TEWorkFlow.Application.Service.Sys;
 using NSH.VSTO;
 using TEWorkFlow.Domain.Sys;
+using System.Data;
+using System.Configuration;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -34,11 +36,24 @@ namespace TEWorkFlow.Application.Service.Archives
         public IFbGoodsArchivesSupplierService FbGoodsArchivesSupplierService { get; set; }
 
         [Transaction]
+        private string GetSupName(string[] supCodes)
+        {
+            var allArchives = SupplierRepository.LinqQuery.AsCache("_AllSuppliers").ToList();
+            StringBuilder result = new StringBuilder();
+            foreach (string supCode in supCodes)
+            {
+                result.Append(allArchives.Where(p => p.Id == supCode).FirstOrDefault().SupName);
+                result.Append(",");
+            }
+            return result.ToString().TrimEnd(',');
+        }
+
+        [Transaction]
         public Result Create(GoodsArchives entity)
         {
             Result r = new Result();
             r.IsSuccess = true;
-
+            entity.SupName = GetSupName(entity.SupCode.Split(','));
 
             if (string.IsNullOrEmpty(entity.GoodsBarCode))
             {
@@ -69,16 +84,19 @@ namespace TEWorkFlow.Application.Service.Archives
             //GoodsArchivesBarRepository.SaveOrUpdate(bar);
             FbGoodsArchivesBarService.Create(bar);
 
-            FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-            sup.GoodsCode = id;
-            sup.Id = Guid.NewGuid().ToString();
-            sup.IfExamine = "1";
-            sup.IfMainSupplier = "1";
-            sup.PyCode = entity.PyCode;
-            sup.SupCode = entity.SupCode;
-            sup.SupName = entity.SupName;
-            //GoodsArchivesSupplierRepository.Save(sup);
-            FbGoodsArchivesSupplierService.Create(sup);
+            //处理传过来的多个SupCode
+            SaveGoodsSuppliers(id, entity.SupCode.Split(','));
+
+            //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+            //sup.GoodsCode = id;
+            //sup.Id = Guid.NewGuid().ToString();
+            //sup.IfExamine = "1";
+            //sup.IfMainSupplier = "1";
+            //sup.PyCode = entity.PyCode;
+            //sup.SupCode = entity.SupCode;
+            //sup.SupName = entity.SupName;
+            ////GoodsArchivesSupplierRepository.Save(sup);
+            //FbGoodsArchivesSupplierService.Create(sup);
             r.Str = id;
             return r;
         }
@@ -101,6 +119,8 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public Result Update(GoodsArchives entity)
         {
+            entity.SupName = GetSupName(entity.SupCode.Split(','));
+
             Cache.Clear(entity.SupCode);
             entity.OperatorDate = DateTime.Now;
             Result r = new Result();
@@ -151,21 +171,24 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             #endregion
 
-            #region
-            if (oldEntity.SupCode != entity.SupCode)
-            {
-                FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-                sup.GoodsCode = entity.Id;
-                sup.Id = Guid.NewGuid().ToString();
-                sup.IfExamine = "1";
-                sup.IfMainSupplier = "1";
-                sup.PyCode = entity.PyCode;
-                sup.SupCode = entity.SupCode;
-                sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
-                //GoodsArchivesSupplierRepository.Save(sup);
-                FbGoodsArchivesSupplierService.Update(sup);
-            }
-            #endregion
+            //处理传过来的多个SupCode
+            SaveGoodsSuppliers(entity.Id, entity.SupCode.Split(','));
+
+            //#region
+            //if (oldEntity.SupCode != entity.SupCode)
+            //{
+            //    FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+            //    sup.GoodsCode = entity.Id;
+            //    sup.Id = Guid.NewGuid().ToString();
+            //    sup.IfExamine = "1";
+            //    sup.IfMainSupplier = "1";
+            //    sup.PyCode = entity.PyCode;
+            //    sup.SupCode = entity.SupCode;
+            //    sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
+            //    //GoodsArchivesSupplierRepository.Save(sup);
+            //    FbGoodsArchivesSupplierService.Update(sup);
+            //}
+            //#endregion
 
             //if (entity.ProposePrice != oldEntity.ProposePrice)
             //{
@@ -192,6 +215,83 @@ namespace TEWorkFlow.Application.Service.Archives
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 
+        private void SaveGoodsSuppliers(string goodsCode, string[] supCode)
+        {
+            List<FbGoodsArchivesSupplier> sups = FbGoodsArchivesSupplierService.GetByGoodsCode(goodsCode).ToList();
+
+            //获取已经不存在的
+            var needDeleteItems = sups.Where(p => supCode.Contains(p.GoodsCode)).ToList();
+            FbGoodsArchivesSupplierService.Delete(needDeleteItems);
+
+            string[] needAddSupCodes = supCode.Where(p => sups.Any(w => w.SupCode == p) == false).ToArray();
+
+            GoodsArchives good = EntityRepository.Get(goodsCode);
+
+            foreach (var sCode in needAddSupCodes)
+            {
+                FbSupplierArchives supplier = SupplierRepository.LinqQuery.AsCache("_AllSuppliers").Where(p => p.Id == sCode).FirstOrDefault();
+
+                //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+                //sup.Id = _string.GenerateStringID();
+                //sup.GoodsCode = good.Id;
+                //sup.IfExamine = "1";
+                //sup.IfMainSupplier = "1";
+                //sup.InputTax = 0;
+                //sup.NontaxPurchasePrice = 0;
+                //sup.OfferMin = 0;
+                //sup.PoolRate = 0;
+                //sup.PurchasePrice = good.PurchasePrice.Value;
+                //sup.PyCode = good.PyCode;
+                //sup.SupCode = sCode;
+                //sup.SupName = supplier.SupName;
+                //FbGoodsArchivesSupplierService.Create(sup);
+                FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+                sup.GoodsCode = good.Id;
+                sup.Id = _string.GenerateStringID();
+                sup.IfExamine = "1";
+                sup.IfMainSupplier = "1";
+                sup.PyCode = good.PyCode;
+                sup.SupCode = sCode;
+                sup.SupName = supplier.SupName;
+                //GoodsArchivesSupplierRepository.Save(sup);
+                GoodsArchivesSupplierRepository.GetSession().Clear();
+                string connstr = ConfigurationManager.AppSettings["connectionString"];
+                SqlHelper Helper = new SqlHelper(connstr);
+                string sql = string.Format(@"INSERT INTO [SuperMarket].[dbo].[fb_goods_archives_supplier]
+           ([goods_code]
+           ,[sup_code]
+           ,[sup_name]
+           ,[py_code]
+           ,[op_code]
+           ,[pool_rate]
+           ,[offer_mode]
+           ,[offer_min]
+           ,[input_tax]
+           ,[purchase_price]
+           ,[nontax_purchase_price]
+           ,[if_main_supplier]
+           ,[if_examine]
+           ,[sys_guid])
+     VALUES
+           ('{0}'
+           ,'{1}'
+           ,'{2}'
+           ,'{3}'
+           ,''
+           ,0
+           ,''
+           ,0
+           ,0
+           ,{4}
+           ,0
+           ,'0'
+           ,'1'
+           ,'{5}')", good.Id, sCode, supplier.SupName, good.PyCode, good.PurchasePrice, _string.GenerateStringID());
+                Helper.ExecuteNonQuery(CommandType.Text, sql);
+                GoodsArchivesSupplierRepository.Save(sup);
+
+            }
+        }
         [Transaction]
         public void Delete(GoodsArchives entity)
         {
@@ -257,6 +357,11 @@ namespace TEWorkFlow.Application.Service.Archives
                     goods[i].SupName = sup.First().SupName;
                     goods[i].SupTel = sup.First().ContactPhone;
                 }
+            }
+
+            foreach (var good in goods)
+            {
+                good.SupName = GetSupName(good.SupCode.Split(','));
             }
         }
 
@@ -331,7 +436,8 @@ namespace TEWorkFlow.Application.Service.Archives
                 //}
                 if (string.IsNullOrEmpty(c.entity.SupCode) == false)
                 {
-                    q = q.Where(p => p.SupCode.Contains(c.entity.SupCode));
+                    var goodsSupplierArvhices = FbGoodsArchivesSupplierService.GetBySupCode(c.entity.SupCode).Select(p => p.GoodsCode).ToList(); ;
+                    q = q.Where(p => goodsSupplierArvhices.Contains(p.Id));
                 }
                 //if (string.IsNullOrEmpty(c.entity.OpCode) == false)
                 //{
@@ -520,7 +626,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.GoodsName.Contains(key)
                     || l.GoodsSubName.Contains(key)
                     || l.PyCode.Contains(key)
-                    //|| l.GoodsState.Contains(key)
+                        //|| l.GoodsState.Contains(key)
                     || l.ProducingArea.Contains(key)
                     || l.ArticleNumber.Contains(key)
                     || l.Specification.Contains(key)
@@ -529,7 +635,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     || l.OfferMode.Contains(key)
                     || l.UnderFloorCode.Contains(key)
                     || l.UnderCounterCode.Contains(key)
-                    //|| l.CheckUnitCode.Contains(key)
+                        //|| l.CheckUnitCode.Contains(key)
                     || l.Operator.Contains(key)
                     || l.Assessor.Contains(key)
                     || l.IfExamine.Contains(key)
