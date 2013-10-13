@@ -13,9 +13,9 @@
                 <tr>
                     <td style="width: 100%;">
                         <a class="mini-button" iconcls="icon-add" onclick="editRow('')" plain="true">增加</a>
-                        @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>*@
+                        @*<a class="mini-button" iconcls="icon-remove" onclick="remove()" plain="true">删除</a>
                         <a class="mini-button" iconcls="icon-date-magnify" onclick="showSearchWindow()" plain="true">
-                            筛选</a> <span class="separator"></span>
+                            筛选</a> *@<span class="separator"></span>
                     </td>
                     <td style="white-space: nowrap;">
                         <input id="ifexame" class="mini-combobox" textfield="text" valuefield="id" value=""
@@ -177,7 +177,6 @@
                             拼音数字码</div>
                         <div field="GoodsBarCode" headeralign="center" align="center" width="60">
                             条形码</div>
-                        
                         <div field="PurchasePrice" headeralign="center" align="center" width="50" dataType="currency" currencyUnit="￥">
                             进价</div>
                         <div field="PriceHistory" headeralign="center" align="center" width="40"  renderer="onHistoryRenderer">
@@ -272,7 +271,7 @@
         var tree = mini.get("tree1");
         tree.on("nodeselect", function (e) {
             if (e.isLeaf) {
-                grid.columns[6].visible = false;
+                grid.columns[2].visible = false;
                 search();
             } else {
                 grid.setData([]);
