@@ -70,6 +70,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 }
             }
             string id = EntityRepository.Save(entity);
+            entity.Id = id;
             if (entity.IfExamine == "1")
             {
                 TfDataDownloadService.AddDownload("fb_goods_archives", id);
@@ -85,7 +86,7 @@ namespace TEWorkFlow.Application.Service.Archives
             FbGoodsArchivesBarService.Create(bar);
 
             //处理传过来的多个SupCode
-            SaveGoodsSuppliers(id, entity.SupCode.Split(','));
+            SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
 
             //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
             //sup.GoodsCode = id;
@@ -172,7 +173,7 @@ namespace TEWorkFlow.Application.Service.Archives
             #endregion
 
             //处理传过来的多个SupCode
-            SaveGoodsSuppliers(entity.Id, entity.SupCode.Split(','));
+            SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
 
             //#region
             //if (oldEntity.SupCode != entity.SupCode)
@@ -214,10 +215,10 @@ namespace TEWorkFlow.Application.Service.Archives
             return r;
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
-
-        private void SaveGoodsSuppliers(string goodsCode, string[] supCode)
+        [Transaction]
+        private void SaveGoodsSuppliers(GoodsArchives good, string[] supCode)
         {
-            List<FbGoodsArchivesSupplier> sups = FbGoodsArchivesSupplierService.GetByGoodsCode(goodsCode).ToList();
+            List<FbGoodsArchivesSupplier> sups = FbGoodsArchivesSupplierService.GetByGoodsCode(good.Id).ToList();
 
             //获取已经不存在的
             var needDeleteItems = sups.Where(p => supCode.Contains(p.GoodsCode)).ToList();
@@ -225,7 +226,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
             string[] needAddSupCodes = supCode.Where(p => sups.Any(w => w.SupCode == p) == false).ToArray();
 
-            GoodsArchives good = EntityRepository.Get(goodsCode);
+            //GoodsArchives good = EntityRepository.Get(goodsCode);
 
             foreach (var sCode in needAddSupCodes)
             {
