@@ -7,6 +7,7 @@ using TEWorkFlow.Application.Service.Archives;
 using Spring.Context;
 using Spring.Context.Support;
 using TEWorkFlow.Application.Service.Sys;
+using Spring.Data.NHibernate.Generic;
 
 namespace TEWorkFlow.Web.Client.Common
 {
@@ -132,6 +133,10 @@ namespace TEWorkFlow.Web.Client.Common
         public static IFbPaBaseSetService GetFbPaBaseSetService()
         {
             return (IFbPaBaseSetService)_applicationContext.GetObject("FbPaBaseSetService");
+        }
+        public static HibernateTemplate GetHibernateTemplate()
+        {
+            return (HibernateTemplate)_applicationContext.GetObject("HibernateTemplate");
         }
         #endregion
     }

@@ -53,6 +53,7 @@ namespace TEWorkFlow.Application.Service.Archives
         {
             Result r = new Result();
             r.IsSuccess = true;
+            entity.OperatorDate = DateTime.Now;
             entity.SupName = GetSupName(entity.SupCode.Split(','));
 
             if (string.IsNullOrEmpty(entity.GoodsBarCode))
@@ -222,30 +223,14 @@ namespace TEWorkFlow.Application.Service.Archives
 
             //获取已经不存在的
             var needDeleteItems = sups.Where(p => supCode.Contains(p.GoodsCode)).ToList();
-            FbGoodsArchivesSupplierService.Delete(needDeleteItems);
+            //FbGoodsArchivesSupplierService.Delete(needDeleteItems);
 
             string[] needAddSupCodes = supCode.Where(p => sups.Any(w => w.SupCode == p) == false).ToArray();
 
-            //GoodsArchives good = EntityRepository.Get(goodsCode);
 
             foreach (var sCode in needAddSupCodes)
             {
                 FbSupplierArchives supplier = SupplierRepository.LinqQuery.AsCache("_AllSuppliers").Where(p => p.Id == sCode).FirstOrDefault();
-
-                //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-                //sup.Id = _string.GenerateStringID();
-                //sup.GoodsCode = good.Id;
-                //sup.IfExamine = "1";
-                //sup.IfMainSupplier = "1";
-                //sup.InputTax = 0;
-                //sup.NontaxPurchasePrice = 0;
-                //sup.OfferMin = 0;
-                //sup.PoolRate = 0;
-                //sup.PurchasePrice = good.PurchasePrice.Value;
-                //sup.PyCode = good.PyCode;
-                //sup.SupCode = sCode;
-                //sup.SupName = supplier.SupName;
-                //FbGoodsArchivesSupplierService.Create(sup);
                 FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
                 sup.GoodsCode = good.Id;
                 sup.Id = _string.GenerateStringID();
@@ -254,41 +239,41 @@ namespace TEWorkFlow.Application.Service.Archives
                 sup.PyCode = good.PyCode;
                 sup.SupCode = sCode;
                 sup.SupName = supplier.SupName;
-                //GoodsArchivesSupplierRepository.Save(sup);
-                GoodsArchivesSupplierRepository.GetSession().Clear();
-                string connstr = ConfigurationManager.AppSettings["connectionString"];
-                SqlHelper Helper = new SqlHelper(connstr);
-                string sql = string.Format(@"INSERT INTO [SuperMarket].[dbo].[fb_goods_archives_supplier]
-           ([goods_code]
-           ,[sup_code]
-           ,[sup_name]
-           ,[py_code]
-           ,[op_code]
-           ,[pool_rate]
-           ,[offer_mode]
-           ,[offer_min]
-           ,[input_tax]
-           ,[purchase_price]
-           ,[nontax_purchase_price]
-           ,[if_main_supplier]
-           ,[if_examine]
-           ,[sys_guid])
-     VALUES
-           ('{0}'
-           ,'{1}'
-           ,'{2}'
-           ,'{3}'
-           ,''
-           ,0
-           ,''
-           ,0
-           ,0
-           ,{4}
-           ,0
-           ,'0'
-           ,'1'
-           ,'{5}')", good.Id, sCode, supplier.SupName, good.PyCode, good.PurchasePrice, _string.GenerateStringID());
-                Helper.ExecuteNonQuery(CommandType.Text, sql);
+                GoodsArchivesSupplierRepository.Save(sup);
+                //                GoodsArchivesSupplierRepository.GetSession().Clear();
+                //                string connstr = ConfigurationManager.AppSettings["connectionString"];
+                //                SqlHelper Helper = new SqlHelper(connstr);
+                //                string sql = string.Format(@"INSERT INTO [SuperMarket].[dbo].[fb_goods_archives_supplier]
+                //           ([goods_code]
+                //           ,[sup_code]
+                //           ,[sup_name]
+                //           ,[py_code]
+                //           ,[op_code]
+                //           ,[pool_rate]
+                //           ,[offer_mode]
+                //           ,[offer_min]
+                //           ,[input_tax]
+                //           ,[purchase_price]
+                //           ,[nontax_purchase_price]
+                //           ,[if_main_supplier]
+                //           ,[if_examine]
+                //           ,[sys_guid])
+                //     VALUES
+                //           ('{0}'
+                //           ,'{1}'
+                //           ,'{2}'
+                //           ,'{3}'
+                //           ,''
+                //           ,0
+                //           ,''
+                //           ,0
+                //           ,0
+                //           ,{4}
+                //           ,0
+                //           ,'0'
+                //           ,'1'
+                //           ,'{5}')", good.Id, sCode, supplier.SupName, good.PyCode, good.PurchasePrice, _string.GenerateStringID());
+                //                Helper.ExecuteNonQuery(CommandType.Text, sql);
                 GoodsArchivesSupplierRepository.Save(sup);
 
             }
