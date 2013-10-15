@@ -7,7 +7,10 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Spring.Web.Mvc;
 using System.Web.Security;
-
+using NHibernate;
+using NHibernate.Context;
+using Spring.Data.NHibernate;
+using NHibernate.Cfg;
 namespace TEWorkFlow.Web.Client
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -21,6 +24,10 @@ namespace TEWorkFlow.Web.Client
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //initializeNHibernateForAppWPF();
+            //ISession session = SessionFactory.OpenSession();
+            //session.BeginTransaction();
+            //CurrentSessionContext.Bind(session);
         }
 
         protected override void Application_BeginRequest(object sender, EventArgs e)
@@ -56,6 +63,47 @@ namespace TEWorkFlow.Web.Client
             }
             catch { }
         }
+
+
+        #region  NHibernate
+
+        public static ISessionFactory SessionFactory;
+
+        private static void initializeNHibernateForAppWPF()
+        {
+            Configuration cfg = new Configuration().Configure();
+            //cfg.AddAssembly(typeof(AbstractSession).Assembly);
+            cfg.AddProperties(new Dictionary<string, string>
+                                  {
+                                     {"current_session_context_class","NHibernate.Context.ThreadStaticSessionContext"}
+                                  });
+            try
+            {
+                SessionFactory = cfg.BuildSessionFactory();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 定义应用程序在退出时要处理的内容
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void Application_Exit(object sender, EventArgs e)
+        //{
+        //    ISession session = CurrentSessionContext.Unbind(SessionFactory);
+        //    if (session.Transaction != null)
+        //    {
+        //        session.Transaction.Commit();
+        //        session.Transaction.Dispose();
+        //    }
+        //}
 
         private void UpdateCookie(string cookie_name, string cookie_value)
         {
