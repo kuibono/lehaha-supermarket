@@ -34,6 +34,7 @@ namespace TEWorkFlow.Application.Service.Archives
             {
                 TfDataDownloadService.AddDownload("fb_supplier_archives", id);
             }
+            Cache.Clear("_AllSuppliers");
             return id;
         }
 
@@ -60,6 +61,7 @@ namespace TEWorkFlow.Application.Service.Archives
             {
                 TfDataDownloadService.AddDownload("fb_supplier_archives", entity.Id);
             }
+            Cache.Clear("_AllSuppliers");
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_supplier_archives" });
         }
 
