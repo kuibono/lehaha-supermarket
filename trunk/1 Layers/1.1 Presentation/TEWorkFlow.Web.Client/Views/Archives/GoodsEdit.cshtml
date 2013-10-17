@@ -234,13 +234,13 @@
             进价:
         </td>
         <td>
-            <input name="PurchasePrice" value="@Model.PurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
+            <input id="PurchasePrice" name="PurchasePrice" value="@Model.PurchasePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
         <td>
             建议零售价:
         </td>
         <td>
-            <input name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
+            <input id="ProposePrice" name="ProposePrice" value="@Model.ProposePrice" class="mini-spinner" decimalPlaces="2" maxValue="99999" />
         </td>
         @*   </tr>
     <tr>
@@ -443,10 +443,12 @@
                 success: function (json) {
                     if(json.IsSuccess==true){
                         //CloseWindow("save");
-                        mini.alert("点击继续", "保存成功", function(){
+                        mini.alert("点击确定继续添加新品", "保存成功", function(){
                             mini.get("#GoodsName").setValue("");
                             mini.get("#GoodsSubName").setValue("");
                             mini.get("#PyCode").setValue("");
+                            mini.get("#PurchasePrice").setValue(0);
+                            mini.get("#ProposePrice").setValue(0);
                             mini.get("#GoodsName").focus();
                         });
                         

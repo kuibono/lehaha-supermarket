@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SuperMarketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="SuperMarketModelStoreContainer">
+          <EntitySet Name="bs_branch_archives" EntityType="SuperMarketModel.Store.bs_branch_archives" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_goods_archives" EntityType="SuperMarketModel.Store.fb_goods_archives" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_goods_archives_bar" EntityType="SuperMarketModel.Store.fb_goods_archives_bar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_goods_archives_supplier" EntityType="SuperMarketModel.Store.fb_goods_archives_supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_goods_bar_code" EntityType="SuperMarketModel.Store.fb_goods_bar_code" store:Type="Tables" store:Schema="dbo" store:Name="fb_goods_bar_code">
+            <DefiningQuery>SELECT 
+      [fb_goods_bar_code].[goods_code] AS [goods_code], 
+      [fb_goods_bar_code].[goods_bar_code] AS [goods_bar_code], 
+      [fb_goods_bar_code].[goods_sub_code] AS [goods_sub_code], 
+      [fb_goods_bar_code].[goods_name] AS [goods_name], 
+      [fb_goods_bar_code].[goods_sub_name] AS [goods_sub_name], 
+      [fb_goods_bar_code].[py_code] AS [py_code], 
+      [fb_goods_bar_code].[gb_code] AS [gb_code], 
+      [fb_goods_bar_code].[gm_code] AS [gm_code], 
+      [fb_goods_bar_code].[gs_code] AS [gs_code], 
+      [fb_goods_bar_code].[gl_code] AS [gl_code], 
+      [fb_goods_bar_code].[owner_type] AS [owner_type], 
+      [fb_goods_bar_code].[sup_code] AS [sup_code], 
+      [fb_goods_bar_code].[op_code] AS [op_code], 
+      [fb_goods_bar_code].[pool_rate] AS [pool_rate], 
+      [fb_goods_bar_code].[pack_coef] AS [pack_coef], 
+      [fb_goods_bar_code].[pack_unit_code] AS [pack_unit_code], 
+      [fb_goods_bar_code].[qty_type] AS [qty_type], 
+      [fb_goods_bar_code].[price_type] AS [price_type], 
+      [fb_goods_bar_code].[sale_price] AS [sale_price], 
+      [fb_goods_bar_code].[vip_price] AS [vip_price], 
+      [fb_goods_bar_code].[trade_price] AS [trade_price], 
+      [fb_goods_bar_code].[goods_state] AS [goods_state], 
+      [fb_goods_bar_code].[modify_date] AS [modify_date]
+      FROM [dbo].[fb_goods_bar_code] AS [fb_goods_bar_code]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="fb_pa_goods_gb" EntityType="SuperMarketModel.Store.fb_pa_goods_gb" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_pa_goods_gl" EntityType="SuperMarketModel.Store.fb_pa_goods_gl" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_pa_goods_gm" EntityType="SuperMarketModel.Store.fb_pa_goods_gm" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_pa_goods_gs" EntityType="SuperMarketModel.Store.fb_pa_goods_gs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fb_supplier_archives" EntityType="SuperMarketModel.Store.fb_supplier_archives" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tf_data_download" EntityType="SuperMarketModel.Store.tf_data_download" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="bs_branch_archives">
+          <Key>
+            <PropertyRef Name="b_code" />
+          </Key>
+          <Property Name="b_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="b_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="py_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="b_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="b_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="class_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="functionary" Type="nvarchar" MaxLength="255" />
+          <Property Name="functionary_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="contact_address" Type="nvarchar" MaxLength="255" />
+          <Property Name="office_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="fax_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="postalcode" Type="nvarchar" MaxLength="255" />
+          <Property Name="open_account" Type="nvarchar" MaxLength="255" />
+          <Property Name="bank_account" Type="nvarchar" MaxLength="255" />
+          <Property Name="tax_number" Type="nvarchar" MaxLength="255" />
+          <Property Name="op_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="stock_voucher" Type="nvarchar" MaxLength="255" />
+          <Property Name="input_tax" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="balance_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="pay_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="balance_period" Type="nvarchar" MaxLength="255" />
+          <Property Name="balance_day" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="delivery_days" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="supply_price_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="gross_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="wh_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="operator" Type="varchar" MaxLength="50" />
+          <Property Name="assessor" Type="varchar" MaxLength="50" />
+          <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
+          <Property Name="examine_date" Type="datetime" />
+          <Property Name="operator_date" Type="datetime" />
+          <Property Name="remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="if_send" Type="nvarchar" MaxLength="255" />
+          <Property Name="if_sync_sale" Type="nvarchar" MaxLength="255" />
+          <Property Name="sync_password" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives">
+          <Key>
+            <PropertyRef Name="goods_code" />
+          </Key>
+          <Property Name="goods_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="goods_bar_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="goods_sub_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gb_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gm_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gs_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gl_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="goods_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="check_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="sup_code" Type="varchar" MaxLength="50" />
+          <Property Name="op_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="pool_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="goods_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="goods_sub_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="py_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="goods_state" Type="nvarchar" MaxLength="255" />
+          <Property Name="producing_area" Type="nvarchar" MaxLength="255" />
+          <Property Name="article_number" Type="nvarchar" MaxLength="255" />
+          <Property Name="specification" Type="nvarchar" MaxLength="255" />
+          <Property Name="shelf_life" Type="nvarchar" MaxLength="255" />
+          <Property Name="pack_unit_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="offer_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="pack_coef" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="offer_min" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="input_tax" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="output_tax" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="stock_upper_limit" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="stock_lower_limit" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="under_floor_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="under_counter_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="check_unit_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="purchase_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="nontax_purchase_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="avg_cost" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="nontax_avg_cost" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="gross_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="sale_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="vip_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="trade_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="push_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="operator" Type="varchar" MaxLength="50" />
+          <Property Name="assessor" Type="varchar" MaxLength="50" />
+          <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
+          <Property Name="examine_date" Type="datetime" />
+          <Property Name="operator_date" Type="datetime" />
+          <Property Name="remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="propose_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="price_history" Type="nvarchar" MaxLength="255" />
+          <Property Name="backup_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="if_new" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives_bar">
+          <Key>
+            <PropertyRef Name="goods_bar_code" />
+          </Key>
+          <Property Name="goods_bar_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="goods_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="goods_bar_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="pack_unit_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="pack_coef" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="qty_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="price_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="sale_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="vip_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="trade_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="push_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="if_main_bar" Type="nvarchar" MaxLength="255" />
+          <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives_supplier">
+          <Key>
+            <PropertyRef Name="sys_guid" />
+          </Key>
+          <Property Name="goods_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="sup_code" Type="varchar" MaxLength="50" />
+          <Property Name="sup_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="py_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="op_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="pool_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="offer_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="offer_min" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="input_tax" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="purchase_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="nontax_purchase_price" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="if_main_supplier" Type="nvarchar" MaxLength="255" />
+          <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
+          <Property Name="sys_guid" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“SuperMarket.dbo.fb_goods_bar_code”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="fb_goods_bar_code">
+          <Key>
+            <PropertyRef Name="goods_code" />
+            <PropertyRef Name="goods_bar_code" />
+          </Key>
+          <Property Name="goods_code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="goods_bar_code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="goods_sub_code" Type="varchar" MaxLength="20" />
+          <Property Name="goods_name" Type="varchar" MaxLength="50" />
+          <Property Name="goods_sub_name" Type="varchar" MaxLength="20" />
+          <Property Name="py_code" Type="varchar" MaxLength="250" />
+          <Property Name="gb_code" Type="varchar" MaxLength="20" />
+          <Property Name="gm_code" Type="varchar" MaxLength="20" />
+          <Property Name="gs_code" Type="varchar" MaxLength="20" />
+          <Property Name="gl_code" Type="varchar" MaxLength="20" />
+          <Property Name="owner_type" Type="varchar" MaxLength="20" />
+          <Property Name="sup_code" Type="varchar" MaxLength="50" />
+          <Property Name="op_code" Type="varchar" MaxLength="20" />
+          <Property Name="pool_rate" Type="decimal" Scale="4" />
+          <Property Name="pack_coef" Type="decimal" Scale="2" />
+          <Property Name="pack_unit_code" Type="varchar" MaxLength="20" />
+          <Property Name="qty_type" Type="varchar" MaxLength="20" />
+          <Property Name="price_type" Type="varchar" MaxLength="20" />
+          <Property Name="sale_price" Type="decimal" Scale="4" />
+          <Property Name="vip_price" Type="decimal" Scale="4" />
+          <Property Name="trade_price" Type="decimal" Scale="4" />
+          <Property Name="goods_state" Type="varchar" MaxLength="20" />
+          <Property Name="modify_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gb">
+          <Key>
+            <PropertyRef Name="gb_code" />
+          </Key>
+          <Property Name="gb_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="gb_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gl">
+          <Key>
+            <PropertyRef Name="gl_code" />
+          </Key>
+          <Property Name="gl_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="gs_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gl_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gm">
+          <Key>
+            <PropertyRef Name="gm_code" />
+          </Key>
+          <Property Name="gm_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="gb_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gm_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gs">
+          <Key>
+            <PropertyRef Name="gs_code" />
+          </Key>
+          <Property Name="gs_code" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="gm_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="gs_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fb_supplier_archives">
+          <Key>
+            <PropertyRef Name="sup_code" />
+          </Key>
+          <Property Name="sup_code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="sup_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="py_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="sup_type_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="functionary" Type="nvarchar" MaxLength="255" />
+          <Property Name="functionary_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="linkman" Type="nvarchar" MaxLength="255" />
+          <Property Name="contact_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="contact_address" Type="nvarchar" MaxLength="255" />
+          <Property Name="office_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="fax_phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="e_mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="postalcode" Type="nvarchar" MaxLength="255" />
+          <Property Name="open_account" Type="nvarchar" MaxLength="255" />
+          <Property Name="bank_account" Type="nvarchar" MaxLength="255" />
+          <Property Name="tax_number" Type="nvarchar" MaxLength="255" />
+          <Property Name="op_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="stock_voucher" Type="nvarchar" MaxLength="255" />
+          <Property Name="input_tax" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="balance_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="pay_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="balance_period" Type="nvarchar" MaxLength="255" />
+          <Property Name="balance_day" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="offer_mode" Type="nvarchar" MaxLength="255" />
+          <Property Name="delivery_days" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="pool_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="floors_money" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="excess_rate" Type="decimal" Precision="19" Scale="5" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="operator" Type="varchar" MaxLength="50" />
+          <Property Name="assessor" Type="varchar" MaxLength="50" />
+          <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
+          <Property Name="examine_date" Type="datetime" />
+          <Property Name="operator_date" Type="datetime" />
+          <Property Name="login_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="login_pass" Type="nvarchar" MaxLength="255" />
+          <Property Name="remark" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tf_data_download">
+          <Key>
+            <PropertyRef Name="download_id" />
+          </Key>
+          <Property Name="download_id" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="download_tablename" Type="nvarchar" MaxLength="255" />
+          <Property Name="download_branchcode" Type="nvarchar" MaxLength="255" />
+          <Property Name="download_keyvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="download_order" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SuperMarketModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="SuperMarketEntities">
+          <EntitySet Name="bs_branch_archives" EntityType="SuperMarketModel.bs_branch_archives" />
+          <EntitySet Name="fb_goods_archives" EntityType="SuperMarketModel.fb_goods_archives" />
+          <EntitySet Name="fb_goods_archives_bar" EntityType="SuperMarketModel.fb_goods_archives_bar" />
+          <EntitySet Name="fb_goods_bar_code" EntityType="SuperMarketModel.fb_goods_bar_code" />
+          <EntitySet Name="fb_pa_goods_gb" EntityType="SuperMarketModel.fb_pa_goods_gb" />
+          <EntitySet Name="fb_pa_goods_gl" EntityType="SuperMarketModel.fb_pa_goods_gl" />
+          <EntitySet Name="fb_pa_goods_gm" EntityType="SuperMarketModel.fb_pa_goods_gm" />
+          <EntitySet Name="fb_pa_goods_gs" EntityType="SuperMarketModel.fb_pa_goods_gs" />
+          <EntitySet Name="fb_supplier_archives" EntityType="SuperMarketModel.fb_supplier_archives" />
+          <EntitySet Name="tf_data_download" EntityType="SuperMarketModel.tf_data_download" />
+          <EntitySet Name="fb_goods_archives_supplier" EntityType="SuperMarketModel.fb_goods_archives_supplier" />
+        </EntityContainer>
+        <EntityType Name="bs_branch_archives">
+          <Key>
+            <PropertyRef Name="b_code" />
+          </Key>
+          <Property Name="b_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="b_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="py_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="b_type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="b_state" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="area_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="class_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="functionary" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="functionary_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="contact_address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="office_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fax_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="e_mail" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="postalcode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="open_account" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="bank_account" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="tax_number" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="op_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="stock_voucher" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="input_tax" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="balance_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pay_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="balance_period" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="balance_day" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="delivery_days" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="supply_price_type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gross_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="wh_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="operator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="assessor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="if_examine" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="examine_date" Type="DateTime" />
+          <Property Name="operator_date" Type="DateTime" />
+          <Property Name="remark" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="if_send" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="if_sync_sale" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="sync_password" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives">
+          <Key>
+            <PropertyRef Name="goods_code" />
+          </Key>
+          <Property Name="goods_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_bar_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_sub_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gb_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gm_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gs_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gl_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="check_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="sup_code" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="op_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pool_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="goods_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_sub_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="py_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_state" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="producing_area" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="article_number" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="specification" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="shelf_life" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pack_unit_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="offer_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pack_coef" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="offer_min" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="input_tax" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="output_tax" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="stock_upper_limit" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="stock_lower_limit" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="under_floor_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="under_counter_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="check_unit_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="purchase_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="nontax_purchase_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="avg_cost" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="nontax_avg_cost" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="gross_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="sale_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="vip_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="trade_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="push_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="operator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="assessor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="if_examine" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="examine_date" Type="DateTime" />
+          <Property Name="operator_date" Type="DateTime" />
+          <Property Name="remark" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="propose_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="price_history" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="backup_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="if_new" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives_bar">
+          <Key>
+            <PropertyRef Name="goods_bar_code" />
+          </Key>
+          <Property Name="goods_bar_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="goods_bar_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pack_unit_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pack_coef" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="qty_type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="price_type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="sale_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="vip_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="trade_price" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="push_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="if_main_bar" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="if_examine" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_goods_bar_code">
+          <Key>
+            <PropertyRef Name="goods_code" />
+            <PropertyRef Name="goods_bar_code" />
+          </Key>
+          <Property Name="goods_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="goods_bar_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="goods_sub_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="goods_name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="goods_sub_name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="py_code" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="gb_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="gm_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="gs_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="gl_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="owner_type" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="sup_code" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="op_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="pool_rate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="pack_coef" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pack_unit_code" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="qty_type" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="price_type" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="sale_price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="vip_price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="trade_price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="goods_state" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="modify_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gb">
+          <Key>
+            <PropertyRef Name="gb_code" />
+          </Key>
+          <Property Name="gb_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gb_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gl">
+          <Key>
+            <PropertyRef Name="gl_code" />
+          </Key>
+          <Property Name="gl_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gs_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gl_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gm">
+          <Key>
+            <PropertyRef Name="gm_code" />
+          </Key>
+          <Property Name="gm_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gb_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gm_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_pa_goods_gs">
+          <Key>
+            <PropertyRef Name="gs_code" />
+          </Key>
+          <Property Name="gs_code" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gm_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="gs_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="fb_supplier_archives">
+          <Key>
+            <PropertyRef Name="sup_code" />
+          </Key>
+          <Property Name="sup_code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sup_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="py_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="sup_type_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="functionary" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="functionary_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="linkman" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="contact_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="contact_address" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="office_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="fax_phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="e_mail" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="postalcode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="open_account" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="bank_account" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="tax_number" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="op_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="stock_voucher" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="input_tax" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="balance_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="pay_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="balance_period" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="balance_day" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="offer_mode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="delivery_days" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="pool_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="floors_money" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="excess_rate" Type="Decimal" Precision="19" Scale="5" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="operator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="assessor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="if_examine" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="examine_date" Type="DateTime" />
+          <Property Name="operator_date" Type="DateTime" />
+          <Property Name="login_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="login_pass" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="remark" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tf_data_download">
+          <Key>
+            <PropertyRef Name="download_id" />
+          </Key>
+          <Property Name="download_id" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="download_tablename" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="download_branchcode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="download_keyvalue" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="download_order" Type="Int32" />
+        </EntityType>
+        <EntityType Name="fb_goods_archives_supplier">
+          <Key>
+            <PropertyRef Name="sys_guid" />
+          </Key>
+          <Property Type="String" Name="goods_code" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sup_code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="sup_name" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="py_code" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="op_code" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="pool_rate" Precision="19" Scale="5" />
+          <Property Type="String" Name="offer_mode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="offer_min" Precision="19" Scale="5" />
+          <Property Type="Decimal" Name="input_tax" Precision="19" Scale="5" />
+          <Property Type="Decimal" Name="purchase_price" Precision="19" Scale="5" />
+          <Property Type="Decimal" Name="nontax_purchase_price" Precision="19" Scale="5" />
+          <Property Type="String" Name="if_main_supplier" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="if_examine" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="sys_guid" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="SuperMarketModelStoreContainer" CdmEntityContainer="SuperMarketEntities">
+          <EntitySetMapping Name="bs_branch_archives"><EntityTypeMapping TypeName="SuperMarketModel.bs_branch_archives"><MappingFragment StoreEntitySet="bs_branch_archives">
+            <ScalarProperty Name="b_code" ColumnName="b_code" />
+            <ScalarProperty Name="b_name" ColumnName="b_name" />
+            <ScalarProperty Name="py_code" ColumnName="py_code" />
+            <ScalarProperty Name="b_type" ColumnName="b_type" />
+            <ScalarProperty Name="b_state" ColumnName="b_state" />
+            <ScalarProperty Name="area_code" ColumnName="area_code" />
+            <ScalarProperty Name="class_code" ColumnName="class_code" />
+            <ScalarProperty Name="functionary" ColumnName="functionary" />
+            <ScalarProperty Name="functionary_phone" ColumnName="functionary_phone" />
+            <ScalarProperty Name="contact_address" ColumnName="contact_address" />
+            <ScalarProperty Name="office_phone" ColumnName="office_phone" />
+            <ScalarProperty Name="fax_phone" ColumnName="fax_phone" />
+            <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+            <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+            <ScalarProperty Name="open_account" ColumnName="open_account" />
+            <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+            <ScalarProperty Name="tax_number" ColumnName="tax_number" />
+            <ScalarProperty Name="op_code" ColumnName="op_code" />
+            <ScalarProperty Name="stock_voucher" ColumnName="stock_voucher" />
+            <ScalarProperty Name="input_tax" ColumnName="input_tax" />
+            <ScalarProperty Name="balance_mode" ColumnName="balance_mode" />
+            <ScalarProperty Name="pay_mode" ColumnName="pay_mode" />
+            <ScalarProperty Name="balance_period" ColumnName="balance_period" />
+            <ScalarProperty Name="balance_day" ColumnName="balance_day" />
+            <ScalarProperty Name="delivery_days" ColumnName="delivery_days" />
+            <ScalarProperty Name="supply_price_type" ColumnName="supply_price_type" />
+            <ScalarProperty Name="gross_rate" ColumnName="gross_rate" />
+            <ScalarProperty Name="wh_code" ColumnName="wh_code" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="operator" ColumnName="operator" />
+            <ScalarProperty Name="assessor" ColumnName="assessor" />
+            <ScalarProperty Name="if_examine" ColumnName="if_examine" />
+            <ScalarProperty Name="examine_date" ColumnName="examine_date" />
+            <ScalarProperty Name="operator_date" ColumnName="operator_date" />
+            <ScalarProperty Name="remark" ColumnName="remark" />
+            <ScalarProperty Name="if_send" ColumnName="if_send" />
+            <ScalarProperty Name="if_sync_sale" ColumnName="if_sync_sale" />
+            <ScalarProperty Name="sync_password" ColumnName="sync_password" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_goods_archives"><EntityTypeMapping TypeName="SuperMarketModel.fb_goods_archives"><MappingFragment StoreEntitySet="fb_goods_archives">
+            <ScalarProperty Name="goods_code" ColumnName="goods_code" />
+            <ScalarProperty Name="goods_bar_code" ColumnName="goods_bar_code" />
+            <ScalarProperty Name="goods_sub_code" ColumnName="goods_sub_code" />
+            <ScalarProperty Name="gb_code" ColumnName="gb_code" />
+            <ScalarProperty Name="gm_code" ColumnName="gm_code" />
+            <ScalarProperty Name="gs_code" ColumnName="gs_code" />
+            <ScalarProperty Name="gl_code" ColumnName="gl_code" />
+            <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+            <ScalarProperty Name="check_mode" ColumnName="check_mode" />
+            <ScalarProperty Name="sup_code" ColumnName="sup_code" />
+            <ScalarProperty Name="op_code" ColumnName="op_code" />
+            <ScalarProperty Name="pool_rate" ColumnName="pool_rate" />
+            <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+            <ScalarProperty Name="goods_sub_name" ColumnName="goods_sub_name" />
+            <ScalarProperty Name="py_code" ColumnName="py_code" />
+            <ScalarProperty Name="goods_state" ColumnName="goods_state" />
+            <ScalarProperty Name="producing_area" ColumnName="producing_area" />
+            <ScalarProperty Name="article_number" ColumnName="article_number" />
+            <ScalarProperty Name="specification" ColumnName="specification" />
+            <ScalarProperty Name="shelf_life" ColumnName="shelf_life" />
+            <ScalarProperty Name="pack_unit_code" ColumnName="pack_unit_code" />
+            <ScalarProperty Name="offer_mode" ColumnName="offer_mode" />
+            <ScalarProperty Name="pack_coef" ColumnName="pack_coef" />
+            <ScalarProperty Name="offer_min" ColumnName="offer_min" />
+            <ScalarProperty Name="input_tax" ColumnName="input_tax" />
+            <ScalarProperty Name="output_tax" ColumnName="output_tax" />
+            <ScalarProperty Name="stock_upper_limit" ColumnName="stock_upper_limit" />
+            <ScalarProperty Name="stock_lower_limit" ColumnName="stock_lower_limit" />
+            <ScalarProperty Name="under_floor_code" ColumnName="under_floor_code" />
+            <ScalarProperty Name="under_counter_code" ColumnName="under_counter_code" />
+            <ScalarProperty Name="check_unit_code" ColumnName="check_unit_code" />
+            <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+            <ScalarProperty Name="nontax_purchase_price" ColumnName="nontax_purchase_price" />
+            <ScalarProperty Name="avg_cost" ColumnName="avg_cost" />
+            <ScalarProperty Name="nontax_avg_cost" ColumnName="nontax_avg_cost" />
+            <ScalarProperty Name="gross_rate" ColumnName="gross_rate" />
+            <ScalarProperty Name="sale_price" ColumnName="sale_price" />
+            <ScalarProperty Name="vip_price" ColumnName="vip_price" />
+            <ScalarProperty Name="trade_price" ColumnName="trade_price" />
+            <ScalarProperty Name="push_rate" ColumnName="push_rate" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="operator" ColumnName="operator" />
+            <ScalarProperty Name="assessor" ColumnName="assessor" />
+            <ScalarProperty Name="if_examine" ColumnName="if_examine" />
+            <ScalarProperty Name="examine_date" ColumnName="examine_date" />
+            <ScalarProperty Name="operator_date" ColumnName="operator_date" />
+            <ScalarProperty Name="remark" ColumnName="remark" />
+            <ScalarProperty Name="propose_price" ColumnName="propose_price" />
+            <ScalarProperty Name="price_history" ColumnName="price_history" />
+            <ScalarProperty Name="backup_code" ColumnName="backup_code" />
+            <ScalarProperty Name="if_new" ColumnName="if_new" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_goods_archives_bar"><EntityTypeMapping TypeName="SuperMarketModel.fb_goods_archives_bar"><MappingFragment StoreEntitySet="fb_goods_archives_bar">
+            <ScalarProperty Name="goods_bar_code" ColumnName="goods_bar_code" />
+            <ScalarProperty Name="goods_code" ColumnName="goods_code" />
+            <ScalarProperty Name="goods_bar_name" ColumnName="goods_bar_name" />
+            <ScalarProperty Name="pack_unit_code" ColumnName="pack_unit_code" />
+            <ScalarProperty Name="pack_coef" ColumnName="pack_coef" />
+            <ScalarProperty Name="qty_type" ColumnName="qty_type" />
+            <ScalarProperty Name="price_type" ColumnName="price_type" />
+            <ScalarProperty Name="sale_price" ColumnName="sale_price" />
+            <ScalarProperty Name="vip_price" ColumnName="vip_price" />
+            <ScalarProperty Name="trade_price" ColumnName="trade_price" />
+            <ScalarProperty Name="push_rate" ColumnName="push_rate" />
+            <ScalarProperty Name="if_main_bar" ColumnName="if_main_bar" />
+            <ScalarProperty Name="if_examine" ColumnName="if_examine" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_goods_bar_code"><EntityTypeMapping TypeName="SuperMarketModel.fb_goods_bar_code"><MappingFragment StoreEntitySet="fb_goods_bar_code">
+            <ScalarProperty Name="goods_code" ColumnName="goods_code" />
+            <ScalarProperty Name="goods_bar_code" ColumnName="goods_bar_code" />
+            <ScalarProperty Name="goods_sub_code" ColumnName="goods_sub_code" />
+            <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+            <ScalarProperty Name="goods_sub_name" ColumnName="goods_sub_name" />
+            <ScalarProperty Name="py_code" ColumnName="py_code" />
+            <ScalarProperty Name="gb_code" ColumnName="gb_code" />
+            <ScalarProperty Name="gm_code" ColumnName="gm_code" />
+            <ScalarProperty Name="gs_code" ColumnName="gs_code" />
+            <ScalarProperty Name="gl_code" ColumnName="gl_code" />
+            <ScalarProperty Name="owner_type" ColumnName="owner_type" />
+            <ScalarProperty Name="sup_code" ColumnName="sup_code" />
+            <ScalarProperty Name="op_code" ColumnName="op_code" />
+            <ScalarProperty Name="pool_rate" ColumnName="pool_rate" />
+            <ScalarProperty Name="pack_coef" ColumnName="pack_coef" />
+            <ScalarProperty Name="pack_unit_code" ColumnName="pack_unit_code" />
+            <ScalarProperty Name="qty_type" ColumnName="qty_type" />
+            <ScalarProperty Name="price_type" ColumnName="price_type" />
+            <ScalarProperty Name="sale_price" ColumnName="sale_price" />
+            <ScalarProperty Name="vip_price" ColumnName="vip_price" />
+            <ScalarProperty Name="trade_price" ColumnName="trade_price" />
+            <ScalarProperty Name="goods_state" ColumnName="goods_state" />
+            <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_pa_goods_gb"><EntityTypeMapping TypeName="SuperMarketModel.fb_pa_goods_gb"><MappingFragment StoreEntitySet="fb_pa_goods_gb">
+            <ScalarProperty Name="gb_code" ColumnName="gb_code" />
+            <ScalarProperty Name="gb_name" ColumnName="gb_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_pa_goods_gl"><EntityTypeMapping TypeName="SuperMarketModel.fb_pa_goods_gl"><MappingFragment StoreEntitySet="fb_pa_goods_gl">
+            <ScalarProperty Name="gl_code" ColumnName="gl_code" />
+            <ScalarProperty Name="gs_code" ColumnName="gs_code" />
+            <ScalarProperty Name="gl_name" ColumnName="gl_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_pa_goods_gm"><EntityTypeMapping TypeName="SuperMarketModel.fb_pa_goods_gm"><MappingFragment StoreEntitySet="fb_pa_goods_gm">
+            <ScalarProperty Name="gm_code" ColumnName="gm_code" />
+            <ScalarProperty Name="gb_code" ColumnName="gb_code" />
+            <ScalarProperty Name="gm_name" ColumnName="gm_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_pa_goods_gs"><EntityTypeMapping TypeName="SuperMarketModel.fb_pa_goods_gs"><MappingFragment StoreEntitySet="fb_pa_goods_gs">
+            <ScalarProperty Name="gs_code" ColumnName="gs_code" />
+            <ScalarProperty Name="gm_code" ColumnName="gm_code" />
+            <ScalarProperty Name="gs_name" ColumnName="gs_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_supplier_archives"><EntityTypeMapping TypeName="SuperMarketModel.fb_supplier_archives"><MappingFragment StoreEntitySet="fb_supplier_archives">
+            <ScalarProperty Name="sup_code" ColumnName="sup_code" />
+            <ScalarProperty Name="sup_name" ColumnName="sup_name" />
+            <ScalarProperty Name="py_code" ColumnName="py_code" />
+            <ScalarProperty Name="sup_type_code" ColumnName="sup_type_code" />
+            <ScalarProperty Name="functionary" ColumnName="functionary" />
+            <ScalarProperty Name="functionary_phone" ColumnName="functionary_phone" />
+            <ScalarProperty Name="linkman" ColumnName="linkman" />
+            <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
+            <ScalarProperty Name="contact_address" ColumnName="contact_address" />
+            <ScalarProperty Name="office_phone" ColumnName="office_phone" />
+            <ScalarProperty Name="fax_phone" ColumnName="fax_phone" />
+            <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+            <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+            <ScalarProperty Name="open_account" ColumnName="open_account" />
+            <ScalarProperty Name="bank_account" ColumnName="bank_account" />
+            <ScalarProperty Name="tax_number" ColumnName="tax_number" />
+            <ScalarProperty Name="op_code" ColumnName="op_code" />
+            <ScalarProperty Name="stock_voucher" ColumnName="stock_voucher" />
+            <ScalarProperty Name="input_tax" ColumnName="input_tax" />
+            <ScalarProperty Name="balance_mode" ColumnName="balance_mode" />
+            <ScalarProperty Name="pay_mode" ColumnName="pay_mode" />
+            <ScalarProperty Name="balance_period" ColumnName="balance_period" />
+            <ScalarProperty Name="balance_day" ColumnName="balance_day" />
+            <ScalarProperty Name="offer_mode" ColumnName="offer_mode" />
+            <ScalarProperty Name="delivery_days" ColumnName="delivery_days" />
+            <ScalarProperty Name="pool_rate" ColumnName="pool_rate" />
+            <ScalarProperty Name="floors_money" ColumnName="floors_money" />
+            <ScalarProperty Name="excess_rate" ColumnName="excess_rate" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="operator" ColumnName="operator" />
+            <ScalarProperty Name="assessor" ColumnName="assessor" />
+            <ScalarProperty Name="if_examine" ColumnName="if_examine" />
+            <ScalarProperty Name="examine_date" ColumnName="examine_date" />
+            <ScalarProperty Name="operator_date" ColumnName="operator_date" />
+            <ScalarProperty Name="login_name" ColumnName="login_name" />
+            <ScalarProperty Name="login_pass" ColumnName="login_pass" />
+            <ScalarProperty Name="remark" ColumnName="remark" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tf_data_download"><EntityTypeMapping TypeName="SuperMarketModel.tf_data_download"><MappingFragment StoreEntitySet="tf_data_download">
+            <ScalarProperty Name="download_id" ColumnName="download_id" />
+            <ScalarProperty Name="download_tablename" ColumnName="download_tablename" />
+            <ScalarProperty Name="download_branchcode" ColumnName="download_branchcode" />
+            <ScalarProperty Name="download_keyvalue" ColumnName="download_keyvalue" />
+            <ScalarProperty Name="download_order" ColumnName="download_order" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="fb_goods_archives_supplier">
+            <EntityTypeMapping TypeName="SuperMarketModel.fb_goods_archives_supplier">
+              <MappingFragment StoreEntitySet="fb_goods_archives_supplier">
+                <ScalarProperty Name="sys_guid" ColumnName="sys_guid" />
+                <ScalarProperty Name="if_examine" ColumnName="if_examine" />
+                <ScalarProperty Name="if_main_supplier" ColumnName="if_main_supplier" />
+                <ScalarProperty Name="nontax_purchase_price" ColumnName="nontax_purchase_price" />
+                <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+                <ScalarProperty Name="input_tax" ColumnName="input_tax" />
+                <ScalarProperty Name="offer_min" ColumnName="offer_min" />
+                <ScalarProperty Name="offer_mode" ColumnName="offer_mode" />
+                <ScalarProperty Name="pool_rate" ColumnName="pool_rate" />
+                <ScalarProperty Name="op_code" ColumnName="op_code" />
+                <ScalarProperty Name="py_code" ColumnName="py_code" />
+                <ScalarProperty Name="sup_name" ColumnName="sup_name" />
+                <ScalarProperty Name="sup_code" ColumnName="sup_code" />
+                <ScalarProperty Name="goods_code" ColumnName="goods_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataModel" ZoomLevel="21">
+        <EntityTypeShape EntityType="SuperMarketModel.bs_branch_archives" Width="1.5" PointX="0.75" PointY="0.75" Height="8.3262337239583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_goods_archives" Width="1.5" PointX="2.75" PointY="0.75" Height="10.82615234375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_goods_archives_bar" Width="1.5" PointX="4.75" PointY="0.75" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_goods_bar_code" Width="1.5" PointX="4.75" PointY="5.75" Height="5.4417122395833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_pa_goods_gb" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_pa_goods_gl" Width="1.5" PointX="6.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_pa_goods_gm" Width="1.5" PointX="6.75" PointY="6.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_pa_goods_gs" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_supplier_archives" Width="1.5" PointX="8.75" PointY="3.75" Height="8.1339322916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.tf_data_download" Width="1.5" PointX="10.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SuperMarketModel.fb_goods_archives_supplier" Width="1.5" PointX="11.375" PointY="3.75" Height="3.7109993489583317" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
