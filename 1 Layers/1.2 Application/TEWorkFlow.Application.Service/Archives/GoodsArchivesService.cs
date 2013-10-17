@@ -13,6 +13,7 @@ using NSH.VSTO;
 using TEWorkFlow.Domain.Sys;
 using System.Data;
 using System.Configuration;
+using TeWorkFlow.Application.DataEntity;
 
 namespace TEWorkFlow.Application.Service.Archives
 {
@@ -48,57 +49,152 @@ namespace TEWorkFlow.Application.Service.Archives
             return result.ToString().TrimEnd(',');
         }
 
+
+        private fb_goods_archives ConvertToDataBaseEntity(GoodsArchives entity)
+        {
+            fb_goods_archives e = new fb_goods_archives();
+            e.article_number = entity.ArticleNumber;
+            e.assessor = entity.Assessor;
+            e.avg_cost = entity.AvgCost;
+            e.backup_code = entity.BackupCode;
+            e.check_mode = entity.CheckMode;
+            e.check_unit_code = entity.CheckUnitCode;
+            e.create_date = entity.CreateDate;
+            e.examine_date = entity.ExamineDate;
+            e.gb_code = entity.GbCode;
+            e.gl_code = entity.GlCode;
+            e.gm_code = entity.GmCode;
+            e.goods_bar_code = entity.GoodsBarCode;
+            e.goods_code = entity.Id;
+            e.goods_name = entity.GoodsName;
+            e.goods_state = entity.GoodsState;
+            e.goods_sub_code = entity.GoodsSubCode;
+            e.goods_sub_name = entity.GoodsSubName;
+            e.goods_type = entity.GoodsType;
+            e.gross_rate = entity.GrossRate;
+            e.gs_code = entity.GsCode;
+            e.if_examine = entity.IfExamine;
+            e.if_new = entity.IfNew;
+            e.input_tax = entity.InputTax;
+            e.nontax_avg_cost = entity.NontaxAvgCost;
+            e.nontax_purchase_price = entity.NontaxPurchasePrice;
+            e.offer_min = entity.OfferMin;
+            e.offer_mode = entity.OfferMode;
+            e.op_code = entity.OpCode;
+            e.@operator = entity.Operator;
+            e.operator_date = entity.OperatorDate;
+            e.output_tax = entity.OutputTax;
+            e.pack_coef = entity.PackCoef;
+            e.pack_unit_code = entity.PackUnitCode;
+            e.pool_rate = entity.PoolRate;
+            e.price_history = entity.PriceHistory;
+            e.producing_area = entity.ProducingArea;
+            e.propose_price = entity.ProposePrice;
+            e.purchase_price = entity.PurchasePrice;
+            e.push_rate = entity.PushRate;
+            e.py_code = entity.PyCode;
+            e.remark = entity.Remark;
+            e.sale_price = entity.SalePrice;
+            e.shelf_life = entity.ShelfLife;
+            e.specification = entity.Specification;
+            e.stock_lower_limit = entity.StockLowerLimit;
+            e.stock_upper_limit = entity.StockUpperLimit;
+            e.sup_code = entity.SupCode;
+            e.trade_price = entity.TradePrice;
+            e.under_counter_code = entity.UnderCounterCode;
+            e.under_floor_code = entity.UnderFloorCode;
+            e.vip_price = entity.VipPrice;
+
+            return e;
+        }
+
         [Transaction]
         public Result Create(GoodsArchives entity)
         {
             Result r = new Result();
             r.IsSuccess = true;
-            entity.OperatorDate = DateTime.Now;
-            entity.SupName = GetSupName(entity.SupCode.Split(','));
+            SuperMarketEntities ent = new SuperMarketEntities();
+            
 
-            if (string.IsNullOrEmpty(entity.GoodsBarCode))
+            fb_goods_archives e = ConvertToDataBaseEntity(entity);
+            e.operator_date = DateTime.Now;
+            e.goods_sub_name = GetSupName(e.sup_code.Split(','));
+
+            if (string.IsNullOrEmpty(e.goods_bar_code))
             {
-                entity.GoodsBarCode = GenerateBarCode();
+                e.goods_bar_code = GenerateBarCode();
             }
             else
             {
                 //验证条码是否否存在
-                if (EntityRepository.LinqQuery.Any(p => p.GoodsBarCode == entity.GoodsBarCode))
+                if (ent.fb_goods_archives.Any(p => p.goods_bar_code == e.goods_bar_code))
                 {
                     r.IsSuccess = false;
                     r.Message = "输入的条形码不唯一，请重新输入";
                     return r;
                 }
             }
-            string id = EntityRepository.Save(entity);
-            entity.Id = id;
-            if (entity.IfExamine == "1")
-            {
-                TfDataDownloadService.AddDownload("fb_goods_archives", id);
-            }
+            ent.AddTofb_goods_archives(e);
+            ent.SaveChanges();
 
-            FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
-            bar.Id = entity.GoodsBarCode;
-            bar.GoodsCode = id;
-            bar.IfExamine = "1";
-            bar.IfMainBar = "1";
-            bar.SalePrice = entity.SalePrice;
-            //GoodsArchivesBarRepository.SaveOrUpdate(bar);
-            FbGoodsArchivesBarService.Create(bar);
+            string id = e.goods_code;
+            if (e.if_examine=="1")
+            {
+                var allBranchs = ent.bs_branch_archives.ToList();
+                foreach(var br in allBranchs)
+                {
+                    tf_data_download d = new tf_data_download();
+                    d.download_id = Guid.NewGuid().ToString();
+                    d.download_branchcode = br.b_code;
+                    d.download_keyvalue = e.goods_code;
+                    d.download_order = 0;
+                    d.download_tablename = "fb_goods_archives";
+                    ent.AddTotf_data_download(d);
+                }
+                
+            }
+            fb_goods_archives_bar b = new fb_goods_archives_bar();
+            b.goods_bar_code = e.goods_bar_code;
+            b.goods_code = e.goods_code;
+            b.if_examine = "1";
+            b.if_main_bar = "1";
+            b.sale_price = e.sale_price;
+            if (ent.fb_goods_archives_bar.Any(p => p.goods_bar_code == e.goods_bar_code) == false)
+            {
+                ent.AddTofb_goods_archives_bar(b);
+            }
 
             //处理传过来的多个SupCode
             SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
 
-            //FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-            //sup.GoodsCode = id;
-            //sup.Id = Guid.NewGuid().ToString();
-            //sup.IfExamine = "1";
-            //sup.IfMainSupplier = "1";
-            //sup.PyCode = entity.PyCode;
-            //sup.SupCode = entity.SupCode;
-            //sup.SupName = entity.SupName;
-            ////GoodsArchivesSupplierRepository.Save(sup);
-            //FbGoodsArchivesSupplierService.Create(sup);
+            List<fb_goods_archives_supplier> sups = ent.fb_goods_archives_supplier.Where(p => p.goods_code == e.goods_code).ToList();
+            foreach (var sup in sups)
+            {
+                if (entity.SupCode.Split(',').Contains(sup.sup_code) == false)
+                {
+                    ent.DeleteObject(sup);
+                }
+                else
+                {
+                    fb_goods_archives_supplier p = new fb_goods_archives_supplier();
+                    p.goods_code = e.goods_code;
+                    p.if_examine = "1";
+                    p.if_main_supplier = "1";
+                    p.input_tax = e.input_tax;
+                    p.nontax_purchase_price = e.nontax_purchase_price;
+                    p.offer_min = e.offer_min;
+                    p.offer_mode = p.offer_mode;
+                    p.op_code = e.op_code;
+                    p.pool_rate = e.pool_rate;
+                    p.purchase_price = e.purchase_price;
+                    p.py_code = e.py_code;
+                    p.sup_code = e.sup_code;
+                    p.sup_name = e.goods_sub_name;
+                    p.sys_guid = _string.GenerateStringID();
+                    ent.AddTofb_goods_archives_supplier(p);
+                }
+            }
+            ent.SaveChanges();
             r.Str = id;
             return r;
         }

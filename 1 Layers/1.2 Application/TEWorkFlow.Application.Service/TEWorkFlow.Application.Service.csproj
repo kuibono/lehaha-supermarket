@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -148,6 +150,10 @@
     <ProjectReference Include="..\..\1.4 Infrastructure\1.4.1 NSH\NSH.VSTO\NSH.VSTO.csproj">
       <Project>{A6628A7C-E438-4DB6-B7E0-FE4ED2F1F4E5}</Project>
       <Name>NSH.VSTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeWorkFlow.Application.DataEntity\TeWorkFlow.Application.DataEntity.csproj">
+      <Project>{23FE64BD-6763-4A42-9236-1CD48A017FE3}</Project>
+      <Name>TeWorkFlow.Application.DataEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
