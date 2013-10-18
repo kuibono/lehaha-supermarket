@@ -372,17 +372,16 @@
                 success: function (j) {
                     if (j == false) {
                         if (confirm("将要删除的产品存在采购数据，删除后将影响整个系统运行，是否确认删除？") == true) {
-                            $.ajax({
-                                url: "/Archives/GoodsDelete",
-                                data: { ids: id,confirm:"true" },
-                                dataType: "json",
-                                success: function (r) {
-                                    grid.reload();
-                                }
+                            $.getJSON("/Archives/GoodsDelete", { "ids": id, "confirm": "true" }, function (r) {
+                                //alert(r);
+                                grid.reload();
                             });
                         }
                     }
-                   
+                    else {
+                        grid.reload();
+                    }
+
                 },
                 error: function () {
                 }

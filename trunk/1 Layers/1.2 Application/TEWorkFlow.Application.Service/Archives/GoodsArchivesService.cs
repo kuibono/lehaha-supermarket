@@ -114,7 +114,7 @@ namespace TEWorkFlow.Application.Service.Archives
             Result r = new Result();
             r.IsSuccess = true;
             SuperMarketEntities ent = new SuperMarketEntities();
-            
+
 
             fb_goods_archives e = ConvertToDataBaseEntity(entity);
             e.operator_date = DateTime.Now;
@@ -138,10 +138,10 @@ namespace TEWorkFlow.Application.Service.Archives
             ent.SaveChanges();
 
             string id = e.goods_code;
-            if (e.if_examine=="1")
+            if (e.if_examine == "1")
             {
                 var allBranchs = ent.bs_branch_archives.ToList();
-                foreach(var br in allBranchs)
+                foreach (var br in allBranchs)
                 {
                     tf_data_download d = new tf_data_download();
                     d.download_id = Guid.NewGuid().ToString();
@@ -151,7 +151,7 @@ namespace TEWorkFlow.Application.Service.Archives
                     d.download_tablename = "fb_goods_archives";
                     ent.AddTotf_data_download(d);
                 }
-                
+
             }
             fb_goods_archives_bar b = new fb_goods_archives_bar();
             b.goods_bar_code = e.goods_bar_code;
@@ -165,35 +165,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
 
             //处理传过来的多个SupCode
-            SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
-
-            List<fb_goods_archives_supplier> sups = ent.fb_goods_archives_supplier.Where(p => p.goods_code == e.goods_code).ToList();
-            foreach (var sup in sups)
-            {
-                if (entity.SupCode.Split(',').Contains(sup.sup_code) == false)
-                {
-                    ent.DeleteObject(sup);
-                }
-                else
-                {
-                    fb_goods_archives_supplier p = new fb_goods_archives_supplier();
-                    p.goods_code = e.goods_code;
-                    p.if_examine = "1";
-                    p.if_main_supplier = "1";
-                    p.input_tax = e.input_tax;
-                    p.nontax_purchase_price = e.nontax_purchase_price;
-                    p.offer_min = e.offer_min;
-                    p.offer_mode = p.offer_mode;
-                    p.op_code = e.op_code;
-                    p.pool_rate = e.pool_rate;
-                    p.purchase_price = e.purchase_price;
-                    p.py_code = e.py_code;
-                    p.sup_code = e.sup_code;
-                    p.sup_name = e.goods_sub_name;
-                    p.sys_guid = _string.GenerateStringID();
-                    ent.AddTofb_goods_archives_supplier(p);
-                }
-            }
+            SaveGoodsSuppliers(e, e.sup_code.Split(','), ent);
             ent.SaveChanges();
             r.Str = id;
             return r;
@@ -217,163 +189,301 @@ namespace TEWorkFlow.Application.Service.Archives
         [Transaction]
         public Result Update(GoodsArchives entity)
         {
-            entity.SupName = GetSupName(entity.SupCode.Split(','));
 
-            Cache.Clear(entity.SupCode);
-            entity.OperatorDate = DateTime.Now;
+
+            //Cache.Clear(entity.SupCode);
             Result r = new Result();
             r.IsSuccess = true;
-            //验证条码是否否存在
-            if (EntityRepository.LinqQuery.Any(p => p.GoodsBarCode == entity.GoodsBarCode && p.Id != entity.Id))
-            {
-                r.IsSuccess = false;
-                r.Message = "输入的条形码不唯一，请重新输入";
-                return r;
-            }
-            var oldEntity = EntityRepository.Get(entity.Id);
+            SuperMarketEntities ent = new SuperMarketEntities();
 
-            if (entity.GbCode.IsNullOrEmpty())
-            {
-                entity.GbCode = "";
-            }
-            if (entity.GmCode.IsNullOrEmpty())
-            {
-                entity.GmCode = "";
-            }
-            if (entity.GsCode.IsNullOrEmpty())
-            {
-                entity.GsCode = "";
-            }
-            if (entity.GlCode.IsNullOrEmpty())
-            {
-                entity.GlCode = "";
-            }
 
+
+            fb_goods_archives e = ConvertToDataBaseEntity(entity);
+            
+
+            var oldEntity = ent.fb_goods_archives.First(p => p.goods_code == e.goods_code);
+            e.EntityKey = oldEntity.EntityKey;
+           
+            e.operator_date = DateTime.Now;
+            e.goods_sub_name = GetSupName(e.sup_code.Split(','));
+
+            if (string.IsNullOrEmpty(e.goods_bar_code))
+            {
+                e.goods_bar_code = GenerateBarCode();
+            }
+            else
+            {
+                if (e.goods_bar_code != oldEntity.goods_bar_code)
+                {
+                    //验证条码是否否存在
+                    if (ent.fb_goods_archives.Any(p => p.goods_bar_code == e.goods_bar_code && p.goods_code != e.goods_code))
+                    {
+                        r.IsSuccess = false;
+                        r.Message = "输入的条形码不唯一，请重新输入";
+                        return r;
+                    }
+                }
+            }
+            //ent.AddTofb_goods_archives(e);
+            //ent.SaveChanges();
+
+            //string id = e.goods_code;
+            if (e.if_examine == "1")
+            {
+                var allBranchs = ent.bs_branch_archives.ToList();
+                foreach (var br in allBranchs)
+                {
+                    tf_data_download d = new tf_data_download();
+                    d.download_id = Guid.NewGuid().ToString();
+                    d.download_branchcode = br.b_code;
+                    d.download_keyvalue = e.goods_code;
+                    d.download_order = 0;
+                    d.download_tablename = "fb_goods_archives";
+                    ent.AddTotf_data_download(d);
+                }
+
+            }
+            
             #region 条码发生变化后，更新条码表
-            if (oldEntity.GoodsBarCode != entity.GoodsBarCode)
+            if (oldEntity.goods_bar_code != e.goods_bar_code)
             {
-                var oldBarCode = GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
+                var oldBarCode = ent.fb_goods_archives_bar.First(p => p.goods_bar_code == oldEntity.goods_bar_code); //GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
                 if (oldBarCode != null)
                 {
-                    GoodsArchivesBarRepository.Delete(oldBarCode);
+                    ent.DeleteObject(oldBarCode);
                 }
-                FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
-                bar.Id = entity.GoodsBarCode;
-                bar.GoodsCode = entity.Id;
-                bar.GoodsBarName = entity.GoodsSubName;
-                bar.IfMainBar = "1";
-                bar.IfExamine = "1";
-                bar.SalePrice = entity.SalePrice;
-                //GoodsArchivesBarRepository.Save(bar);
-                FbGoodsArchivesBarService.Update(bar);
+                fb_goods_archives_bar bar = new fb_goods_archives_bar();
+                bar.goods_bar_code = e.goods_bar_code;
+                bar.goods_code = e.goods_code;
+                bar.goods_bar_name = e.goods_sub_name;
+                bar.if_examine = "1";
+                bar.if_main_bar = "1";
+                bar.sale_price = e.sale_price;
+                ent.AddTofb_goods_archives_bar(bar);
             }
             #endregion
 
-            //处理传过来的多个SupCode
-            SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
+            if (e.purchase_price != oldEntity.purchase_price)
+            {
+                if (e.price_history == null)
+                    e.price_history = "";
+                if (string.IsNullOrEmpty(e.price_history) == false)
+                {
+                    e.price_history += ",";
+                }
+                e.price_history += string.Format("{0}|{1}", oldEntity.price_history, oldEntity.operator_date);
+            }
 
-            //#region
-            //if (oldEntity.SupCode != entity.SupCode)
+            //处理传过来的多个SupCode
+            
+            SaveGoodsSuppliers(e, e.sup_code.Split(','), ent);
+            
+            //oldEntity = e;
+            oldEntity.article_number = e.article_number;
+            oldEntity.assessor = e.assessor;
+            oldEntity.avg_cost = e.avg_cost;
+            oldEntity.backup_code = e.backup_code;
+            oldEntity.check_mode = e.check_mode;
+            oldEntity.check_unit_code = e.check_unit_code;
+            oldEntity.create_date = e.create_date;
+            oldEntity.examine_date = e.examine_date;
+            oldEntity.gb_code = e.gb_code;
+            oldEntity.gl_code = e.gl_code;
+            oldEntity.gm_code = e.gm_code;
+            oldEntity.goods_bar_code = e.goods_bar_code;
+            //oldEntity.goods_code = e.goods_code;
+            oldEntity.goods_name = e.goods_name;
+            oldEntity.goods_state = e.goods_state  ;
+            oldEntity.goods_sub_code = e.goods_sub_code;
+            oldEntity.goods_sub_name = e.goods_sub_name;
+            oldEntity.goods_type = e.goods_type;
+            oldEntity.gross_rate = e.gross_rate;
+            oldEntity.gs_code = e.gs_code;
+            oldEntity.if_examine = e.if_examine;
+            oldEntity.if_new = e.if_new;
+            oldEntity.input_tax = e.input_tax;
+            oldEntity.nontax_avg_cost = e.nontax_avg_cost;
+            oldEntity.nontax_purchase_price = e.nontax_purchase_price;
+            oldEntity.offer_min = e.offer_min;
+            oldEntity.offer_mode = e.offer_mode;
+            oldEntity.op_code = e.op_code;
+            oldEntity.@operator = e.@operator;
+            oldEntity.operator_date = e.operator_date;
+            oldEntity.output_tax = e.output_tax;
+            oldEntity.pack_coef = e.pack_coef;
+            oldEntity.pack_unit_code = e.pack_unit_code;
+            oldEntity.pool_rate = e.pool_rate;
+            oldEntity.price_history = e.price_history;
+            oldEntity.producing_area = e.producing_area;
+            oldEntity.propose_price = e.propose_price;
+            oldEntity.purchase_price = e.purchase_price;
+            oldEntity.push_rate = e.push_rate;
+            oldEntity.py_code = e.py_code;
+            oldEntity.remark = e.remark;
+            oldEntity.sale_price = e.sale_price;
+            oldEntity.shelf_life = e.shelf_life;
+            oldEntity.specification = e.specification;
+            oldEntity.stock_lower_limit = e.stock_lower_limit;
+            oldEntity.stock_upper_limit = e.stock_upper_limit;
+            oldEntity.sup_code = e.sup_code;
+            oldEntity.trade_price = e.trade_price;
+            oldEntity.under_counter_code = e.under_counter_code;
+            oldEntity.under_floor_code = e.under_floor_code;
+            oldEntity.vip_price = e.vip_price;
+
+            ent.SaveChanges();
+            r.Str = e.goods_code;
+            return r;
+
+
+
+            //entity.SupName = GetSupName(entity.SupCode.Split(','));
+
+            //Cache.Clear(entity.SupCode);
+            //entity.OperatorDate = DateTime.Now;
+            //Result r = new Result();
+            //r.IsSuccess = true;
+            ////验证条码是否否存在
+            //if (EntityRepository.LinqQuery.Any(p => p.GoodsBarCode == entity.GoodsBarCode && p.Id != entity.Id))
             //{
-            //    FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-            //    sup.GoodsCode = entity.Id;
-            //    sup.Id = Guid.NewGuid().ToString();
-            //    sup.IfExamine = "1";
-            //    sup.IfMainSupplier = "1";
-            //    sup.PyCode = entity.PyCode;
-            //    sup.SupCode = entity.SupCode;
-            //    sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
-            //    //GoodsArchivesSupplierRepository.Save(sup);
-            //    FbGoodsArchivesSupplierService.Update(sup);
+            //    r.IsSuccess = false;
+            //    r.Message = "输入的条形码不唯一，请重新输入";
+            //    return r;
+            //}
+            //var oldEntity = EntityRepository.Get(entity.Id);
+
+            //if (entity.GbCode.IsNullOrEmpty())
+            //{
+            //    entity.GbCode = "";
+            //}
+            //if (entity.GmCode.IsNullOrEmpty())
+            //{
+            //    entity.GmCode = "";
+            //}
+            //if (entity.GsCode.IsNullOrEmpty())
+            //{
+            //    entity.GsCode = "";
+            //}
+            //if (entity.GlCode.IsNullOrEmpty())
+            //{
+            //    entity.GlCode = "";
+            //}
+
+            //#region 条码发生变化后，更新条码表
+            //if (oldEntity.GoodsBarCode != entity.GoodsBarCode)
+            //{
+            //    var oldBarCode = GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
+            //    if (oldBarCode != null)
+            //    {
+            //        GoodsArchivesBarRepository.Delete(oldBarCode);
+            //    }
+            //    FbGoodsArchivesBar bar = new FbGoodsArchivesBar();
+            //    bar.Id = entity.GoodsBarCode;
+            //    bar.GoodsCode = entity.Id;
+            //    bar.GoodsBarName = entity.GoodsSubName;
+            //    bar.IfMainBar = "1";
+            //    bar.IfExamine = "1";
+            //    bar.SalePrice = entity.SalePrice;
+            //    //GoodsArchivesBarRepository.Save(bar);
+            //    FbGoodsArchivesBarService.Update(bar);
             //}
             //#endregion
 
-            //if (entity.ProposePrice != oldEntity.ProposePrice)
-            //{
-            entity.SalePrice = entity.ProposePrice;
-            //}
+            ////处理传过来的多个SupCode
+            //SaveGoodsSuppliers(entity, entity.SupCode.Split(','));
 
-            if (entity.PurchasePrice != oldEntity.PurchasePrice)
-            {
-                if (entity.PriceHistory == null)
-                    entity.PriceHistory = "";
-                if (string.IsNullOrEmpty(entity.PriceHistory) == false)
-                {
-                    entity.PriceHistory += ",";
-                }
-                entity.PriceHistory += string.Format("{0}|{1}", oldEntity.PurchasePrice, oldEntity.OperatorDate);
-            }
-            entity.OperatorDate = DateTime.Now;
-            EntityRepository.Update(entity);
-            if (entity.IfExamine == "1")
-            {
-                TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
-            }
-            return r;
+            ////#region
+            ////if (oldEntity.SupCode != entity.SupCode)
+            ////{
+            ////    FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
+            ////    sup.GoodsCode = entity.Id;
+            ////    sup.Id = Guid.NewGuid().ToString();
+            ////    sup.IfExamine = "1";
+            ////    sup.IfMainSupplier = "1";
+            ////    sup.PyCode = entity.PyCode;
+            ////    sup.SupCode = entity.SupCode;
+            ////    sup.SupName = SupplierRepository.Get(entity.SupCode).SupName;
+            ////    //GoodsArchivesSupplierRepository.Save(sup);
+            ////    FbGoodsArchivesSupplierService.Update(sup);
+            ////}
+            ////#endregion
+
+            ////if (entity.ProposePrice != oldEntity.ProposePrice)
+            ////{
+            //entity.SalePrice = entity.ProposePrice;
+            ////}
+
+            //if (entity.PurchasePrice != oldEntity.PurchasePrice)
+            //{
+            //    if (entity.PriceHistory == null)
+            //        entity.PriceHistory = "";
+            //    if (string.IsNullOrEmpty(entity.PriceHistory) == false)
+            //    {
+            //        entity.PriceHistory += ",";
+            //    }
+            //    entity.PriceHistory += string.Format("{0}|{1}", oldEntity.PurchasePrice, oldEntity.OperatorDate);
+            //}
+            //entity.OperatorDate = DateTime.Now;
+            //EntityRepository.Update(entity);
+            //if (entity.IfExamine == "1")
+            //{
+            //    TfDataDownloadService.AddDownload("fb_goods_archives", entity.Id);
+            //}
+            //return r;
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
-        [Transaction]
-        private void SaveGoodsSuppliers(GoodsArchives good, string[] supCode)
+
+        private void SaveGoodsSuppliers(fb_goods_archives good, string[] supCodes,SuperMarketEntities ent)
         {
-            List<FbGoodsArchivesSupplier> sups = FbGoodsArchivesSupplierService.GetByGoodsCode(good.Id).ToList();
+            List<fb_goods_archives_supplier> sups = ent.fb_goods_archives_supplier.Where(p => p.goods_code == good.goods_code).ToList();
 
-            //获取已经不存在的
-            var needDeleteItems = sups.Where(p => supCode.Contains(p.GoodsCode)).ToList();
-            //FbGoodsArchivesSupplierService.Delete(needDeleteItems);
+            var allSupplier = ent.fb_supplier_archives.Select(p => new StringKeyValuePair { Key = p.sup_code, Value = p.sup_name }).AsCache("_AllSupplierNameValuePair").ToList();
 
-            string[] needAddSupCodes = supCode.Where(p => sups.Any(w => w.SupCode == p) == false).ToArray();
-
-
-            foreach (var sCode in needAddSupCodes)
+            foreach (var sup in sups)
             {
-                FbSupplierArchives supplier = SupplierRepository.LinqQuery.AsCache("_AllSuppliers").Where(p => p.Id == sCode).FirstOrDefault();
-                FbGoodsArchivesSupplier sup = new FbGoodsArchivesSupplier();
-                sup.GoodsCode = good.Id;
-                sup.Id = _string.GenerateStringID();
-                sup.IfExamine = "1";
-                sup.IfMainSupplier = "1";
-                sup.PyCode = good.PyCode;
-                sup.SupCode = sCode;
-                sup.SupName = supplier.SupName;
-                GoodsArchivesSupplierRepository.Save(sup);
-                //                GoodsArchivesSupplierRepository.GetSession().Clear();
-                //                string connstr = ConfigurationManager.AppSettings["connectionString"];
-                //                SqlHelper Helper = new SqlHelper(connstr);
-                //                string sql = string.Format(@"INSERT INTO [SuperMarket].[dbo].[fb_goods_archives_supplier]
-                //           ([goods_code]
-                //           ,[sup_code]
-                //           ,[sup_name]
-                //           ,[py_code]
-                //           ,[op_code]
-                //           ,[pool_rate]
-                //           ,[offer_mode]
-                //           ,[offer_min]
-                //           ,[input_tax]
-                //           ,[purchase_price]
-                //           ,[nontax_purchase_price]
-                //           ,[if_main_supplier]
-                //           ,[if_examine]
-                //           ,[sys_guid])
-                //     VALUES
-                //           ('{0}'
-                //           ,'{1}'
-                //           ,'{2}'
-                //           ,'{3}'
-                //           ,''
-                //           ,0
-                //           ,''
-                //           ,0
-                //           ,0
-                //           ,{4}
-                //           ,0
-                //           ,'0'
-                //           ,'1'
-                //           ,'{5}')", good.Id, sCode, supplier.SupName, good.PyCode, good.PurchasePrice, _string.GenerateStringID());
-                //                Helper.ExecuteNonQuery(CommandType.Text, sql);
-                GoodsArchivesSupplierRepository.Save(sup);
+                if (supCodes.Any(p => p == sup.sup_code) == false)
+                {
+                    foreach (var deleteItem in sups.Where(p => supCodes.Contains(p.sup_code)==false).ToList())
+                    {
+                        ent.DeleteObject(deleteItem);
+                    }
+                }
+            }
+            foreach (string supCode in supCodes)
+            {
+                if (sups.Any(p=>p.sup_code==supCode) == false)//数据库中不存在传过来的供货商编码
+                {
+                    //增加
+                    fb_goods_archives_supplier p = new fb_goods_archives_supplier();
+                    p.goods_code = good.goods_code;
+                    p.if_examine = "1";
+                    p.if_main_supplier = "1";
+                    p.input_tax = good.input_tax;
+                    p.nontax_purchase_price = good.nontax_purchase_price;
+                    p.offer_min = good.offer_min;
+                    p.offer_mode = good.offer_mode;
+                    p.op_code = good.op_code;
+                    p.pool_rate = good.pool_rate;
+                    p.purchase_price = good.purchase_price;
+                    p.py_code = good.py_code;
+                    p.sup_code = supCode;
+                    p.sup_name = allSupplier.First(prp => prp.Key == supCode).Value; ;
+                    p.sys_guid = _string.GenerateStringID();
+                    ent.AddTofb_goods_archives_supplier(p);
+                }
 
+                //if (sups.Any(p => p.sup_code == supCode) == false)//数据库中存在没有传过来的供货商
+                //{
+                //    //删除
+                //    var needDeletedItems = sups.Where(p => p.sup_code == supCode).ToList();
+                //    foreach (var needDeleteItem in needDeletedItems)
+                //    {
+                //        ent.DeleteObject(needDeleteItem);
+                //    }
+                //}
             }
         }
+
         [Transaction]
         public void Delete(GoodsArchives entity)
         {
