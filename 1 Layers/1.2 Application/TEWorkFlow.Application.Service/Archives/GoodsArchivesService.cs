@@ -205,7 +205,7 @@ namespace TEWorkFlow.Application.Service.Archives
             e.EntityKey = oldEntity.EntityKey;
            
             e.operator_date = DateTime.Now;
-            e.goods_sub_name = GetSupName(e.sup_code.Split(','));
+            //e.goo = GetSupName(e.sup_code.Split(','));
 
             if (string.IsNullOrEmpty(e.goods_bar_code))
             {
