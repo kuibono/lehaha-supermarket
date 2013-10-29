@@ -118,7 +118,7 @@ namespace TEWorkFlow.Application.Service.Archives
 
             fb_goods_archives e = ConvertToDataBaseEntity(entity);
             e.operator_date = DateTime.Now;
-            e.goods_sub_name = GetSupName(e.sup_code.Split(','));
+            //e.goods_sub_name = GetSupName(e.sup_code.Split(','));
 
             if (string.IsNullOrEmpty(e.goods_bar_code))
             {
@@ -252,6 +252,12 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     ent.DeleteObject(oldBarCode);
                 }
+                var newBarCode= ent.fb_goods_archives_bar.First(p => p.goods_bar_code == e.goods_bar_code);
+                if (newBarCode != null)
+                {
+                    ent.DeleteObject(newBarCode);
+                }
+
                 fb_goods_archives_bar bar = new fb_goods_archives_bar();
                 bar.goods_bar_code = e.goods_bar_code;
                 bar.goods_code = e.goods_code;
