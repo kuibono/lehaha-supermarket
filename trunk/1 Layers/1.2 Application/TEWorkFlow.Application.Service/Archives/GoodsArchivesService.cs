@@ -252,7 +252,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     ent.DeleteObject(oldBarCode);
                 }
-                var newBarCode= ent.fb_goods_archives_bar.First(p => p.goods_bar_code == e.goods_bar_code);
+                var newBarCode= ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == e.goods_bar_code).FirstOrDefault();
                 if (newBarCode != null)
                 {
                     ent.DeleteObject(newBarCode);
