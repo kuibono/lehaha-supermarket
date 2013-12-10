@@ -10,33 +10,7 @@
           <EntitySet Name="fb_goods_archives" EntityType="SuperMarketModel.Store.fb_goods_archives" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="fb_goods_archives_bar" EntityType="SuperMarketModel.Store.fb_goods_archives_bar" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="fb_goods_archives_supplier" EntityType="SuperMarketModel.Store.fb_goods_archives_supplier" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="fb_goods_bar_code" EntityType="SuperMarketModel.Store.fb_goods_bar_code" store:Type="Tables" store:Schema="dbo" store:Name="fb_goods_bar_code">
-            <DefiningQuery>SELECT 
-      [fb_goods_bar_code].[goods_code] AS [goods_code], 
-      [fb_goods_bar_code].[goods_bar_code] AS [goods_bar_code], 
-      [fb_goods_bar_code].[goods_sub_code] AS [goods_sub_code], 
-      [fb_goods_bar_code].[goods_name] AS [goods_name], 
-      [fb_goods_bar_code].[goods_sub_name] AS [goods_sub_name], 
-      [fb_goods_bar_code].[py_code] AS [py_code], 
-      [fb_goods_bar_code].[gb_code] AS [gb_code], 
-      [fb_goods_bar_code].[gm_code] AS [gm_code], 
-      [fb_goods_bar_code].[gs_code] AS [gs_code], 
-      [fb_goods_bar_code].[gl_code] AS [gl_code], 
-      [fb_goods_bar_code].[owner_type] AS [owner_type], 
-      [fb_goods_bar_code].[sup_code] AS [sup_code], 
-      [fb_goods_bar_code].[op_code] AS [op_code], 
-      [fb_goods_bar_code].[pool_rate] AS [pool_rate], 
-      [fb_goods_bar_code].[pack_coef] AS [pack_coef], 
-      [fb_goods_bar_code].[pack_unit_code] AS [pack_unit_code], 
-      [fb_goods_bar_code].[qty_type] AS [qty_type], 
-      [fb_goods_bar_code].[price_type] AS [price_type], 
-      [fb_goods_bar_code].[sale_price] AS [sale_price], 
-      [fb_goods_bar_code].[vip_price] AS [vip_price], 
-      [fb_goods_bar_code].[trade_price] AS [trade_price], 
-      [fb_goods_bar_code].[goods_state] AS [goods_state], 
-      [fb_goods_bar_code].[modify_date] AS [modify_date]
-      FROM [dbo].[fb_goods_bar_code] AS [fb_goods_bar_code]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="fb_goods_bar_code" EntityType="SuperMarketModel.Store.fb_goods_bar_code" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="fb_pa_goods_gb" EntityType="SuperMarketModel.Store.fb_pa_goods_gb" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="fb_pa_goods_gl" EntityType="SuperMarketModel.Store.fb_pa_goods_gl" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="fb_pa_goods_gm" EntityType="SuperMarketModel.Store.fb_pa_goods_gm" store:Type="Tables" Schema="dbo" />
@@ -142,6 +116,7 @@
           <Property Name="price_history" Type="nvarchar" MaxLength="255" />
           <Property Name="backup_code" Type="nvarchar" MaxLength="255" />
           <Property Name="if_new" Type="nvarchar" MaxLength="255" />
+          <Property Name="qty_type" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="fb_goods_archives_bar">
           <Key>
@@ -180,13 +155,9 @@
           <Property Name="if_examine" Type="nvarchar" MaxLength="255" />
           <Property Name="sys_guid" Type="nvarchar" Nullable="false" MaxLength="255" />
         </EntityType>
-        <!--生成过程中发现错误:
-      警告 6002: 表/视图“SuperMarket.dbo.fb_goods_bar_code”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
-      -->
         <EntityType Name="fb_goods_bar_code">
           <Key>
             <PropertyRef Name="goods_code" />
-            <PropertyRef Name="goods_bar_code" />
           </Key>
           <Property Name="goods_code" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="goods_bar_code" Type="varchar" Nullable="false" MaxLength="20" />
@@ -410,6 +381,7 @@
           <Property Name="price_history" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="backup_code" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="if_new" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="qty_type" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="fb_goods_archives_bar">
           <Key>
@@ -432,7 +404,6 @@
         <EntityType Name="fb_goods_bar_code">
           <Key>
             <PropertyRef Name="goods_code" />
-            <PropertyRef Name="goods_bar_code" />
           </Key>
           <Property Name="goods_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="goods_bar_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
@@ -607,7 +578,8 @@
             <ScalarProperty Name="sync_password" ColumnName="sync_password" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="fb_goods_archives"><EntityTypeMapping TypeName="SuperMarketModel.fb_goods_archives"><MappingFragment StoreEntitySet="fb_goods_archives">
-            <ScalarProperty Name="goods_code" ColumnName="goods_code" />
+            <ScalarProperty Name="qty_type" ColumnName="qty_type" />
+                <ScalarProperty Name="goods_code" ColumnName="goods_code" />
             <ScalarProperty Name="goods_bar_code" ColumnName="goods_bar_code" />
             <ScalarProperty Name="goods_sub_code" ColumnName="goods_sub_code" />
             <ScalarProperty Name="gb_code" ColumnName="gb_code" />
@@ -804,7 +776,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DataModel" ZoomLevel="21">
+      <Diagram Name="DataModel" ZoomLevel="133">
         <EntityTypeShape EntityType="SuperMarketModel.bs_branch_archives" Width="1.5" PointX="0.75" PointY="0.75" Height="8.3262337239583335" IsExpanded="true" />
         <EntityTypeShape EntityType="SuperMarketModel.fb_goods_archives" Width="1.5" PointX="2.75" PointY="0.75" Height="10.82615234375" IsExpanded="true" />
         <EntityTypeShape EntityType="SuperMarketModel.fb_goods_archives_bar" Width="1.5" PointX="4.75" PointY="0.75" Height="3.5186979166666656" IsExpanded="true" />

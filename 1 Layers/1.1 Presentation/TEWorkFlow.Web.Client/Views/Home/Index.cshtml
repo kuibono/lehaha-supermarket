@@ -1,190 +1,232 @@
-﻿@using TEWorkFlow.Web.Client.Common
-@using TEWorkFlow.Web.Client.Resources
-<!DOCTYPE html>
-<html>
+﻿@{
+    Layout = null;
+}
+@model TEWorkFlow.Domain.Sys.SysEnterpriseArchives
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>@Global.ProjectName</title>
-    <link rel="stylesheet" type="text/css" href="~/Styles/default.css" />
-    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-easyui/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="~/Scripts/jquery-easyui/themes/icon.css">
-    <script type="text/javascript" src="~/Scripts/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery-easyui/jquery.easyui.min.js"></script>
+    <title>大连乐哈哈超市连锁店有限公司</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/demo.css" />
+    <script src="~/scripts/boot.js" type="text/javascript"></script>
+    
+</head>
+<body>
+    <!--Layout-->
+    <div id="layout1" class="mini-layout fill">
+        <div class="header" region="north" height="70" showsplit="false" showheader="false" style=" overflow:hidden;">
+            <div style="float:right; min-width:360px;width:360px;height:100%; background-image:url(/Images/bannerRight.jpg);background-repeat:no-repeat;">
+               
+            </div>
+            <div style="float: left;min-width:209px;width:500px;height:100%; /*background-image:url(/Images/bannerLeft.jpg);*/ background-repeat:no-repeat;">
+                <h1 style="margin: 0; padding: 15px;margin-top:10px; cursor: default; font-family: 微软雅黑,黑体,宋体;color:#FFF;">
+                    @Model.TempString
+                </h1>
+            </div>
+            <div style="position: absolute; top: 18px; right: 10px;">
+                
+                <a class="mini-button mini-button-iconTop" iconcls="icon-bell"
+                        onclick="showBlank" plain="true">公告</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-group-key" onclick="showChangePassWindow"
+                    plain="true">修改密码</a> 
+                @if (TEWorkFlow.Web.Client.Common.MyEnv.IsEmployeeLogin && false)
+                {
+                    <a class="mini-button mini-button-iconTop" iconcls="icon-cog-edit" onclick="showBusinessSettingWindow"
+                        plain="true">业务设置</a> 
+                    <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="showSettingWindow"
+                        plain="true">系统设置</a> 
+                }
+                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onLogOut"
+                    plain="true">退出</a>
+            </div>
+        </div>
+        <div title="south" region="south" showsplit="false" showheader="false" height="30">
+            <div style="line-height: 28px; text-align: center; cursor: default">
+                大连乐哈哈超市连锁有限公司 &copy; 2013 版权所有</div>
+        </div>
+        <div title="center" region="center" style="border: 0;" bodystyle="overflow:hidden;">
+            <!--Splitter-->
+            <div class="mini-splitter fill" borderstyle="border:0;">
+                <div size="180" maxsize="250" minsize="100" showcollapsebutton="true" style="border: 0;">
+                    <!--OutlookTree-->
+                    <div id="leftTree" class="mini-outlookmenu" url="/Account/GetModules/" onitemclick="onItemSelect"
+                        textfield="text" idfield="id" parentfield="pid" expandonload="true">
+                    </div>
+                </div>
+                <div showcollapsebutton="false" style="noborder">
+                    <!--Tabs-->
+                    <div id="mainTabs" class="mini-tabs " activeindex="0" style="width: 100%; height: 100%;"
+                        plain="false">
+                        <div title="公告" url="/Home/Blank" id="tab_blank" iconcls="icon-bell">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
-        try
-        {
-            if (top.location !== self.location) {
-	            top.location=self.location;
+        mini.parse();
+        var tree = mini.get("leftTree");
+
+        function onItemSelect(e) {
+            var tabs = mini.get("mainTabs");
+            var node = e.item;
+            var id = "tab$" + node.id;
+            if (node.newwindow == true) {
+                openWindow(node.url, node.text, node.iconCls);
+                return false;
+            }
+            var tab = tabs.getTab(id);
+            //tabs.removeTab(tab);
+            if (!tab) {
+                tab = {};
+                tab.name = id;
+                tab.title = node.text;
+                tab.iconCls = node.iconCls;
+                tab.showCloseButton = true;
+
+                //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
+                if (node.url) {
+                    tab.url = node.url;
+                }
+                else {
+                    tab.url = mini_JSPath + "../../docs/api/" + node.id + ".html";
+                }
+                tabs.addTab(tab);
+            }
+            else {
+                tabs.reloadTab(tab);
+            }
+            tabs.activeTab(tab);
+        }
+        function showTab(node) {
+            var tabs = mini.get("mainTabs");
+            var id = "tab$" + node.id;
+            if (node.newwindow == true) {
+                openWindow(node.url, node.text, node.iconCls);
+                return false;
+            }
+            var tab = tabs.getTab(id);
+            //tabs.removeTab(tab);
+            if (!tab) {
+                tab = {};
+                tab.name = id;
+                tab.title = node.text;
+                tab.iconCls = node.iconCls;
+                tab.showCloseButton = true;
+
+                //这里拼接了url，实际项目，应该从后台直接获得完整的url地址
+                if (node.url) {
+                    tab.url = node.url;
+                }
+                else {
+                    tab.url = mini_JSPath + "../../docs/api/" + node.id + ".html";
+                }
+                tabs.addTab(tab);
+            }
+            tabs.activeTab(tab);
+        }
+
+        function onNodeSelect(e) {
+            var node = e.node;
+            var isLeaf = e.isLeaf;
+
+            if (isLeaf) {
+                showTab(node);
             }
         }
-        catch(e){}
 
-        $(function () {
-            $('window_hider').after($('window_hider').html());
-            $('window_hider').remove();
-        });
-        function openTab(title, href, icon) {
-            if ($('#tt').tabs('exists', title)) {
-                $('#tt').tabs('select', title);
-            } else {
-                //alert(href);
-                $('#tt').tabs('add', {
-                    title: title,
-                    border:false,
-                    content: createFrame(href),
-                    icon: icon,
-                    closable: true
-                });               
-            }
+
+        function onClick(e) {
+            var text = this.getText();
+            alert(text);
         }
-        function closeTab(index) {
-            $('#tt').tabs('close', index);
-        }
-        function closeSelectedTab() {
-            var index = getSelectedIndex();
-            closeTab(index);
-        }
-        function getSelectedIndex() {
-            var tab = $('#tt').tabs('getSelected');
-            var index = $('#tt').tabs('getTabIndex', tab);
-            return index;
-        }
-        function createFrame(url) {
-            var s = '<iframe scrolling="no" marginwidth="0" marginheight="0" frameborder="no"  src="'
-            + url + '" style="width:100%;height:99%; padding:0px; margin:0px; border:0px;"></iframe>';
-            
-            return s;
+        function showBlank(e) {
+            var tabs = mini.get("mainTabs");
+            var tab = tabs.getTab(0);
+            tabs.activeTab(tab);
+            tabs.reloadTab(tab);
         }
 
-        $(function () {
-            var commandLocation = "@Url.Content("~/Home/ModuleList/")?rd=" + Math.random();
-            $.ajax({ url: commandLocation, dataType: "json", async: false, data: "categoryID=" + 1,
-                success: function (json) {
-                    initMenu(json.modules);
-                }
-            });
-        });
-        function initMenu(modules) {
-            $("#nav").accordion({ animate: false });
-            $.each(modules, function (i, n) {
-                var menulist = '';
-                if (n.modules) {
-                    menulist += '<ul>';
-                    $.each(n.modules,
-                function (j, o) {
-                    menulist += '<li><div><a ref="' + o.id
-                + '" href="#" rel="' + o.path + '" ><span class="icon '
-                + o.icon + '" >&nbsp;</span><span class="nav">'
-                + o.name + '</span></a></div></li> ';
-                })
-                    menulist += '</ul>';
-                }
-                $('#nav').accordion('add', { title: n.name, content: menulist, iconCls: 'icon ' + n.icon });
-            });
-            $('.easyui-accordion li a').click(
-            function () {
-                var tabTitle = $(this).children('.nav').text();
-                var url = $(this).attr("rel") + "?rd=" + Math.random();
-                var menuid = $(this).attr("ref");
-                var icon = $(this).find("span:first-child").attr("class");
-                openTab(tabTitle, url, icon);
-                $('.easyui-accordion li div').removeClass("selected");
-                $(this).parent().addClass("selected");
-            })
-             .hover(
-             function () {
-                 $(this).parent().addClass("hover");
-             }, function () { $(this).parent().removeClass("hover"); });
-            var panels = $('#nav').accordion('panels');
-            var t = panels[0].panel('options').title; $('#nav').accordion('select', t);
-
-        }
-        function getIcon(menuid) {
-            var icon = 'icon '; $.each(_menus.menus, function (i, n) { $.each(n.menus, function (j, o) { if (o.menuid == menuid) { icon += o.icon; } }) })
-            return icon;
-        }
-
-        function modifyPassword() {
-            $('#dlg').window('open').dialog('setTitle', 'Modify Password'); ;
-            $('#fm').form('clear');
-        }
-
-        function savePassword() {
-            $('#fm').form('submit', {
-                url: '@Url.Action("ModifyPassword", "User")',
-                onSubmit: function () {
-                    return $(this).form('validate');
+        function showSettingWindow(e) {
+            mini.open({
+                url: "/Account/SysSetting/",
+                title: "系统设置",
+                iconCls: "icon-edit",
+                allowResize: false,
+                width: 650,
+                height: 200,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
                 },
-                success: function (result) {
-                    var result = eval('(' + result + ')');
-                    if (result.Success) {
-                        $('#dlg').dialog('close');
-                        $.messager.alert('Info', result.Message, 'info');
-                    } else {
-                        $.messager.alert('Error', result.Message, 'error');
-                    }
+                ondestroy: function (action) {
+                    location.href = location.href;
                 }
             });
+        }
+        function showBusinessSettingWindow() {
+            mini.open({
+                url: "/Account/BaseSetting/",
+                title: "基础参数设置",
+                iconCls: "icon-edit",
+                allowResize: false,
+                width: 680,
+                height: 270,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+                }
+            });
+        }
+
+        function showChangePassWindow() {
+            mini.open({
+                url: "/Account/ChangePassword/",
+                title: "修改密码",
+                iconCls: "icon-group-key",
+                allowResize: false,
+                width: 250,
+                height: 170,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+                }
+            });
+        }
+
+        function openWindow(u, t, i) {
+            mini.open({
+                url: u,
+                title: t,
+                iconCls: i,
+                allowResize: false,
+                width: 680,
+                height: 270,
+                onload: function () {
+                    //var iframe = this.getIFrameEl();
+                    //var data = { action: "new" };
+                    //iframe.contentWindow.SetData(data);
+                },
+                ondestroy: function (action) {
+                }
+            });
+        }
+
+        function onLogOut(e) {
+            location.href = "/Account/Logout/"
+        }
+        function onQuickClick(e) {
+            tree.expandPath("datagrid");
+            tree.selectNode("datagrid");
         }
     </script>
-</head>
-<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
-    <div data-options="region:'north',split:false,border:false" style="overflow: hidden;
-        height: 30px; background: url(Images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
-        line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float: right; padding-right: 20px;" class="head">welcome 
-            <a href="javascript:void(0)" class="usertooltips">@Session[AuthorizeSettings.SessionUserName]</a> 
-            <a href="#" class="editpass" onclick="modifyPassword()">password</a> 
-            <a href="javascript:void(0)" title="风格" onclick="$('#win-theme').window('open').dialog('设置风格', '设置风格'); ">
-                <img src="~/Scripts/jquery-easyui/themes/icons/color_swatch.png"/>
-            </a>
-            <a href="@Url.Content("~/Home/Logout")" class="loginOut">LogOff</a> </span>
-        <span style="padding-left: 10px; font-size: 16px;">
-            <img src="images/blocks.gif" width="20" height="20" align="absmiddle" />
-            @Global.ProjectName</span>
-    </div>
-    <div data-options="region:'south',split:false" style="height: 30px; background: #D2E0F2;">
-        <div class="footer">Copyright & other infomation</div>
-    </div>
-    <div data-options="region:'west',split:true" title="@Global.NavigationMenu" style="width:180px;overflow:hidden;">
-        <div id="nav" class="easyui-accordion" data-options="fit:true,border:false">
-        </div>
-    </div>
-    <div data-options="region:'center'" style="background: #eee; overflow-y: hidden">
-        <div id="tt" class="easyui-tabs" data-options="fit:true,border:false" style=" overflow:hidden;">
-        </div>
-    </div>
-    
-    <div id="window_hider" style="display: none">
-        <!--password-->
-        <div id="dlg" class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
-            closed="true" buttons="#dlg-buttons">
-            <form id="fm" method="post">
-            <div class="fitem">
-                <label>
-                    New Password:</label>
-                <input name="newPassword" class="easyui-validatebox" required="true">
-            </div>
-            <div class="fitem">
-                <label>
-                    Confirm:</label>
-                <input name="confirmNewPassword" class="easyui-validatebox" required="true">
-            </div>
-            </form>
-        </div>
-        <div id="dlg-buttons">
-            <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savePassword()">@Global.Ok</a>
-            <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">
-                @Global.Cancel</a>
-        </div>
-        <div id="win-theme"class="easyui-dialog" style="width: 340px; height: 180px; padding: 10px 20px"
-             closed="true" buttons="#dlg-buttons">
-            <select class="easyui-combobox">
-                <option value="default">Metro</option>
-                <option value="classic">经典</option>
-                <option value="gray">灰色</option>
-            </select>
-        </div>
-    </div>
 </body>
 </html>

@@ -168,10 +168,10 @@
     <Compile Include="Controllers\ArchivesController.cs" />
     <Compile Include="Controllers\BusinessController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController3.cs" />
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1045,9 +1045,9 @@
     <None Include="Scripts\miniui\themes\blue2010\images\treegrid\Thumbs.db" />
     <None Include="Scripts\miniui\themes\olive2003\images\buttonedit\Thumbs.db" />
     <None Include="Scripts\miniui\themes\olive2003\images\tree\Thumbs.db" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\Test\List.cshtml" />
-    <Content Include="Views\Test\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Shared\_ListLayout.cshtml" />
     <Content Include="Views\Archives\EmployeeList.cshtml" />
     <Content Include="Views\Shared\_WindowLayout.cshtml" />
@@ -1087,11 +1087,11 @@
     <Content Include="Views\Account\ELogin.cshtml" />
     <Content Include="Views\Query\GoodsArchiveList.cshtml" />
     <Content Include="Views\Query\ViewGoods.cshtml" />
-    <Content Include="Views\Test\Blank.cshtml" />
+    <Content Include="Views\Home\Blank.cshtml" />
     <Content Include="Views\Report\SupplierPurchase.cshtml" />
     <Content Include="Views\Report\BranchPurchase.cshtml" />
-    <Content Include="Views\Test\PostList.cshtml" />
-    <Content Include="Views\Test\PostEdit.cshtml" />
+    <Content Include="Views\Home\PostList.cshtml" />
+    <Content Include="Views\Home\PostEdit.cshtml" />
     <Content Include="Views\Archives\SupplierBranchRelationManagement.cshtml" />
     <Content Include="Views\Archives\BranchSupplierRelationManagement.cshtml" />
     <Content Include="Views\Report\BranchRetail.cshtml" />
@@ -1101,8 +1101,8 @@
     <Content Include="Views\Query\RetailView.cshtml" />
     <Content Include="Views\Report\BranchPurchaseRetailCompare.cshtml" />
     <Content Include="Views\Archives\BranchView.cshtml" />
-    <Content Include="Views\Test\BranchPostList.cshtml" />
-    <Content Include="Views\Test\BranchPostEdit.cshtml" />
+    <Content Include="Views\Home\BranchPostList.cshtml" />
+    <Content Include="Views\Home\BranchPostEdit.cshtml" />
     <Content Include="Views\Account\副本 ELogin.cshtml" />
   </ItemGroup>
   <ItemGroup>

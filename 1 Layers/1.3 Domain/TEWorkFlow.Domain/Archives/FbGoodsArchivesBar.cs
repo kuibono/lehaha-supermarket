@@ -31,12 +31,22 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PackCoef { get; set; }
+        private decimal _PackCoef = 1;
+        public virtual decimal PackCoef { get { return _PackCoef; } set { _PackCoef = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual string QtyType { get; set; }
+        private string _QtyType = "1";
+        public virtual string QtyType
+        {
+            get
+            {
+                return
+                    _QtyType;
+            }
+            set { _QtyType = value; }
+        }
 
         /// <summary>
         /// 
@@ -46,22 +56,26 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal SalePrice { get; set; }
+        private decimal _SalePrice = 0;
+        public virtual decimal SalePrice { get { return _SalePrice; } set { _SalePrice = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal VipPrice { get; set; }
+        private decimal _VipPrice = 0;
+        public virtual decimal VipPrice { get { return _VipPrice; } set { _VipPrice = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal TradePrice { get; set; }
+        private decimal _TradePrice = 0;
+        public virtual decimal TradePrice { get { return _TradePrice; } set { _TradePrice = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PushRate { get; set; }
+        private decimal _PushRate = 0;
+        public virtual decimal PushRate { get { return _PushRate; } set { _PushRate = value; } }
 
         /// <summary>
         /// 

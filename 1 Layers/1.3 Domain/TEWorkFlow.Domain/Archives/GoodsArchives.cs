@@ -20,22 +20,63 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GbCode { get; set; }
+        /// 
+        private string _GbCode = "";
+        public virtual string GbCode
+        {
+            get { return _GbCode; }
+            set
+            {
+                if (value == null)
+                    return; 
+                _GbCode = value;
+            }
+        }
+
+
+        private string _GmCode = "";
+
+        public virtual string GmCode
+        {
+            get { return _GmCode; }
+            set
+            {
+                if (value == null)
+                    return; 
+                _GmCode = value;
+            }
+        }
+
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GmCode { get; set; }
+        private string _GsCode = "";
+        public virtual string GsCode
+        {
+            get { return _GsCode; }
+            set
+            {
+                if (value == null)
+                    return;
+                _GsCode = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GsCode { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual string GlCode { get; set; }
+        private string _GlCode = "";
+        public virtual string GlCode
+        {
+            get { return _GlCode; }
+            set
+            {
+                if (value == null)
+                    return;
+                _GlCode = value;
+            }
+        }
 
         private string _GoodsType = "1";
         /// <summary>
@@ -53,6 +94,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _GoodsType = value;
             }
         }
@@ -74,6 +117,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _CheckMode = value;
             }
         }
@@ -101,6 +146,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _OpCode = value;
             }
         }
@@ -118,7 +165,25 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual string GoodsSubName { get; set; }
+        private string _GoodsSubName = "";
+        public virtual string GoodsSubName
+        {
+            get
+            {
+                if (_GoodsSubName != null && _GoodsSubName.Length > 0)
+                    return _GoodsSubName;
+                if (GoodsName == null)
+                    return _GoodsSubName;
+                return GoodsName.Length > 10 ? GoodsName.Substring(10) : GoodsName;
+
+            }
+            set
+            {
+                if (value == null)
+                    return; 
+                _GoodsSubName = value;
+            }
+        }
 
         /// <summary>
         /// 
@@ -139,6 +204,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _GoodsState = value;
             }
         }
@@ -177,6 +244,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _PackUnitCode = value;
             }
         }
@@ -184,17 +253,37 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual string OfferMode { get; set; }
+        private string _OfferMode = "1";
+        public virtual string OfferMode
+        {
+            get { return _OfferMode; }
+            set
+            {
+                if (value == null)
+                    return; 
+                _OfferMode = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PackCoef { get; set; }
+        private decimal _PackCoef = 1;
+        public virtual decimal PackCoef
+        {
+            get { return _PackCoef; }
+            set { _PackCoef = value; }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal OfferMin { get; set; }
+        private decimal _OfferMin = 1;
+        public virtual decimal OfferMin
+        {
+            get { return _OfferMin; }
+            set { _OfferMin = value; }
+        }
 
         /// <summary>
         /// 
@@ -243,6 +332,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _CheckUnitCode = value;
             }
         }
@@ -264,6 +355,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _PurchasePrice = value;
             }
         }
@@ -285,6 +378,8 @@ namespace TEWorkFlow.Domain.Archives
             }
             set
             {
+                if (value == null)
+                    return; 
                 _NontaxPurchasePrice = value;
             }
         }
@@ -307,22 +402,35 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal SalePrice { get; set; }
+        private decimal _SalePrice = 0;
+        public virtual decimal SalePrice
+        {
+            get { return _SalePrice > 0 ? _SalePrice : PurchasePrice.Value; }
+            set
+            {
+                if (value == null)
+                    return; 
+                _SalePrice = value;
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal VipPrice { get; set; }
+        private decimal _VipPrice = 0;
+        public virtual decimal VipPrice { get { return _VipPrice; } set { _VipPrice = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal TradePrice { get; set; }
+        private decimal _TradePrice = 0;
+        public virtual decimal TradePrice { get { return _TradePrice; } set { _TradePrice = value; } }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual decimal PushRate { get; set; }
+        private decimal _PushRate = 0;
+        public virtual decimal PushRate { get { return _PushRate; } set { _PushRate = value; } }
 
         /// <summary>
         /// 
@@ -359,7 +467,8 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 建议价格
         /// </summary>
-        public virtual decimal ProposePrice { get; set; }
+        private decimal _ProposePrice = 0;
+        public virtual decimal ProposePrice { get { return _ProposePrice; } set { _ProposePrice = value; } }
 
         public virtual string PriceHistory { get; set; }
 
@@ -381,6 +490,21 @@ namespace TEWorkFlow.Domain.Archives
         public virtual string SupName { get; set; }
 
         public virtual string SupTel { get; set; }
+
+
+        private string _QtyType = "1";
+        public virtual string QtyType
+        {
+            get
+            {
+                if ( _QtyType!="2")
+                {
+                    return "1";
+                }
+                return _QtyType;
+            }
+            set { _QtyType = value; }
+        }
 
 
         protected override void Validate()

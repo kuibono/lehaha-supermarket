@@ -30,27 +30,50 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 经营方式
         /// </summary>
-        public virtual string OpCode { get; set; }
+        private string _OpCode = "1";
+        public virtual string OpCode
+        {
+            get { return _OpCode; }
+            set
+            {
+                if (value == null)
+                    return;
+                _OpCode = value;
+            }
+        }
 
         /// <summary>
         /// 扣率
         /// </summary>
-        public virtual decimal PoolRate { get; set; }
+        private decimal _PoolRate = 0;
+        public virtual decimal PoolRate { get { return _PoolRate; } set { _PoolRate = value; } }
 
         /// <summary>
         /// 供货方式
         /// </summary>
-        public virtual string OfferMode { get; set; }
+        private string _OfferMode = "1";
+        public virtual string OfferMode
+        {
+            get { return _OfferMode; }
+            set
+            {
+                if (value == null)
+                    return; 
+                _OfferMode = value;
+            }
+        }
 
         /// <summary>
         /// 最小订量
         /// </summary>
-        public virtual decimal OfferMin { get; set; }
+        private decimal _OfferMin = 1;
+        public virtual decimal OfferMin { get { return _OfferMin; } set { _OfferMin = value; } }
 
         /// <summary>
         /// 进项税率
         /// </summary>
-        public virtual decimal InputTax { get; set; }
+        private decimal _InputTax = 0;
+        public virtual decimal InputTax { get { return _InputTax; } set { _InputTax = value; } }
 
         /// <summary>
         /// 含税进价
@@ -60,7 +83,20 @@ namespace TEWorkFlow.Domain.Archives
         /// <summary>
         /// 不含税进价
         /// </summary>
-        public virtual decimal NontaxPurchasePrice { get; set; }
+        private decimal _NontaxPurchasePrice = 0;
+        public virtual decimal NontaxPurchasePrice
+        {
+            get
+            {
+
+                if (_NontaxPurchasePrice == 0)
+                {
+                    return PurchasePrice;
+                }
+                return _NontaxPurchasePrice;
+            }
+            set { _NontaxPurchasePrice = value; }
+        }
 
         /// <summary>
         /// 是否主供货商
