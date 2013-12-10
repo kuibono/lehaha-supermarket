@@ -104,7 +104,7 @@ namespace TEWorkFlow.Application.Service.Archives
             e.under_counter_code = entity.UnderCounterCode;
             e.under_floor_code = entity.UnderFloorCode;
             e.vip_price = entity.VipPrice;
-
+            e.qty_type = entity.QtyType;
             return e;
         }
 
@@ -155,10 +155,20 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             fb_goods_archives_bar b = new fb_goods_archives_bar();
             b.goods_bar_code = e.goods_bar_code;
+            b.goods_bar_name = e.goods_sub_name;
             b.goods_code = e.goods_code;
             b.if_examine = "1";
             b.if_main_bar = "1";
-            b.sale_price = e.sale_price;
+            b.sale_price = e.propose_price;
+
+            b.qty_type = e.qty_type;
+            b.pack_coef = 0;
+            b.price_type = "1";
+            b.push_rate = 0;
+            b.trade_price =0;
+            b.vip_price =0;
+            b.pack_unit_code = "01";
+
             if (ent.fb_goods_archives_bar.Any(p => p.goods_bar_code == e.goods_bar_code) == false)
             {
                 ent.AddTofb_goods_archives_bar(b);
@@ -166,9 +176,57 @@ namespace TEWorkFlow.Application.Service.Archives
 
             //处理传过来的多个SupCode
             SaveGoodsSuppliers(e, e.sup_code.Split(','), ent);
+
+            SaveGoodsBarCode(e, ent);
+            e.if_examine = "0";
             ent.SaveChanges();
+            if(entity.IfExamine=="1")
+            {
+                e.if_examine = "1";
+                ent.SaveChanges();
+            }
+           
             r.Str = id;
             return r;
+        }
+
+        protected void SaveGoodsBarCode(fb_goods_archives e,SuperMarketEntities ent)
+        {
+            var codes = from l in ent.fb_goods_bar_code where l.goods_code == e.goods_code select l;
+            foreach (fb_goods_bar_code code in codes)
+            {
+                ent.DeleteObject(code);
+            }
+            //ent.SaveChanges();
+
+            fb_goods_bar_code b=new fb_goods_bar_code();
+            //b.sale_price = e.sale_price;
+            b.gb_code = e.gb_code;
+            b.gl_code = e.gl_code;
+            b.gm_code = e.gm_code;
+            b.goods_bar_code = e.goods_bar_code;
+            b.goods_code = e.goods_code;
+            b.goods_name = e.goods_name;
+            b.goods_state = e.goods_state;
+            b.goods_sub_code = e.goods_sub_code;
+            b.goods_sub_name = e.goods_sub_name;
+            b.gs_code = e.gs_code;
+            b.modify_date = DateTime.Now;
+            b.op_code = e.op_code;
+            b.owner_type = "1";
+            b.pack_coef = e.pack_coef;
+            b.pack_unit_code = e.pack_unit_code;
+            b.pool_rate = e.pool_rate;
+            b.price_type = "1";
+            b.py_code = e.py_code;
+            b.qty_type = e.qty_type;
+            b.sale_price = e.sale_price;
+            b.sup_code = e.sup_code;
+            b.trade_price = e.trade_price;
+            b.vip_price = e.vip_price;
+
+            ent.AddTofb_goods_bar_code(b);
+            
         }
 
         [Transaction]
@@ -247,15 +305,23 @@ namespace TEWorkFlow.Application.Service.Archives
             #region 条码发生变化后，更新条码表
             if (oldEntity.goods_bar_code != e.goods_bar_code)
             {
-                var oldBarCode = ent.fb_goods_archives_bar.First(p => p.goods_bar_code == oldEntity.goods_bar_code); //GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
-                if (oldBarCode != null)
+                var oldBarCodes = ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == oldEntity.goods_bar_code); //GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
+                if (oldBarCodes.Count()>0)
                 {
-                    ent.DeleteObject(oldBarCode);
+                    foreach (var fbGoodsArchivesBar in oldBarCodes)
+                    {
+                        ent.DeleteObject(fbGoodsArchivesBar);
+                    }
+                    
                 }
-                var newBarCode= ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == e.goods_bar_code).FirstOrDefault();
-                if (newBarCode != null)
+                var newBarCodes= ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == e.goods_bar_code);
+                if (newBarCodes.Count()>0)
                 {
-                    ent.DeleteObject(newBarCode);
+                    foreach (var fbGoodsArchivesBar in newBarCodes)
+                    {
+                        ent.DeleteObject(fbGoodsArchivesBar);
+                    }
+                    
                 }
 
                 fb_goods_archives_bar bar = new fb_goods_archives_bar();
@@ -264,7 +330,16 @@ namespace TEWorkFlow.Application.Service.Archives
                 bar.goods_bar_name = e.goods_sub_name;
                 bar.if_examine = "1";
                 bar.if_main_bar = "1";
-                bar.sale_price = e.sale_price;
+                bar.sale_price = e.propose_price;
+
+                bar.qty_type = e.qty_type;
+                bar.pack_coef = 0;
+                bar.price_type = "1";
+                bar.push_rate = 0;
+                bar.trade_price = 0;
+                bar.vip_price = 0;
+                bar.pack_unit_code = "01";
+
                 ent.AddTofb_goods_archives_bar(bar);
             }
             #endregion
@@ -283,6 +358,8 @@ namespace TEWorkFlow.Application.Service.Archives
             //处理传过来的多个SupCode
             
             SaveGoodsSuppliers(e, e.sup_code.Split(','), ent);
+
+            SaveGoodsBarCode(e, ent);
             
             //oldEntity = e;
             oldEntity.article_number = e.article_number;
@@ -666,121 +743,121 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     q = q.Where(p => p.ProducingArea.Contains(c.entity.ProducingArea));
                 }
-                if (string.IsNullOrEmpty(c.entity.ArticleNumber) == false)
-                {
-                    q = q.Where(p => p.ArticleNumber.Contains(c.entity.ArticleNumber));
-                }
+                //if (string.IsNullOrEmpty(c.entity.ArticleNumber) == false)
+                //{
+                //    q = q.Where(p => p.ArticleNumber.Contains(c.entity.ArticleNumber));
+                //}
                 if (string.IsNullOrEmpty(c.entity.Specification) == false)
                 {
                     q = q.Where(p => p.Specification.Contains(c.entity.Specification));
                 }
-                if (string.IsNullOrEmpty(c.entity.ShelfLife) == false)
-                {
-                    q = q.Where(p => p.ShelfLife.Contains(c.entity.ShelfLife));
-                }
+                //if (string.IsNullOrEmpty(c.entity.ShelfLife) == false)
+                //{
+                //    q = q.Where(p => p.ShelfLife.Contains(c.entity.ShelfLife));
+                //}
                 //if (string.IsNullOrEmpty(c.entity.PackUnitCode) == false)
                 //{
                 //    q = q.Where(p => p.PackUnitCode.Contains(c.entity.PackUnitCode));
                 //}
-                if (string.IsNullOrEmpty(c.entity.OfferMode) == false)
-                {
-                    q = q.Where(p => p.OfferMode.Contains(c.entity.OfferMode));
-                }
-                if (c.entity.PackCoef > 0)
-                {
-                    q = q.Where(p => p.PackCoef == c.entity.PackCoef);
-                }
+                //if (string.IsNullOrEmpty(c.entity.OfferMode) == false)
+                //{
+                //    q = q.Where(p => p.OfferMode.Contains(c.entity.OfferMode));
+                //}
+                //if (c.entity.PackCoef > 0)
+                //{
+                //    q = q.Where(p => p.PackCoef == c.entity.PackCoef);
+                //}
 
-                if (c.entity.OfferMin > 0)
-                {
-                    q = q.Where(p => p.OfferMin == c.entity.OfferMin);
-                }
+                //if (c.entity.OfferMin > 0)
+                //{
+                //    q = q.Where(p => p.OfferMin == c.entity.OfferMin);
+                //}
 
-                if (c.entity.InputTax > 0)
-                {
-                    q = q.Where(p => p.InputTax == c.entity.InputTax);
-                }
+                //if (c.entity.InputTax > 0)
+                //{
+                //    q = q.Where(p => p.InputTax == c.entity.InputTax);
+                //}
 
-                if (c.entity.OutputTax > 0)
-                {
-                    q = q.Where(p => p.OutputTax == c.entity.OutputTax);
-                }
+                //if (c.entity.OutputTax > 0)
+                //{
+                //    q = q.Where(p => p.OutputTax == c.entity.OutputTax);
+                //}
 
-                if (c.entity.StockUpperLimit > 0)
-                {
-                    q = q.Where(p => p.StockUpperLimit == c.entity.StockUpperLimit);
-                }
+                //if (c.entity.StockUpperLimit > 0)
+                //{
+                //    q = q.Where(p => p.StockUpperLimit == c.entity.StockUpperLimit);
+                //}
 
-                if (c.entity.StockLowerLimit > 0)
-                {
-                    q = q.Where(p => p.StockLowerLimit == c.entity.StockLowerLimit);
-                }
+                //if (c.entity.StockLowerLimit > 0)
+                //{
+                //    q = q.Where(p => p.StockLowerLimit == c.entity.StockLowerLimit);
+                //}
 
-                if (string.IsNullOrEmpty(c.entity.UnderFloorCode) == false)
-                {
-                    q = q.Where(p => p.UnderFloorCode.Contains(c.entity.UnderFloorCode));
-                }
-                if (string.IsNullOrEmpty(c.entity.UnderCounterCode) == false)
-                {
-                    q = q.Where(p => p.UnderCounterCode.Contains(c.entity.UnderCounterCode));
-                }
+                //if (string.IsNullOrEmpty(c.entity.UnderFloorCode) == false)
+                //{
+                //    q = q.Where(p => p.UnderFloorCode.Contains(c.entity.UnderFloorCode));
+                //}
+                //if (string.IsNullOrEmpty(c.entity.UnderCounterCode) == false)
+                //{
+                //    q = q.Where(p => p.UnderCounterCode.Contains(c.entity.UnderCounterCode));
+                //}
                 //if (string.IsNullOrEmpty(c.entity.CheckUnitCode) == false)
                 //{
                 //    q = q.Where(p => p.CheckUnitCode.Contains(c.entity.CheckUnitCode));
                 //}
-                if (c.entity.PurchasePrice > 0)
-                {
-                    q = q.Where(p => p.PurchasePrice == c.entity.PurchasePrice);
-                }
+                //if (c.entity.PurchasePrice > 0)
+                //{
+                //    q = q.Where(p => p.PurchasePrice == c.entity.PurchasePrice);
+                //}
 
-                if (c.entity.NontaxPurchasePrice > 0)
-                {
-                    q = q.Where(p => p.NontaxPurchasePrice == c.entity.NontaxPurchasePrice);
-                }
+                //if (c.entity.NontaxPurchasePrice > 0)
+                //{
+                //    q = q.Where(p => p.NontaxPurchasePrice == c.entity.NontaxPurchasePrice);
+                //}
 
-                if (c.entity.AvgCost > 0)
-                {
-                    q = q.Where(p => p.AvgCost == c.entity.AvgCost);
-                }
+                //if (c.entity.AvgCost > 0)
+                //{
+                //    q = q.Where(p => p.AvgCost == c.entity.AvgCost);
+                //}
 
-                if (c.entity.NontaxAvgCost > 0)
-                {
-                    q = q.Where(p => p.NontaxAvgCost == c.entity.NontaxAvgCost);
-                }
+                //if (c.entity.NontaxAvgCost > 0)
+                //{
+                //    q = q.Where(p => p.NontaxAvgCost == c.entity.NontaxAvgCost);
+                //}
 
-                if (c.entity.GrossRate > 0)
-                {
-                    q = q.Where(p => p.GrossRate == c.entity.GrossRate);
-                }
+                //if (c.entity.GrossRate > 0)
+                //{
+                //    q = q.Where(p => p.GrossRate == c.entity.GrossRate);
+                //}
 
-                if (c.entity.SalePrice > 0)
-                {
-                    q = q.Where(p => p.SalePrice == c.entity.SalePrice);
-                }
+                //if (c.entity.SalePrice > 0)
+                //{
+                //    q = q.Where(p => p.SalePrice == c.entity.SalePrice);
+                //}
 
-                if (c.entity.VipPrice > 0)
-                {
-                    q = q.Where(p => p.VipPrice == c.entity.VipPrice);
-                }
+                //if (c.entity.VipPrice > 0)
+                //{
+                //    q = q.Where(p => p.VipPrice == c.entity.VipPrice);
+                //}
 
-                if (c.entity.TradePrice > 0)
-                {
-                    q = q.Where(p => p.TradePrice == c.entity.TradePrice);
-                }
+                //if (c.entity.TradePrice > 0)
+                //{
+                //    q = q.Where(p => p.TradePrice == c.entity.TradePrice);
+                //}
 
-                if (c.entity.PushRate > 0)
-                {
-                    q = q.Where(p => p.PushRate == c.entity.PushRate);
-                }
+                //if (c.entity.PushRate > 0)
+                //{
+                //    q = q.Where(p => p.PushRate == c.entity.PushRate);
+                //}
 
                 if (string.IsNullOrEmpty(c.entity.Operator) == false)
                 {
                     q = q.Where(p => p.Operator.Contains(c.entity.Operator));
                 }
-                if (string.IsNullOrEmpty(c.entity.Assessor) == false)
-                {
-                    q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
-                }
+                //if (string.IsNullOrEmpty(c.entity.Assessor) == false)
+                //{
+                //    q = q.Where(p => p.Assessor.Contains(c.entity.Assessor));
+                //}
                 if (string.IsNullOrEmpty(c.entity.IfExamine) == false)
                 {
                     q = q.Where(p => p.IfExamine == c.entity.IfExamine);

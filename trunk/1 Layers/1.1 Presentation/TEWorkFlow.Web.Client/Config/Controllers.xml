@@ -12,7 +12,7 @@
     <property name="EmemployeearchiveService" ref="EmemployeearchiveService" />
     <property name="FbSupplierArchivesService" ref="FbSupplierArchivesService" />
   </object>
-  <object type="TEWorkFlow.Web.Client.Controllers.TestController, TEWorkFlow.Web.Client" singleton="false" >
+  <object type="TEWorkFlow.Web.Client.Controllers.HomeController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="SysLoginPowerService" ref="SysLoginPowerService" />
     <property name="SysEnterpriseArchivesService" ref="SysEnterpriseArchivesService" />
     <property name="SysPostService" ref="SysPostService" />

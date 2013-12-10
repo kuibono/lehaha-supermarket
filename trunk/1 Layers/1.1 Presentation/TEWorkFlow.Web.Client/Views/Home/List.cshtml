@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="mini-fit">
-        <div id="datagrid1" class="mini-datagrid" url="/Test/LoginPowerList" style="width: 100%;
+        <div id="datagrid1" class="mini-datagrid" url="/Home/LoginPowerList" style="width: 100%;
             height: 100%;" idfield="id" allowresize="false" sizelist="[20,30,50,100]" pagesize="20"
             multiselect="true">
             <div property="columns">
@@ -78,7 +78,7 @@
 
         function editRow(id) {
             mini.open({
-                url: "/Test/Edit/" + id,
+                url: "/Home/Edit/" + id,
                 title: "用户管理",
                 iconCls:"icon-user",
                 width: 560, 
@@ -108,7 +108,7 @@
 
         function deleteItem(id) {
             $.ajax({
-                url: "/Test/Delete",
+                url: "/Home/Delete",
                 data: { ids: id },
                 success: function (text) {
                     grid.reload();

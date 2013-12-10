@@ -353,7 +353,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             //    Icon = "icon-user",
             //    Id = "users",
             //    ParentId = "system",
-            //    Url = "/Test/List",
+            //    Url = "/Home/List",
             //    Windowname = "用户管理",
             //    EmployeeVisible = true,
             //    SupplierVisible = true
@@ -469,7 +469,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Icon = "icon-bell",
                 Id = "system-postlist",
                 ParentId = "system",
-                Url = "/Test/PostList/",
+                Url = "/Home/PostList/",
                 Windowname = "公告管理",
                 EmployeeVisible = true,
                 SupplierVisible = false,
@@ -483,7 +483,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                 Icon = "icon-bell",
                 Id = "system-branchpostlist",
                 ParentId = "system",
-                Url = "/Test/BranchPostList/",
+                Url = "/Home/BranchPostList/",
                 Windowname = "分店通知",
                 EmployeeVisible = true,
                 SupplierVisible = false,
@@ -810,7 +810,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
                 SetUserType(false);
-                return RedirectToAction("Index", "Test");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -858,7 +858,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             //        Session[AuthorizeSettings.SessionUserID] = result.Supplier.Id;
             //        Session[AuthorizeSettings.SessionUserType] = "1";
             //    }
-            //    return RedirectToAction("Index", "Test");
+            //    return RedirectToAction("Index", "Home");
             //}
             //else
             //{
@@ -877,7 +877,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             //{
             //    Session[AuthorizeSettings.SessionUserName] = u.Username;
             //    Session[AuthorizeSettings.SessionUserID] = u.Id;
-            //    return RedirectToAction("Index", "Test");
+            //    return RedirectToAction("Index", "Home");
             //}
 
             //NSH.Authorization.Domain.User user = new NSH.Authorization.Domain.User();
@@ -944,7 +944,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
                 SetUserType(false);
-                return RedirectToAction("Index", "Test");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -1000,7 +1000,7 @@ namespace TEWorkFlow.Web.Client.Controllers
                     Session[AuthorizeSettings.SessionUserType] = "1";
                 }
                 SetUserType(true);
-                return RedirectToAction("Index", "Test");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

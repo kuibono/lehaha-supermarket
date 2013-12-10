@@ -16,7 +16,7 @@
     <div class="mini-fit" >
         
         <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;" 
-            url="/Test/GetAllPosts"  idField="Id"
+            url="/Home/GetAllPosts"  idField="Id"
             sizeList="[5,10,20,50]" pageSize="20" onrowclick="rowclick" showPager="false">
             <div property="columns">
                 <div type="indexcolumn" ></div>
@@ -42,7 +42,7 @@
                 showModal: false,
                 callback: function (action) {
                     $.ajax({
-                        url: "/Test/PostReaded/" + sender.record.Id,
+                        url: "/Home/PostReaded/" + sender.record.Id,
                         dataType: "json",
                         success: function () {
                             location.href = location.href;
