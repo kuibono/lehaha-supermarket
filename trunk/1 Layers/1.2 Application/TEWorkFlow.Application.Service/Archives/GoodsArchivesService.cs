@@ -162,7 +162,7 @@ namespace TEWorkFlow.Application.Service.Archives
             b.sale_price = e.propose_price;
 
             b.qty_type = e.qty_type;
-            b.pack_coef = 0;
+            b.pack_coef = 1;
             b.price_type = "1";
             b.push_rate = 0;
             b.trade_price =0;
@@ -333,7 +333,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 bar.sale_price = e.propose_price;
 
                 bar.qty_type = e.qty_type;
-                bar.pack_coef = 0;
+                bar.pack_coef = 1;
                 bar.price_type = "1";
                 bar.push_rate = 0;
                 bar.trade_price = 0;
