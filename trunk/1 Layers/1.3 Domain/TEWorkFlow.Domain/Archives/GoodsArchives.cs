@@ -405,7 +405,7 @@ namespace TEWorkFlow.Domain.Archives
         private decimal _SalePrice = 0;
         public virtual decimal SalePrice
         {
-            get { return _SalePrice > 0 ? _SalePrice : PurchasePrice.Value; }
+            get { return _SalePrice; }
             set
             {
                 if (value == null)
