@@ -528,7 +528,8 @@ namespace TEWorkFlow.Application.Service.Archives
                 {
                     foreach (var deleteItem in sups.Where(p => supCodes.Contains(p.sup_code)==false).ToList())
                     {
-                        ent.DeleteObject(deleteItem);
+                        deleteItem.goods_code = "0";
+                        //ent.DeleteObject(deleteItem);
                     }
                 }
             }
