@@ -21,6 +21,8 @@ namespace TEWorkFlow.Web.Client.Controllers
         // GET: /Query/
 
         public IPcPurchaseManageService PcPurchaseManageService { get; set; }
+
+        public IPcPurchaseDetailService PcPurchaseDetailService { get; set; }
         public IGoodsArchivesService GoodsArchivesService { get; set; }
         public IRtRetailManageService RtRetailManageService{ get; set; }
         public IPcPurchaseManageHistoryService PcPurchaseManageHistoryService { get; set; }
@@ -38,6 +40,7 @@ namespace TEWorkFlow.Web.Client.Controllers
             {
                 model = PcPurchaseManageService.GetById(id);
             }
+            ViewBag.Details = PcPurchaseDetailService.GetDetailsByManageId(id);
             return View(model);
         }
 

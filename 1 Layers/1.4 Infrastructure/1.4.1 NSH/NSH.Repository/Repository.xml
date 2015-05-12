@@ -20,7 +20,7 @@
     <property name="DbProvider" ref="DbProvider"/>
     <property name="MappingAssemblies">
       <list>
-        <value>NSH.Authorization</value>
+        <!--<value>NSH.Authorization</value>-->
         <value>${db.mappingassemblies}</value>
       </list>
     </property>

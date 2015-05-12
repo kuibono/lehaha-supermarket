@@ -63,6 +63,7 @@
     <property name="GoodsArchivesService" ref="GoodsArchivesService" />
     <property name="RtRetailManageService" ref="RtRetailManageService" />
     <property name="ReportSevice" ref="ReportSevice" />
+    <property name="PcPurchaseDetailService" ref="PcPurchaseDetailService" />
   </object>
   <object type="TEWorkFlow.Web.Client.Controllers.ReportController, TEWorkFlow.Web.Client" singleton="false" >
     <property name="ReportSevice" ref="ReportSevice" />

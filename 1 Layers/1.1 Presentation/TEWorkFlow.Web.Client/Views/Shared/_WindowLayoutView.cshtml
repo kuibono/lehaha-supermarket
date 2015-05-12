@@ -40,18 +40,7 @@
             else window.close();
         }
         function onOk(e) {
-            //$(".mini-grid-border").removeClass("mini-grid-border").addClass("mini-grid-border_tmp");
-            //$("td").removeProp("style");
-            $(".mini-grid-body").css("overflow", "hidden");
-            $("#qr").show();
-            $(".mini-grid-cell").css("font-size", "13px")
-            var height = $(".mini-grid-body").first().height();
-            $(".mini-grid-body").css("height", $(".mini-grid-body tr").size() * 23);
             $("#printArea").printArea();
-            $(".mini-grid-body").css("height",height);
-            //$(".mini-grid-border_tmp").removeClass("mini-grid-border_tmp").addClass("mini-grid-border");
-            $("#qr").hide();
-            $(".mini-grid-cell").css("font-size", "9pt")
         }
         function onCancel(e) {
             CloseWindow("cancel");

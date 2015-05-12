@@ -242,33 +242,58 @@ font: bold 13px/15px helvetica,arial,verdana,sans-serif;
         </td>
     </tr>
 </table>
-<div id="datagrid1" class="mini-datagrid" style="width: 95%; border: solid 1px #9f9f9f; border-collapse:collapse;" idfield="Id"
-    emptytext="数据为空，<a href='javascript:newRow()'>增加一条</a>" showemptytext="true"
-    showpager="false" showSummaryRow="true" autoheight="true">
-    <div property="columns">
-        <div type="indexcolumn" ></div>
-        <div field="GoodsName" headeralign="center">
-            产品名称
-        </div>
-        
-        <div field="Specification" width="40" headeralign="center"  headeralign="center" align="center">
-            规格
-        </div>
-        <div field="PurchaseQty" width="40"  headeralign="center" align="center" allowsort="true"  summaryType="sum">
-            数量
-            <input property="editor" class="mini-spinner" style="width: 100%;" required="true"
-                minvalue="1" maxvalue="5000" />
-        </div>
-        <div field="PurchasePrice" width="50" headeralign="center" align="center" allowsort="true"
-             currencyunit="￥">
-            单价
-        </div>
-        <div field="PurchaseMoney" width="60" headeralign="center" align="center" allowsort="true"
-            datatype="currency" currencyunit="￥" summaryType="sum">
-            金额
-        </div>
-        <div field="GoodsBarCode"  headeralign="center" align="center" allowsort="true">
-            条码
-        </div>
-    </div>
-</div>
+@{
+    var details = ViewBag.Details as List<TEWorkFlow.Domain.Business.PcPurchaseDetail>;
+    
+}
+<table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:95%; border: solid 1px #9f9f9f; border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th align="center">
+                产品名称
+            </th>
+            <th align="center">
+                规格
+            </th>
+            <th align="center">
+                数量
+            </th>
+            <th align="center">
+                单价
+            </th>
+            <th align="center">
+                金额
+            </th>
+            <th align="center">
+                条码
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in details)
+        {
+            <tr>
+                <td>
+                    @detail.GoodsName
+                </td>
+                <td>
+                    @detail.Specification
+                </td>
+                <td>
+                    @detail.PurchaseQty
+                </td>
+                <td>
+                    @detail.PurchasePrice
+                </td>
+                <td>
+                    @detail.PurchaseMoney
+                </td>
+                <td>
+                    @detail.GoodsBarCode
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
