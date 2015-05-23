@@ -179,29 +179,83 @@
     </script>
 }
 <style type="text/css">
-table.edittable tr td {
+/*table.edittable tr td {
     padding: 1px;
     border: solid 1px #000;
 }
 .mini-grid-cell, .mini-grid-headerCell, .mini-grid-filterCell, .mini-grid-summaryCell {
 border-right: #000 1px solid;
 border-bottom: #000 1px solid;
-}
-.mini-grid-border
-{
-    border-color:#000;
-}
+}*/
+    table.edittable tr td {
+        padding:0px;
+        border-width:0px;
+        text-align:left;
+    }
+    .mini-grid-border {
+        border-color: #000;
+    }
 .mini-grid-headerCell {
 color: #000;
 font: bold 13px/15px helvetica,arial,verdana,sans-serif;
 }
 </style>
-<h1 style="text-align:center">销售单
+<h1 style="text-align:center">乐哈哈销售订单
 <img src="http://chart.googleapis.com/chart?cht=qr&chs=30x30&choe=UTF-8&chld=L|4&chl=@Model.Id" id="qr" style="display:none;float:right;" />
 </h1>
 
-<table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:95%; border: solid 1px #9f9f9f; border-collapse:collapse;">
+<table class="edittable" border="0" cellpadding="0" cellspacing="0" style="width:95%; border: solid 0px #9f9f9f; border-collapse:collapse;">
     <tr>
+        <td style="width:80px">
+            客户名称:
+        </td>
+        <td align="left">
+            @Model.bName
+        </td>
+        <td style="width:80px">
+            日期:
+        </td>
+        <td align="left">
+            @(Model.PurchaseDate == null ? "" : Model.PurchaseDate.Value.ToString("yyyy-MM-dd"))
+        </td>
+        <td style="width:80px">
+            单号:
+        </td>
+        <td align="left">
+            @Model.Id
+        </td>
+    </tr>
+    <tr>
+        <td style="width:80px">
+            客户地址:
+        </td>
+        <td align="left">
+        </td>
+        <td style="width:80px">
+            客户电话:
+        </td>
+        <td align="left">
+        </td>
+        <td style="width:80px">
+        </td>
+        <td align="left">
+        </td>
+    </tr>
+    <tr>
+        <td style="width:80px">
+            供货商:
+        </td>
+        <td align="left">
+            @Model.SupCode
+        </td>
+        <td style="width:80px">
+            电话:
+        </td>
+        <td align="left"></td>
+        <td style="width:80px">业务员</td>
+        <td align="left"></td>
+    </tr>
+    @*<tr>
         <td style="width:80px">
             采购单号:
         </td>
@@ -240,11 +294,10 @@ font: bold 13px/15px helvetica,arial,verdana,sans-serif;
         <td align="left">
              @(Model.PurchaseDate == null ? "" : Model.PurchaseDate.Value.ToString("yyyy-MM-dd"))
         </td>
-    </tr>
+    </tr>*@
 </table>
 @{
     var details = ViewBag.Details as List<TEWorkFlow.Domain.Business.PcPurchaseDetail>;
-    
 }
 <table class="edittable" border="1" cellpadding="0" cellspacing="0" style="width:95%; border: solid 1px #9f9f9f; border-collapse:collapse;">
     <thead>
@@ -280,13 +333,13 @@ font: bold 13px/15px helvetica,arial,verdana,sans-serif;
                     @detail.Specification
                 </td>
                 <td>
-                    @detail.PurchaseQty
+                    @detail.PurchaseQty.Value.ToString("#")
                 </td>
                 <td>
-                    @detail.PurchasePrice
+                    @detail.PurchasePrice.Value.ToString("#.##")
                 </td>
                 <td>
-                    @detail.PurchaseMoney
+                    @detail.PurchaseMoney.Value.ToString("#.##")
                 </td>
                 <td>
                     @detail.GoodsBarCode
@@ -296,4 +349,23 @@ font: bold 13px/15px helvetica,arial,verdana,sans-serif;
 
     </tbody>
 </table>
-
+<table class="edittable" border="0" cellpadding="0" cellspacing="0" style="width:95%; border: solid 0px #9f9f9f; border-collapse:collapse;">
+    <tr>
+        <td style="width:80px">
+            仓管员:
+        </td>
+        <td align="left">
+            ___________
+        </td>
+        <td style="width:80px">
+            送货人:
+        </td>
+        <td align="left">
+            ___________
+        </td>
+        <td style="width:80px">收货人</td>
+        <td align="left">
+            ___________
+        </td>
+    </tr>
+</table>
