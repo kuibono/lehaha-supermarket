@@ -165,8 +165,8 @@ namespace TEWorkFlow.Application.Service.Archives
             b.pack_coef = 1;
             b.price_type = "1";
             b.push_rate = 0;
-            b.trade_price =0;
-            b.vip_price =0;
+            b.trade_price = 0;
+            b.vip_price = 0;
             b.pack_unit_code = "01";
 
             if (ent.fb_goods_archives_bar.Any(p => p.goods_bar_code == e.goods_bar_code) == false)
@@ -180,17 +180,17 @@ namespace TEWorkFlow.Application.Service.Archives
             SaveGoodsBarCode(e, ent);
             e.if_examine = "0";
             ent.SaveChanges();
-            if(entity.IfExamine=="1")
+            if (entity.IfExamine == "1")
             {
                 e.if_examine = "1";
                 ent.SaveChanges();
             }
-           
+
             r.Str = id;
             return r;
         }
 
-        protected void SaveGoodsBarCode(fb_goods_archives e,SuperMarketEntities ent)
+        protected void SaveGoodsBarCode(fb_goods_archives e, SuperMarketEntities ent)
         {
             var codes = from l in ent.fb_goods_bar_code where l.goods_code == e.goods_code select l;
             foreach (fb_goods_bar_code code in codes)
@@ -199,7 +199,7 @@ namespace TEWorkFlow.Application.Service.Archives
             }
             //ent.SaveChanges();
 
-            fb_goods_bar_code b=new fb_goods_bar_code();
+            fb_goods_bar_code b = new fb_goods_bar_code();
             //b.sale_price = e.sale_price;
             b.gb_code = e.gb_code;
             b.gl_code = e.gl_code;
@@ -226,7 +226,7 @@ namespace TEWorkFlow.Application.Service.Archives
             b.vip_price = e.vip_price;
 
             ent.AddTofb_goods_bar_code(b);
-            
+
         }
 
         [Transaction]
@@ -257,11 +257,11 @@ namespace TEWorkFlow.Application.Service.Archives
 
 
             fb_goods_archives e = ConvertToDataBaseEntity(entity);
-            
+
 
             var oldEntity = ent.fb_goods_archives.First(p => p.goods_code == e.goods_code);
             e.EntityKey = oldEntity.EntityKey;
-           
+
             e.operator_date = DateTime.Now;
             //e.goo = GetSupName(e.sup_code.Split(','));
 
@@ -301,27 +301,27 @@ namespace TEWorkFlow.Application.Service.Archives
                 }
 
             }
-            
+
             #region 条码发生变化后，更新条码表
             if (oldEntity.goods_bar_code != e.goods_bar_code)
             {
                 var oldBarCodes = ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == oldEntity.goods_bar_code); //GoodsArchivesBarRepository.Get(oldEntity.GoodsBarCode);
-                if (oldBarCodes.Count()>0)
+                if (oldBarCodes.Count() > 0)
                 {
                     foreach (var fbGoodsArchivesBar in oldBarCodes)
                     {
                         ent.DeleteObject(fbGoodsArchivesBar);
                     }
-                    
+
                 }
-                var newBarCodes= ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == e.goods_bar_code);
-                if (newBarCodes.Count()>0)
+                var newBarCodes = ent.fb_goods_archives_bar.Where(p => p.goods_bar_code == e.goods_bar_code);
+                if (newBarCodes.Count() > 0)
                 {
                     foreach (var fbGoodsArchivesBar in newBarCodes)
                     {
                         ent.DeleteObject(fbGoodsArchivesBar);
                     }
-                    
+
                 }
 
                 fb_goods_archives_bar bar = new fb_goods_archives_bar();
@@ -356,11 +356,11 @@ namespace TEWorkFlow.Application.Service.Archives
             }
 
             //处理传过来的多个SupCode
-            
+
             SaveGoodsSuppliers(e, e.sup_code.Split(','), ent);
 
             SaveGoodsBarCode(e, ent);
-            
+
             //oldEntity = e;
             oldEntity.article_number = e.article_number;
             oldEntity.assessor = e.assessor;
@@ -376,7 +376,7 @@ namespace TEWorkFlow.Application.Service.Archives
             oldEntity.goods_bar_code = e.goods_bar_code;
             //oldEntity.goods_code = e.goods_code;
             oldEntity.goods_name = e.goods_name;
-            oldEntity.goods_state = e.goods_state  ;
+            oldEntity.goods_state = e.goods_state;
             oldEntity.goods_sub_code = e.goods_sub_code;
             oldEntity.goods_sub_name = e.goods_sub_name;
             oldEntity.goods_type = e.goods_type;
@@ -516,45 +516,76 @@ namespace TEWorkFlow.Application.Service.Archives
             //DataDownloadRepository.Save(new TfDataDownload() { Id = Guid.NewGuid().ToString(), DownloadKeyvalue = entity.Id, DownloadTablename = "fb_goods_archives" });
         }
 
-        private void SaveGoodsSuppliers(fb_goods_archives good, string[] supCodes,SuperMarketEntities ent)
+        private void SaveGoodsSuppliers(fb_goods_archives good, string[] supCodes, SuperMarketEntities ent)
         {
             List<fb_goods_archives_supplier> sups = ent.fb_goods_archives_supplier.Where(p => p.goods_code == good.goods_code).ToList();
 
             var allSupplier = ent.fb_supplier_archives.Select(p => new StringKeyValuePair { Key = p.sup_code, Value = p.sup_name }).AsCache("_AllSupplierNameValuePair").ToList();
 
-            foreach (var sup in sups)
+            var removedSuplliers = sups.Where(p => supCodes.Any(x => x == p.sup_code) == false); //supCodes.Where(p => sups.Any(x => x.sup_code == p)==false).ToList();
+            //var removedSuppliers = ent.fb_goods_archives_supplier.Where(p => p.goods_code == good.goods_code && removedSuplliersCodes.Contains(p.goods_code));
+            removedSuplliers.ToList().ForEach(p =>
             {
-                if (supCodes.Any(p => p == sup.sup_code) == false)
-                {
-                    foreach (var deleteItem in sups.Where(p => supCodes.Contains(p.sup_code)==false).ToList())
-                    {
-                        deleteItem.goods_code = "0";
-                        //ent.DeleteObject(deleteItem);
-                    }
-                }
-            }
-            foreach (string supCode in supCodes)
+                ent.DeleteObject(p);
+            });
+
+            var addedCodes = supCodes.Where(p => sups.Any(x => x.sup_code == p) == false);
+            var addSuplliers = ent.fb_supplier_archives.Where(p => addedCodes.Contains(p.sup_code));
+            addSuplliers.ToList().ForEach(p =>
             {
-                if (sups.Any(p=>p.sup_code==supCode) == false)//数据库中不存在传过来的供货商编码
+                var addSup = new fb_goods_archives_supplier
                 {
-                    //增加
-                    fb_goods_archives_supplier p = new fb_goods_archives_supplier();
-                    p.goods_code = good.goods_code;
-                    p.if_examine = "1";
-                    p.if_main_supplier = "1";
-                    p.input_tax = good.input_tax;
-                    p.nontax_purchase_price = good.nontax_purchase_price;
-                    p.offer_min = good.offer_min;
-                    p.offer_mode = good.offer_mode;
-                    p.op_code = good.op_code;
-                    p.pool_rate = good.pool_rate;
-                    p.purchase_price = good.purchase_price;
-                    p.py_code = good.py_code;
-                    p.sup_code = supCode;
-                    p.sup_name = allSupplier.First(prp => prp.Key == supCode).Value; ;
-                    p.sys_guid = _string.GenerateStringID();
-                    ent.AddTofb_goods_archives_supplier(p);
-                }
+                    goods_code = good.goods_code,
+                    if_examine = "1",
+                    if_main_supplier = "0",
+                    input_tax = good.input_tax,
+                    nontax_purchase_price = good.nontax_purchase_price,
+                    offer_min = good.offer_min,
+                    offer_mode = good.offer_mode,
+                    op_code = p.op_code,
+                    pool_rate = p.pool_rate,
+                    purchase_price = good.purchase_price,
+                    py_code = p.py_code,
+                    sup_code = p.sup_code,
+                    sup_name = p.sup_name,
+                    sys_guid = Guid.NewGuid().ToString()
+                };
+                ent.AddTofb_goods_archives_supplier(addSup);
+            });
+
+            //foreach (var sup in sups)
+            //{
+            //    if (supCodes.Any(p => p == sup.sup_code) == false)
+            //    {
+            //        foreach (var deleteItem in sups.Where(p => supCodes.Contains(p.sup_code) == false).ToList())
+            //        {
+            //            deleteItem.goods_code = "0";
+            //            //ent.DeleteObject(deleteItem);
+            //        }
+            //    }
+            //}
+            //foreach (string supCode in supCodes)
+            //{
+            //    if (sups.Any(p => p.sup_code == supCode) == false)//数据库中不存在传过来的供货商编码
+            //    {
+            //        //增加
+            //        fb_goods_archives_supplier p = new fb_goods_archives_supplier();
+            //        p.goods_code = good.goods_code;
+            //        p.if_examine = "1";
+            //        p.if_main_supplier = "1";
+            //        p.input_tax = good.input_tax;
+            //        p.nontax_purchase_price = good.nontax_purchase_price;
+            //        p.offer_min = good.offer_min;
+            //        p.offer_mode = good.offer_mode;
+            //        p.op_code = good.op_code;
+            //        p.pool_rate = good.pool_rate;
+            //        p.purchase_price = good.purchase_price;
+            //        p.py_code = good.py_code;
+            //        p.sup_code = supCode;
+            //        p.sup_name = allSupplier.First(prp => prp.Key == supCode).Value; ;
+            //        p.sys_guid = _string.GenerateStringID();
+            //        ent.AddTofb_goods_archives_supplier(p);
+            //    }
 
                 //if (sups.Any(p => p.sup_code == supCode) == false)//数据库中存在没有传过来的供货商
                 //{
@@ -565,7 +596,7 @@ namespace TEWorkFlow.Application.Service.Archives
                 //        ent.DeleteObject(needDeleteItem);
                 //    }
                 //}
-            }
+            //}
         }
 
         [Transaction]
